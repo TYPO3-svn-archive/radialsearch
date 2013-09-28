@@ -19,6 +19,8 @@ if (!defined ('TYPO3_MODE'))
   // Add pagetree icons
   // Methods for backend workflows
   // Plugin Configuration
+  // TCA for tables
+  // Allow tables on pages
 
 
 
@@ -180,4 +182,40 @@ t3lib_extMgm::addPlugin(array(
 t3lib_extMgm::addPiFlexFormValue( $_EXTKEY . '_pi1', 'FILE:EXT:' . $_EXTKEY . '/pi1/flexform.xml' ); 
   // Plugin Configuration
 
+
+
+  ////////////////////////////////////
+  //
+  // TCA for tables
+
+  // Items
+$TCA['tx_radialsearch_postalcodes'] = array (
+  'ctrl' => array (
+    'title'             => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes',
+    'label'             => 'place_name',  
+    'label_alt'         => 'country_code, postal_code',  
+    'label_alt_force'   => true,  
+    'tstamp'            => 'tstamp',
+    'crdate'            => 'crdate',
+    'cruser_id'         => 'cruser_id',
+    'delete'            => 'deleted',
+    'default_sortby'    => 'ORDER BY country_code, postal_code DESC',  
+    'dividers2tabs'     => true,
+    'dynamicConfigFile' => t3lib_extMgm::extPath( $_EXTKEY ) . 'tca.php',
+    'iconfile'          => t3lib_extMgm::extRelPath( $_EXTKEY ) . 'ext_icon.gif',
+  ),
+);
+  // Items
+
+  // TCA for tables
+
+
+
+  ////////////////////////////////////
+  //
+  // Allow tables on pages
+
+t3lib_extMgm::allowTableOnStandardPages( 'tx_radialsearch_postalcodes ');
+t3lib_extMgm::addToInsertRecords( 'tx_radialsearch_postalcodes ');
+  // Allow tables on pages
 ?>
