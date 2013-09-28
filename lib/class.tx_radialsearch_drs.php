@@ -157,7 +157,8 @@ class tx_radialsearch_drs
       // sdefDrs
     $sheet = 'sDEF';
     $field = 'sdefDrs';
-    $this->pObj->flexform->sdefDrs = $this->pObj->flexform->zzFfValue( $sheet, $field, false );
+    //$this->pObj->flexform->sdefDrs = $this->pObj->flexform->zzFfValue( $sheet, $field, false );
+    $this->pObj->flexform->sdefDrs = 1;
       // sdefDrs
 
       // Enable the DRS by TypoScript
