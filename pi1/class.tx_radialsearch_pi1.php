@@ -171,6 +171,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
             , type            : "json"
             , username        : "demo"
             , country         : "DE"
+            , adminCode1      : "15"
             , lang            : "de"
           },
           success: function( data ) {
