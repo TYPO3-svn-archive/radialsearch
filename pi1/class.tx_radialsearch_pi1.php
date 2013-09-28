@@ -161,6 +161,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
       source: function( request, response ) {
         $.ajax({
           url: "http://ws.geonames.org/searchJSON",
+          url: "http://api.geonames.org/search",
           dataType: "jsonp",
           data: {
             featureClass: "P",
