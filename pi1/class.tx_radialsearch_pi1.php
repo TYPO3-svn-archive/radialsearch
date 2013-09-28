@@ -147,7 +147,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $content = '
  <style>
   .ui-autocomplete-loading {
-    background: white url(\'typo3conf/ext/radialsearch/ext_icon.gif\') right center no-repeat;
+    background: white url(\'typo3conf/ext/radialsearch/lib/icons/ajax-loader.gif\') right center no-repeat;
   }
   #city { width: 25em; }
 </style>
