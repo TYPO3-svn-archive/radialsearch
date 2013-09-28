@@ -211,7 +211,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
     $this->dynamicMarkers->setParentObject( $this );
     $this->flexform->setParentObject( $this );
-    $this->drs->setParentObject( $this );
+    $this->drs->setParentObject( $this22 );
   }
  /**
   * initTemplate( )
