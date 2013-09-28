@@ -177,7 +177,6 @@ class tx_radialsearch_drs
     t3lib_div :: devlog('[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0);
   }
 
-
   
 
   /***********************************************
