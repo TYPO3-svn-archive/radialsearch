@@ -170,7 +170,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
             name_startsWith : request.term,
             type            : "json",
             username        : "demo"
-            //, country         : "DE"
           },
           success: function( data ) {
             response( $.map( data.geonames, function( item ) {
