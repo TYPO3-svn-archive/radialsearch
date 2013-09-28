@@ -1,0 +1,30 @@
+
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // INDEX
+  //
+  // includeLibs
+  // plugin.tx_caddy_pi1
+
+
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // includeLibs
+
+includeLibs {
+  tx_caddy_userfunc         = EXT:caddy/lib/userfunc/class.tx_caddy_userfunc.php
+}
+  // includeLibs
+
+
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // plugin.tx_caddy_pi1
+
+plugin.tx_caddy_pi1 {
+    // Never remove this property!
+  pluginCheck = dummy
+}
