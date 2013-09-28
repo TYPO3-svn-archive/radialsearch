@@ -168,6 +168,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
             style: "full",
             maxRows: 12,
             name_startsWith: request.term,
+            type: "json",
             username: "demo"
           },
           success: function( data ) {
