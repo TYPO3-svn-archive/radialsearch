@@ -180,8 +180,11 @@ class tx_radialsearch_pi1 extends tslib_pibase
                 value: item.name
               }
             }));
+          },
+          error: function( req, error ) {
+            alert( "Request failed: " + error );
           }
-        });
+      });
       },
       minLength: 2,
       select: function( event, ui ) {
