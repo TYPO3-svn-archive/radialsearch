@@ -348,21 +348,11 @@ class tx_radialsearch_userfunc
     
     $path2lib = t3lib_extMgm::extPath( 'radialsearch' ) . 'lib/'; 
     
-    require_once( $path2lib . 'drs/class.tx_radialsearch_drs.php' );
+    require_once( $path2lib . 'class.tx_radialsearch_drs.php' );
     $this->drs              = t3lib_div::makeInstance( 'tx_radialsearch_drs' );
-    $this->drs->pObj        = $this;
-    $this->drs->row         = $this->plugin->row;
+    $this->drs->setParentObject( $this );
 
-    require_once( $path2lib . 'powermail/class.tx_radialsearch_powermail.php' );
-    $this->powermail        = t3lib_div::makeInstance( 'tx_radialsearch_powermail' );
-
-    require_once( $path2lib . 'userfunc/class.tx_radialsearch_userfunc.php' );
-    $this->userfunc         = t3lib_div::makeInstance( 'tx_radialsearch_userfunc' );
-    
     $this->pi1FfSdefReportInitDrs( );
-
-    $this->powermail->pObj  = $this;
-    $this->powermail->init( $this->plugin['row'] );
 
     return true;
   }
