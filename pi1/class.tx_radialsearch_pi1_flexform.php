@@ -54,9 +54,9 @@
 class tx_radialsearch_pi1_flexform
 {
     // Parent object
-  public $pObj = null;
+  private $pObj = null;
     // Current row
-  public $row = null;
+  private $row = null;
 
     // [paths]
   public $pathsDeliveryorder  = null;
@@ -86,6 +86,8 @@ class tx_radialsearch_pi1_flexform
  */
   function main()
   {
+    $this->pObj   = $pObj;
+    $this->row    = $pObj->cObj->data;
 
       // Sheets
     $this->sheetSdef( );
@@ -165,6 +167,37 @@ class tx_radialsearch_pi1_flexform
       // sdefUpdatewizard
 
     return;
+  }
+
+  
+
+  /***********************************************
+  *
+  * Set
+  *
+  **********************************************/
+
+ /**
+  * setParentObject( )  : Set the parent object
+  *
+  * @param	object		$pObj: Parent Object
+  * @return	void
+  * @access public
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  public function setParentObject( $pObj )
+  {
+    if( ! is_object( $pObj ) )
+    {
+      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+
+    }
+    $this->pObj = $pObj;
   }
 
 

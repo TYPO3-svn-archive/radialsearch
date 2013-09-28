@@ -211,8 +211,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
       // Class with methods for get flexform values
     require_once( 'class.tx_radialsearch_pi1_flexform.php' );
     $this->flexform         = t3lib_div::makeInstance( 'tx_radialsearch_pi1_flexform' );
-    $this->flexform->pObj   = $this;
-    $this->flexform->row    = $this->cObj->data;
+    $this->flexform->setParentObject( $this );
 
   }
  /**
