@@ -52,7 +52,7 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
   );
   
     // [Object] local cObject
-  private $cObj = null;
+  public $cObj = null;
     // [Array] Current TypoScript configuration of radialsearch
   private $conf = null;
     // [Array] Current content of radialsearch
