@@ -209,9 +209,9 @@ class tx_radialsearch_pi1 extends tslib_pibase
     require_once( 'class.tx_radialsearch_pi1_flexform.php' );
     $this->flexform       = t3lib_div::makeInstance( 'tx_radialsearch_pi1_flexform' );
 
-    $this->drs->setParentObject( $this );
     $this->dynamicMarkers->setParentObject( $this );
     $this->flexform->setParentObject( $this );
+    $this->drs->setParentObject( $this );
   }
  /**
   * initTemplate( )
