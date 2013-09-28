@@ -174,18 +174,20 @@ class tx_radialsearch_pi1 extends tslib_pibase
             , lang            : "de"
           },
           success: function( data ) {
-            response( $.map( data.status, function( item ) {
+            if( data.status.length > 0 ) {
+              response( $.map( data.status, function( item ) {
+                return {
+                  label: item,
+                  value: item
+                }
+              }));
+            }
+            response( $.map( data.geonames, function( item ) {
               return {
-                label: item.message,
-                value: item.value
+                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                value: item.name
               }
             }));
-//            response( $.map( data.geonames, function( item ) {
-//              return {
-//                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-//                value: item.name
-//              }
-//            }));
           },
           error: function( req, error ) {
             alert( "Request failed: " + error );
