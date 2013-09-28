@@ -87,8 +87,7 @@ class tx_radialsearch_drs
   */
   public function init( )
   {
-    $this->pObj = $pObj;
-    $this->row  = $pObj->cObj->data;
+    $this->row  = $this->pObj->cObj->data;
 
     $this->initByExtmngr( );
 
@@ -157,8 +156,7 @@ class tx_radialsearch_drs
       // sdefDrs
     $sheet = 'sDEF';
     $field = 'sdefDrs';
-    //$this->pObj->flexform->sdefDrs = $this->pObj->flexform->zzFfValue( $sheet, $field, false );
-    $this->pObj->flexform->sdefDrs = 1;
+    $this->pObj->flexform->sdefDrs = $this->pObj->flexform->zzFfValue( $sheet, $field, false );
       // sdefDrs
 
       // Enable the DRS by TypoScript

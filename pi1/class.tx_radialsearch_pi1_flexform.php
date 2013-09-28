@@ -86,8 +86,7 @@ class tx_radialsearch_pi1_flexform
  */
   function main()
   {
-    $this->pObj   = $pObj;
-    $this->row    = $pObj->cObj->data;
+    $this->row    = $this->pObj->cObj->data;
 
       // Sheets
     $this->sheetSdef( );
