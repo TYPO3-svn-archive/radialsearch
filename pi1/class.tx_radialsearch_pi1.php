@@ -143,6 +143,66 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $this->init( );
 
     $content = 'Welcome Radial Search!';
+    
+    $content = '
+ <style>
+  .ui-autocomplete-loading {
+    background: white url(\'typo3conf/ext/radialsearch/ext_icon.gif\') right center no-repeat;
+  }
+  #city { width: 25em; }
+</style>
+<script>
+  $(function() {
+    function log( message ) {
+      $( "<div>" ).text( message ).prependTo( "#log" );
+      $( "#log" ).scrollTop( 0 );
+    }
+    $( "#city" ).autocomplete({
+      source: function( request, response ) {
+        $.ajax({
+          url: "http://ws.geonames.org/searchJSON",
+          dataType: "jsonp",
+          data: {
+            featureClass: "P",
+            style: "full",
+            maxRows: 12,
+            name_startsWith: request.term
+          },
+          success: function( data ) {
+            response( $.map( data.geonames, function( item ) {
+              return {
+                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                value: item.name
+              }
+            }));
+          }
+        });
+      },
+      minLength: 2,
+      select: function( event, ui ) {
+        log( ui.item ?
+          "Selected: " + ui.item.label :
+          "Nothing selected, input was " + this.value);
+      },
+      open: function() {
+        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+      },
+      close: function() {
+        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+      }
+    });
+  });
+</script>
+<div class="ui-widget">
+  <label for="city">Your city: </label>
+  <input id="city" />
+  Powered by <a href="http://geonames.org">geonames.org</a>
+</div>
+<div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
+  Result:
+  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+</div>      
+';
     $content = $this->dynamicMarkers->main( $content ); // Fill dynamic locallang or typoscript markers
     $content = preg_replace( '|###.*?###|i', '', $content ); // Finally clear not filled markers
     return $this->pi_wrapInBaseClass( $content );
