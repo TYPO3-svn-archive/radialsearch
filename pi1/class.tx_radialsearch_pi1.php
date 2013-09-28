@@ -164,12 +164,12 @@ class tx_radialsearch_pi1 extends tslib_pibase
           url: "http://api.geonames.org/search",
           dataType: "jsonp",
           data: {
-              featureClass    : "P"
-            , style           : "full"
-            , maxRows         : 12
-            , name_startsWith : request.term
-            , type            : "json"
-            , username        : "demo"
+            featureClass    : "P",
+            style           : "full",
+            maxRows         : 12,
+            name_startsWith : request.term,
+            type            : "json",
+            username        : "demo"
             //, country         : "DE"
           },
           success: function( data ) {
