@@ -160,8 +160,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $( "#city" ).autocomplete({
       source: function( request, response ) {
         $.ajax({
-          //url: "http://ws.geonames.org/searchJSON",
-          url: "http://api.geonames.org/search",
+          url: "http://ws.geonames.org/searchJSON",
+          //url: "http://api.geonames.org/search",
           dataType: "jsonp",
           data: {
               featureClass    : "P"
@@ -174,14 +174,14 @@ class tx_radialsearch_pi1 extends tslib_pibase
             , lang            : "de"
           },
           success: function( data ) {
-            if( data.status.length > 0 ) {
-              response( $.map( data.status, function( item ) {
-                return {
-                  label: item,
-                  value: item
-                }
-              }));
-            }
+//            if( data.status.length > 0 ) {
+//              response( $.map( data.status, function( item ) {
+//                return {
+//                  label: item,
+//                  value: item
+//                }
+//              }));
+//            }
             response( $.map( data.geonames, function( item ) {
               return {
                 label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
