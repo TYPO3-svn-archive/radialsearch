@@ -158,6 +158,9 @@ t3lib_SpriteManager::addTcaTypeIcon( 'pages', 'contains-radsearch', '../typo3con
 
   // #i0004, 130130, dwildt, 1+
 //require_once(t3lib_extMgm::extPath($_EXTKEY).'lib/flexform/class.tx_org_flexform.php');
+$path2lib = t3lib_extMgm::extPath( 'radialsearch' ) . 'lib/';
+require_once( $path2lib . 'userfunc/class.tx_radialsearch_userfunc.php' );
+
 
 
 
