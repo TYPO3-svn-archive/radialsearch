@@ -160,8 +160,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $( "#city" ).autocomplete({
       source: function( request, response ) {
         $.ajax({
-          url: "http://ws.geonames.org/searchJSON",
-          //url: "http://api.geonames.org/search",
+          //url: "http://ws.geonames.org/searchJSON",
+          url: "http://api.geonames.org/search",
           dataType: "jsonp",
           data: {
               featureClass    : "P"
