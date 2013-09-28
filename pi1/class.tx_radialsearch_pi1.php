@@ -176,8 +176,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
           success: function( data ) {
             response( $.map( data.status, function( item ) {
               return {
-                label: item,
-                value: item
+                label: item.message,
+                value: item.value
               }
             }));
 //            response( $.map( data.geonames, function( item ) {
