@@ -38,14 +38,14 @@
  *
  *
  *
- *   49: class tx_org_extmanager
+ *   49: class tx_radialsearch_em
  *   67:     function promptQuickstart()
  *
  * TOTAL FUNCTIONS: 2
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
-class tx_org_extmanager
+class tx_radialsearch_em
 {
 
     // [INTEGER] TYPO3 version. Sample: 4.7.7 -> 4007007
@@ -78,12 +78,12 @@ class tx_org_extmanager
       $str_prompt = $str_prompt.'
 <div class="typo3-message message-information">
   <div class="message-body">
-    ' . $GLOBALS['LANG']->sL('LLL:EXT:org/lib/locallang.xml:promptQuickstartBody'). '
+    ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptQuickstartBody'). '
   </div>
 </div>
 <div class="typo3-message message-information">
   <div class="message-body">
-    ' . $GLOBALS['LANG']->sL('LLL:EXT:org/lib/locallang.xml:promptGeneralInfo'). '
+    ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptGeneralInfo'). '
   </div>
 </div>
 ';
@@ -118,7 +118,7 @@ class tx_org_extmanager
 
       $str_prompt = $str_prompt.'
 <div class="message-body">
-  ' . $GLOBALS['LANG']->sL('LLL:EXT:org/lib/locallang.xml:promptExternalLinksBody'). '
+  ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptExternalLinksBody'). '
 </div>';
 
     return $str_prompt;
@@ -152,7 +152,7 @@ class tx_org_extmanager
         $str_prompt = $str_prompt.'
           <div class="typo3-message message-warning">
             <div class="message-body">
-              ' . $GLOBALS['LANG']->sL('LLL:EXT:org/lib/locallang.xml:promptVersionPrompt47smaller'). '
+              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
             </div>
           </div>
           ';
@@ -162,7 +162,7 @@ class tx_org_extmanager
         $str_prompt = $str_prompt.'
           <div class="typo3-message message-warning">
             <div class="message-body">
-              ' . $GLOBALS['LANG']->sL('LLL:EXT:org/lib/locallang.xml:promptVersionPrompt47greater'). '
+              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47greater'). '
             </div>
           </div>
           ';
@@ -172,12 +172,12 @@ class tx_org_extmanager
         $str_prompt = $str_prompt.'
           <div class="typo3-message message-ok">
             <div class="message-body">
-              ' . $GLOBALS['LANG']->sL('LLL:EXT:org/lib/locallang.xml:promptVersionPrompt47equal'). '
+              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47equal'). '
             </div>
           </div>
           <div class="typo3-message message-warning">
             <div class="message-body">
-              ' . $GLOBALS['LANG']->sL('LLL:EXT:org/lib/locallang.xml:promptVersionPrompt47equalCSC'). '
+              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47equalCSC'). '
             </div>
           </div>
           ';
@@ -243,9 +243,9 @@ class tx_org_extmanager
 
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/org/lib/class.tx_org_extmanager.php'])
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/lib/class.tx_radialsearch_em.php'])
 {
-  include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/org/lib/class.tx_org_extmanager.php']);
+  include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/lib/class.tx_radialsearch_em.php']);
 }
 
 ?>

@@ -12,7 +12,7 @@
             alt="Die Netzmacher - Internet ist Handwerk"
             title="Die Netzmacher - Internet ist Handwerk"
             target="_blank">
-            <img src="../../../../typo3conf/ext/org/lib/icons/die-netzmacher.de_200px.gif" 
+            <img src="../../../../typo3conf/ext/radialsearch/lib/icons/die-netzmacher.de_200px.gif" 
               width="200" 
               height="80" 
               alt="Die Netzmacher - Internet ist Handwerk" /></a>
@@ -60,7 +60,7 @@
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/org/lib/icons/your-logo_default-blue.gif" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-blue.gif" 
             width="120" 
             height="90" 
             alt="Your logo with your URL. 120 x 90 pixel." /></a>
@@ -68,7 +68,7 @@
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/org/lib/icons/your-logo_default-grey.gif" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
             width="120" 
             height="90" 
             alt="Your logo with your URL. 120 x 90 pixel." /></a>
@@ -76,7 +76,7 @@
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/org/lib/icons/your-logo_default-grey.gif" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
             width="120" 
             height="90" 
             alt="Your logo with your URL. 120 x 90 pixel." /></a>
@@ -137,7 +137,7 @@
             alt="Die Netzmacher - Internet ist Handwerk"
             title="Die Netzmacher - Internet ist Handwerk"
             target="_blank">
-            <img src="../../../../typo3conf/ext/org/lib/icons/die-netzmacher.de_200px.gif" 
+            <img src="../../../../typo3conf/ext/radialsearch/lib/icons/die-netzmacher.de_200px.gif" 
               width="200" 
               height="80" 
               alt="Die Netzmacher - Internet ist Handwerk" /></a>
@@ -184,7 +184,7 @@
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/org/lib/icons/your-logo_de-blue.gif" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-blue.gif" 
             width="120" 
             height="90" 
             alt="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
@@ -192,7 +192,7 @@
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/org/lib/icons/your-logo_de-grey.gif" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif" 
             width="120" 
             height="90" 
             alt="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
@@ -200,7 +200,7 @@
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/org/lib/icons/your-logo_de-grey.gif" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif" 
             width="120" 
             height="90" 
             alt="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
