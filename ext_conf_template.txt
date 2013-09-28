@@ -1,0 +1,61 @@
+  # cat=basic/enable/100;                   type=user[EXT:org/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptVersionPrompt]; label=Version Prompt
+versionPrompt=0
+  # cat=basic/enable/200;             type=options[English,German]; label= Localise special backend labels: Language for special backend labels like TypoScript static templates and the link handler.
+LLstatic = English
+  # cat=basic/others/999;                   type=user[EXT:org/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+external_linksBase=0
+
+  # cat=linkhandler/enable/300;          type=options[Yes (recommended),No]; label=+Calendar: Add the tab [Org: Calendar] to the the linkhandler.
+linkhandler.tx_org_cal = Yes (recommended)
+  # cat=linkhandler/enable/301;          type=string; label=Calendar pids: CSV list of page id with the calendar folders. The pids are recommended for usability only. I.e: 1335, 1245
+linkhandler.tx_org_cal.onlyPids = 
+  # cat=linkhandler/enable/302;          type=options[Yes (recommended),No]; label=+Documents: Add the tab [Org: Documents] to the the linkhandler.
+linkhandler.tx_org_downloads = Yes (recommended)
+  # cat=linkhandler/enable/303;          type=string; label=Document pids: CSV list of page id with the document folders. The pids are recommended for usability only. I.e: 1335, 1245
+linkhandler.tx_org_downloads.onlyPids = 
+  # cat=linkhandler/enable/304;          type=options[Yes (recommended),No]; label=+Events: Add the tab [Org: Events] to the the linkhandler.
+linkhandler.tx_org_event = Yes (recommended)
+  # cat=linkhandler/enable/305;          type=string; label=Event pids: CSV list of page id with the event folders. The pids are recommended for usability only. I.e: 1335, 1245
+linkhandler.tx_org_event.onlyPids = 
+  # cat=linkhandler/enable/306;          type=options[Yes (recommended),No]; label=+Headquarters & Departments: Add the tab [Org: Headquarters & Departments] to the the linkhandler.
+linkhandler.tx_org_headquarters = Yes (recommended)
+  # cat=linkhandler/enable/307;          type=string; label=Headquarters & Departments pids: CSV list of page id with the headquarters & departments folders. The pids are recommended for usability only. I.e: 1335, 1245
+linkhandler.tx_org_headquarters.onlyPids = 
+  # cat=linkhandler/enable/308;          type=options[Yes (recommended),No]; label=+Locations: Add the tab [Org: Locations] to the the linkhandler.
+linkhandler.tx_org_location = Yes (recommended)
+  # cat=linkhandler/enable/309;          type=string; label=Location pids: CSV list of page id with the locations folders. The pids are recommended for usability only. I.e: 1335, 1245
+linkhandler.tx_org_location.onlyPids = 
+  # cat=linkhandler/enable/310;          type=options[Yes (recommended),No]; label=+News: Add the tab [Org: News] to the the linkhandler.
+linkhandler.tx_org_news = Yes (recommended)
+  # cat=linkhandler/enable/311;          type=string; label=News pids: CSV list of page id with the news folders. The pids are recommended for usability only. I.e: 1335, 1245
+linkhandler.tx_org_news.onlyPids = 
+  # cat=linkhandler/enable/312;          type=options[Yes (recommended),No]; label=+Staff: Add the tab [Org: Staff] to the the linkhandler.
+linkhandler.fe_users = Yes (recommended)
+  # cat=linkhandler/enable/313;          type=string; label=Staff pids: CSV list of page id with the staff folders. The pids are recommended for usability only. I.e: 1335, 1245
+linkhandler.fe_users.onlyPids = 
+  # cat=linkhandler/others/999;           type=user[EXT:org/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+linkhandler.externalLinks=0
+
+
+  # cat=simplifyer/enable/200;           type=user[EXT:org/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptQuickstart]; label=Quick Start
+quickstart=0
+  # cat=simplifyer/enable/210;           type=options[Default (recommended),None excluded: Editor has access to all,All excluded: Administrator configures it]; label=Exclude Organiser fields: Simplify backend forms! Default: The editor has access to most fields. None excluded: The editor has access to all fields like the administrator. All excluded: the editor has access to required fields only like the title. This option has an effect for editors and it hasn't any effect for administrators.
+TCA_simplify_organiser = Default (recommended)
+  # cat=simplifyer/enable/220;           type=options[Yes: website dosn't contain private content,No]; label=Exclude fe_group controlling: Simplify backend forms! If you have a website without a fe_user administration, you don't need the fe_group controlling field in backend forms. This option marks it in organiser tables 'excluded'. This has an effect for editors and it hasn't any effect for administrators.
+TCA_simplify_fegroup_control = Yes: website dosn't contain private content
+  # cat=simplifyer/enable/230;           type=options[Yes,No]; label=Exclude time controlling: Simplify backend forms! If you don't want to control records by time, you don't need the time control field in backend forms. This option marks it in organiser tables 'excluded'. This has an effect for editors and it hasn't any effect for administrators.
+TCA_simplify_startstop_control = Yes
+  # cat=simplifyer/enable/240;           type=options[Yes,No]; label=Top News as checkbox: Simplify backend forms! 'Yes' reduces the field `Top news` (table `News`) to a checkbox. 'No' means the field `Top news` is a select box with priorities. This has an effect for both editors and administrators.
+TCA_simplify_topnews_sorting = Yes
+  # cat=simplifyer/enable/250;           type=options[Yes (recommended),No: Administrator configure exclude fields]; label=Don't exclude fe_users fields: The organiser needs some fe_users fields by default. Organiser makes this fields visible by disabling the 'exclude' property. This has an effect for editors only. For administrators all fields are visible anyway.
+TCA_adapt_fe_user = Yes (recommended)
+  # cat=simplifyer/enable/260;           type=options[Small (recommended),Big]; label=Company size: Small: fe_users will linked with the company directly. You have an easy relation from user to company. The table department won't displayed. Big: fe_users will linked with a department of a headquarter. You have a complex relation from a user to a department to a headquarter.
+TCA_fe_user_company = Small (recommended)
+  # cat=simplifyer/enable/930;           type=options[Everywhere (recommended),Current folder,Folder with a storage pid,Folder group,Folder multigroup]; label=Visisbility of organiser records: [Everywhere] All organiser records are visible in all folders (recommended). [Current folder] Organiser records are visible in the current folder only. [Folder with a storage pid] Organiser records are visible in the defined folder only. [Folder group] Organiser records are visible within a defined group of folders. [Folder multigroup] Organiser records are visible within defined multigroups of folders only. FAQ: See section "FAQ: Store record configuration" in the manual.
+store_records = Easy 1: all in the same directory
+  # cat=simplifyer/enable/931;           type=options[Store it everywhere (TYPO3 default),Managed by general record storage page (not recommended),Managed by page TSconfig (ID),Managed by page TSconfig (list)]; label=Store fe_groups configuration: [Store it everywhere (TYPO3 default)]: You will see fe_groups of the whole website in a flexform fe_groups field. This is the TYPO3 default. [Managed by general record storage page (not recommended)] If you like to see only fe_groups of a special folder, you can configure it in the page properties with the field "general record storage page". [Managed by page TSconfig (ID)] If you like to see only fe_groups of a special folder, you can configure it in the page TSconfig with the property PAGE_TSCONFIG_ID. [Managed by page TSconfig (list)] If you like to see only fe_groups of a special folder, you can configure it in the page TSconfig with the property PAGE_TSCONFIG_IDLIST. See section "FAQ: Store fe_groups configuration" in the manual.
+store_fe_groups = Default: store it everywhere (recommended)
+   # cat=simplifyer/enable/932;          type=options[Yes (recommended),No]; label=Full wizard support: If full wizard support is enabled, main records will have all three icons for their category records: edit, add and list. This is best usability. But you have to store category records in the same directory like the main records. You have to rough it, if there are needs to store categories in other directories. This property has only an effect in case of store records [clear presented] or [multi grouped].
+full_wizardSupport = Yes (recommended)
+  # cat=simplifyer/others/999;           type=user[EXT:org/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+external_linksConf=0
