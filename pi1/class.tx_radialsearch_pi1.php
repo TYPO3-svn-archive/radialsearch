@@ -167,7 +167,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
             featureClass: "P",
             style: "full",
             maxRows: 12,
-            name_startsWith: request.term
+            name_startsWith: request.term,
+            username: "demo"
           },
           success: function( data ) {
             response( $.map( data.geonames, function( item ) {
