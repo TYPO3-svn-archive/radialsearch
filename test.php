@@ -8,7 +8,7 @@ class test extends tslib_pibase {
   function main(){
     $feUserObj = tslib_eidtools::initFeUser(); // Initialize FE user object    
     tslib_eidtools::connectDB(); //Connect to database
-    echo "<pre>", print_r($GLOBALS["TYPO3_DB"]), "</pre>";
+    //echo "<pre>", print_r($GLOBALS["TYPO3_DB"]), "</pre>";
     $return = var_export( $GLOBALS[ '_GET' ] + $GLOBALS[ '_POST' ], true );  
     t3lib_div::devlog( '[INFO/DRS] ' . $return, 'radialsearch', 0 );
     return $return;
