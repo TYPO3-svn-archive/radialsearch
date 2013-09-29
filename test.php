@@ -16,7 +16,7 @@ class test extends tslib_pibase {
 }
  
 $output = t3lib_div::makeInstance( 'test' );
-$output->main();
+echo $output->main();
 
 
 ?>
