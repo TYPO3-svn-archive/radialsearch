@@ -199,10 +199,11 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     'crdate'            => 'crdate',
     'cruser_id'         => 'cruser_id',
     'delete'            => 'deleted',
-    'default_sortby'    => 'ORDER BY place_name, country_code, postal_code DESC',  
+    'default_sortby'    => 'ORDER BY place_name, country_code, admin_code1, postal_code DESC',  
     'dividers2tabs'     => true,
     'dynamicConfigFile' => t3lib_extMgm::extPath( $_EXTKEY ) . 'tca.php',
     'iconfile'          => t3lib_extMgm::extRelPath( $_EXTKEY ) . 'ext_icon.gif',
+    'searchFields'      => 'country_code,postal_code,place_name,admin_name1,admin_code1,admin_name2,admin_code2,admin_name3,admin_code3'
   ),
 );
   // Items
