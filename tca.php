@@ -157,7 +157,22 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
   ),
   'types' => array (
-    '0' => array('showitem' => 'hidden;;1;;1-1-1, title;;%2%;;2-2-2')
+    '0' => array (
+      'showitem' => '
+          country_code
+        , postal_code
+        , place_name
+        , admin_name1
+        , admin_code1
+        , admin_name2
+        , admin_code2
+        , admin_name3
+        , admin_code3
+        , latitude
+        , longitude
+        , accuracy
+        '
+    )
   ),
   'palettes' => array (
     '1' => array('showitem' => ''),
