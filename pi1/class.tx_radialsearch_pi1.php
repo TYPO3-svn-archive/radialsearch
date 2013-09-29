@@ -151,6 +151,45 @@ class tx_radialsearch_pi1 extends tslib_pibase
   }
   #city { width: 25em; }
 </style>
+<div class="ui-widget">
+  <label for="city">Your city: </label>
+  <input id="city" />
+  Powered by <a href="http://geonames.org">geonames.org</a>
+</div>
+<div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
+  Result:
+  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+</div>      
+';
+    $content = $this->dynamicMarkers->main( $content ); // Fill dynamic locallang or typoscript markers
+    $content = preg_replace( '|###.*?###|i', '', $content ); // Finally clear not filled markers
+    return $this->pi_wrapInBaseClass( $content );
+  }
+  public function main2( $content, $conf )
+  {
+      // page object
+    $this->local_cObj = $GLOBALS['TSFE']->cObj;
+
+    $this->conf = $conf;
+    $this->pi_setPiVarDefaults();
+    $this->pi_loadLL();
+      // Init extension configuration array
+    $this->arr_extConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey] );
+      // 130227, dwildt, 1-
+    //$this->pi_USER_INT_obj = 1;
+
+      // Init DRS, flexform, gpvars, HTML template, service attributes
+    $this->init( );
+
+    $content = 'Welcome Radial Search!';
+    
+    $content = '
+ <style>
+  .ui-autocomplete-loading {
+    background: white url(\'typo3conf/ext/radialsearch/lib/icons/ajax-loader.gif\') right center no-repeat;
+  }
+  #city { width: 25em; }
+</style>
 <script>
   $(function() {
     function log( message ) {
