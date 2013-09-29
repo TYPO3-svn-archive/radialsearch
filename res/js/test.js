@@ -12,7 +12,7 @@
           , type      : "GET"
           , data      : {
               eID             : "tx_radialsearch_pi1"
-            ,  featureClass    : "P"
+            , featureClass    : "P"
             , style           : "full"
             , maxRows         : 12
             , name_startsWith : request.term
