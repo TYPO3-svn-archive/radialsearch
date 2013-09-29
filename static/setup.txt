@@ -28,3 +28,5 @@ plugin.tx_radialsearch_pi1 {
     // Never remove this property!
   pluginCheck = dummy
 }
+
+page.includeJS.tx_radialsearch = typo3conf/ext/radialsearch/res/js/test.js
