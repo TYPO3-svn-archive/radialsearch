@@ -14,7 +14,9 @@ class test extends tslib_pibase {
       '_GET'      => $GLOBALS[ '_GET'     ],
       '_POST'     => $GLOBALS[ '_POST'    ]
     );
-    $return = json_encode( $return );  
+    $json = json_encode( $return );  
+    $jsonp_callback = isset($_GET['callback']) ? $_GET['callback'] : null;
+    $return = $jsonp_callback ? "$jsonp_callback($json)" : $json;
     t3lib_div::devlog( '[INFO/DRS] ' . $return, 'radialsearch', 0 );
     return $return;
   }
