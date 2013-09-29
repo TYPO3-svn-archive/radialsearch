@@ -37,7 +37,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
   'columns' => array (
     'country_code' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.country_code',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.country_code',
       'config' => array (
         'type' => 'input',  
         'max'  => '2',  
@@ -47,7 +47,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'postal_code' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.postal_code',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.postal_code',
       'config' => array (
         'type' => 'input',  
         'max'  => '20',  
@@ -57,7 +57,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'place_name' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.place_name',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.place_name',
       'config' => array (
         'type' => 'input',  
         'max'  => '30',  
@@ -67,7 +67,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'admin_name1' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.admin_name1',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.admin_name1',
       'config' => array (
         'type' => 'input',  
         'max'  => '100',  
@@ -77,7 +77,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'admin_code1' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.admin_code1',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.admin_code1',
       'config' => array (
         'type' => 'input',  
         'max'  => '20',  
@@ -87,7 +87,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'admin_name2' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.admin_name2',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.admin_name2',
       'config' => array (
         'type' => 'input',  
         'max'  => '100',  
@@ -97,7 +97,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'admin_code2' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.admin_code2',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.admin_code2',
       'config' => array (
         'type' => 'input',  
         'max'  => '20',  
@@ -107,7 +107,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'admin_name3' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.admin_name3',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.admin_name3',
       'config' => array (
         'type' => 'input',  
         'max'  => '100',  
@@ -117,7 +117,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'admin_code3' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.admin_code3',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.admin_code3',
       'config' => array (
         'type' => 'input',  
         'max'  => '20',  
@@ -127,7 +127,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'latitude' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.latitude',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.latitude',
       'config' => array (
         'type' => 'input',  
         'max'  => '30',  
@@ -137,7 +137,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'longitude' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.longitude',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.longitude',
       'config' => array (
         'type' => 'input',  
         'max'  => '30',  
@@ -147,7 +147,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
     ),
     'accuracy' => array (    
       'exclude' => 0,    
-      'label' => 'LLL:EXT:caddy/locallang_db.xml:tx_radialsearch_postalcodes.accuracy',
+      'label' => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes.accuracy',
       'config' => array (
         'type' => 'input',  
         'max'  => '1',  
