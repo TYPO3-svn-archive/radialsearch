@@ -20,18 +20,6 @@
           }
           , dataType  : "jsonp"
           , success: function( data ) {
-            if( "key" in data )
-            {
-              
-            }
-//            if( data.status.length > 0 ) {
-//              response( $.map( data.status, function( item ) {
-//                return {
-//                  label: item,
-//                  value: item
-//                }
-//              }));
-//            }
             response( $.map( data.geonames, function( item ) {
               return {
                 label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
