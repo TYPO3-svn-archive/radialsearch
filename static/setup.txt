@@ -43,6 +43,12 @@ plugin.tx_radialsearch_pi1 {
         placeToFooter = {$plugin.tx_radialserach_pi1.javascript.placeToFooter}
           // [Boolean] 0 (default): link to the script file, 1: include the script inline
         inline        = {$plugin.tx_radialserach_pi1.javascript.inline}
+          // [Array]
+        marker        =
+        marker {
+            // [Integer] max rows
+          maxrows = 12
+        }
       }
     }
   }

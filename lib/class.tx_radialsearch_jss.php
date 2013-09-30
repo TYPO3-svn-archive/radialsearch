@@ -369,7 +369,7 @@ class tx_radialsearch_jss
       // DRS
     $prompt = 'file is placed inline. Source is: ' . $absPath;
     t3lib_div::devlog( '[INFO/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 0 );
-    $prompt = 'Change the path? Configure: \'' . $path_tsConf . '\'';
+    $prompt = 'Change the configuration? See: \'' . $path_tsConf . '\'';
     t3lib_div::devlog( '[HELP/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 1 );
       // DRS
   
@@ -449,7 +449,7 @@ class tx_radialsearch_jss
       // DRS
     $prompt = 'file is placed as source: ' . $relPath;
     t3lib_div::devlog( '[INFO/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 0 );
-    $prompt = 'Change the path? Configure: \'' . $path_tsConf . '\'';
+    $prompt = 'Change the configuration? See: \'' . $path_tsConf . '\'';
     t3lib_div::devlog( '[HELP/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 1 );
       // DRS
 

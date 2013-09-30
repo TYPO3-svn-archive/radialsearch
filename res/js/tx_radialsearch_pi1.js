@@ -11,7 +11,7 @@
           , data      : {
               eID             : "tx_radialsearch_pi1"
             , name_startsWith : request.term
-            , maxRows         : 12
+            , maxRows         : "###MAXROWS###"
             , type            : "json"
             , andWhere        : {
                 country_code  : "DE"
