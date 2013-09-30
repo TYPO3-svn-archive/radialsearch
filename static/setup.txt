@@ -131,8 +131,8 @@ plugin.tx_radialsearch_pi1 {
           }
             // [String] ID of the input field
           html_input_id = "#{$plugin.tx_radialserach_pi1.html.input.id}"
-            // [String] ID of the div for logs
-          maxrows = {$plugin.tx_radialserach_pi1.selectbox.maxRows}
+            // [String] Limit for rows of the database query
+          limit = {$plugin.tx_radialserach_pi1.sql.limit}
             // [String] Minimum length of the search word for autocomplete
           minlength = {$plugin.tx_radialserach_pi1.selectbox.minLength}
         }

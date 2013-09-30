@@ -33,11 +33,14 @@ plugin.tx_radialserach_pi1 {
   # cat=Radial Search - search/others/999;      type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   search.external_linksBase = 0
 
-  # cat=Radial Search - selectbox/enable/100;   type=+int;     label= Max rows: Size of the select box
-  selectbox.maxRows           = 12
-  # cat=Radial Search - selectbox/enable/101;   type=+int;     label= Min length: Minimum length of the search word for autocomplete
+  # cat=Radial Search - selectbox/enable/100;   type=+int;     label= Min length: Minimum length of the search word for autocomplete
   selectbox.minLength         = 2
   # cat=Radial Search - selectbox/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   selectbox.external_linksBase = 0
+
+  # cat=Radial Search - sql/enable/100;   type=+int;     label= Limit: Maximum amount of rows, which should returned by the database.
+  sql.limit           = 12
+  # cat=Radial Search - sql/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  sql.external_linksBase = 0
 
 }

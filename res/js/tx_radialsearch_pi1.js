@@ -6,20 +6,22 @@
     $( "###HTML_INPUT_ID###" ).autocomplete({
       source: function( request, response ) {
         $.ajax({
-            url       : "index.php"
-          , type      : "GET"
-          , data      : {
-              eID             : "tx_radialsearch_pi1"
-            , name_startsWith : request.term
-            , maxRows         : "###MAXROWS###"
-            , type            : "json"
-            , andWhere        : {
-                country_code  : "###COUNTRY_CODE###"
-              , admin_code1   : "###ADMIN_CODE1###"
+            url   : "index.php"
+          , type  : "GET"
+          , data  : {
+              eID   : "tx_radialsearch_pi1"
+            , type  : "json"
+            , sql   : {
+                sword     : request.term
+              , andWhere  : {
+                  country_code  : "###COUNTRY_CODE###"
+                , admin_code1   : "###ADMIN_CODE1###"
+              }            
+              , limit     : "###LIMIT###"
             }            
           }
           , dataType  : "jsonp"
-          , success: function( data ) {
+          , success   : function( data ) {
             if( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ))
             {
               response( $.map( data.geonames, function( item ) {
@@ -38,7 +40,7 @@
             }
             alert( "Sorry, the server returns an undefined result." );
           }
-          , error: function( req, error ) {
+          , error : function( req, error ) {
             alert( "Request failed: " + error );
           }
         });
