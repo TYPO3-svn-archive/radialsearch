@@ -3,10 +3,6 @@
    */
 
   $(function() {
-    function log( message ) {
-      $( "<div>" ).text( message ).prependTo( "###HTML_LOG_ID###" );
-      $( "###HTML_LOG_ID###" ).scrollTop( 0 );
-    }
     $( "###HTML_INPUT_ID###" ).autocomplete({
       source: function( request, response ) {
         $.ajax({
@@ -48,11 +44,11 @@
           }
         });
       }
-      , minLength: 2
+      , minLength: "###MINLENGTH###"
       , select: function( event, ui ) {
-        log( ui.item ?
-          "Selected: " + ui.item.label :
-          "Nothing selected, input was " + this.value);
+//        log( ui.item ?
+//          "Selected: " + ui.item.label :
+//          "Nothing selected, input was " + this.value);
       }
       , open: function() {
         $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );

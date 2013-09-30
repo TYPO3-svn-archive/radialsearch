@@ -133,8 +133,12 @@ class tx_radialsearch_pi1 extends tslib_pibase
   <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
 </div>
 ';
-    $content = $this->dynamicMarkers->main( $content ); // Fill dynamic locallang or typoscript markers
-    $content = preg_replace( '|###.*?###|i', '', $content ); // Finally clear not filled markers
+    $content  = $this->css( )
+              . $this->html( );
+      // Fill dynamic locallang or typoscript markers
+    $content  = $this->dynamicMarkers->main( $content ); 
+      // Finally clear not filled markers
+    $content  = preg_replace( '|###.*?###|i', '', $content ); 
     return $this->pi_wrapInBaseClass( $content );
   }
 

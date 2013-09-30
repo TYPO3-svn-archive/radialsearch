@@ -31,20 +31,48 @@ plugin.tx_radialsearch_pi1 {
     // Ressources: js
   res =
   res {
+      // CSS: tx_radialsearch_pi1
+    css =
+    css {
+        // marker, path
+      tx_radialsearch_pi1 =
+      tx_radialsearch_pi1 {
+          // [Array]
+        marker =
+        marker {
+            // [String] ID of the input field
+          html_input_id = {$plugin.tx_radialserach_pi1.html.input.id}
+        }
+          // [String] Path of the css file
+        path = {$plugin.tx_radialserach_pi1.css.path}
+      }
+    }
+      // HTML: tx_radialsearch_pi1
+    html =
+    html {
+        // marker, path
+      tx_radialsearch_pi1 =
+      tx_radialsearch_pi1 {
+          // [Array]
+        marker =
+        marker {
+            // [String] ID of the input field
+          html_input_id = {$plugin.tx_radialserach_pi1.html.input.id}
+        }
+          // [String] Path of the html template
+        path = {$plugin.tx_radialserach_pi1.html.path}
+      }
+    }
       // JavaScript: tx_radialsearch_pi1
     js =
     js {
-        // path, footer, inline
+        // inline, marker, path, placeToFooter
       tx_radialsearch_pi1 =
       tx_radialsearch_pi1 {
-          // [String] Path of the script
-        path          = {$plugin.tx_radialserach_pi1.javascript.path}
-          // [Boolean] 1 (default): place JSS scripts in the footer section. 0: place it on top.
-        placeToFooter = {$plugin.tx_radialserach_pi1.javascript.placeToFooter}
           // [Boolean] 0 (default): link to the script file, 1: include the script inline
-        inline        = {$plugin.tx_radialserach_pi1.javascript.inline}
-          // [Array]
-        marker        =
+        inline = {$plugin.tx_radialserach_pi1.javascript.inline}
+          // [Array] admin_code1, country_code, html_input_id, maxrows
+        marker =
         marker {
             // [String] admin_code1 (1. subdivision/state) for the andWhere
           admin_code1 = COA
@@ -104,10 +132,14 @@ plugin.tx_radialsearch_pi1 {
             // [String] ID of the input field
           html_input_id = "#{$plugin.tx_radialserach_pi1.html.input.id}"
             // [String] ID of the div for logs
-          html_log_id = "#{$plugin.tx_radialserach_pi1.html.log.id}"
-            // [Integer] max rows of the select box
           maxrows = {$plugin.tx_radialserach_pi1.selectbox.maxRows}
+            // [String] Minimum length of the search word for autocomplete
+          minlength = {$plugin.tx_radialserach_pi1.selectbox.minLength}
         }
+          // [String] Path of the script
+        path          = {$plugin.tx_radialserach_pi1.javascript.path}
+          // [Boolean] 1 (default): place JSS scripts in the footer section. 0: place it on top.
+        placeToFooter = {$plugin.tx_radialserach_pi1.javascript.placeToFooter}
       }
     }
   }
