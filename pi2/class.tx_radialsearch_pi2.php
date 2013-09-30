@@ -149,12 +149,18 @@ class tx_radialsearch_pi2 extends tslib_pibase
 //                }
 //              }));
 //            }
-            response( $.map( data.geonames, function( item ) {
-              return {
-                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                value: item.name
-              }
-            }));
+            if( "geonames" in data) {
+              response( $.map( data.geonames, function( item ) {
+                return {
+                  label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                  value: item.name
+                }
+              }));
+            }
+            return {
+              label: "Error",
+              value: 0
+            }            
           },
           error: function( req, error ) {
             alert( "Request failed: " + error );
