@@ -268,21 +268,178 @@ class tx_radialsearch_pi1 extends tslib_pibase
   * css( )  :
   *
   * @return	The		content that is displayed on the website
+  * @access     private
   * @version    0.0.1
   * @since      0.0.1
   */
   private function css( )
   {
-    $content = '
- <style>
-  .ui-autocomplete-loading {
-    background: white url(\'typo3conf/ext/radialsearch/lib/icons/ajax-loader.gif\') right center no-repeat;
-  }
-  #city { width: 25em; }
-</style>
-';
+    $conf         = $this->conf['res.']['css.']['tx_radialsearch_pi1.'];
+    $path_tsConf  = 'res.css.tx_radialsearch_pi1';
+    $content      = $this->cssInline( $conf, $path_tsConf );
+
     return $content;
   }
+
+ /**
+  * cssInlne( )  :
+  *
+  * @return	The		content that is displayed on the website
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function cssInline( $conf, $path_tsConf )
+  {
+    $properties = explode( '.', $path_tsConf );
+    $name       = $properties[ count( $properties ) - 1 ];
+
+      // RETURN file is loaded
+    if(isset ($GLOBALS['TSFE']->additionalHeaderData[$this->pObj->extKey.'_'.$name]))
+    {
+      if ($this->pObj->drs->drsCss )
+      {
+        t3lib_div::devlog('[INFO/CSS] file isn\'t added again: '.$path, $this->pObj->extKey, 0);
+      }
+      return true;
+    }
+      // RETURN file is loaded
+
+    $path = $conf[ 'path' ];
+    $absPath = $this->getPathAbsolute( $path );
+    if( $absPath == false )
+    {
+      if ($this->pObj->drs->drsError )
+      {
+        t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->pObj->extKey, 3 );
+      }
+      return false;
+    }
+
+    $inline_css =
+'  <style type="text/css">
+' . implode ('', file( $absPath ) ) . '
+  </style>';
+
+    $GLOBALS['TSFE']->additionalHeaderData[$this->pObj->extKey.'_'.$name] = $inline_css;
+
+      // No DRS
+    if( ! $this->pObj->drs->drsCss )
+    {
+      return true;
+    }
+      // No DRS
+
+      // DRS
+    $prompt = 'file is included: ' . $path;
+    t3lib_div::devlog( '[INFO/CSS] ' . $prompt, $this->pObj->extKey, 0 );
+    $prompt = 'Change it? Configure: \''.$path_tsConf.'\'';
+    t3lib_div::devlog( '[HELP/CSS] ' . $prompt, $this->pObj->extKey, 1 );
+      // DRS
+
+    return true;
+  }
+
+/**
+ * getPathAbsolute( ): Returns the absolute path of the given path
+ *
+ * @param	string		$path : relative or absolute path to Javascript or CSS
+ * @return	string		$path : absolute path or false in case of an error
+ * @access      private
+ * @since       0.0.1
+ * @version     0.0.1
+ */
+  private function getPathAbsolute( $path )
+  {
+      // RETURN path is empty
+    if( empty( $path ) )
+    {
+        // DRS
+      if( $this->pObj->drs->drsWarn )
+      {
+        $prompt = 'file can not be included. Path is empty. Maybe it is ok.';
+        t3lib_div::devlog( '[WARN/JSS] ' . $prompt, $this->pObj->extKey, 2 );
+        $prompt = 'Change it? Configure: \'' . $keyPathTs . '\'';
+        t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->pObj->extKey, 1 );
+      }
+        // DRS
+      return false;
+    }
+      // RETURN path is empty
+
+      // URL or EXT:...
+    $arr_parsed_url = parse_url( $path );
+    if( isset( $arr_parsed_url[ 'scheme' ] ) )
+    {
+      if( $arr_parsed_url[ 'scheme' ] == 'EXT' )
+      {
+        unset( $arr_parsed_url[ 'scheme' ] );
+      }
+    }
+      // URL or EXT:...
+
+      // link to a file
+    $bool_file_exists = true;
+    if( ! isset( $arr_parsed_url['scheme'] ) )
+    {
+      $onlyRelative       = 1;
+      $relToTYPO3_mainDir = 0;
+      $absPath  = t3lib_div::getFileAbsFileName( $path, $onlyRelative, $relToTYPO3_mainDir );
+      if ( ! file_exists( $absPath ) )
+      {
+        $bool_file_exists = false;
+      }
+        // relative path
+      $path = preg_replace('%' . PATH_site . '%', null, $absPath);
+    }
+      // link to a file
+
+
+      // RETURN : false, file does not exist
+    if( ! $bool_file_exists )
+    {
+        // DRS
+      if ( $this->pObj->drs->drsError )
+      {
+        $prompt = 'Script can not be included. File doesn\'t exist: ' . $path;
+        t3lib_div::devlog( '[ERROR/JSS] ' . $prompt, $this->pObj->extKey, 3 );
+        $prompt = 'Solve it? Configure: \''.$keyPathTs.'\'';
+        t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->pObj->extKey, 1 );
+      }
+        // DRS
+      return false;
+    }
+      // RETURN : false, file does not exist
+
+    return $path;
+  }
+  
+/**
+ * getPathRelative( ): Returns the relative path. Prefix 'EXT:' will handled
+ *
+ * @param	string		$path : relative path with or without prefix 'EXT:'
+ * @return	string		$path : relative path without prefix 'EXT:'
+ * @access      private
+ * @since       0.0.1
+ * @version     0.0.1
+ */
+  private function getPathRelative( $path )
+  {
+      // RETURN : path hasn't any prefix EXT:
+    if( substr( $path, 0, 4 ) != 'EXT:' )
+    {
+      return $path;
+    }
+      // RETURN : path hasn't any prefix EXT:
+
+      // relative path to the JssFile as measured from the PATH_site (frontend)
+    $matches  = array( );
+    preg_match( '%^EXT:([a-z0-9_]*)/(.*)$%', $path, $matches );
+    $path     = t3lib_extMgm::siteRelPath( $matches[ 1 ] ) . $matches[ 2 ];
+
+    return $path;
+  }
+
 
 
 
@@ -296,6 +453,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
   * html( )
   *
   * @return	The		content that is displayed on the website
+  * @access     private
   * @version    0.0.1
   * @since      0.0.1
   */
@@ -414,7 +572,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
   */
   private function jss( )
   {
-    $name         = 'tx_radialsearch_pi1';
     $conf         = $this->conf['res.']['js.']['tx_radialsearch_pi1.'];
     $path_tsConf  = 'res.js.tx_radialsearch_pi1';
     $success      = $this->jss->addFile( $conf, $path_tsConf );

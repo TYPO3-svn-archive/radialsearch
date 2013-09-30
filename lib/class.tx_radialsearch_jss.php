@@ -187,7 +187,6 @@ class tx_radialsearch_jss
     return true;
   }
 
-
 /**
  * getPathAbsolute( ): Returns the absolute path of the given path
  *

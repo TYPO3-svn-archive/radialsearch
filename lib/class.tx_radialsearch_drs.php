@@ -74,7 +74,9 @@ class tx_radialsearch_drs
   public $drsWarn       = false;
   public $drsInfo       = false;
   public $drsOk         = false;
+  public $drsCss        = false;
   public $drsFlexform   = false;
+  public $drsHtml       = false;
   public $drsJavascript = false;
   public $drsSql        = false;
 
@@ -237,7 +239,9 @@ class tx_radialsearch_drs
     $this->drsWarn        = true;
     $this->drsInfo        = true;
     $this->drsOk          = true;
+    $this->drsCss         = true;
     $this->drsFlexform    = true;
+    $this->drsHtml        = true;
     $this->drsJavascript  = true;
     $this->drsSql         = true;
   }
