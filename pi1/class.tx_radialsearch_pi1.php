@@ -354,7 +354,7 @@ var_dump( __METHOD__, __LINE__ );
  */
   private function getPathAbsolute( $conf, $path_tsConf )
   {
-    $path = $conf[ 'path' ]
+    $path = $conf[ 'path' ];
       // RETURN path is empty
     if( empty( $path ) )
     {
