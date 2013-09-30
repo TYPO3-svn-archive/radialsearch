@@ -307,7 +307,7 @@ var_dump( __METHOD__, __LINE__ );
       // RETURN file is loaded
 var_dump( __METHOD__, __LINE__ );    
 
-    $absPath = $this->getPathAbsolute( $path );
+    $absPath = $this->getPathAbsolute( $conf, $path_tsConf );
     if( $absPath == false )
     {
       if( $this->drs->drsError )
@@ -352,8 +352,9 @@ var_dump( __METHOD__, __LINE__ );
  * @since       0.0.1
  * @version     0.0.1
  */
-  private function getPathAbsolute( $path )
+  private function getPathAbsolute( $conf, $path_tsConf )
   {
+    $path = $conf[ 'path' ]
       // RETURN path is empty
     if( empty( $path ) )
     {
@@ -362,7 +363,7 @@ var_dump( __METHOD__, __LINE__ );
       {
         $prompt = 'file can not be included. Path is empty. Maybe it is ok.';
         t3lib_div::devlog( '[WARN/JSS] ' . $prompt, $this->extKey, 2 );
-        $prompt = 'Change it? Configure: \'' . $keyPathTs . '\'';
+        $prompt = 'Change it? Configure: \'' . $path_tsConf . '\'';
         t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->extKey, 1 );
       }
         // DRS
@@ -406,7 +407,7 @@ var_dump( __METHOD__, __LINE__ );
       {
         $prompt = 'Script can not be included. File doesn\'t exist: ' . $path;
         t3lib_div::devlog( '[ERROR/JSS] ' . $prompt, $this->extKey, 3 );
-        $prompt = 'Solve it? Configure: \''.$keyPathTs.'\'';
+        $prompt = 'Solve it? Configure: \'' . $path_tsConf . '\'';
         t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->extKey, 1 );
       }
         // DRS
