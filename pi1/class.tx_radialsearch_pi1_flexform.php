@@ -86,7 +86,7 @@ class tx_radialsearch_pi1_flexform
  */
   function main()
   {
-    $this->row    = $this->pObj->cObj->data;
+    $this->row = $this->pObj->cObj->data;
 
       // Sheets
     $this->sheetSdef( );
@@ -219,6 +219,7 @@ class tx_radialsearch_pi1_flexform
  */
   public function zzFfValue( $sheet, $field, $drs=true )
   {
+    $this->row = $this->pObj->cObj->data;
     $pi_flexform = $this->row['pi_flexform'];
 
     $value = $this->pObj->pi_getFFvalue( $pi_flexform, $field, $sheet, 'lDEF', 'vDEF' );
