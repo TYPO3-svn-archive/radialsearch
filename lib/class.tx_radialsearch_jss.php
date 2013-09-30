@@ -397,8 +397,9 @@ var_dump( __METHOD__, __LINE__, $confMarker );
       return $script;
     }
     
-    foreach( array_keys( ( array ) $confMarker ) as $key => $value )
+    foreach( ( array ) $confMarker as $key => $value )
     {
+var_dump( __METHOD__, __LINE__, $key, $value );
       if( substr( $key, -1, 1 ) != '.' )
       {
         $hashKey          = '"###' . strtoupper( $key ) . '###"';
