@@ -293,23 +293,24 @@ class tx_radialsearch_pi1 extends tslib_pibase
   {
     $properties = explode( '.', $path_tsConf );
     $name       = $properties[ count( $properties ) - 1 ];
+    $path       = $conf[ 'path' ];
 
       // RETURN file is loaded
     if(isset ($GLOBALS['TSFE']->additionalHeaderData[$this->pObj->extKey.'_'.$name]))
     {
-      if ($this->drs->drsCss )
+      if( $this->drs->drsCss )
       {
-        t3lib_div::devlog('[INFO/CSS] file isn\'t added again: '.$path, $this->pObj->extKey, 0);
+        $prompt = 'file isn\'t added again: '. $path;
+        t3lib_div::devlog( '[INFO/CSS] ' . $prompt, $this->pObj->extKey, 0 );
       }
       return true;
     }
       // RETURN file is loaded
 
-    $path = $conf[ 'path' ];
     $absPath = $this->getPathAbsolute( $path );
     if( $absPath == false )
     {
-      if ($this->drs->drsError )
+      if( $this->drs->drsError )
       {
         t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->pObj->extKey, 3 );
       }
