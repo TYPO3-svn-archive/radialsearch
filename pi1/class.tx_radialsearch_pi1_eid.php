@@ -83,6 +83,34 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   */
   public function main( )
   {
+    $sql      = (int) t3lib_div::_GP( 'sql' );
+    $sword    = $sql[ 'sword' ];
+    $limit    = $sql[ 'limit' ];
+    $where    = '( postal_code LIKE "' . $sword . '%" OR place_name LIKE "' . $sword . '%" )';
+    $andWhere = $sql[ 'andWhere' ];
+    $andWhereClause = array( );
+    foreach( ( array ) $andWhere as $key => $value )
+    {
+      if( $value == '"*"')
+      {
+        continue;
+      }
+      $andWhereClause[ ] = $key . ' LIKE "' . $value . '"';
+    }
+    $pid            = (int) $arr_pluginConf['row']['pid'];
+    $select_fields  = '*';
+    $from_table     = 'tx_radialsearch_postalcodes';
+    $groupBy        = null;
+    $orderBy        = null;
+    //$limit          = null;
+    //$where_clause   = "pid = " . $pid . " AND CType = 'list' AND list_type = 'browser_pi5' AND hidden = 0 AND deleted = 0";
+    $where_clause   = $where . ' AND ' . implode( ' AND ', $andWhereClause ) . "AND deleted = 0";
+    $query  = $GLOBALS['TYPO3_DB']->SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+    
+    t3lib_div::devlog( '[INFO/SQL] ' . $query, 'radialsearch', 0 );
+    //$res    = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+    
+    
     //echo "<pre>", print_r($GLOBALS["TYPO3_DB"]), "</pre>";
     $return = array(
       'TYPO3_DB'  => $GLOBALS[ 'TYPO3_DB' ],
