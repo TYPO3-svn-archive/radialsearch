@@ -83,7 +83,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   */
   public function main( )
   {
-    $sql      = (int) t3lib_div::_GP( 'sql' );
+    $sql      = ( array ) t3lib_div::_GP( 'sql' );
     $sword    = $sql[ 'sword' ];
     $limit    = $sql[ 'limit' ];
     $where    = '( postal_code LIKE "' . $sword . '%" OR place_name LIKE "' . $sword . '%" )';
