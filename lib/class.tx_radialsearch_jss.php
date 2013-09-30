@@ -399,13 +399,14 @@ var_dump( __METHOD__, __LINE__, $confMarker );
     
     foreach( ( array ) $confMarker as $key => $value )
     {
-var_dump( __METHOD__, __LINE__, $key, $value );
       if( substr( $key, -1, 1 ) != '.' )
       {
+var_dump( __METHOD__, __LINE__, $key, $value );
         $hashKey          = '"###' . strtoupper( $key ) . '###"';
         $marker[$hashKey] = $value;
         continue;
       }
+var_dump( __METHOD__, __LINE__, $key, $value );
         // I.e. $key is 'title.', but we like the marker name without any dot
       $keyWoDot         = substr( $key, 0, strlen( $key ) -1 );
       $hashKey          = '"###' . strtoupper( $keyWoDot ) . '###"';
