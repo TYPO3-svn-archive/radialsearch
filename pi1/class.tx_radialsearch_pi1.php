@@ -141,7 +141,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
       // Init DRS, flexform, gpvars, HTML template, service attributes
     $this->init( );
-    var_dump( __METHOD__, __LINE__, $this->drs->drsJavascript );
     $this->jss( );
 
     $content = 'Welcome Radial Search!';
@@ -368,7 +367,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $name         = 'tx_radialsearch_pi1';
     $conf         = $this->conf['res.']['js.']['tx_radialsearch_pi1.'];
     $path_tsConf  = 'res.js.tx_radialsearch_pi1';
-    $success      = $this->jss->addFile( $conf, $name, $path_tsConf );
+    $success      = $this->jss->addFile( $conf, $path_tsConf );
     unset( $success );
   }  
 
