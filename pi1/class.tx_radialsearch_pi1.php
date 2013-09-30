@@ -290,7 +290,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
   private function cssInline( $conf, $path_tsConf )
   {
     $properties = explode( '.', $path_tsConf );
-    $name       = $properties[ count( $properties ) - 1 ];
+    $name       = 'css_' . $properties[ count( $properties ) - 1 ];
     $path       = $conf[ 'path' ];
 
 var_dump( __METHOD__, __LINE__ );    
@@ -319,12 +319,17 @@ var_dump( __METHOD__, __LINE__ );
 
 var_dump( __METHOD__, __LINE__ );    
 
-    $inline_css =
+    $content =
 '  <style type="text/css">
 ' . implode( '', file( $absPath ) ) . '
   </style>';
 
-    $GLOBALS['TSFE']->additionalHeaderData[$this->extKey . '_' . $name ] = $inline_css;
+      // Fill dynamic locallang or typoscript markers
+    $content  = $this->dynamicMarkers->main( $content ); 
+      // Finally clear not filled markers
+    $content  = preg_replace( '|###.*?###|i', '', $content ); 
+
+    $GLOBALS['TSFE']->additionalHeaderData[$this->extKey . '_' . $name ] = $content;
 
       // No DRS
     if( ! $this->drs->drsCss )

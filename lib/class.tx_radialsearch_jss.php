@@ -114,7 +114,7 @@ class tx_radialsearch_jss
   private function addFileToHead( $conf, $path_tsConf )
   {
     $properties = explode( '.', $path_tsConf );
-    $name       = $properties[ count( $properties ) - 1 ];
+    $name       = 'jss_' . $properties[ count( $properties ) - 1 ];
 
       // RETURN : script is included
     if( isset( $GLOBALS[ 'TSFE' ]->additionalHeaderData[ $this->pObj->extKey . '_' . $name ] ) )
@@ -160,7 +160,7 @@ class tx_radialsearch_jss
   private function addFileToFooter( $conf, $path_tsConf )
   {
     $properties = explode( '.', $path_tsConf );
-    $name       = $properties[ count( $properties ) - 1 ];
+    $name       = 'jss_' . $properties[ count( $properties ) - 1 ];
 
     if( isset( $GLOBALS[ 'TSFE' ]->additionalFooterData[ $this->pObj->extKey . '_' . $name ] ) )
     {
