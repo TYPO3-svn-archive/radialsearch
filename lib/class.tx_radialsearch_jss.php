@@ -388,15 +388,16 @@ class tx_radialsearch_jss
  */
   private function getTagScriptInlineMarker( $conf, $script )
   {
-    $marker = $conf['marker.'];
-var_dump( __METHOD__, __LINE__, $marker );
+    $marker     = array( );
+    $confMarker = $conf['marker.'];
+var_dump( __METHOD__, __LINE__, $confMarker );
 
-    if( ! is_array( $marker ) )
+    if( ! is_array( $confMarker ) )
     {
       return $script;
     }
     
-    foreach( array_keys( ( array ) $marker ) as $key => $value )
+    foreach( array_keys( ( array ) $confMarker ) as $key => $value )
     {
       if( substr( $key, -1, 1 ) != '.' )
       {
@@ -411,6 +412,7 @@ var_dump( __METHOD__, __LINE__, $marker );
       $conf             = $marker[ $key ];
       $marker[$hashKey] = $this->pObj->cObj->cObjGetSingle( $coa, $conf );
     }
+var_dump( __METHOD__, __LINE__, $marker );
     
     $script = $this->pObj->cObj->substituteMarkerArray( $script, $marker );
 
