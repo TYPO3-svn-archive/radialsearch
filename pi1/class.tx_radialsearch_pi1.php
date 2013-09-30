@@ -323,7 +323,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
       // Fill dynamic locallang or typoscript markers
     $content  = $this->dynamicMarkers->main( $content ); 
       // Finally clear not filled markers
-    $content  = preg_replace( '|###.*?###|i', '', $content ); 
+    //$content  = preg_replace( '|###.*?###|i', '', $content ); 
 
     $GLOBALS['TSFE']->additionalHeaderData[$this->extKey . '_' . $name ] = $content;
 
