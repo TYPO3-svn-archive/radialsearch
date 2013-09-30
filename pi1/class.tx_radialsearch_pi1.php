@@ -113,8 +113,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
       // Init DRS, flexform, gpvars, HTML template, service attributes
     $this->init( );
     $this->jss( );
-
-    $content = 'Welcome Radial Search!';
+    $this->css( );
 
     $content = '
  <style>
@@ -133,8 +132,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
   <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
 </div>
 ';
-    $content  = $this->css( )
-              . $this->html( );
+    $content = $this->html( );
     
       // Fill dynamic locallang or typoscript markers
     $content  = $this->dynamicMarkers->main( $content ); 
@@ -295,8 +293,9 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $name       = $properties[ count( $properties ) - 1 ];
     $path       = $conf[ 'path' ];
 
+var_dump( __METHOD__, __LINE__ );    
       // RETURN file is loaded
-    if(isset ($GLOBALS['TSFE']->additionalHeaderData[$this->pObj->extKey.'_'.$name]))
+    if( isset( $GLOBALS['TSFE']->additionalHeaderData[$this->pObj->extKey.'_'.$name] ) )
     {
       if( $this->drs->drsCss )
       {
@@ -306,6 +305,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
       return true;
     }
       // RETURN file is loaded
+var_dump( __METHOD__, __LINE__ );    
 
     $absPath = $this->getPathAbsolute( $path );
     if( $absPath == false )
