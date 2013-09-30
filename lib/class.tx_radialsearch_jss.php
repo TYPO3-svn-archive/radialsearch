@@ -396,15 +396,17 @@ var_dump( __METHOD__, __LINE__, $marker );
       return $script;
     }
     
-    foreach( array_keys( ( array ) $marker ) as $key )
+    foreach( array_keys( ( array ) $marker ) as $key => $value )
     {
       if( substr( $key, -1, 1 ) != '.' )
       {
+        $hashKey          = '"###' . strtoupper( $key ) . '###"';
+        $marker[$hashKey] = $value;
         continue;
       }
         // I.e. $key is 'title.', but we like the marker name without any dot
       $keyWoDot         = substr( $key, 0, strlen( $key ) -1 );
-      $hashKey          = '###' . strtoupper( $keyWoDot ) . '###';
+      $hashKey          = '"###' . strtoupper( $keyWoDot ) . '###"';
       $coa              = $marker[ $keyWoDot ];
       $conf             = $marker[ $key ];
       $marker[$hashKey] = $this->pObj->cObj->cObjGetSingle( $coa, $conf );
