@@ -288,6 +288,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $this->initInstances( );
     $this->drs->init( );
     $this->initFlexform( );
+    $this->initJss( );
     
   }
 
@@ -333,6 +334,24 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $this->jss->setParentObject( $this );
     $this->drs->setParentObject( $this );
   }
+
+ /**
+  * initJss( )
+  *
+  * @return	void
+  * @access private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function initJss( )
+  {
+  
+    $name         = 'tx_radialsearch_pi1';
+    $conf         = $this->conf['res.']['js.']['tx_radialsearch_pi1.'];
+    $path_tsConf  = 'res.js.tx_radialsearch_pi1';
+    $bool_success = $this->objJss->addJssFileTo( $conf, $name, $path_tsConf );
+  }
+  
  /**
   * initTemplate( )
   *
@@ -345,22 +364,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
   {
   }
 
- /**
-  * addJss( )
-  *
-  * @return	void
-  * @access private
-  * @version    0.0.1
-  * @since      0.0.1
-  */
-  private function addJss( )
-  {
-  
-    $name         = 'tx_radialsearch_pi1';
-    $conf         = $this->conf['res.']['js.']['tx_radialsearch_pi1.'];
-    $path_tsConf  = 'res.js.tx_radialsearch_pi1';
-    $bool_success = $this->objJss->addJssFileTo( $conf, $name, $path_tsConf );
-  }
 
   
   
