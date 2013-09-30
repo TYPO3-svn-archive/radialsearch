@@ -149,14 +149,14 @@ class tx_radialsearch_pi2 extends tslib_pibase
 //                }
 //              }));
 //            }
-            if( data.hasOwnProperty( "geonames" ) ) {
+//            if( data.hasOwnProperty( "geonames" ) ) {
               response( $.map( data.geonames, function( item ) {
                 return {
                   label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
                   value: item.name
                 }
               }));
-            }
+//            }
             var Prompt          = new Array();
             Prompt[0]           = new Object();
             Prompt[0]["label"]  = "geonames isn\'t any key in the returned data.";
