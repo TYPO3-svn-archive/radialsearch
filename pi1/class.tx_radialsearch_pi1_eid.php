@@ -83,8 +83,6 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   */
   public function main( )
   {
-    $feUserObj = tslib_eidtools::initFeUser(); // Initialize FE user object    
-    tslib_eidtools::connectDB(); //Connect to database
     //echo "<pre>", print_r($GLOBALS["TYPO3_DB"]), "</pre>";
     $return = array(
       'TYPO3_DB'  => $GLOBALS[ 'TYPO3_DB' ],
@@ -97,7 +95,36 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     t3lib_div::devlog( '[INFO/DRS] ' . $return, 'radialsearch', 0 );
     return $return;
   }
+  
+ /***********************************************
+  *
+  * Init
+  *
+  **********************************************/
+
+ /**
+  * the main method
+  *
+  * @return	The		content that is displayed on the website
+  * @access     public
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  public function init( )
+  {
+      // Initialize FE user object    
+//    $feUserObj = tslib_eidtools::initFeUser(); 
+    tslib_eidtools::initFeUser( ); 
+      // Connect to database
+    tslib_eidtools::connectDB( ); 
+  }
 }
+
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/pi1/class.tx_radialsearch_pi1_eid.php'])
+{
+  include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/pi1/class.tx_radialsearch_pi1_eid.php']);
+}
+
  
 $output = t3lib_div::makeInstance( 'tx_radialsearch_pi1_eid' );
 echo $output->main( );
