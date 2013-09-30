@@ -158,8 +158,10 @@ class tx_radialsearch_pi2 extends tslib_pibase
               }));
             }
             return {
-              label: "Error",
-              value: 0
+              item : {
+                label: "Error",
+                value: 0
+              }
             }            
           },
           error: function( req, error ) {
