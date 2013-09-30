@@ -136,8 +136,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
     
       // Fill dynamic locallang or typoscript markers
     $content  = $this->dynamicMarkers->main( $content ); 
-      // Finally clear not filled markers
-    $content  = preg_replace( '|###.*?###|i', '', $content ); 
+//      // Finally clear not filled markers
+//    $content  = preg_replace( '|###.*?###|i', '', $content ); 
     return $this->pi_wrapInBaseClass( $content );
   }
 
@@ -322,8 +322,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
       // Fill dynamic locallang or typoscript markers
     $content  = $this->dynamicMarkers->main( $content ); 
-      // Finally clear not filled markers
-    //$content  = preg_replace( '|###.*?###|i', '', $content ); 
 
     $GLOBALS['TSFE']->additionalHeaderData[$this->extKey . '_' . $name ] = $content;
 
@@ -418,33 +416,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
     return $path;
   }
-  
-/**
- * getPathRelative( ): Returns the relative path. Prefix 'EXT:' will handled
- *
- * @param	string		$path : relative path with or without prefix 'EXT:'
- * @return	string		$path : relative path without prefix 'EXT:'
- * @access      private
- * @since       0.0.1
- * @version     0.0.1
- */
-  private function getPathRelative( $path )
-  {
-      // RETURN : path hasn't any prefix EXT:
-    if( substr( $path, 0, 4 ) != 'EXT:' )
-    {
-      return $path;
-    }
-      // RETURN : path hasn't any prefix EXT:
-
-      // relative path to the JssFile as measured from the PATH_site (frontend)
-    $matches  = array( );
-    preg_match( '%^EXT:([a-z0-9_]*)/(.*)$%', $path, $matches );
-    $path     = t3lib_extMgm::siteRelPath( $matches[ 1 ] ) . $matches[ 2 ];
-
-    return $path;
-  }
-
 
 
 
@@ -462,7 +433,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
   * @version    0.0.1
   * @since      0.0.1
   */
-  private function html( )
+  private function XXhtml( )
   {
     $content = '
 <div class="ui-widget">
@@ -480,6 +451,44 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
 
 
+  /***********************************************
+  *
+  * CSS
+  *
+  **********************************************/
+
+ /**
+  * css( )  :
+  *
+  * @return	The		content that is displayed on the website
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function html( )
+  {
+    $conf         = $this->conf['res.']['html.']['tx_radialsearch_pi1.'];
+    $path_tsConf  = 'res.html.tx_radialsearch_pi1';
+    $path         = $conf[ 'path' ];
+
+    $absPath = $this->getPathAbsolute( $conf, $path_tsConf );
+    if( $absPath == false )
+    {
+      if( $this->drs->drsError )
+      {
+        t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->extKey, 3 );
+      }
+      return false;
+    }
+
+    $content = file( $absPath );
+
+
+    return $content;
+  }
+
+
+  
   /***********************************************
   *
   * Init
