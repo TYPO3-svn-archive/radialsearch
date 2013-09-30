@@ -97,7 +97,7 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
                         array
                         (
                           $this,
-                          'DynamicTyposcriptMarker'
+                          'DynamicHTMLMarker'
                         ), // open function
                         $this->content // current content
                       );
@@ -135,7 +135,7 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
   }
 
  /**
-  * DynamicTyposcriptMarker( )  : Get automaticly a marker from typoscript
+  * DynamicHTMLMarker( )  : Get automaticly a marker from typoscript
   *
   * @param	[type]		$$array: ...
   * @return	void
@@ -143,15 +143,22 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
   * @version    0.0.1
   * @since      0.0.1
   */
- private function DynamicTyposcriptMarker( $array )
+ private function DynamicHTMLMarker( $array )
   {
     if( $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1] )] )
     {
-      $string = $this->cObj->cObjGetSingle
-                (
-                  $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1] )],
-                  $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1]) . '.']
-                );
+      if( ! isset( $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1]) . '.'] ) )
+      {
+        $string = $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1] )]
+      }
+      else
+      {
+        $string = $this->cObj->cObjGetSingle
+                  (
+                    $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1] )],
+                    $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1]) . '.']
+                  );
+      }
     }
 
     if( ! empty( $string ) )
