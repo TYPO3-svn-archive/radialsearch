@@ -482,6 +482,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     }
 
     $content = file( $absPath );
+    $content = implode ( NULL, $content );
 var_dump( $absPath, $content );
     return $content;
   }
