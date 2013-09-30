@@ -141,6 +141,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
       // Init DRS, flexform, gpvars, HTML template, service attributes
     $this->init( );
+    var_dump( __METHOD__, __LINE__, $this->drs->drsJavascript );
     $this->jss( );
 
     $content = 'Welcome Radial Search!';
