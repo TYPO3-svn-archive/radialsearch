@@ -161,9 +161,7 @@ class tx_radialsearch_pi2 extends tslib_pibase
             Prompt[0]           = new Object();
             Prompt[0]["label"]  = "Fehler";
             Prompt[0]["value"]  = 0;
-            response( ) {
-              return Prompt;
-            }
+            response( Prompt );
           },
           error: function( req, error ) {
             alert( "Request failed: " + error );
