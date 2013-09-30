@@ -20,15 +20,16 @@
           }
           , dataType  : "jsonp"
           , success: function( data ) {
-            alert( data[ "geonames" ] );
-            alert( data[ "_GET" ][ "callback" ] );
-            //alert( data.geonames.length );
-            response( $.map( data.geonames, function( item ) {
-              return {
-                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                value: item.name
-              }
-            }));
+            if( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ))
+            {
+              response( $.map( data.geonames, function( item ) {
+                return {
+                  label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                  value: item.name
+                }
+              }));
+            }
+            alert( "ERROR: geonames isn't any element in the returned data!" );
           }
           , error: function( req, error ) {
             alert( "Request failed: " + error );
