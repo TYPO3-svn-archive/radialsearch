@@ -102,9 +102,9 @@ plugin.tx_radialsearch_pi1 {
             }
           }
             // [String] ID of the input field
-          html_input_id = {$plugin.tx_radialserach_pi1.html.input.id}
+          html_input_id = "#{$plugin.tx_radialserach_pi1.html.input.id}"
             // [String] ID of the div for logs
-          html_log_id = {$plugin.tx_radialserach_pi1.html.log.id}
+          html_log_id = "#{$plugin.tx_radialserach_pi1.html.log.id}"
             // [Integer] max rows of the select box
           maxrows = {$plugin.tx_radialserach_pi1.selectbox.maxRows}
         }
