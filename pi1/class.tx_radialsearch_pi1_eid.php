@@ -4,7 +4,7 @@ if( ! defined( 'PATH_typo3conf' ) ) die ( 'Could not access this script directly
 
 require_once( PATH_tslib . 'class.tslib_pibase.php' );
  
-class tx_radialsearch_pi1_eid extends tslib_pibase {
+class test extends tslib_pibase {
   function main(){
     $feUserObj = tslib_eidtools::initFeUser(); // Initialize FE user object    
     tslib_eidtools::connectDB(); //Connect to database
@@ -22,7 +22,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   }
 }
  
-$output = t3lib_div::makeInstance( 'tx_radialsearch_pi1_eid' );
+$output = t3lib_div::makeInstance( 'test' );
 echo $output->main();
 
 
