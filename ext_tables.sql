@@ -16,7 +16,7 @@ CREATE TABLE tx_radialsearch_postalcodes (
   cruser_id int(11) DEFAULT '0' NOT NULL,
   deleted tinyint(4) DEFAULT '0' NOT NULL,
 
-  country_code  varchar(2), 
+  country_code  varchar(2) DEFAULT NULL, 
   postal_code   varchar(20), 
   place_name    varchar(180), 
   admin_name1   varchar(100), 
