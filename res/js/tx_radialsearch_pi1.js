@@ -21,7 +21,7 @@
           , dataType  : "jsonp"
           , success: function( data ) {
             alert( data.length );
-            alert( data.geonames.length );
+            //alert( data.geonames.length );
             response( $.map( data.geonames, function( item ) {
               return {
                 label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
