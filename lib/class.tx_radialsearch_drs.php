@@ -69,6 +69,7 @@ class tx_radialsearch_drs
   public $drsInfo       = false;
   public $drsOk         = false;
   public $drsFlexform   = false;
+  public $drsJavascript   = false;
   public $drsSql        = false;
 
 
