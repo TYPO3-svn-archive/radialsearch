@@ -28,8 +28,15 @@
                   value: item.name
                 }
               }));
+              return;
             }
-            alert( "ERROR: geonames isn't any element in the returned data!" );
+            if( ( typeof data[ "_GET" ] == "object" ) && ( data[ "_GET" ] !== null ) )
+            {
+              $( "###HTML_INPUT_ID###" ).removeClass( "ui-autocomplete-loading" );
+              alert( "Server prompts: " + data[ "_GET" ]["andWhere"]["country_code"] );
+              return;
+            }
+            alert( "Sorry, the server returns an undefined result." );
           }
           , error: function( req, error ) {
             alert( "Request failed: " + error );
