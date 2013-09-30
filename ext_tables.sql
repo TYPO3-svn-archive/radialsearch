@@ -25,9 +25,9 @@ CREATE TABLE tx_radialsearch_postalcodes (
   admin_code2   varchar(20) DEFAULT NULL,
   admin_name3   varchar(100) DEFAULT NULL,
   admin_code3   varchar(20) DEFAULT NULL,
-  latitude      tinytext DEFAULT NULL,
-  longitude     tinytext DEFAULT NULL,
-  accuracy      varchar(1) DEFAULT NULL,
+  latitude      float DEFAULT NULL,
+  longitude     float DEFAULT NULL,
+  accuracy      int(1) DEFAULT NULL,
   
   PRIMARY KEY (uid),
   KEY parent (pid)
