@@ -149,7 +149,7 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
     {
       if( ! isset( $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1]) . '.'] ) )
       {
-        $string = $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1] )]
+        $string = $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1] )];
       }
       else
       {
