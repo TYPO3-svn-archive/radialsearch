@@ -149,7 +149,7 @@ class tx_radialsearch_pi2 extends tslib_pibase
 //                }
 //              }));
 //            }
-            if( data.hasOwnProperty( "geonames" ) {
+            if( data.hasOwnProperty( "geonames" ) ) {
               response( $.map( data.geonames, function( item ) {
                 return {
                   label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
