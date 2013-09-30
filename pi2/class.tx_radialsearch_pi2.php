@@ -153,6 +153,7 @@ class tx_radialsearch_pi2 extends tslib_pibase
             }
             if( ( typeof data[ "status" ] == "object" ) && ( data[ "status" ] !== null ) )
             {
+              $( "#city" ).removeClass( "ui-autocomplete-loading" );
               alert( "Geonames server prompts: " + data[ "status" ]["message"] );
               return;
             }
