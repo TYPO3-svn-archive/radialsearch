@@ -135,6 +135,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
 ';
     $content  = $this->css( )
               . $this->html( );
+    
       // Fill dynamic locallang or typoscript markers
     $content  = $this->dynamicMarkers->main( $content ); 
       // Finally clear not filled markers
@@ -253,6 +254,65 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $content = $this->dynamicMarkers->main( $content ); // Fill dynamic locallang or typoscript markers
     $content = preg_replace( '|###.*?###|i', '', $content ); // Finally clear not filled markers
     return $this->pi_wrapInBaseClass( $content );
+  }
+
+
+
+  /***********************************************
+  *
+  * CSS
+  *
+  **********************************************/
+
+ /**
+  * css( )  :
+  *
+  * @return	The		content that is displayed on the website
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function css( )
+  {
+    $content = '
+ <style>
+  .ui-autocomplete-loading {
+    background: white url(\'typo3conf/ext/radialsearch/lib/icons/ajax-loader.gif\') right center no-repeat;
+  }
+  #city { width: 25em; }
+</style>
+';
+    return $content;
+  }
+
+
+
+  /***********************************************
+  *
+  * HTML
+  *
+  **********************************************/
+
+ /**
+  * html( )
+  *
+  * @return	The		content that is displayed on the website
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function html( )
+  {
+    $content = '
+<div class="ui-widget">
+  <label for="city">Your city: </label>
+  <input id="city" />
+  Powered by <a href="http://geonames.org">geonames.org</a>
+</div>
+<div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
+  Result:
+  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+</div>
+';
+    return $content;
   }
 
 
