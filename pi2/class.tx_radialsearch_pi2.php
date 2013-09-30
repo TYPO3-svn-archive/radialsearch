@@ -143,14 +143,13 @@ class tx_radialsearch_pi2 extends tslib_pibase
           success: function( data ) {
             if( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ) )
             {
-              alert( "Bingo" );
               response( $.map( data.geonames, function( item ) {
                 return {
                   label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
                   value: item.name
                 }
               }));
-              //return;
+              return;
             }
             else
             {
