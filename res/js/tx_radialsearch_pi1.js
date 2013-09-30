@@ -22,6 +22,16 @@
           }
           , dataType  : "jsonp"
           , success   : function( data ) {
+            if( ( typeof data[ "places" ] == "object" ) && ( data[ "places" ] !== null ))
+            {
+              response( $.map( data.places, function( item ) {
+                return {
+                  label: item.postal_code + item.place_name,
+                  value: item.postal_code
+                }
+              }));
+              return;
+            }
             if( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ))
             {
               response( $.map( data.geonames, function( item ) {
