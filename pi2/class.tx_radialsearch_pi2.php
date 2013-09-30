@@ -126,8 +126,8 @@ class tx_radialsearch_pi2 extends tslib_pibase
     $( "#city" ).autocomplete({
       source: function( request, response ) {
         $.ajax({
-          url: "http://ws.geonames.org/searchJSON",
-          //url: "http://api.geonames.org/search",
+          //url: "http://ws.geonames.org/searchJSON",
+          url: "http://api.geonames.org/search",
           dataType: "jsonp",
           data: {
               featureClass    : "P"
@@ -141,27 +141,16 @@ class tx_radialsearch_pi2 extends tslib_pibase
             , lang            : "de"
           },
           success: function( data ) {
-//            if( data.status.length > 0 ) {
-//              response( $.map( data.status, function( item ) {
-//                return {
-//                  label: item,
-//                  value: item
-//                }
-//              }));
-//            }
-//            if( data.hasOwnProperty( "geonames" ) ) {
+            if( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ))
+            {
               response( $.map( data.geonames, function( item ) {
                 return {
                   label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
                   value: item.name
                 }
               }));
-//            }
-//            var Prompt          = new Array();
-//            Prompt[0]           = new Object();
-//            Prompt[0]["label"]  = "geonames isn\'t any key in the returned data.";
-//            Prompt[0]["value"]  = 0;
-//            response( Prompt );
+            }
+            alert( "ERROR: geonames isn\'t any element in the returned data!" );
           },
           error: function( req, error ) {
             alert( "Request failed: " + error );
