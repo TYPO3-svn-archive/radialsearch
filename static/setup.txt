@@ -38,11 +38,11 @@ plugin.tx_radialsearch_pi1 {
       tx_radialsearch_pi1 =
       tx_radialsearch_pi1 {
           // [String] Path of the script
-        path    = {$plugin.tx_radialserach_pi1.javascript.path}
+        path          = {$plugin.tx_radialserach_pi1.javascript.path}
           // [Boolean] 1 (default): place JSS scripts in the footer section. 0: place it on top.
-        footer  = {$plugin.tx_radialserach_pi1.javascript.footer}
+        placeToFooter = {$plugin.tx_radialserach_pi1.javascript.placeToFooter}
           // [Boolean] 0 (default): link to the script file, 1: include the script inline
-        inline  = {$plugin.tx_radialserach_pi1.javascript.inline}
+        inline        = {$plugin.tx_radialserach_pi1.javascript.inline}
       }
     }
   }
