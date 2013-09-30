@@ -347,7 +347,7 @@ class tx_radialsearch_jss
       // RETURN : there is an error with the absolute path
     if( empty( $absPath ) )
     {
-      return $this->addFilePromptError( $conf, $path_tsConf );
+      return $this->error( $conf, $path_tsConf );
     }
 
     $script = 
@@ -392,7 +392,7 @@ class tx_radialsearch_jss
 
     if( ! is_array( $marker ) )
     {
-      return null;
+      return $script;
     }
     
     foreach( array_keys( ( array ) $marker ) as $key )
@@ -433,7 +433,7 @@ class tx_radialsearch_jss
       // RETURN : there is an error with the relative path
     if( empty( $relPath ) )
     {
-      return $this->addFilePromptError( $conf, $path_tsConf );
+      return $this->error( $conf, $path_tsConf );
     }
       // RETURN : there is an error with the relative path
 
@@ -465,7 +465,7 @@ class tx_radialsearch_jss
   **********************************************/
   
 /**
- * addFilePromptError(): Add a JavaScript file to the HTML head
+ * error(): Add a JavaScript file to the HTML head
  *
  * @param	string		$path: Path to the Javascript
  * @param	string		$name: For the key of additionalHeaderData
@@ -475,7 +475,7 @@ class tx_radialsearch_jss
  * @version   0.0.1
  * @since     0.0.1
  */
-  private function addFilePromptError( $conf, $path_tsConf )
+  private function error( $conf, $path_tsConf )
   {
     $script = 'alert( "' . $prompt_01 . '" ); alert( "' . $prompt_02 . '" );';
     
