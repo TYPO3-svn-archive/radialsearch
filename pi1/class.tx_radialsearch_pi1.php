@@ -295,12 +295,12 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
 var_dump( __METHOD__, __LINE__ );    
       // RETURN file is loaded
-    if( isset( $GLOBALS['TSFE']->additionalHeaderData[$this->pObj->extKey.'_'.$name] ) )
+    if( isset( $GLOBALS['TSFE']->additionalHeaderData[ $this->extKey . '_' . $name ] ) )
     {
       if( $this->drs->drsCss )
       {
         $prompt = 'file isn\'t added again: '. $path;
-        t3lib_div::devlog( '[INFO/CSS] ' . $prompt, $this->pObj->extKey, 0 );
+        t3lib_div::devlog( '[INFO/CSS] ' . $prompt, $this->extKey, 0 );
       }
       return true;
     }
@@ -312,17 +312,19 @@ var_dump( __METHOD__, __LINE__ );
     {
       if( $this->drs->drsError )
       {
-        t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->pObj->extKey, 3 );
+        t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->extKey, 3 );
       }
       return false;
     }
 
+var_dump( __METHOD__, __LINE__ );    
+
     $inline_css =
 '  <style type="text/css">
-' . implode ('', file( $absPath ) ) . '
+' . implode( '', file( $absPath ) ) . '
   </style>';
 
-    $GLOBALS['TSFE']->additionalHeaderData[$this->pObj->extKey.'_'.$name] = $inline_css;
+    $GLOBALS['TSFE']->additionalHeaderData[$this->extKey . '_' . $name ] = $inline_css;
 
       // No DRS
     if( ! $this->drs->drsCss )
@@ -333,9 +335,9 @@ var_dump( __METHOD__, __LINE__ );
 
       // DRS
     $prompt = 'file is included: ' . $path;
-    t3lib_div::devlog( '[INFO/CSS] ' . $prompt, $this->pObj->extKey, 0 );
+    t3lib_div::devlog( '[INFO/CSS] ' . $prompt, $this->extKey, 0 );
     $prompt = 'Change it? Configure: \''.$path_tsConf.'\'';
-    t3lib_div::devlog( '[HELP/CSS] ' . $prompt, $this->pObj->extKey, 1 );
+    t3lib_div::devlog( '[HELP/CSS] ' . $prompt, $this->extKey, 1 );
       // DRS
 
     return true;
@@ -359,9 +361,9 @@ var_dump( __METHOD__, __LINE__ );
       if( $this->drs->drsWarn )
       {
         $prompt = 'file can not be included. Path is empty. Maybe it is ok.';
-        t3lib_div::devlog( '[WARN/JSS] ' . $prompt, $this->pObj->extKey, 2 );
+        t3lib_div::devlog( '[WARN/JSS] ' . $prompt, $this->extKey, 2 );
         $prompt = 'Change it? Configure: \'' . $keyPathTs . '\'';
-        t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->pObj->extKey, 1 );
+        t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->extKey, 1 );
       }
         // DRS
       return false;
@@ -403,9 +405,9 @@ var_dump( __METHOD__, __LINE__ );
       if ( $this->drs->drsError )
       {
         $prompt = 'Script can not be included. File doesn\'t exist: ' . $path;
-        t3lib_div::devlog( '[ERROR/JSS] ' . $prompt, $this->pObj->extKey, 3 );
+        t3lib_div::devlog( '[ERROR/JSS] ' . $prompt, $this->extKey, 3 );
         $prompt = 'Solve it? Configure: \''.$keyPathTs.'\'';
-        t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->pObj->extKey, 1 );
+        t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->extKey, 1 );
       }
         // DRS
       return false;
