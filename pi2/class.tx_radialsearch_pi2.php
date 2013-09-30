@@ -151,12 +151,8 @@ class tx_radialsearch_pi2 extends tslib_pibase
               }));
               return;
             }
-            alert( typeof data[ "geonames" ] );
-            alert( typeof data[ "geonames" ] == "object" );
-            alert( data[ "geonames" ] );
-            alert( data[ "geonames" ] !== null );
-            alert( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ) );
             alert( "ERROR: geonames isn\'t any element in the returned data!" );
+            alert( "Try this URL: " + url + "/?featureClass=P&style=full&maxRows=12&name_startsWidth=" + request.term + "&type=json&username=demo&country=de&adminCode1=15&lang=de" );
           },
           error: function( req, error ) {
             alert( "Request failed: " + error );
