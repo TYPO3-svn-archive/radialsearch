@@ -7,13 +7,25 @@ plugin.tx_radialserach_pi1 {
   # cat=Radial Search - andWhere/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   andWhere.external_linksBase = 0
 
-  # cat=Radial Search - JavaScript/enable/101;   type=string;     label= Path: Path of the JavaScript snippet.
+  # cat=Radial Search - html/enable/100;        type=string;     label= Input ID: ID of the input field
+  html.input.id           = lookfromplace
+  # cat=Radial Search - html/enable/101;        type=string;     label= Log ID: ID of the div for logs
+  html.log.id             = logs
+  # cat=Radial Search - html/others/999;        type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  html.external_linksBase = 0
+
+  # cat=Radial Search - JavaScript/enable/101;  type=string;     label= Path: Path of the JavaScript snippet.
   javascript.path               = EXT:radialsearch/res/js/tx_radialsearch_pi1.js
-  # cat=Radial Search - JavaScript/enable/102;   type=boolean;    label= Place to footer: If enabled, the script will placed at the footer otherwise on the top.
+  # cat=Radial Search - JavaScript/enable/102;  type=boolean;    label= Place to footer: If enabled, the script will placed at the footer otherwise on the top.
   javascript.placeToFooter      = 1
-  # cat=Radial Search - JavaScript/enable/103;   type=boolean;    label= Inline: If enabled, the script will included inline. This is obligated, if the script contains marker, which should replaced at runtime.
+  # cat=Radial Search - JavaScript/enable/103;  type=boolean;    label= Inline: If enabled, the script will included inline. This is obligated, if the script contains marker, which should replaced at runtime.
   javascript.inline             = 1
-  # cat=Radial Search - JavaScript/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  # cat=Radial Search - JavaScript/others/999;  type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   javascript.external_linksBase = 0
+
+  # cat=Radial Search - selectbox/enable/100;   type=+int;     label= Max rows: Size of the select box
+  selectbox.maxRows           = 12
+  # cat=Radial Search - selectbox/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  selectbox.external_linksBase = 0
 
 }

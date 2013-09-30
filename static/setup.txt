@@ -101,8 +101,12 @@ plugin.tx_radialsearch_pi1 {
               value = "{$plugin.tx_radialserach_pi1.andWhere.country_code}"
             }
           }
+            // [String] ID of the input field
+          html_input_id = {$plugin.tx_radialserach_pi1.html.input.id}
+            // [String] ID of the div for logs
+          html_log_id = {$plugin.tx_radialserach_pi1.html.log.id}
             // [Integer] max rows of the select box
-          maxrows = 12
+          maxrows = {$plugin.tx_radialserach_pi1.selectbox.maxRows}
         }
       }
     }

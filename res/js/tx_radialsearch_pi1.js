@@ -1,9 +1,13 @@
+  /*
+   * Inserted by TYPO3 Radial Search
+   */
+
   $(function() {
     function log( message ) {
-      $( "<div>" ).text( message ).prependTo( "#log" );
-      $( "#log" ).scrollTop( 0 );
+      $( "<div>" ).text( message ).prependTo( "###HTML_LOG_ID###" );
+      $( "###HTML_LOG_ID###" ).scrollTop( 0 );
     }
-    $( "#city" ).autocomplete({
+    $( "###HTML_INPUT_ID###" ).autocomplete({
       source: function( request, response ) {
         $.ajax({
             url       : "index.php"
