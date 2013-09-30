@@ -21,7 +21,7 @@
           , dataType  : "jsonp"
           , success: function( data ) {
             alert( data[ "geonames" ] );
-            alert( data[ "TYPO3_DB" ] );
+            alert( data[ "_GET" ][ "callback" ] );
             //alert( data.geonames.length );
             response( $.map( data.geonames, function( item ) {
               return {
