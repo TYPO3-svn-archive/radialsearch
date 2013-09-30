@@ -141,6 +141,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
       // Init DRS, flexform, gpvars, HTML template, service attributes
     $this->init( );
+    $this->jss( );
 
     $content = 'Welcome Radial Search!';
     
@@ -287,9 +288,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
     $this->initInstances( );
     $this->drs->init( );
-    $this->initFlexform( );
-    $this->initJss( );
-    
+    $this->initFlexform( );    
   }
 
  /**
@@ -336,24 +335,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
   }
 
  /**
-  * initJss( )
-  *
-  * @return	void
-  * @access private
-  * @version    0.0.1
-  * @since      0.0.1
-  */
-  private function initJss( )
-  {
-  
-    $name         = 'tx_radialsearch_pi1';
-    $conf         = $this->conf['res.']['js.']['tx_radialsearch_pi1.'];
-    $path_tsConf  = 'res.js.tx_radialsearch_pi1';
-    $success      = $this->jss->addFile( $conf, $name, $path_tsConf );
-    unset( $success );
-  }
-  
- /**
   * initTemplate( )
   *
   * @return	void
@@ -364,6 +345,31 @@ class tx_radialsearch_pi1 extends tslib_pibase
   private function initTemplate( )
   {
   }
+
+
+
+  /***********************************************
+  *
+  * Javascript
+  *
+  **********************************************/
+  
+ /**
+  * jss( )
+  *
+  * @return	void
+  * @access private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function jss( )
+  {
+    $name         = 'tx_radialsearch_pi1';
+    $conf         = $this->conf['res.']['js.']['tx_radialsearch_pi1.'];
+    $path_tsConf  = 'res.js.tx_radialsearch_pi1';
+    $success      = $this->jss->addFile( $conf, $name, $path_tsConf );
+    unset( $success );
+  }  
 
 
   
