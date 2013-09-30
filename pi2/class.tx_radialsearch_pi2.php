@@ -143,21 +143,24 @@ class tx_radialsearch_pi2 extends tslib_pibase
           success: function( data ) {
             if( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ) )
             {
-              alert( "Bingo" );
+              //alert( "Bingo" );
               response( $.map( data.geonames, function( item ) {
                 return {
                   label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
                   value: item.name
                 }
               }));
-              return;
+              //return;
             }
-            alert( typeof data[ "geonames" ] );
-            alert( typeof data[ "geonames" ] == "object" );
-            alert( data[ "geonames" ] );
-            alert( data[ "geonames" ] !== null );
-            alert( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ) );
-            alert( "ERROR: geonames isn\'t any element in the returned data!" );
+            else
+            {
+              alert( typeof data[ "geonames" ] );
+              alert( typeof data[ "geonames" ] == "object" );
+              alert( data[ "geonames" ] );
+              alert( data[ "geonames" ] !== null );
+              alert( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ) );
+              alert( "ERROR: geonames isn\'t any element in the returned data!" );
+            }
           },
           error: function( req, error ) {
             alert( "Request failed: " + error );
