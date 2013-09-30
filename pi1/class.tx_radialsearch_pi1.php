@@ -349,7 +349,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $name         = 'tx_radialsearch_pi1';
     $conf         = $this->conf['res.']['js.']['tx_radialsearch_pi1.'];
     $path_tsConf  = 'res.js.tx_radialsearch_pi1';
-    $bool_success = $this->jss->addJssFileTo( $conf, $name, $path_tsConf );
+    $success      = $this->jss->addFile( $conf, $name, $path_tsConf );
+    unset( $success );
   }
   
  /**

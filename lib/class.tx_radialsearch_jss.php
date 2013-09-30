@@ -48,12 +48,12 @@
  *
  *              SECTION: Files
  *  505:     function load_jQuery()
- *  615:     function addJssFileToHead( $path, $name, $keyPathTs )
+ *  615:     function addFileToHead( $path, $name, $keyPathTs )
  *
  *              SECTION: Helper
  *  693:     function set_arrSegment()
  *  759:     public function addCssFiles()
- *  809:     public function addJssFiles()
+ *  809:     public function addFiles()
  * 1063:     public function addCssFile($path, $ie_condition, $name, $keyPathTs, $str_type, $inline )
  *
  *              SECTION: Dynamic methods
@@ -70,40 +70,7 @@ class tx_radialsearch_jss
 
   
 /**
- * addJssFilePromptError(): Add a JavaScript file to the HTML head
- *
- * @param	string		$path: Path to the Javascript
- * @param	string		$name: For the key of additionalHeaderData
- * @param	string		$keyPathTs: The TypoScript element path to $path for the DRS
- * @param	boolean		$inline       : Add JSS script inline
- * @return	boolean		True: success. False: error.
- * @version   0.0.1
- * @since     0.0.1
- */
-  private function addJssFilePromptError( $conf, $path_tsConf )
-  {
-    $script = 'alert( "' . $prompt_01 . '" ); alert( "' . $prompt_02 . '" );';
-    
-      // No DRS
-    if ( ! $this->pObj->drs->drsError )
-    {
-      return $script;
-    }
-      // No DRS
-
-    $path = $conf[ 'path' ];
-      // DRS
-    $prompt_01 = 'Script can not be included: ' . $path;
-    t3lib_div::devlog( '[ERROR/JSS] ' . $prompt, $this->pObj->extKey, 3 );
-    $prompt_02 = 'Solve it? Configure: \''.$path_tsConf.'\'';
-    t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->pObj->extKey, 1 );
-      // DRS
-    
-    return $script;
-  }
-
-/**
- * addJssFileTo(): Add a JavaScript file to header or footer section
+ * addFileTo(): Add a JavaScript file to header or footer section
  *
  * @param	string		$path         : Path to the Javascript
  * @param	string		$name         : For the key of additionalHeaderData
@@ -114,19 +81,26 @@ class tx_radialsearch_jss
  * @version     0.0.1
  * @since       0.0.1
  */
-  public function addJssFileTo( $conf, $path_tsConf )
+  public function addFile( $conf, $path_tsConf )
   {
+    if ( $this->pObj->drs->drsJavascript )
+    {
+      $prompt = 'addFile';
+      t3lib_div::devlog( '[INFO/JSS] ' . $prompt, $this->pObj->extKey, 3 );
+    }
+      // No DRS
+
     $bool_success   = false; 
     $placeToFooter  = $conf['placeToFooter'];
 
     switch( true )
     {
       case( $placeToFooter == false ):
-        $bool_success = $this->addJssFileToHead( $conf, $path_tsConf );
+        $bool_success = $this->addFileToHead( $conf, $path_tsConf );
         break;
       case( $placeToFooter == true ):
       default:
-        $bool_success = $this->addJssFileToFooter( $conf, $path_tsConf );
+        $bool_success = $this->addFileToFooter( $conf, $path_tsConf );
         break;
     }
     
@@ -136,7 +110,7 @@ class tx_radialsearch_jss
   }
 
 /**
- * addJssFileToHead(): Add a JavaScript file to the HTML head
+ * addFileToHead(): Add a JavaScript file to the HTML head
  *
  * @param	string		$path         : relative path to the Javascript
  * @param	string		$absPath      : absolute path to the Javascript
@@ -148,7 +122,7 @@ class tx_radialsearch_jss
  * @version 4.5.10
  * @since 3.5.0
  */
-  private function addJssFileToHead( $conf, $path_tsConf )
+  private function addFileToHead( $conf, $path_tsConf )
   {
     $properties = explode( '.', $path_tsConf );
     $name       = $properties[ count( $properties ) - 1 ];
@@ -183,7 +157,7 @@ class tx_radialsearch_jss
 
   
 /**
- * addJssFileToFooter(): Add a JavaScript file at the bottom of the page (the footer section)
+ * addFileToFooter(): Add a JavaScript file at the bottom of the page (the footer section)
  *
  * @param	string		$path         : relative path to the Javascript
  * @param	string		$absPath      : absolute path to the Javascript
@@ -197,7 +171,7 @@ class tx_radialsearch_jss
  * @version     4.5.10
  * @since       4.5.10
  */
-  private function addJssFileToFooter( $conf, $path_tsConf )
+  private function addFileToFooter( $conf, $path_tsConf )
   {
     $properties = explode( '.', $path_tsConf );
     $name       = $properties[ count( $properties ) - 1 ];
@@ -385,7 +359,7 @@ class tx_radialsearch_jss
       // RETURN : there is an error with the absolute path
     if( empty( $absPath ) )
     {
-      return $this->addJssFilePromptError( $conf, $path_tsConf );
+      return $this->addFilePromptError( $conf, $path_tsConf );
     }
 
     $script = 
@@ -457,7 +431,7 @@ class tx_radialsearch_jss
       // RETURN : there is an error with the relative path
     if( empty( $relPath ) )
     {
-      return $this->addJssFilePromptError( $conf, $path_tsConf );
+      return $this->addFilePromptError( $conf, $path_tsConf );
     }
       // RETURN : there is an error with the relative path
 
@@ -466,6 +440,47 @@ class tx_radialsearch_jss
     return $script;
   }
 
+  
+
+  /***********************************************
+  *
+  * Prompting
+  *
+  **********************************************/
+  
+/**
+ * addFilePromptError(): Add a JavaScript file to the HTML head
+ *
+ * @param	string		$path: Path to the Javascript
+ * @param	string		$name: For the key of additionalHeaderData
+ * @param	string		$keyPathTs: The TypoScript element path to $path for the DRS
+ * @param	boolean		$inline       : Add JSS script inline
+ * @return	boolean		True: success. False: error.
+ * @version   0.0.1
+ * @since     0.0.1
+ */
+  private function addFilePromptError( $conf, $path_tsConf )
+  {
+    $script = 'alert( "' . $prompt_01 . '" ); alert( "' . $prompt_02 . '" );';
+    
+      // No DRS
+    if ( ! $this->pObj->drs->drsError )
+    {
+      return $script;
+    }
+      // No DRS
+
+    $path = $conf[ 'path' ];
+      // DRS
+    $prompt_01 = 'Script can not be included: ' . $path;
+    t3lib_div::devlog( '[ERROR/JSS] ' . $prompt, $this->pObj->extKey, 3 );
+    $prompt_02 = 'Solve it? Configure: \''.$path_tsConf.'\'';
+    t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->pObj->extKey, 1 );
+      // DRS
+    
+    return $script;
+  }
+  
   
 
   /***********************************************
