@@ -171,7 +171,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $select_fields  = '*';
     $from_table     = 'tx_radialsearch_postalcodes';
     $groupBy        = null;
-    $orderBy        = null;
+    $orderBy        = 'country_code, postal_code, place_name';
     //$limit          = null;
     //$where_clause   = "pid = " . $pid . " AND CType = 'list' AND list_type = 'browser_pi5' AND hidden = 0 AND deleted = 0";
     $where_clause   = $where . ' AND ' . implode( ' AND ', $andWhereElements ) . "AND deleted = 0";
