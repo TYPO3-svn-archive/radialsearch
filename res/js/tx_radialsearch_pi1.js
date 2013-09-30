@@ -26,7 +26,7 @@
             {
               response( $.map( data.places, function( item ) {
                 return {
-                  label: item.postal_code + item.place_name,
+                  label: item.postal_code + " " + item.place_name,
                   value: item.postal_code
                 }
               }));
