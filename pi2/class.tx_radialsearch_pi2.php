@@ -141,7 +141,7 @@ class tx_radialsearch_pi2 extends tslib_pibase
             , lang            : "de"
           },
           success: function( data ) {
-            if( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ))
+            if( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ) )
             {
               response( $.map( data.geonames, function( item ) {
                 return {
@@ -151,6 +151,7 @@ class tx_radialsearch_pi2 extends tslib_pibase
               }));
             }
             alert( typeof data[ "geonames" ] );
+            alert( data[ "geonames" ] );
             alert( "ERROR: geonames isn\'t any element in the returned data!" );
           },
           error: function( req, error ) {
