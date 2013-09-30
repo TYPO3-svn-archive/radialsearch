@@ -411,7 +411,7 @@ var_dump( __METHOD__, __LINE__, $key, $value );
       $keyWoDot         = substr( $key, 0, strlen( $key ) -1 );
       $hashKey          = '"###' . strtoupper( $keyWoDot ) . '###"';
       $coa              = $marker[ $keyWoDot ];
-      $conf             = $marker[ $key ];
+      $conf             = $marker[ $value ];
       $marker[$hashKey] = $this->pObj->cObj->cObjGetSingle( $coa, $conf );
     }
 var_dump( __METHOD__, __LINE__, $marker );
