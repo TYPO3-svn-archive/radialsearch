@@ -83,7 +83,7 @@ class tx_radialsearch_jss
  */
   public function addFile( $conf, $path_tsConf )
   {
-    var_dump( $this->pObj->drs->drsJavascript );
+    var_dump( __METHOD__, __LINE__, $this->pObj->drs->drsJavascript );
     
     if ( $this->pObj->drs->drsJavascript )
     {
