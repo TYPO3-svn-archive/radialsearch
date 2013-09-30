@@ -83,6 +83,8 @@ class tx_radialsearch_jss
  */
   public function addFile( $conf, $path_tsConf )
   {
+    var_dump( $this->pObj->drs->drsJavascript );
+    
     if ( $this->pObj->drs->drsJavascript )
     {
       $prompt = 'addFile';

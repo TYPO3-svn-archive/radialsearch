@@ -69,7 +69,7 @@ class tx_radialsearch_drs
   public $drsInfo       = false;
   public $drsOk         = false;
   public $drsFlexform   = false;
-  public $drsJavascript   = false;
+  public $drsJavascript = false;
   public $drsSql        = false;
 
 
@@ -227,12 +227,13 @@ class tx_radialsearch_drs
   */
   public function zzDrsPromptsTrue( )
   {
-    $this->drsError     = true;
-    $this->drsWarn      = true;
-    $this->drsInfo      = true;
-    $this->drsOk        = true;
-    $this->drsFlexform  = true;
-    $this->drsSql       = true;
+    $this->drsError       = true;
+    $this->drsWarn        = true;
+    $this->drsInfo        = true;
+    $this->drsOk          = true;
+    $this->drsFlexform    = true;
+    $this->drsJavascript  = true;
+    $this->drsSql         = true;
   }
   
 }
