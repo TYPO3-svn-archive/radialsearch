@@ -159,7 +159,7 @@ class tx_radialsearch_pi2 extends tslib_pibase
             }
             var Prompt          = new Array();
             Prompt[0]           = new Object();
-            Prompt[0]["label"]  = "Fehler";
+            Prompt[0]["label"]  = "geonames isn\'t any key in the returned data.";
             Prompt[0]["value"]  = 0;
             response( Prompt );
           },
