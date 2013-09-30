@@ -37,7 +37,7 @@ plugin.tx_radialsearch_pi1 {
         // marker, path
       tx_radialsearch_pi1 =
       tx_radialsearch_pi1 {
-          // [Array]
+          // [Array] html_input_id
         marker =
         marker {
             // [String] ID of the input field
@@ -53,7 +53,7 @@ plugin.tx_radialsearch_pi1 {
         // marker, path
       tx_radialsearch_pi1 =
       tx_radialsearch_pi1 {
-          // [Array]
+          // [Array] html_input_id
         marker =
         marker {
             // [String] ID of the input field
@@ -71,7 +71,7 @@ plugin.tx_radialsearch_pi1 {
       tx_radialsearch_pi1 {
           // [Boolean] 0 (default): link to the script file, 1: include the script inline
         inline = {$plugin.tx_radialserach_pi1.javascript.inline}
-          // [Array] admin_code1, country_code, html_input_id, maxrows
+          // [Array] admin_code1, country_code, html_input_id, maxrows, minlength
         marker =
         marker {
             // [String] admin_code1 (1. subdivision/state) for the andWhere
