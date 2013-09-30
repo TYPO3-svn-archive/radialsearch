@@ -293,7 +293,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $name       = 'css_' . $properties[ count( $properties ) - 1 ];
     $path       = $conf[ 'path' ];
 
-var_dump( __METHOD__, __LINE__ );    
       // RETURN file is loaded
     if( isset( $GLOBALS['TSFE']->additionalHeaderData[ $this->extKey . '_' . $name ] ) )
     {
@@ -305,7 +304,6 @@ var_dump( __METHOD__, __LINE__ );
       return true;
     }
       // RETURN file is loaded
-var_dump( __METHOD__, __LINE__ );    
 
     $absPath = $this->getPathAbsolute( $conf, $path_tsConf );
     if( $absPath == false )
@@ -316,8 +314,6 @@ var_dump( __METHOD__, __LINE__ );
       }
       return false;
     }
-
-var_dump( __METHOD__, __LINE__ );    
 
     $content =
 '  <style type="text/css">
