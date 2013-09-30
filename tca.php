@@ -132,7 +132,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
         'type' => 'input',  
         'max'  => '30',  
         'size' => '30',  
-        'eval' => 'trim,required',
+        'eval' => 'trim,required,double',
       )
     ),
     'longitude' => array (    
@@ -142,7 +142,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
         'type' => 'input',  
         'max'  => '30',  
         'size' => '30',  
-        'eval' => 'trim,required',
+        'eval' => 'trim,required,double',
       )
     ),
     'accuracy' => array (    
@@ -152,7 +152,7 @@ $TCA['tx_radialsearch_postalcodes'] = array (
         'type' => 'input',  
         'max'  => '1',  
         'size' => '1',  
-        'eval' => 'trim',
+        'eval' => 'trim,int',
       )
     ),
   ),
