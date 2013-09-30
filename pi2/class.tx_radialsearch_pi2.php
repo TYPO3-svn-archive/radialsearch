@@ -151,8 +151,13 @@ class tx_radialsearch_pi2 extends tslib_pibase
               }));
               return;
             }
+            if( ( typeof data[ "status" ] == "object" ) && ( data[ "status" ] !== null ) )
+            {
+              alert( data[ "status" ]["message"] );
+              return;
+            }
             alert( "ERROR: geonames isn\'t any element in the returned data!" );
-            alert( "Try this URL: http://api.geonames.org/search/?featureClass=P&style=full&maxRows=12&name_startsWidth=" + request.term + "&type=json&username=demo&country=de&adminCode1=15&lang=de" );
+            alert( "Try this URL: http://api.geonames.org/search?featureClass=P&style=full&maxRows=12&name_startsWidth=" + request.term + "&type=json&username=demo&country=de&adminCode1=15&lang=de" );
           },
           error: function( req, error ) {
             alert( "Request failed: " + error );
