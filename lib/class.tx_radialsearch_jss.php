@@ -139,12 +139,10 @@ class tx_radialsearch_jss
       // No DRS
 
       // DRS
-    $prompt = 'file is placed in the header section: ' . $path;
+    $prompt = 'script is placed at the top.';
     t3lib_div::devlog( '[INFO/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 0 );
-    $prompt = 'Change the path? Configure: \'' . $keyPathTs . '\'';
-    t3lib_div::devlog( '[HELP/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 1 );
       // DRS
-
+  
     return true;
   }
 
@@ -187,13 +185,10 @@ class tx_radialsearch_jss
       // No DRS
 
       // DRS
-    $path   = $conf[ 'path' ];
-    $prompt = 'file is placed in the footer section: ' . $path;
+    $prompt = 'script is placed to footer.';
     t3lib_div::devlog( '[INFO/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 0 );
-    $prompt = 'Change the path? Configure: \'' . $path_tsConf . '\'';
-    t3lib_div::devlog( '[HELP/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 1 );
       // DRS
-
+  
     return true;
   }
 
@@ -364,6 +359,20 @@ class tx_radialsearch_jss
 
     $script = $this->getTagScriptInlineMarker( $conf, $script );
     
+      // No DRS
+    if( ! $this->pObj->drs->drsJavascript )
+    {
+      return $script;
+    }
+      // No DRS
+
+      // DRS
+    $prompt = 'file is placed inline. Source is: ' . $absPath;
+    t3lib_div::devlog( '[INFO/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 0 );
+    $prompt = 'Change the path? Configure: \'' . $path_tsConf . '\'';
+    t3lib_div::devlog( '[HELP/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 1 );
+      // DRS
+  
     return $script;
   }
 
@@ -429,6 +438,20 @@ class tx_radialsearch_jss
       // RETURN : there is an error with the relative path
 
     $script = '  <script src="' . $relPath . '" type="text/javascript"></script>';
+
+      // No DRS
+    if( ! $this->pObj->drs->drsJavascript )
+    {
+      return $script;
+    }
+      // No DRS
+
+      // DRS
+    $prompt = 'file is placed as source: ' . $relPath;
+    t3lib_div::devlog( '[INFO/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 0 );
+    $prompt = 'Change the path? Configure: \'' . $path_tsConf . '\'';
+    t3lib_div::devlog( '[HELP/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 1 );
+      // DRS
 
     return $script;
   }
