@@ -60,6 +60,9 @@ plugin.tx_radialsearch_pi1 {
               // if country code is set
             20 = COA
             20 {
+              if {
+                isTrue = {$plugin.tx_radialserach_pi1.andWhere.country_code}
+              }
                 // if admin_code1 isn't set
               10 = TEXT
               10 {
