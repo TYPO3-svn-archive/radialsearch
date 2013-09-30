@@ -46,7 +46,59 @@ plugin.tx_radialsearch_pi1 {
           // [Array]
         marker        =
         marker {
-            // [Integer] max rows
+            // [String] admin_code1 (1. subdivision/state) for the andWhere
+          admin_code1 = COA
+          admin_code1 {
+              // if country code isn't set
+            10 = TEXT
+            10 {
+              if {
+                isFalse = {$plugin.tx_radialserach_pi1.andWhere.country_code}
+              }
+              value = "*"
+            }
+              // if country code is set
+            20 = COA
+            20 {
+                // if admin_code1 isn't set
+              10 = TEXT
+              10 {
+                if {
+                  isFalse = {$plugin.tx_radialserach_pi1.andWhere.admin_code1}
+                }
+                value = "*"
+              }
+                // if admin_code1 is set
+              20 = TEXT
+              20 {
+                if {
+                  isTrue = {$plugin.tx_radialserach_pi1.andWhere.admin_code1}
+                }
+                value = {$plugin.tx_radialserach_pi1.andWhere.admin_code1}
+              }
+            }
+          }
+            // [String] country_code for the andWhere
+          country_code = COA
+          country_code {
+              // if country code isn't set
+            10 = TEXT
+            10 {
+              if {
+                isFalse = {$plugin.tx_radialserach_pi1.andWhere.country_code}
+              }
+              value = "*"
+            }
+              // if country code is set
+            20 = TEXT
+            20 {
+              if {
+                isTrue = {$plugin.tx_radialserach_pi1.andWhere.country_code}
+              }
+              value = {$plugin.tx_radialserach_pi1.andWhere.country_code}
+            }
+          }
+            // [Integer] max rows of the select box
           maxrows = 12
         }
       }

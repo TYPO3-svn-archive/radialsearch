@@ -14,8 +14,8 @@
             , maxRows         : "###MAXROWS###"
             , type            : "json"
             , andWhere        : {
-                country_code  : "DE"
-              , admin_code1   : "TH"
+                country_code  : "###COUNTRY_CODE###"
+              , admin_code1   : "###ADMIN_CODE1###"
             }            
           }
           , dataType  : "jsonp"
