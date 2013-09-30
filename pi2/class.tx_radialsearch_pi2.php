@@ -150,6 +150,7 @@ class tx_radialsearch_pi2 extends tslib_pibase
                 }
               }));
             }
+            alert( typeof data[ "geonames" ] );
             alert( "ERROR: geonames isn\'t any element in the returned data!" );
           },
           error: function( req, error ) {
