@@ -83,33 +83,17 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   */
   public function main( )
   {
-    $sql      = ( array ) t3lib_div::_GP( 'sql' );
-    $sword    = $sql[ 'sword' ];
-    $limit    = $sql[ 'limit' ];
-    $where    = '( postal_code LIKE "' . $sword . '%" OR place_name LIKE "' . $sword . '%" )';
-    $andWhere = $sql[ 'andWhere' ];
-    $andWhereClause = array( );
-    foreach( ( array ) $andWhere as $key => $value )
-    {
-      if( $value == '"*"')
-      {
-        continue;
-      }
-      $andWhereClause[ ] = $key . ' LIKE "' . $value . '"';
-    }
-    $pid            = (int) $arr_pluginConf['row']['pid'];
-    $select_fields  = '*';
-    $from_table     = 'tx_radialsearch_postalcodes';
-    $groupBy        = null;
-    $orderBy        = null;
-    //$limit          = null;
-    //$where_clause   = "pid = " . $pid . " AND CType = 'list' AND list_type = 'browser_pi5' AND hidden = 0 AND deleted = 0";
-    $where_clause   = $where . ' AND ' . implode( ' AND ', $andWhereClause ) . "AND deleted = 0";
-    $query  = $GLOBALS['TYPO3_DB']->SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+    $this->init( );
+    $rows = $this->sql( );
     
-    t3lib_div::devlog( '[INFO/SQL] ' . $query, 'radialsearch', 0 );
-    //$res    = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
-    
+    $arrReturn = array( 
+     'places' => $rows
+    );
+    $json = json_encode( $arrReturn );  
+    $jsonp_callback = isset( $_GET['callback'] ) ? $_GET['callback'] : null;
+    $return = $jsonp_callback ? "$jsonp_callback( $json )" : $json;
+    t3lib_div::devlog( '[INFO/DRS] ' . $return, 'radialsearch', 0 );
+    return $return;
     
     //echo "<pre>", print_r($GLOBALS["TYPO3_DB"]), "</pre>";
     $return = array(
@@ -134,11 +118,11 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   * the main method
   *
   * @return	The		content that is displayed on the website
-  * @access     public
+  * @access     private
   * @version    0.0.1
   * @since      0.0.1
   */
-  public function init( )
+  private function init( )
   {
       // Initialize FE user object    
 //    $feUserObj = tslib_eidtools::initFeUser(); 
@@ -146,6 +130,69 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
       // Connect to database
     tslib_eidtools::connectDB( ); 
   }
+
+  
+ /***********************************************
+  *
+  * SQL
+  *
+  **********************************************/
+
+ /**
+  * sql( )  : 
+  *
+  * @return	
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function sql( )
+  {
+      // Get the SQL array from the GET-/POST-parameter
+    $sql      = ( array ) t3lib_div::_GP( 'sql' );
+    
+      // Get sword and limit
+    $sword    = $sql[ 'sword' ];
+    $limit    = $sql[ 'limit' ];
+
+      // Build the WHERE statement
+    $where          = '( postal_code LIKE "' . $sword . '%" OR place_name LIKE "' . $sword . '%" )';
+    $andWhereElements = array( );
+    foreach( ( array ) $sql[ 'andWhere' ] as $key => $value )
+    {
+      if( $value == '"*"')
+      {
+        continue;
+      }
+      $andWhereElements[ ] = $key . ' LIKE "' . $value . '"';
+    }
+
+    $pid            = (int) $arr_pluginConf['row']['pid'];
+    $select_fields  = '*';
+    $from_table     = 'tx_radialsearch_postalcodes';
+    $groupBy        = null;
+    $orderBy        = null;
+    //$limit          = null;
+    //$where_clause   = "pid = " . $pid . " AND CType = 'list' AND list_type = 'browser_pi5' AND hidden = 0 AND deleted = 0";
+    $where_clause   = $where . ' AND ' . implode( ' AND ', $andWhereElements ) . "AND deleted = 0";
+    
+      // DRS
+    $query  = $GLOBALS['TYPO3_DB']->SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+    t3lib_div::devlog( '[INFO/SQL] ' . $query, 'radialsearch', 0 );
+      // DRS
+    
+    $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+      // :TODO: Evaluierung $res
+    
+    $rows = array( );
+    while( $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc( $res ) )
+    {
+      $rows[ ] = $row; 
+    }
+
+    return $rows;
+  }
+  
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/pi1/class.tx_radialsearch_pi1_eid.php'])
