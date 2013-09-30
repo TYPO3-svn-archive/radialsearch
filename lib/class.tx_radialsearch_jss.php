@@ -389,6 +389,7 @@ class tx_radialsearch_jss
   private function getTagScriptInlineMarker( $conf, $script )
   {
     $marker = $conf['marker.'];
+var_dump( __METHOD__, __LINE__, $marker );
 
     if( ! is_array( $marker ) )
     {
