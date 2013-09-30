@@ -39,7 +39,7 @@
  *
  *
  *
- *   66: class tx_browser_pi1_jss
+ *   66: class tx_radialsearch_jss
  *   82:     function __construct($parentObj)
  *
  *              SECTION: CSS
@@ -63,7 +63,7 @@
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
-class tx_browser_pi1_jss
+class tx_radialsearch_jss
 {
     // [Object] Parent object
   private $pObj = null;
@@ -175,8 +175,6 @@ class tx_browser_pi1_jss
     $prompt = 'file is placed in the header section: ' . $path;
     t3lib_div::devlog( '[INFO/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 0 );
     $prompt = 'Change the path? Configure: \'' . $keyPathTs . '\'';
-    t3lib_div::devlog( '[HELP/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 1 );
-    $prompt = 'Change the section for all JSS files? Take the Constant Editor: [Browser - JAVASCRIPT]';
     t3lib_div::devlog( '[HELP/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 1 );
       // DRS
 
@@ -502,8 +500,8 @@ class tx_browser_pi1_jss
 
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/browser/pi1/class.tx_browser_pi1_jss.php']) {
-  include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/browser/pi1/class.tx_browser_pi1_jss.php']);
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/lib/class.tx_radialsearch_jss.php']) {
+  include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/lib/class.tx_radialsearch_jss.php']);
 }
 
 ?>
