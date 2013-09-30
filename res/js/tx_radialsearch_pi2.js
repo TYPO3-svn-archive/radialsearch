@@ -21,7 +21,7 @@
           }
           , dataType  : "jsonp"
           , success: function( data ) {
-            if( "geonames" in data )
+            if( "geonames2" in data )
             {
               response( $.map( data.geonames, function( item ) {
                 return {
