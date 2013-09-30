@@ -77,7 +77,7 @@ plugin.tx_radialsearch_pi1 {
                 if {
                   isTrue = {$plugin.tx_radialserach_pi1.andWhere.admin_code1}
                 }
-                value = {$plugin.tx_radialserach_pi1.andWhere.admin_code1}
+                value = "{$plugin.tx_radialserach_pi1.andWhere.admin_code1}"
               }
             }
           }
@@ -98,7 +98,7 @@ plugin.tx_radialsearch_pi1 {
               if {
                 isTrue = {$plugin.tx_radialserach_pi1.andWhere.country_code}
               }
-              value = {$plugin.tx_radialserach_pi1.andWhere.country_code}
+              value = "{$plugin.tx_radialserach_pi1.andWhere.country_code}"
             }
           }
             // [Integer] max rows of the select box
