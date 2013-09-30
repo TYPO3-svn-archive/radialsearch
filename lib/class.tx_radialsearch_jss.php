@@ -108,8 +108,8 @@ class tx_radialsearch_jss
  * @param	boolean		$inline       : Add JSS script inline
  * @param	array		$marker       : marker array
  * @return	boolean		True: success. False: error.
- * @version 4.5.10
- * @since 3.5.0
+ * @version 0.0.1
+ * @since 0.0.1
  */
   private function addFileToHead( $conf, $path_tsConf )
   {
@@ -154,8 +154,8 @@ class tx_radialsearch_jss
  * @param	array		$marker       : marker array
  * @return	boolean		True: success. False: error.
  * @internal    #50069
- * @version     4.5.10
- * @since       4.5.10
+ * @version     0.0.1
+ * @since       0.0.1
  */
   private function addFileToFooter( $conf, $path_tsConf )
   {
@@ -194,8 +194,8 @@ class tx_radialsearch_jss
  * @param	string		$path : relative or absolute path to Javascript or CSS
  * @return	string		$path : absolute path or false in case of an error
  * @internal    #50069
- * @since       4.5.10
- * @version     4.5.10
+ * @since       0.0.1
+ * @version     0.0.1
  */
   private function getPathAbsolute( $path )
   {
@@ -268,8 +268,8 @@ class tx_radialsearch_jss
  * @param	string		$path : relative path with or without prefix 'EXT:'
  * @return	string		$path : relative path without prefix 'EXT:'
  * @internal    #50069
- * @since       4.5.10
- * @version     4.5.10
+ * @since       0.0.1
+ * @version     0.0.1
  */
   private function getPathRelative( $path )
   {
@@ -299,8 +299,8 @@ class tx_radialsearch_jss
  * @param	array		$marker       : marker array
  * @return	string		$script       : The script tag
  * @internal  #50069
- * @since     4.5.10
- * @version   4.5.10
+ * @since     0.0.1
+ * @version   0.0.1
  */
   private function getTagScript( $conf, $path_tsConf )
   {
@@ -328,8 +328,8 @@ class tx_radialsearch_jss
  * @param	array		$marker       : marker array
  * @return	string		$script       : The script tag
  * @internal  #50069
- * @since     4.5.10
- * @version   4.5.10
+ * @since     0.0.1
+ * @version   0.0.1
  */
   private function getTagScriptInline( $conf, $path_tsConf )
   {
@@ -374,14 +374,13 @@ class tx_radialsearch_jss
  * @param	[type]		$script: ...
  * @return	string		$script       : The script tag
  * @internal  #50069
- * @since     4.5.10
- * @version   4.5.10
+ * @since     0.0.1
+ * @version   0.0.1
  */
   private function getTagScriptInlineMarker( $conf, $script )
   {
     $marker     = array( );
     $confMarker = $conf['marker.'];
-var_dump( __METHOD__, __LINE__, $confMarker );
 
     if( ! is_array( $confMarker ) )
     {
@@ -392,12 +391,10 @@ var_dump( __METHOD__, __LINE__, $confMarker );
     {
       if( substr( $key, -1, 1 ) != '.' )
       {
-var_dump( __METHOD__, __LINE__, $key, $value );
         $hashKey          = '"###' . strtoupper( $key ) . '###"';
         $marker[$hashKey] = $value;
         continue;
       }
-var_dump( __METHOD__, __LINE__, $key, $value );
         // I.e. $key is 'title.', but we like the marker name without any dot
       $keyWoDot         = substr( $key, 0, strlen( $key ) -1 );
       $hashKey          = '"###' . strtoupper( $keyWoDot ) . '###"';
@@ -405,7 +402,6 @@ var_dump( __METHOD__, __LINE__, $key, $value );
       $conf             = $confMarker[ $key ];
       $marker[$hashKey] = $this->pObj->cObj->cObjGetSingle( $coa, $conf );
     }
-var_dump( __METHOD__, __LINE__, $marker );
 
     $script = $this->pObj->cObj->substituteMarkerArray( $script, $marker );
 
@@ -419,8 +415,8 @@ var_dump( __METHOD__, __LINE__, $marker );
  * @param	[type]		$path_tsConf: ...
  * @return	string		$script       : The script tag
  * @internal  #50069
- * @since     4.5.10
- * @version   4.5.10
+ * @since     0.0.1
+ * @version   0.0.1
  */
   private function getTagScriptSrc( $conf, $path_tsConf )
   {
