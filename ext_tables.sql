@@ -17,17 +17,17 @@ CREATE TABLE tx_radialsearch_postalcodes (
   deleted tinyint(4) DEFAULT '0' NOT NULL,
 
   country_code  varchar(2) DEFAULT NULL, 
-  postal_code   varchar(20), 
-  place_name    varchar(180), 
-  admin_name1   varchar(100), 
-  admin_code1   varchar(20), 
-  admin_name2   varchar(100), 
-  admin_code2   varchar(20),
-  admin_name3   varchar(100), 
-  admin_code3   varchar(20),
-  latitude      tinytext, 
-  longitude     tinytext, 
-  accuracy      tinyint(4)
+  postal_code   varchar(20) DEFAULT NULL, 
+  place_name    varchar(180) DEFAULT NULL,
+  admin_name1   varchar(100) DEFAULT NULL,
+  admin_code1   varchar(20) DEFAULT NULL,
+  admin_name2   varchar(100) DEFAULT NULL,
+  admin_code2   varchar(20) DEFAULT NULL,
+  admin_name3   varchar(100) DEFAULT NULL,
+  admin_code3   varchar(20) DEFAULT NULL,
+  latitude      tinytext DEFAULT NULL,
+  longitude     tinytext DEFAULT NULL,
+  accuracy      varchar(1) DEFAULT NULL,
   
   PRIMARY KEY (uid),
   KEY parent (pid)
