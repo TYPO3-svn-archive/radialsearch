@@ -6,6 +6,7 @@
   //
   // includeLibs
   // plugin.tx_radialsearch_pi1
+  // plugin.tx_radialsearch_pi2
 
 
 
@@ -28,5 +29,18 @@ plugin.tx_radialsearch_pi1 {
     // Never remove this property!
   pluginCheck = dummy
 }
+  // plugin.tx_radialsearch_pi1
 
-page.includeJS.tx_radialsearch = typo3conf/ext/radialsearch/res/js/test.js
+
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // plugin.tx_radialsearch_pi2
+
+plugin.tx_radialsearch_pi2 {
+    // Never remove this property!
+  pluginCheck = dummy
+}
+  // plugin.tx_radialsearch_pi2
+
+//page.includeJS.tx_radialsearch = typo3conf/ext/radialsearch/res/js/test.js

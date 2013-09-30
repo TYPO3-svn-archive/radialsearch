@@ -7,7 +7,7 @@ external_linksBase=0
 
   # cat=database/enable/100;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptVersionPrompt]; label=Database Info
 database.info       = fileadmin/extensions/radialsearch/
-  # cat=database/enable/200;          type=string; label=Path: Path to the folder with the postal code *.txt files. Recommended: fileadmin/extensions/radialsearch/
+  # cat=database/enable/200;          type=string; label=Path: Path to the folder with the postal code *.txt files with an ending slash. Recommended: fileadmin/extensions/radialsearch/
 database.path       = fileadmin/extensions/radialsearch/
   # cat=database/enable/201;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptVersionPrompt]; label=Selectbox
 database.selectbox  = fileadmin/extensions/radialsearch/

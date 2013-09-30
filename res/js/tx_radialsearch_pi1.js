@@ -6,24 +6,24 @@
     $( "#city" ).autocomplete({
       source: function( request, response ) {
         $.ajax({
-//          url: "http://ws.geonames.org/searchJSON",
-          //url: "http://api.geonames.org/search",
             url       : "index.php"
           , type      : "GET"
           , data      : {
               eID             : "tx_radialsearch_pi1"
-            , featureClass    : "P"
-            , style           : "full"
-            , maxRows         : 12
             , name_startsWith : request.term
+            , maxRows         : 12
             , type            : "json"
-            , username        : "demo"
-            , country         : "DE"
-            , adminCode1      : "15" // TH
-            , lang            : "de"
+            , andWhere        : {
+                country_code  : "DE"
+              , admin_code1   : "TH"
+            }            
           }
           , dataType  : "jsonp"
           , success: function( data ) {
+            if( "key" in data )
+            {
+              
+            }
 //            if( data.status.length > 0 ) {
 //              response( $.map( data.status, function( item ) {
 //                return {
@@ -42,7 +42,7 @@
           , error: function( req, error ) {
             alert( "Request failed: " + error );
           }
-      });
+        });
       }
       , minLength: 2
       , select: function( event, ui ) {

@@ -7,6 +7,7 @@
   <data type="array">
     <languageKey index="default" type="array">
       <label index="pi1">Radial Search</label>
+      <label index="pi2">Radial Search - Sample for Development</label>
       <label index="tx_radialsearch_postalcodes">Postal codes (ZIP)</label>
       <label index="tx_radialsearch_postalcodes.country_code">ISO country code</label>
       <label index="tx_radialsearch_postalcodes.postal_code">Postal code (ZIP)</label>
@@ -20,10 +21,10 @@
       <label index="tx_radialsearch_postalcodes.latitude">Latitude</label>
       <label index="tx_radialsearch_postalcodes.longitude">Longitude</label>
       <label index="tx_radialsearch_postalcodes.accuracy">accuracy of lat/lng</label>
-      
     </languageKey>
     <languageKey index="de" type="array">
       <label index="pi1">Umkreissuche</label>
+      <label index="pi2">Umkreissuche - Beispiel für Entwickler</label>
       <label index="tx_radialsearch_postalcodes">Postleitzzahlen (PLZ)</label>
       <label index="tx_radialsearch_postalcodes.country_code">Ländercode (ISO)</label>
       <label index="tx_radialsearch_postalcodes.postal_code">Postleitzahl (PLZ)</label>
