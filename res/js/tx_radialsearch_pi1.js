@@ -20,7 +20,7 @@
           }
           , dataType  : "jsonp"
           , success: function( data ) {
-            alert( data );
+            alert( data[ "geonames" ] );
             //alert( data.geonames.length );
             response( $.map( data.geonames, function( item ) {
               return {
