@@ -143,6 +143,7 @@ plugin.tx_radialsearch_pi1 {
       }
     }
   }
+    // [Array] htmlinputid
   _HTMLMARKER =
   _HTMLMARKER {
       // [String] replace _HTMLMARKER_HTMLINPUTID

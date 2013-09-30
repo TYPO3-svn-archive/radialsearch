@@ -297,7 +297,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
       // RETURN file is loaded
     if(isset ($GLOBALS['TSFE']->additionalHeaderData[$this->pObj->extKey.'_'.$name]))
     {
-      if ($this->pObj->drs->drsCss )
+      if ($this->drs->drsCss )
       {
         t3lib_div::devlog('[INFO/CSS] file isn\'t added again: '.$path, $this->pObj->extKey, 0);
       }
@@ -309,7 +309,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $absPath = $this->getPathAbsolute( $path );
     if( $absPath == false )
     {
-      if ($this->pObj->drs->drsError )
+      if ($this->drs->drsError )
       {
         t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->pObj->extKey, 3 );
       }
@@ -324,7 +324,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $GLOBALS['TSFE']->additionalHeaderData[$this->pObj->extKey.'_'.$name] = $inline_css;
 
       // No DRS
-    if( ! $this->pObj->drs->drsCss )
+    if( ! $this->drs->drsCss )
     {
       return true;
     }
@@ -355,7 +355,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     if( empty( $path ) )
     {
         // DRS
-      if( $this->pObj->drs->drsWarn )
+      if( $this->drs->drsWarn )
       {
         $prompt = 'file can not be included. Path is empty. Maybe it is ok.';
         t3lib_div::devlog( '[WARN/JSS] ' . $prompt, $this->pObj->extKey, 2 );
@@ -399,7 +399,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     if( ! $bool_file_exists )
     {
         // DRS
-      if ( $this->pObj->drs->drsError )
+      if ( $this->drs->drsError )
       {
         $prompt = 'Script can not be included. File doesn\'t exist: ' . $path;
         t3lib_div::devlog( '[ERROR/JSS] ' . $prompt, $this->pObj->extKey, 3 );
