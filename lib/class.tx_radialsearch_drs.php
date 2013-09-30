@@ -167,6 +167,7 @@ class tx_radialsearch_drs
     }
 
     $this->zzDrsPromptsTrue( );
+    var_dump( __METHOD__, __LINE__, $this->drsJavascript );
 
     $prompt = 'The DRS - Development Reporting System is enabled by the flexform (frontend mode).';
     t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0 );
