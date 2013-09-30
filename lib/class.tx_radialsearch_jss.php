@@ -39,27 +39,24 @@
  *
  *
  *
- *   66: class tx_radialsearch_jss
- *   82:     function __construct($parentObj)
+ *   63: class tx_radialsearch_jss
+ *   80:     public function addFile( $conf, $path_tsConf )
+ *  114:     private function addFileToHead( $conf, $path_tsConf )
+ *  160:     private function addFileToFooter( $conf, $path_tsConf )
+ *  200:     private function getPathAbsolute( $path )
+ *  274:     private function getPathRelative( $path )
+ *  305:     private function getTagScript( $conf, $path_tsConf )
+ *  334:     private function getTagScriptInline( $conf, $path_tsConf )
+ *  380:     private function getTagScriptInlineMarker( $conf, $script )
+ *  425:     private function getTagScriptSrc( $conf, $path_tsConf )
  *
- *              SECTION: CSS
- *  135:     function class_onchange($obj_ts, $arr_ts, $number_of_items)
- *  381:     function wrap_ajax_div($template)
+ *              SECTION: Prompting
+ *  476:     private function error( $conf, $path_tsConf )
  *
- *              SECTION: Files
- *  505:     function load_jQuery()
- *  615:     function addFileToHead( $path, $name, $keyPathTs )
+ *              SECTION: Set
+ *  515:     public function setParentObject( $pObj )
  *
- *              SECTION: Helper
- *  693:     function set_arrSegment()
- *  759:     public function addCssFiles()
- *  809:     public function addFiles()
- * 1063:     public function addCssFile($path, $ie_condition, $name, $keyPathTs, $str_type, $inline )
- *
- *              SECTION: Dynamic methods
- * 1245:     function dyn_method_load_all_modes( )
- *
- * TOTAL FUNCTIONS: 10
+ * TOTAL FUNCTIONS: 11
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -68,7 +65,7 @@ class tx_radialsearch_jss
     // [Object] Parent object
   private $pObj = null;
 
-  
+
 /**
  * addFileTo(): Add a JavaScript file to header or footer section
  *
@@ -76,14 +73,13 @@ class tx_radialsearch_jss
  * @param	string		$name         : For the key of additionalHeaderData
  * @param	string		$keyPathTs    : The TypoScript element path to $path for the DRS
  * @return	boolean		True: success. False: error.
- * 
  * @internal    #50069
  * @version     0.0.1
  * @since       0.0.1
  */
   public function addFile( $conf, $path_tsConf )
   {
-    $bool_success   = false; 
+    $bool_success   = false;
     $placeToFooter  = $conf['placeToFooter'];
 
     switch( true )
@@ -96,7 +92,7 @@ class tx_radialsearch_jss
         $bool_success = $this->addFileToFooter( $conf, $path_tsConf );
         break;
     }
-    
+
     unset( $placeToFooter );
 
     return $bool_success;
@@ -142,11 +138,11 @@ class tx_radialsearch_jss
     $prompt = 'script is placed at the top.';
     t3lib_div::devlog( '[INFO/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 0 );
       // DRS
-  
+
     return true;
   }
 
-  
+
 /**
  * addFileToFooter(): Add a JavaScript file at the bottom of the page (the footer section)
  *
@@ -157,7 +153,6 @@ class tx_radialsearch_jss
  * @param	boolean		$inline       : Add JSS script inline
  * @param	array		$marker       : marker array
  * @return	boolean		True: success. False: error.
- * 
  * @internal    #50069
  * @version     4.5.10
  * @since       4.5.10
@@ -166,13 +161,13 @@ class tx_radialsearch_jss
   {
     $properties = explode( '.', $path_tsConf );
     $name       = $properties[ count( $properties ) - 1 ];
-    
+
     if( isset( $GLOBALS[ 'TSFE' ]->additionalFooterData[ $this->pObj->extKey . '_' . $name ] ) )
     {
       return true;
     }
 
-      // #50069, 130716, dwildt, 3+ 
+      // #50069, 130716, dwildt, 3+
     $script = $this->getTagScript( $conf, $path_tsConf );
     $key    = $this->pObj->extKey . '_' . $name;
     $GLOBALS[ 'TSFE' ]->additionalFooterData[ $key ] = $script;
@@ -188,7 +183,7 @@ class tx_radialsearch_jss
     $prompt = 'script is placed to footer.';
     t3lib_div::devlog( '[INFO/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 0 );
       // DRS
-  
+
     return true;
   }
 
@@ -198,7 +193,6 @@ class tx_radialsearch_jss
  *
  * @param	string		$path : relative or absolute path to Javascript or CSS
  * @return	string		$path : absolute path or false in case of an error
- * 
  * @internal    #50069
  * @since       4.5.10
  * @version     4.5.10
@@ -264,7 +258,7 @@ class tx_radialsearch_jss
       return false;
     }
       // RETURN : false, file does not exist
-    
+
     return $path;
   }
 
@@ -273,20 +267,19 @@ class tx_radialsearch_jss
  *
  * @param	string		$path : relative path with or without prefix 'EXT:'
  * @return	string		$path : relative path without prefix 'EXT:'
- * 
  * @internal    #50069
  * @since       4.5.10
  * @version     4.5.10
  */
   private function getPathRelative( $path )
-  { 
+  {
       // RETURN : path hasn't any prefix EXT:
     if( substr( $path, 0, 4 ) != 'EXT:' )
     {
       return $path;
     }
       // RETURN : path hasn't any prefix EXT:
-    
+
       // relative path to the JssFile as measured from the PATH_site (frontend)
       // #32220, uherrmann, 111202
     $matches  = array( );
@@ -305,7 +298,6 @@ class tx_radialsearch_jss
  * @param	string		$path         : path to the Javascript
  * @param	array		$marker       : marker array
  * @return	string		$script       : The script tag
- * 
  * @internal  #50069
  * @since     4.5.10
  * @version   4.5.10
@@ -325,7 +317,7 @@ class tx_radialsearch_jss
         $script = $this->getTagScriptSrc( $conf, $path_tsConf );
         break;
     }
-    
+
     return $script;
   }
 
@@ -335,7 +327,6 @@ class tx_radialsearch_jss
  * @param	string		$absPath      : absPath to the Javascript
  * @param	array		$marker       : marker array
  * @return	string		$script       : The script tag
- * 
  * @internal  #50069
  * @since     4.5.10
  * @version   4.5.10
@@ -350,7 +341,7 @@ class tx_radialsearch_jss
       return $this->error( $conf, $path_tsConf );
     }
 
-    $script = 
+    $script =
 '  <script type="text/javascript">
   <!--
 ' . implode ( null , file( $absPath ) ) . '
@@ -358,7 +349,7 @@ class tx_radialsearch_jss
   </script>';
 
     $script = $this->getTagScriptInlineMarker( $conf, $script );
-    
+
       // No DRS
     if( ! $this->pObj->drs->drsJavascript )
     {
@@ -372,16 +363,16 @@ class tx_radialsearch_jss
     $prompt = 'Change the configuration? See: \'' . $path_tsConf . '\'';
     t3lib_div::devlog( '[HELP/FLEXFORM+JSS] ' . $prompt, $this->pObj->extKey, 1 );
       // DRS
-  
+
     return $script;
   }
 
 /**
- * getTagScriptInlineMarker( ): 
+ * getTagScriptInlineMarker( ):
  *
  * @param	array		$marker       : marker array
+ * @param	[type]		$script: ...
  * @return	string		$script       : The script tag
- * 
  * @internal  #50069
  * @since     4.5.10
  * @version   4.5.10
@@ -396,7 +387,7 @@ var_dump( __METHOD__, __LINE__, $confMarker );
     {
       return $script;
     }
-    
+
     foreach( ( array ) $confMarker as $key => $value )
     {
       if( substr( $key, -1, 1 ) != '.' )
@@ -415,7 +406,7 @@ var_dump( __METHOD__, __LINE__, $key, $value );
       $marker[$hashKey] = $this->pObj->cObj->cObjGetSingle( $coa, $conf );
     }
 var_dump( __METHOD__, __LINE__, $marker );
-    
+
     $script = $this->pObj->cObj->substituteMarkerArray( $script, $marker );
 
     return $script;
@@ -425,18 +416,18 @@ var_dump( __METHOD__, __LINE__, $marker );
  * getTagScriptSrc( ): Returns a script tag
  *
  * @param	string		$path         : path to the Javascript
+ * @param	[type]		$path_tsConf: ...
  * @return	string		$script       : The script tag
- * 
  * @internal  #50069
  * @since     4.5.10
  * @version   4.5.10
  */
   private function getTagScriptSrc( $conf, $path_tsConf )
   {
-      // #50069, 130716, dwildt, 5+ 
+      // #50069, 130716, dwildt, 5+
       // Get relative path without 'EXT:'
     $relPath = $this->getPathRelative( $conf[ 'path' ] );
-    
+
       // RETURN : there is an error with the relative path
     if( empty( $relPath ) )
     {
@@ -463,14 +454,14 @@ var_dump( __METHOD__, __LINE__, $marker );
     return $script;
   }
 
-  
+
 
   /***********************************************
   *
   * Prompting
   *
   **********************************************/
-  
+
 /**
  * error(): Add a JavaScript file to the HTML head
  *
@@ -485,7 +476,7 @@ var_dump( __METHOD__, __LINE__, $marker );
   private function error( $conf, $path_tsConf )
   {
     $script = 'alert( "' . $prompt_01 . '" ); alert( "' . $prompt_02 . '" );';
-    
+
       // No DRS
     if ( ! $this->pObj->drs->drsError )
     {
@@ -500,11 +491,11 @@ var_dump( __METHOD__, __LINE__, $marker );
     $prompt_02 = 'Solve it? Configure: \''.$path_tsConf.'\'';
     t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->pObj->extKey, 1 );
       // DRS
-    
+
     return $script;
   }
-  
-  
+
+
 
   /***********************************************
   *

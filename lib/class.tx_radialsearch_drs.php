@@ -28,12 +28,18 @@
  *
  *
  *
- *   50: class tx_radialsearch_drs
- *   91:     public function init( )
- *  113:     private function initByExtmngr( )
+ *   56: class tx_radialsearch_drs
+ *   95:     public function init( )
+ *  119:     private function initByExtmngr( )
  *  160:     private function initByFlexform( )
  *
- * TOTAL FUNCTIONS: 3
+ *              SECTION: Set
+ *  203:     public function setParentObject( $pObj )
+ *
+ *              SECTION: ZZ
+ *  234:     public function zzDrsPromptsTrue( )
+ *
+ * TOTAL FUNCTIONS: 5
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -112,7 +118,7 @@ class tx_radialsearch_drs
   */
   private function initByExtmngr( )
   {
-    
+
     switch( $this->pObj->arr_extConf['debuggingDrs'] )
     {
       case( 'Disabled' ):
@@ -177,7 +183,7 @@ class tx_radialsearch_drs
     t3lib_div :: devlog('[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0);
   }
 
-  
+
 
   /***********************************************
   *
@@ -209,7 +215,7 @@ class tx_radialsearch_drs
   }
 
 
-  
+
 
   /***********************************************
   *
@@ -221,7 +227,7 @@ class tx_radialsearch_drs
   * zzDrsPromptsTrue( ): Init the DRS - Development Reporting System
   *
   * @return	void
-  * @access     public
+  * @access public
   * @version    0.0.1
   * @since      0.0.1
   */
@@ -235,7 +241,7 @@ class tx_radialsearch_drs
     $this->drsJavascript  = true;
     $this->drsSql         = true;
   }
-  
+
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/lib/class.tx_radialsearch_drs.php'])

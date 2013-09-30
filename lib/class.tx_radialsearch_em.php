@@ -38,10 +38,13 @@
  *
  *
  *
- *   49: class tx_radialsearch_em
- *   67:     function promptQuickstart()
+ *   51: class tx_radialsearch_em
+ *   71:     function promptQuickstart()
+ *  112:     function promptExternalLinks()
+ *  139:     function promptVersionPrompt( )
+ *  202:     private function set_typo3Version( )
  *
- * TOTAL FUNCTIONS: 2
+ * TOTAL FUNCTIONS: 4
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -61,7 +64,7 @@ class tx_radialsearch_em
   /**
  * promptQuickstart(): Displays the quick start message.
  *
- * @return  string    message wrapped in HTML
+ * @return	string		message wrapped in HTML
  * @since 0.3.1
  * @version 0.3.1
  */
@@ -102,7 +105,7 @@ class tx_radialsearch_em
   /**
  * promptExternalLinks(): Displays the quick start message.
  *
- * @return  string    message wrapped in HTML
+ * @return	string		message wrapped in HTML
  * @since 0.3.1
  * @version 0.3.1
  */
@@ -127,9 +130,9 @@ class tx_radialsearch_em
 
 
 /**
- * promptVersionPrompt(): 
+ * promptVersionPrompt():
  *
- * @return  string    message wrapped in HTML
+ * @return	string		message wrapped in HTML
  * @version 2.2.0
  * @since 2.2.0
  */
@@ -144,7 +147,7 @@ class tx_radialsearch_em
     $str_prompt = null;
 
     $this->set_typo3Version( );
-    
+
     switch( true )
     {
       case( $this->typo3Version < 4007000 ):
@@ -183,16 +186,16 @@ class tx_radialsearch_em
           ';
         break;
     }
-        
+
     return $str_prompt;
   }
-  
-  
-  
+
+
+
 /**
- * set_typo3Version(): 
+ * set_typo3Version():
  *
- * @return  void
+ * @return	void
  * @version 2.2.0
  * @since 2.2.0
  */
@@ -205,7 +208,7 @@ class tx_radialsearch_em
       return;
     }
       // RETURN : typo3Version is set
-    
+
       // Set TYPO3 version as integer (sample: 4.7.7 -> 4007007)
     list( $main, $sub, $bugfix ) = explode( '.', TYPO3_version );
     $version = ( ( int ) $main ) * 1000000;
@@ -214,7 +217,7 @@ class tx_radialsearch_em
     $this->typo3Version = $version;
       // Set TYPO3 version as integer (sample: 4.7.7 -> 4007007)
 
-    if( $this->typo3Version < 3000000 ) 
+    if( $this->typo3Version < 3000000 )
     {
       $prompt = '<h1>ERROR</h1>
         <h2>Unproper TYPO3 version</h2>

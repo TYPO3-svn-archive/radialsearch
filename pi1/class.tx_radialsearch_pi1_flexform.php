@@ -28,16 +28,20 @@
  *
  *
  *
- *   55: class tx_radialsearch_pi1_flexform
- *   87:     function main()
+ *   58: class tx_radialsearch_pi1_flexform
+ *   91:     function main()
  *
  *              SECTION: Sheets
- *  111:     private function sheetSdef( )
+ *  118:     private function sheetPaths( )
+ *  152:     private function sheetSdef( )
+ *
+ *              SECTION: Set
+ *  192:     public function setParentObject( $pObj )
  *
  *              SECTION: Zz
- *  152:     public function zzFfValue( $sheet, $field, $drs=true )
+ *  224:     public function zzFfValue( $sheet, $field, $drs=true )
  *
- * TOTAL FUNCTIONS: 3
+ * TOTAL FUNCTIONS: 5
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -81,7 +85,7 @@ class tx_radialsearch_pi1_flexform
  *          Process each sheet.
  *          Allocates values to $this
  *
- * @return    void
+ * @return	void
  * @version   0.0.1
  */
   function main()
@@ -168,7 +172,7 @@ class tx_radialsearch_pi1_flexform
     return;
   }
 
-  
+
 
   /***********************************************
   *

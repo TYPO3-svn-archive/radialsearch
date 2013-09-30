@@ -30,60 +30,31 @@ require_once(PATH_tslib . 'class.tslib_pibase.php');
  *
  *
  *
- *   97: class tx_radialsearch_pi1 extends tslib_pibase
+ *   66: class tx_radialsearch_pi1 extends tslib_pibase
  *
  *              SECTION: Main
- *  154:     public function main( $content, $conf )
- *
- *              SECTION: Radial Search
- *  228:     private function radialsearchProductAdd( )
- *  250:     private function radialsearchProductDelete( )
- *  266:     private function radialsearchRendered( )
- *  280:     private function radialsearchUpdate( )
- *
- *              SECTION: Clean
- *  323:     private function clean( )
- *
- *              SECTION: Debug
- *  345:     private function debugOutputBeforeRunning( )
+ *  100:     public function main( $content, $conf )
+ *  148:     public function main2( $content, $conf )
+ *  182:     function log( message )
  *
  *              SECTION: Init
- *  382:     private function init( )
- *  402:     private function initAccessByIp( )
- *  448:     private function initDatabase( )
- *  461:     private function initDatabaseTable( )
- *  512:     private function initFlexform( )
- *  525:     private function initGetPost( )
- *  581:     private function initGetPostCid( )
- *  631:     private function initInstances( )
- *  681:     private function initPid( )
- *  720:     private function initPowermail( )
- *  733:     private function initTemplate( )
+ *  270:     private function init( )
+ *  288:     private function initFlexform( )
+ *  301:     private function initInstances( )
+ *  331:     private function initTemplate( )
  *
- *              SECTION: Send
- *  754:     private function send( )
- *  768:     private function sendCustomer( )
- *  783:     private function sendCustomerDeliveryorder( )
- *  808:     private function sendCustomerInvoice( )
- *  833:     private function sendCustomerTerms( )
- *  858:     private function sendVendor( )
- *  873:     private function sendVendorDeliveryorder( )
- *  898:     private function sendVendorInvoice( )
- *  923:     private function sendVendorTerms( )
- *
- *              SECTION: Update Wizard
- *  957:     private function updateWizard( $content )
+ *              SECTION: Javascript
+ *  351:     private function jss( )
  *
  *              SECTION: ZZ
- * 1002:     private function zz_cObjGetSingle( $cObj_name, $cObj_conf )
+ *  380:     private function zz_cObjGetSingle( $cObj_name, $cObj_conf )
  *
- * TOTAL FUNCTIONS: 29
+ * TOTAL FUNCTIONS: 9
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
 
 /**
- * 
  * Plugin 'Radial Search' of the extension radialsearch
  *
  * @author	Dirk Wildt <http://wildt.at.die-netzmacher.de>
@@ -144,7 +115,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $this->jss( );
 
     $content = 'Welcome Radial Search!';
-    
+
     $content = '
  <style>
   .ui-autocomplete-loading {
@@ -160,12 +131,20 @@ class tx_radialsearch_pi1 extends tslib_pibase
 <div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
   Result:
   <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
-</div>      
+</div>
 ';
     $content = $this->dynamicMarkers->main( $content ); // Fill dynamic locallang or typoscript markers
     $content = preg_replace( '|###.*?###|i', '', $content ); // Finally clear not filled markers
     return $this->pi_wrapInBaseClass( $content );
   }
+
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$$content: ...
+	 * @param	[type]		$conf: ...
+	 * @return	[type]		...
+	 */
   public function main2( $content, $conf )
   {
       // page object
@@ -183,7 +162,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $this->init( );
 
     $content = 'Welcome Radial Search!';
-    
+
     $content = '
  <style>
   .ui-autocomplete-loading {
@@ -193,6 +172,13 @@ class tx_radialsearch_pi1 extends tslib_pibase
 </style>
 <script>
   $(function() {
+
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$message: ...
+	 * @return	[type]		...
+	 */
     function log( message ) {
       $( "<div>" ).text( message ).prependTo( "#log" );
       $( "#log" ).scrollTop( 0 );
@@ -258,7 +244,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
 <div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
   Result:
   <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
-</div>      
+</div>
 ';
     $content = $this->dynamicMarkers->main( $content ); // Fill dynamic locallang or typoscript markers
     $content = preg_replace( '|###.*?###|i', '', $content ); // Finally clear not filled markers
@@ -288,7 +274,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
     $this->initInstances( );
     $this->drs->init( );
-    $this->initFlexform( );    
+    $this->initFlexform( );
   }
 
  /**
@@ -353,7 +339,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
   * Javascript
   *
   **********************************************/
-  
+
  /**
   * jss( )
   *
@@ -369,11 +355,11 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $path_tsConf  = 'res.js.tx_radialsearch_pi1';
     $success      = $this->jss->addFile( $conf, $path_tsConf );
     unset( $success );
-  }  
+  }
 
 
-  
-  
+
+
   /***********************************************
   *
   * ZZ

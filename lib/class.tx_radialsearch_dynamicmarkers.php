@@ -34,23 +34,22 @@ require_once(PATH_tslib . 'class.tslib_pibase.php');
  * @version     0.0.1
  * @since       0.0.1
  */
-
 class tx_radialsearch_dynamicmarkers extends tslib_pibase {
 
   public $extKey = 'radialsearch';
     // Path to pi1 to get locallang.xml from pi1 folder
   public $scriptRelPath = 'pi1/class.tx_radialsearch_pi1.php';
     // prefix for automatic locallangmarker
-  private $locallangmarker_prefix = array (  
+  private $locallangmarker_prefix = array (
     '_LOCAL_LANG_',     // prefix for HTML template part
     null                // prefix for typoscript part
   );
     // prefix for automatic typoscriptmarker
-  private $typoscriptmarker_prefix = array ( 
+  private $typoscriptmarker_prefix = array (
     '_HTMLMARKER_',     // prefix for HTML template part
     '_HTMLMARKER'       // prefix for typoscript part
   );
-  
+
     // [Object] local cObject
   public $cObj = null;
     // [Array] Current TypoScript configuration of radialsearch
@@ -63,13 +62,13 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
  /**
   * main( ): replace typoscript- and locallang markers
   *
+  * @param	[type]		$$content: ...
   * @return	void
   * @access public
   * @version    0.0.1
   * @since      0.0.1
   */
-
-  public function main( $content ) 
+  public function main( $content )
   {
       // config
     $this->conf = $this->pObj->conf;
@@ -84,7 +83,7 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
                         '#\#\#\#' . $this->locallangmarker_prefix[0] . '(.*)\#\#\##Uis', // regulare expression
                         array
                         (
-                          $this, 
+                          $this,
                           'DynamicLocalLangMarker'
                         ), // open function
                         $this->content // current content
@@ -97,7 +96,7 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
                         '#\#\#\#' . $this->typoscriptmarker_prefix[0] . '(.*)\#\#\##Uis', // regulare expression
                         array
                         (
-                          $this, 
+                          $this,
                           'DynamicTyposcriptMarker'
                         ), // open function
                         $this->content // current content
@@ -110,22 +109,23 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
   }
 
  /**
-  * DynamicLocalLangMarker( ) : Get automaticly a marker from locallang.xml 
+  * DynamicLocalLangMarker( ) : Get automaticly a marker from locallang.xml
   *
+  * @param	[type]		$$array: ...
   * @return	void
   * @access private
   * @version    0.0.1
   * @since      0.0.1
   */
-  private function DynamicLocalLangMarker( $array ) 
+  private function DynamicLocalLangMarker( $array )
   {
     if( ! empty( $array[1] ) )
     {
       $string = $this->pi_getLL
-                ( 
-                  strtolower( $this->locallangmarker_prefix[1] . $array[1] ), 
+                (
+                  strtolower( $this->locallangmarker_prefix[1] . $array[1] ),
                   '<i>' . strtolower( $array[1] ) . '</i>'
-                ); 
+                );
     }
 
     if( ! empty( $string ) )
@@ -137,19 +137,20 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
  /**
   * DynamicTyposcriptMarker( )  : Get automaticly a marker from typoscript
   *
+  * @param	[type]		$$array: ...
   * @return	void
   * @access private
   * @version    0.0.1
   * @since      0.0.1
   */
- private function DynamicTyposcriptMarker( $array ) 
+ private function DynamicTyposcriptMarker( $array )
   {
     if( $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1] )] )
-    { 
+    {
       $string = $this->cObj->cObjGetSingle
                 (
-                  $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1] )], 
-                  $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1]) . '.'] 
+                  $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1] )],
+                  $this->conf[$this->typoscriptmarker_prefix[1] . '.'][strtolower( $array[1]) . '.']
                 );
     }
 
@@ -160,7 +161,7 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
   }
 
 
-  
+
 
   /***********************************************
   *
@@ -192,7 +193,7 @@ class tx_radialsearch_dynamicmarkers extends tslib_pibase {
   }
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/lib/class.tx_radialsearch_dynamicmarkers.php']) 
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/lib/class.tx_radialsearch_dynamicmarkers.php'])
 {
   include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/lib/class.tx_radialsearch_dynamicmarkers.php']);
 }

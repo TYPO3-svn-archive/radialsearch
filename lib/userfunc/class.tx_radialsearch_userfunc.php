@@ -38,17 +38,43 @@
  *
  *
  *
- *   49: class tx_radialsearch_userfunc
- *   67:     function promptCheckUpdate()
- *  102:     function promptCurrIP()
+ *   75: class tx_radialsearch_userfunc
  *
- * TOTAL FUNCTIONS: 2
+ *              SECTION: Empty
+ *  140:     private function emptyCheck( )
+ *
+ *              SECTION: Extension Management
+ *  187:     public function extMgmVersion( $_EXTKEY )
+ *  224:     private function flexformCheckNoteNote( )
+ *
+ *              SECTION: Plugin 1 report
+ *  270:     public function pi1FfSdefReport( $plugin )
+ *  367:     private function pi1FfSdefReportInit( )
+ *  395:     private function pi1FfSdefReportInitDrs( )
+ *
+ *              SECTION: Prompts
+ *  441:     public function promptCurrIP( )
+ *  463:     public function promptEvaluatorTYPO3version()
+ *  563:     public function promptExternalLinks()
+ *  589:     public function promptSponsors()
+ *
+ *              SECTION: TYPO3
+ *  623:     private function set_TYPO3Version( )
+ *
+ *              SECTION: Typoscript
+ *  676:     private function typoscriptCheck( )
+ *  704:     private function typoscriptInit( )
+ *  733:     private function typoscriptInitPageObj( )
+ *  755:     private function typoscriptInitPageUid( )
+ *  795:     private function typoscriptInitTsObj( $arr_rows_of_all_pages_inRootLine )
+ *
+ * TOTAL FUNCTIONS: 16
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
 class tx_radialsearch_userfunc
 {
-  
+
  /**
   * Extension key
   *
@@ -62,28 +88,28 @@ class tx_radialsearch_userfunc
   * @var array
   */
   private $arr_extConf = null;
-  
+
  /**
   * Plugin / flexform configuration
   *
   * @var array
   */
   private $plugin = null;
-  
+
  /**
   * Max width of div tags
   *
   * @var string
   */
   private $maxWidth = "600px";
-  
+
  /**
   * Version of TYPO3 (sample: 4.7.7 -> 4007007)
   *
   * @var string
   */
   public $typo3Version = null;
-  
+
   private $conf       = null;
   public  $drs        = null;
   private $pid        = null;
@@ -101,16 +127,16 @@ class tx_radialsearch_userfunc
    * Empty
    *
    **********************************************/
-  
+
   /**
-   * emptyCheck():
-   *
-   * @param   string    $prompt
-   * @return  string    $prompt : message wrapped in HTML
-   * @access  private
-   * @version 0.0.1
-   * @since   0.0.1
-   */
+ * emptyCheck():
+ *
+ * @param	string		$prompt
+ * @return	string		$prompt : message wrapped in HTML
+ * @access private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
   private function emptyCheck( )
   {
 //.message-notice
@@ -124,7 +150,7 @@ class tx_radialsearch_userfunc
       return null;
     }
       // RETURN : flexform isn't empty
-    
+
       // RETURN prompt : felxform is empty
     $prompt = '
       <div class="typo3-message message-error" style="max-width:' . $this->maxWidth . ';">
@@ -134,12 +160,12 @@ class tx_radialsearch_userfunc
       </div>
       ';
       // RETURN prompt : felxform is empty
-    
+
     return $prompt;
   }
 
-  
-  
+
+
   /***********************************************
    *
    * Extension Management
@@ -152,8 +178,8 @@ class tx_radialsearch_userfunc
   *                   * int: 4007007
   *                   * str: 4.7.7
   *
-  * @param    string        $_EXTKEY    : extension key
-  * @return    array        $arrReturn  : version as int (integer) and str (string)
+  * @param	string		$_EXTKEY    : extension key
+  * @return	array		$arrReturn  : version as int (integer) and str (string)
   * @access public
   * @version 0.0.1
   * @since 0.0.1
@@ -161,7 +187,7 @@ class tx_radialsearch_userfunc
   public function extMgmVersion( $_EXTKEY )
   {
     $arrReturn = null;
-    
+
     if( ! t3lib_extMgm::isLoaded( $_EXTKEY ) )
     {
       $arrReturn['int'] = 0;
@@ -179,22 +205,22 @@ class tx_radialsearch_userfunc
     $intVersion = $intVersion + ( ( int ) $sub ) * 1000;
     $intVersion = $intVersion + ( ( int ) $bugfix ) * 1;
       // Set version as integer (sample: 4.7.7 -> 4007007)
-    
+
     $arrReturn['int'] = $intVersion;
     $arrReturn['str'] = $strVersion;
     return $arrReturn;
   }
- 
-    
-  
+
+
+
   /**
-   * flexformCheckNoteNote( ):
-   *
-   * @return  string    $prompt : message wrapped in HTML
-   * @access  private
-   * @version 0.0.1
-   * @since   0.0.1
-   */
+ * flexformCheckNoteNote( ):
+ *
+ * @return	string		$prompt : message wrapped in HTML
+ * @access private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
   private function flexformCheckNoteNote( )
   {
     $sheet    = 'note';
@@ -207,7 +233,7 @@ class tx_radialsearch_userfunc
       return null;
     }
       // RETURN : there is a flexform form
-    
+
       // RETURN prompt : there isn't any flexform form
     $prompt = '
       <div class="typo3-message message-information" style="max-width:' . $this->maxWidth . ';">
@@ -217,30 +243,30 @@ class tx_radialsearch_userfunc
       </div>
       ';
       // RETURN prompt : there isn't any flexform form
-    
+
     return $prompt;
   }
 
-  
-  
+
+
   /***********************************************
    *
    * Plugin 1 report
    *
-   **********************************************/    
+   **********************************************/
 
   /**
-   * pi1FfSdefReport()  : Check the configuration of
-   *                      * the plugin / flexform
-   *                      * the powermail form
-   *                      * the typoscript 
-   *
-   * @param    array        $plugin : Configuration of the plugin / flexform
-   * @return  string        $prompt         : Prompt
-   * @access  public
-   * @version 0.0.1
-   * @since   0.0.1
-   */
+ * pi1FfSdefReport()  : Check the configuration of
+ *                      * the plugin / flexform
+ *                      * the powermail form
+ *                      * the typoscript
+ *
+ * @param	array		$plugin : Configuration of the plugin / flexform
+ * @return	string		$prompt         : Prompt
+ * @access public
+ * @version 0.0.1
+ * @since   0.0.1
+ */
   public function pi1FfSdefReport( $plugin )
   {
 //.message-notice
@@ -251,7 +277,7 @@ class tx_radialsearch_userfunc
 
     $this->plugin           = $plugin;
     $this->pluginPiFlexform = t3lib_div::xml2array( $this->plugin['row']['pi_flexform'] );
-    
+
     $prompt = null;
 
     $sheet            = 'sDEF';
@@ -272,7 +298,7 @@ class tx_radialsearch_userfunc
           </div>
         </div>
         ';
-      return $prompt;    
+      return $prompt;
     }
 
       // RETURN : Check it! report is disabled
@@ -292,7 +318,7 @@ class tx_radialsearch_userfunc
     $this->pi1FfSdefReportInit( );
 
     $prompt = null;
-    
+
     $prompt = $this->flexformCheckNoteNote( )
             . $this->typoscriptCheck( )
             ;
@@ -306,12 +332,12 @@ class tx_radialsearch_userfunc
           </div>
         </div>
         ';
-      return $prompt;    
+      return $prompt;
     }
 
       // OK prompt, if there isn't any other prompt
     if( empty( $prompt ) )
-    { 
+    {
       $prompt = '
         <div class="typo3-message message-ok" style="max-width:' . $this->maxWidth . ';">
           <div class="message-body">
@@ -326,17 +352,18 @@ class tx_radialsearch_userfunc
         ';
     }
       // OK prompt, if there isn't any other prompt
-    
+
     return $prompt;
   }
-  
+
   /**
-   * pi1FfSdefReportInit( ): Displays the quick start message.
-   *
-   * @access  private
-   * @version 0.0.1
-   * @since   0.0.1
-   */
+ * pi1FfSdefReportInit( ): Displays the quick start message.
+ *
+ * @return	[type]		...
+ * @access private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
   private function pi1FfSdefReportInit( )
   {
 //.message-notice
@@ -344,10 +371,10 @@ class tx_radialsearch_userfunc
 //.message-ok
 //.message-warning
 //.message-error
-    
-    
-    $path2lib = t3lib_extMgm::extPath( 'radialsearch' ) . 'lib/'; 
-    
+
+
+    $path2lib = t3lib_extMgm::extPath( 'radialsearch' ) . 'lib/';
+
     require_once( $path2lib . 'class.tx_radialsearch_drs.php' );
     $this->drs              = t3lib_div::makeInstance( 'tx_radialsearch_drs' );
     $this->drs->setParentObject( $this );
@@ -356,14 +383,15 @@ class tx_radialsearch_userfunc
 
     return true;
   }
-  
+
   /**
-   * pi1FfSdefReportInitDrs( ): Displays the quick start message.
-   *
-   * @access  private
-   * @version 0.0.1
-   * @since   0.0.1
-   */
+ * pi1FfSdefReportInitDrs( ): Displays the quick start message.
+ *
+ * @return	[type]		...
+ * @access private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
   private function pi1FfSdefReportInitDrs( )
   {
     $sheet    = 'sDEF';
@@ -373,14 +401,14 @@ class tx_radialsearch_userfunc
     {
       $sdefDrs  = $this->pluginPiFlexform['data'][$sheet]['lDEF'][$field]['vDEF'];
     }
-    
-//var_dump( $sdefDrs, $this->plugin['row']['pi_flexform'] );    
-    
+
+//var_dump( $sdefDrs, $this->plugin['row']['pi_flexform'] );
+
     if( empty( $sdefDrs ) )
     {
       return;
     }
-    
+
     $this->drs->zzDrsPromptsTrue( );
 
     $prompt = 'The DRS - Development Reporting System is enabled by the flexform (backend mode).';
@@ -393,23 +421,23 @@ class tx_radialsearch_userfunc
 
 
   }
- 
-  
-  
+
+
+
   /***********************************************
    *
    * Prompts
    *
-   **********************************************/    
+   **********************************************/
 
   /**
-   * promptCurrIP( ): Displays the IP of the current backend user
-   *
-   * @return    string        message wrapped in HTML
-   * @access  public
-   * @version 0.0.1
-   * @since   0.0.1
-   */
+ * promptCurrIP( ): Displays the IP of the current backend user
+ *
+ * @return	string		message wrapped in HTML
+ * @access public
+ * @version 0.0.1
+ * @since   0.0.1
+ */
   public function promptCurrIP( )
   {
       $prompt = null;
@@ -423,15 +451,15 @@ class tx_radialsearch_userfunc
 
     return $prompt;
   }
-  
+
   /**
-   * promptEvaluatorTYPO3version(): Displays the quick start message.
-   *
-   * @return  string    message wrapped in HTML
-   * @access  public
-   * @version 0.0.1
-   * @since   0.0.1
-   */
+ * promptEvaluatorTYPO3version(): Displays the quick start message.
+ *
+ * @return	string		message wrapped in HTML
+ * @access public
+ * @version 0.0.1
+ * @since   0.0.1
+ */
   public function promptEvaluatorTYPO3version()
   {
 //.message-notice
@@ -443,7 +471,7 @@ class tx_radialsearch_userfunc
     $prompt = null;
 
     $this->set_TYPO3Version( );
-    
+
     switch( true )
     {
       case( $this->typo3Version < 4005000 ):
@@ -518,20 +546,20 @@ class tx_radialsearch_userfunc
           ';
         break;
     }
-        
+
     return $prompt;
   }
 
-  
-  
+
+
   /**
-   * promptExternalLinks(): Displays the quick start message.
-   *
-   * @return  string    message wrapped in HTML
-   * @access  public
-   * @version 0.0.1
-   * @since   0.0.1
-   */
+ * promptExternalLinks(): Displays the quick start message.
+ *
+ * @return	string		message wrapped in HTML
+ * @access public
+ * @version 0.0.1
+ * @since   0.0.1
+ */
   public function promptExternalLinks()
   {
 //.message-notice
@@ -549,15 +577,15 @@ class tx_radialsearch_userfunc
 
     return $prompt;
   }
-  
+
   /**
-   * promptSponsors( ): Displays the quick start message.
-   *
-   * @return  string    message wrapped in HTML
-   * @access  public
-   * @version 0.0.1
-   * @since   0.0.1
-   */
+ * promptSponsors( ): Displays the quick start message.
+ *
+ * @return	string		message wrapped in HTML
+ * @access public
+ * @version 0.0.1
+ * @since   0.0.1
+ */
   public function promptSponsors()
   {
 //.message-notice
@@ -575,23 +603,23 @@ class tx_radialsearch_userfunc
 
     return $prompt;
   }
-   
-  
-  
+
+
+
   /***********************************************
    *
    * TYPO3
    *
-   **********************************************/    
+   **********************************************/
 
  /**
-   * set_TYPO3Version( ):
-   *
-   * @return  void
-   * @access  private
-   * @version 0.0.1
-   * @since 0.0.1
-   */
+  * set_TYPO3Version( ):
+  *
+  * @return	void
+  * @access private
+  * @version 0.0.1
+  * @since 0.0.1
+  */
   private function set_TYPO3Version( )
   {
       // RETURN : typo3Version is set
@@ -600,7 +628,7 @@ class tx_radialsearch_userfunc
       return;
     }
       // RETURN : typo3Version is set
-    
+
       // Set TYPO3 version as integer (sample: 4.7.7 -> 4007007)
     list( $main, $sub, $bugfix ) = explode( '.', TYPO3_version );
     $version = ( ( int ) $main ) * 1000000;
@@ -628,20 +656,20 @@ class tx_radialsearch_userfunc
       die ( $prompt );
     }
   }
-  
-  
-  
+
+
+
   /***********************************************
    *
    * Typoscript
    *
    **********************************************/
-    
+
 /**
- * typoscriptCheck( ): 
+ * typoscriptCheck( ):
  *
  * @return	void
- * @access    private
+ * @access private
  * @version 0.0.1
  * @since 0.0.1
  */
@@ -661,15 +689,15 @@ class tx_radialsearch_userfunc
         </div>
       </div>
       ';
-    
+
     return $prompt;
   }
-   
+
 /**
- * typoscriptInit( ): 
+ * typoscriptInit( ):
  *
  * @return	void
- * @access    private
+ * @access private
  * @version 0.0.1
  * @since 0.0.1
  */
@@ -698,7 +726,7 @@ class tx_radialsearch_userfunc
  * typoscriptInitPageObj(): Initiate an page object.
  *
  * @return	void
- * @access    private
+ * @access private
  * @version 0.0.1
  * @since 0.0.1
  */
@@ -720,7 +748,7 @@ class tx_radialsearch_userfunc
  * typoscriptInitPageUid(): Initiate the page uid.
  *
  * @return	void
- * @access    private
+ * @access private
  * @version 0.0.1
  * @since 0.0.1
  */
@@ -760,7 +788,7 @@ class tx_radialsearch_userfunc
  *
  * @param	array		$arr_rows_of_all_pages_inRootLine: Agregate the TypoScript of all pages in the rootline
  * @return	void
- * @access    private
+ * @access private
  * @version 0.0.1
  * @since 0.0.1
  */
@@ -782,7 +810,7 @@ class tx_radialsearch_userfunc
 
     return;
   }
-  
+
 
 
 }
