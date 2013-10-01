@@ -1,0 +1,201 @@
+
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // INDEX
+  //
+  // includeLibs
+  // plugin.tx_radialsearch_pi1
+  // plugin.tx_radialsearch_pi2
+  // page
+
+
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // includeLibs
+
+includeLibs {
+  tx_radialsearch_userfunc = EXT:radialsearch/lib/userfunc/class.tx_radialsearch_userfunc.php
+}
+  // includeLibs
+
+
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // plugin.tx_radialsearch_pi1
+
+plugin.tx_radialsearch_pi1 {
+  userFunc = tx_radialsearch_pi1->sword
+    // Never remove this property!
+  pluginCheck = dummy
+    // Ressources: js
+  res =
+  res {
+      // CSS: tx_radialsearch_pi1
+    css =
+    css {
+        // marker, path
+      tx_radialsearch_pi1 =
+      tx_radialsearch_pi1 {
+          // [Array] html_input_id
+        marker =
+        marker {
+            // [String] ID of the input field
+          html_input_id = {$plugin.tx_radialserach_pi1.html.input.id}
+        }
+          // [String] Path of the css file
+        path = {$plugin.tx_radialserach_pi1.css.default.path}
+      }
+    }
+      // HTML: tx_radialsearch_pi1
+    html =
+    html {
+        // marker, path
+      tx_radialsearch_pi1 =
+      tx_radialsearch_pi1 {
+          // [Array] html_input_id
+        marker =
+        marker {
+            // [String] ID of the input field
+          html_input_id = {$plugin.tx_radialserach_pi1.html.input.id}
+        }
+          // [String] Path of the html template
+        path = {$plugin.tx_radialserach_pi1.html.path}
+      }
+    }
+      // JavaScript: tx_radialsearch_pi1
+    js =
+    js {
+        // inline, marker, path, placeToFooter
+      tx_radialsearch_pi1 =
+      tx_radialsearch_pi1 {
+          // [Boolean] 0 (default): link to the script file, 1: include the script inline
+        inline = {$plugin.tx_radialserach_pi1.javascript.inline}
+          // [Array] admin_code1, country_code, html_input_id, maxrows, minlength
+        marker =
+        marker {
+            // [String] admin_code1 (1. subdivision/state) for the filter
+          admin_code1 = COA
+          admin_code1 {
+              // if country code isn't set
+            10 = TEXT
+            10 {
+              if {
+                isFalse = {$plugin.tx_radialserach_pi1.filter.country_code}
+              }
+              value = "*"
+            }
+              // if country code is set
+            20 = COA
+            20 {
+              if {
+                isTrue = {$plugin.tx_radialserach_pi1.filter.country_code}
+              }
+                // if admin_code1 isn't set
+              10 = TEXT
+              10 {
+                if {
+                  isFalse = {$plugin.tx_radialserach_pi1.filter.admin_code1}
+                }
+                value = "*"
+              }
+                // if admin_code1 is set
+              20 = TEXT
+              20 {
+                if {
+                  isTrue = {$plugin.tx_radialserach_pi1.filter.admin_code1}
+                }
+                value = "{$plugin.tx_radialserach_pi1.filter.admin_code1}"
+              }
+            }
+          }
+            // [String] country_code for the filter
+          country_code = COA
+          country_code {
+              // if country code isn't set
+            10 = TEXT
+            10 {
+              if {
+                isFalse = {$plugin.tx_radialserach_pi1.filter.country_code}
+              }
+              value = "*"
+            }
+              // if country code is set
+            20 = TEXT
+            20 {
+              if {
+                isTrue = {$plugin.tx_radialserach_pi1.filter.country_code}
+              }
+              value = "{$plugin.tx_radialserach_pi1.filter.country_code}"
+            }
+          }
+            // [String] ID of the input field
+          html_input_id = "#{$plugin.tx_radialserach_pi1.html.input.id}"
+            // [String] Limit for rows of the database query
+          limit = {$plugin.tx_radialserach_pi1.sql.limit}
+            // [String] Minimum length of the search word for autocomplete
+          minlength = {$plugin.tx_radialserach_pi1.autocomplete.minLength}
+        }
+          // [String] Path of the script
+        path          = {$plugin.tx_radialserach_pi1.javascript.path}
+          // [Boolean] 1 (default): place JSS scripts in the footer section. 0: place it on top.
+        placeToFooter = {$plugin.tx_radialserach_pi1.javascript.placeToFooter}
+      }
+    }
+  }
+    // Selectbox for the radius: options, unit
+  radiusbox =  
+  radiusbox {
+      // [String/CSV] Comma separated values (CSV) for the options of the selectbox. Example: 5,10,25,50,100
+    options = {$plugin.tx_radialserach_pi1.radiusbox.options}
+      // [String] miles || km. Important for calculating.
+    unit    = {$plugin.tx_radialserach_pi1.radiusbox.unit} 
+  }
+    // htmlinputid, htmlinputlabel, htmlinputvalue
+  _HTMLMARKER =
+  _HTMLMARKER {
+      // [String] replace _HTMLMARKER_HTMLINPUTID
+    htmlinputid = {$plugin.tx_radialserach_pi1.html.input.id}
+      // [String] replace _HTMLMARKER_HTMLINPUTLABEL
+    htmlinputlabel = TEXT
+    htmlinputlabel {
+      data = LLL:EXT:radialsearch/pi1/locallang.xml:htmlinputlabel
+    }
+      // [String] replace _HTMLMARKER_HTMLINPUTVALUE
+    htmlinputvalue = TEXT
+    htmlinputvalue {
+      data = GP:tx_radialsearch_pi1|sword
+    }
+  }
+}
+  // plugin.tx_radialsearch_pi1
+
+
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // plugin.tx_radialsearch_pi2
+
+plugin.tx_radialsearch_pi2 {
+    // Never remove this property!
+  pluginCheck = dummy
+}
+  // plugin.tx_radialsearch_pi2
+
+plugin.tx_radialsearch_pi3 < plugin.tx_radialsearch_pi1
+plugin.tx_radialsearch_pi3 {
+  userFunc = tx_radialsearch_pi1->radiusbox
+}
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // page
+
+page {
+  includeCSS {
+    tx_radialsearch_jqueryUi = {$plugin.tx_radialserach_pi1.css.jquery.path}
+  }
+}
+  // page
