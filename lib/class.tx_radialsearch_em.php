@@ -103,9 +103,10 @@ class tx_radialsearch_em
     $rows = array( );
     while( $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc( $res ) )
     {
-      $rows[ ] = '<li>' . $row[ 'country' ] . ' #' . $row[ 'records' ] . '</li>'; 
+      $rows[ ] = '<li>' . $row[ 'country' ] . ': #' . $row[ 'records' ] . ' records</li>'; 
     }
 
+      // Database is empty
     if( empty( $rows ) )
     {
       $str_prompt = '
@@ -122,11 +123,13 @@ class tx_radialsearch_em
         ';
       return $str_prompt;
     }
+      // Database is empty
     
+      // Database has content
     $str_prompt = '
       <div class="typo3-message message-ok">
         <div class="message-body">
-          ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
+          ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:databaseWithContentOk'). '
           <ul>
             ' . implode( null, $rows ) . '
           </ul>
@@ -134,11 +137,12 @@ class tx_radialsearch_em
       </div>
       <div class="typo3-message message-information">
         <div class="message-body">
-          ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
+          ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:databaseWithContentPrompt'). '
         </div>
       </div>
       ';
     return $str_prompt;
+      // Database has content
 
   }
 

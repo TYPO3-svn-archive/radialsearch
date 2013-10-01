@@ -6,6 +6,14 @@
   </meta>
   <data type="array">
     <languageKey index="default" type="array">
+      <label index="databaseWithContentOk"><![CDATA[
+        <h1 style="text-align:left;">
+          Database seems to be proper
+        </h1>
+        <p>
+          This is the content:
+        </p>
+      ]]></label>
       <label index="promptExternalLinksBody"><![CDATA[
         <h1 style="text-align:left;">
           Contracting, Donating and Sponsoring
