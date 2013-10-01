@@ -71,7 +71,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   public $prefixId      = 'tx_radialsearch_pi1_eid';
   public $scriptRelPath = 'pi1/class.tx_radialsearch_pi1_eid.php';
 
-  private $extConf = null;
+  private $arr_extConf = null;
   
   
   
@@ -182,7 +182,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   */
   private function initExtConf( )
   {
-    $this->extConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey] );
+    $this->arr_extConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey] );
   }
 
   
@@ -298,7 +298,7 @@ var_dump( __METHOD__, __LINE__ );
     $sword = $sql[ 'sword' ];
 
       // pid
-    $pid    = (int) $this->extConf[ 'folder.']['pid' ];
+    $pid    = (int) $this->arr_extConf[ 'folder.']['pid' ];
     $where  = 'pid = ' . $pid;
 
       // sword
