@@ -7,9 +7,17 @@
   <data type="array">
     <languageKey index="default" type="array">
       <label index="databaseWithContentOk"><![CDATA[
-        <h1 style="text-align:left;">
-          Database seems to be proper
-        </h1>
+        <p>
+          <strong>Database seems to be proper</strong>
+        </p>
+        <p>
+          This is the content:
+        </p>
+      ]]></label>
+      <label index="databaseWithContentPrompt"><![CDATA[
+        <p>
+          <strong>Database seems to be proper</strong>
+        </p>
         <p>
           This is the content:
         </p>
