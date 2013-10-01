@@ -35,9 +35,11 @@ plugin.tx_radialserach_pi1 {
   # cat=Radial Search - JavaScript/others/999;      type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   javascript.external_linksBase = 0
 
-  # cat=Radial Search - radiusbox/enable/100;       type=options[miles,km];    label= Unit: miles or kilometer
+  # cat=Radial Search - radiusbox/enable/100;       type=options[enabled,disabled]; label= Mode: Use the radiusbox?
+  radiusbox.mode               = enabled
+  # cat=Radial Search - radiusbox/enable/101;       type=options[miles,km];         label= Unit: miles or kilometer
   radiusbox.unit               = km
-  # cat=Radial Search - radiusbox/enable/101;       type=string;               label= Options: Comma separated values (CSV)
+  # cat=Radial Search - radiusbox/enable/102;       type=string;                    label= Options: Comma separated values (CSV)
   radiusbox.options            = 5, 10, 25, 50, 100
   # cat=Radial Search - radiusbox/others/999;       type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   radiusbox.external_linksBase = 0
