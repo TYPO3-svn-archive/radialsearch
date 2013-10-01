@@ -153,28 +153,32 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     
       // Get sword and limit
     $sword    = $sql[ 'sword' ];
-    $zip      = $sword;
-    $place    = $sword;
     
     $limit    = $sql[ 'limit' ];
 
       // Build the WHERE statement
-    $where          = '( postal_code LIKE "' . $zip . '%" OR place_name LIKE "' . $place . '%" )';
-    $andWhereElements = array( );
+    $or = array(
+      '0' => 'postal_code LIKE "' . $sword . '%"',
+      '1' => 'place_name LIKE "' . $sword . '%"',
+      '2' => 'CONCATENATE(postal_code, " ", place_name) LIKE "' . $sword . '%"',
+    );
+    $where = '(' . implode( ' OR ', $or ) . ')';
+    
+    $and = array( );
     foreach( ( array ) $sql[ 'andWhere' ] as $key => $value )
     {
       if( $value == '*')
       {
         continue;
       }
-      $andWhereElements[ ] = $key . ' LIKE "' . $value . '"';
+      $and[ ] = $key . ' LIKE "' . $value . '"';
     }
-    $andWhere = implode( ' AND ', $andWhereElements );
+    $andWhere = implode( ' AND ', $and );
     if( $andWhere )
     {
       $andWhere = ' AND ' . $andWhere;
     }
-    $andWhere = $andWhere . 'AND deleted = 0';
+    $andWhere = $andWhere . ' AND deleted = 0';
 
     $pid            = (int) $arr_pluginConf['row']['pid'];
     $select_fields  = '*';

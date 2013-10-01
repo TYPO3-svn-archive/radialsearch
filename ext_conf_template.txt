@@ -16,7 +16,7 @@ database.truncate   = 0
   # cat=database/others/999;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
 database.externalLinks=0
 
-  # cat=folder/enable/200;            type=+int; Page ID: Page ID of the folder with your postal code data. 0: root page.
+  # cat=folder/enable/200;            type=+int; label=Page ID: Page ID of the folder with your postal code data. 0: root page.
 folder.pid  = 0
-  # cat=folder/others/999;        type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  # cat=folder/others/999;            type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
 folder.external_linksConf=0
