@@ -1,5 +1,10 @@
 plugin.tx_radialserach_pi1 {
 
+  # cat=Radial Search - autocomplete/enable/100;   type=+int;     label= Min length: Minimum length of the search word for autocomplete
+  autocomplete.minLength         = 2
+  # cat=Radial Search - autocomplete/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  autocomplete.external_linksBase = 0
+
   # cat=Radial Search - css/enable/100;         type=string;     label= CSS default file: Path of the CSS file
   css.default.path               = EXT:radialsearch/res/css/tx_radialsearch_pi1.css
   # cat=Radial Search - css/enable/101;         type=string;     label= CSS jQuery UI file: Path of the CSS file. Leave it empty, if you don't need the jQuery UI CSS.
@@ -34,11 +39,6 @@ plugin.tx_radialserach_pi1 {
   search.mode               = place and zip
   # cat=Radial Search - search/others/999;      type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   search.external_linksBase = 0
-
-  # cat=Radial Search - selectbox/enable/100;   type=+int;     label= Min length: Minimum length of the search word for autocomplete
-  selectbox.minLength         = 2
-  # cat=Radial Search - selectbox/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
-  selectbox.external_linksBase = 0
 
   # cat=Radial Search - sql/enable/100;   type=+int;     label= Limit: Maximum amount of rows, which should returned by the database.
   sql.limit           = 12

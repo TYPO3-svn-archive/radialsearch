@@ -135,7 +135,7 @@ plugin.tx_radialsearch_pi1 {
             // [String] Limit for rows of the database query
           limit = {$plugin.tx_radialserach_pi1.sql.limit}
             // [String] Minimum length of the search word for autocomplete
-          minlength = {$plugin.tx_radialserach_pi1.selectbox.minLength}
+          minlength = {$plugin.tx_radialserach_pi1.autocomplete.minLength}
         }
           // [String] Path of the script
         path          = {$plugin.tx_radialserach_pi1.javascript.path}
