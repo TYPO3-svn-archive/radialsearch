@@ -39,7 +39,7 @@
             alert( "Sorry, the server didn't return the object \"places\"." );
           }
           , error : function( req, error ) {
-            alert( "Request failed: " + error );
+            alert( "Request failed: " + error + "\n\nPlease enable the DRS and check the Developer Log.\n\nSorry for the trouble. TYPO3 Radial Search.");
           }
         });
       }
