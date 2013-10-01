@@ -149,10 +149,15 @@ plugin.tx_radialsearch_pi1 {
   _HTMLMARKER {
       // [String] replace _HTMLMARKER_HTMLINPUTID
     htmlinputid = {$plugin.tx_radialserach_pi1.html.input.id}
-      // [String] replace _HTMLMARKER_HTMLINPUTID
+      // [String] replace _HTMLMARKER_HTMLINPUTLABEL
     htmlinputlabel = TEXT
     htmlinputlabel {
       data = LLL:EXT:radialsearch/pi1/locallang.xml:htmlinputlabel
+    }
+      // [String] replace _HTMLMARKER_HTMLINPUTVALUE
+    htmlinputvalue = TEXT
+    htmlinputvalue {
+      data = GP:tx_radialsearch_pi1|sword
     }
   }
 }
