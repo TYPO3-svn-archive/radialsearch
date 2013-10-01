@@ -3,7 +3,7 @@ plugin.tx_radialserach_pi1 {
   # cat=Radial Search - css/enable/100;         type=string;     label= CSS default file: Path of the CSS file
   css.default.path               = EXT:radialsearch/res/css/tx_radialsearch_pi1.css
   # cat=Radial Search - css/enable/101;         type=string;     label= CSS jQuery UI file: Path of the CSS file. Leave it empty, if you don't need the jQuery UI CSS.
-  css.jquery.path        = EXT:radialsearch/res/css/jQuery/smoothness/jquery-ui.css.css
+  css.jquery.path        = EXT:radialsearch/res/css/jQuery/smoothness/jquery-ui.css
   # cat=Radial Search - html/others/999;        type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   css.external_linksBase = 0
 
