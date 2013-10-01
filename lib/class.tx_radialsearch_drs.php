@@ -121,7 +121,7 @@ class tx_radialsearch_drs
   private function initByExtmngr( )
   {
 var_dump( __METHOD__, __LINE__, $this->pObj->arr_extConf );
-    switch( $this->pObj->arr_extConf['drs.enabled'] )
+    switch( $this->pObj->arr_extConf['drs.']['enabled'] )
     {
       case( 'Disabled' ):
       case( null ):
@@ -132,7 +132,7 @@ var_dump( __METHOD__, __LINE__, $this->pObj->arr_extConf );
         break;
       default:
         $prompt = 'Error: drs.enabled is undefined.<br />
-          value is ' . $this->pObj->arr_extConf['drs.enabled'] . '<br />
+          value is ' . $this->pObj->arr_extConf['drs.']['enabled'] . '<br />
           <br />
           ' . __METHOD__ . ' line(' . __LINE__. ')';
         die( $prompt );
@@ -140,7 +140,7 @@ var_dump( __METHOD__, __LINE__, $this->pObj->arr_extConf );
 
     $this->zzDrsPromptsTrue( );
 
-    $prompt = 'The DRS - Development Reporting System is enabled: ' . $this->pObj->arr_extConf['drs.enabled'];
+    $prompt = 'The DRS - Development Reporting System is enabled: ' . $this->pObj->arr_extConf['drs.']['enabled'];
     t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0 );
     $prompt = 'The DRS is enabled by the extension manager.';
     t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0 );
