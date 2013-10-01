@@ -119,142 +119,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $this->jss( );
     $this->css( );
 
-    $content = '
- <style>
-  .ui-autocomplete-loading {
-    background: white url(\'typo3conf/ext/radialsearch/lib/icons/ajax-loader.gif\') right center no-repeat;
-  }
-  #city { width: 25em; }
-</style>
-<div class="ui-widget">
-  <label for="city">Your city: </label>
-  <input id="city" />
-  Powered by <a href="http://geonames.org">geonames.org</a>
-</div>
-<div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
-  Result:
-  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
-</div>
-';
-    $content = $this->html( );
-    
-      // Fill dynamic locallang or typoscript markers
-    $content  = $this->dynamicMarkers->main( $content ); 
-//      // Finally clear not filled markers
-//    $content  = preg_replace( '|###.*?###|i', '', $content ); 
-    return $this->pi_wrapInBaseClass( $content );
-  }
+    $content  = $this->html( );
 
-	/**
-	 * [Describe function...]
-	 *
-	 * @param	[type]		$$content: ...
-	 * @param	[type]		$conf: ...
-	 * @return	[type]		...
-	 */
-  public function main2( $content, $conf )
-  {
-      // page object
-    $this->local_cObj = $GLOBALS['TSFE']->cObj;
-
-    $this->conf = $conf;
-    $this->pi_setPiVarDefaults();
-    $this->pi_loadLL();
-      // Init extension configuration array
-    $this->arr_extConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey] );
-      // 130227, dwildt, 1-
-    //$this->pi_USER_INT_obj = 1;
-
-      // Init DRS, flexform, gpvars, HTML template, service attributes
-    $this->init( );
-
-    $content = 'Welcome Radial Search!';
-
-    $content = '
- <style>
-  .ui-autocomplete-loading {
-    background: white url(\'typo3conf/ext/radialsearch/lib/icons/ajax-loader.gif\') right center no-repeat;
-  }
-  #city { width: 25em; }
-</style>
-<script>
-  $(function() {
-
-	/**
-	 * [Describe function...]
-	 *
-	 * @param	[type]		$message: ...
-	 * @return	[type]		...
-	 */
-    function log( message ) {
-      $( "<div>" ).text( message ).prependTo( "#log" );
-      $( "#log" ).scrollTop( 0 );
-    }
-    $( "#city" ).autocomplete({
-      source: function( request, response ) {
-        $.ajax({
-          url: "http://ws.geonames.org/searchJSON",
-          //url: "http://api.geonames.org/search",
-          dataType: "jsonp",
-          data: {
-              featureClass    : "P"
-            , style           : "full"
-            , maxRows         : 12
-            , name_startsWith : request.term
-            , type            : "json"
-            , username        : "demo"
-            , country         : "DE"
-            , adminCode1      : "15" // TH
-            , lang            : "de"
-          },
-          success: function( data ) {
-//            if( data.status.length > 0 ) {
-//              response( $.map( data.status, function( item ) {
-//                return {
-//                  label: item,
-//                  value: item
-//                }
-//              }));
-//            }
-            response( $.map( data.geonames, function( item ) {
-              return {
-                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                value: item.name
-              }
-            }));
-          },
-          error: function( req, error ) {
-            alert( "Request failed: " + error );
-          }
-      });
-      },
-      minLength: 2,
-      select: function( event, ui ) {
-        log( ui.item ?
-          "Selected: " + ui.item.label :
-          "Nothing selected, input was " + this.value);
-      },
-      open: function() {
-        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-      },
-      close: function() {
-        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-      }
-    });
-  });
-</script>
-<div class="ui-widget">
-  <label for="city">Your city: </label>
-  <input id="city" />
-  Powered by <a href="http://geonames.org">geonames.org</a>
-</div>
-<div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
-  Result:
-  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
-</div>
-';
-    $content = $this->dynamicMarkers->main( $content ); // Fill dynamic locallang or typoscript markers
-    $content = preg_replace( '|###.*?###|i', '', $content ); // Finally clear not filled markers
     return $this->pi_wrapInBaseClass( $content );
   }
 
@@ -457,12 +323,12 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
   /***********************************************
   *
-  * CSS
+  * HTML
   *
   **********************************************/
 
  /**
-  * css( )  :
+  * html( )  :
   *
   * @return	The		content that is displayed on the website
   * @access     private
@@ -471,23 +337,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
   */
   private function html( )
   {
-    $conf         = $this->conf['res.']['html.']['tx_radialsearch_pi1.'];
-    $path_tsConf  = 'res.html.tx_radialsearch_pi1';
-    $path         = $conf[ 'path' ];
-
-    $absPath = $this->getPathAbsolute( $conf, $path_tsConf );
-    if( $absPath == false )
-    {
-      if( $this->drs->drsError )
-      {
-        t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->extKey, 3 );
-      }
-      return false;
-    }
-
-    $content = file( $absPath );
-    $content = implode ( NULL, $content );
-
+    $content = $this->subpart['sword'];
+    $content = $this->dynamicMarkers->main( $content ); 
     return $content;
   }
 
@@ -571,25 +422,10 @@ class tx_radialsearch_pi1 extends tslib_pibase
   */
   private function initTemplate( )
   {
-    $conf         = $this->conf['res.']['html.']['tx_radialsearch_pi1.'];
-    $path_tsConf  = 'res.html.tx_radialsearch_pi1';
-    $path         = $conf[ 'path' ];
-
-    $absPath = $this->getPathAbsolute( $conf, $path_tsConf );
-    if( $absPath == false )
-    {
-      if( $this->drs->drsError )
-      {
-        t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->extKey, 3 );
-      }
-      return false;
-    }
-
-    $template = file( $absPath );
-    $template = implode ( NULL, $template );
-
+    $path     = $this->conf['res.']['html.']['tx_radialsearch_pi1.']['path'];
     $template = $this->cObj->fileResource( $path );
-      // Die if there isn't any HTML template
+
+    // Die if there isn't any HTML template
     if( empty ( $template ) )
     {
       die( __METHOD__ . ' (' . __LINE__ . '): Template is empty!' );
