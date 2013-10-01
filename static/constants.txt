@@ -1,16 +1,16 @@
 plugin.tx_radialserach_pi1 {
 
-  # cat=Radial Search - andWhere/enable/100;   type=string;     label= Country Code: ISO country code. For example: DE, GB, US. Leave it empty, if ZIP code of all countries should be available.
-  andWhere.country_code       = 
-  # cat=Radial Search - andWhere/enable/101;   type=string;     label= State Code: Code of the 1. order subdivision (state). For example: TH. Leave it empty, if ZIP code of all subdivisions should be available.
-  andWhere.admin_code1        = 
-  # cat=Radial Search - andWhere/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
-  andWhere.external_linksBase = 0
-
   # cat=Radial Search - css/enable/100;         type=string;     label= CSS File: Path of the CSS file
   css.path               = EXT:radialsearch/res/css/tx_radialsearch_pi1.css
   # cat=Radial Search - html/others/999;        type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   css.external_linksBase = 0
+
+  # cat=Radial Search - Filter/enable/100;   type=string;     label= Country Code: ISO country code. For example: DE, GB, US. Leave it empty, if ZIP code of all countries should be available.
+  filter.country_code       = 
+  # cat=Radial Search - Filter/enable/101;   type=string;     label= State Code: Code of the 1. order subdivision (state). For example: TH. Leave it empty, if ZIP code of all subdivisions should be available.
+  filter.admin_code1        = 
+  # cat=Radial Search - Filter/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  filter.external_linksBase = 0
 
   # cat=Radial Search - html/enable/100;        type=string;     label= Input ID: ID of the input field. Without any hash!
   html.input.id           = lookfromplace

@@ -74,14 +74,14 @@ plugin.tx_radialsearch_pi1 {
           // [Array] admin_code1, country_code, html_input_id, maxrows, minlength
         marker =
         marker {
-            // [String] admin_code1 (1. subdivision/state) for the andWhere
+            // [String] admin_code1 (1. subdivision/state) for the filter
           admin_code1 = COA
           admin_code1 {
               // if country code isn't set
             10 = TEXT
             10 {
               if {
-                isFalse = {$plugin.tx_radialserach_pi1.andWhere.country_code}
+                isFalse = {$plugin.tx_radialserach_pi1.filter.country_code}
               }
               value = "*"
             }
@@ -89,13 +89,13 @@ plugin.tx_radialsearch_pi1 {
             20 = COA
             20 {
               if {
-                isTrue = {$plugin.tx_radialserach_pi1.andWhere.country_code}
+                isTrue = {$plugin.tx_radialserach_pi1.filter.country_code}
               }
                 // if admin_code1 isn't set
               10 = TEXT
               10 {
                 if {
-                  isFalse = {$plugin.tx_radialserach_pi1.andWhere.admin_code1}
+                  isFalse = {$plugin.tx_radialserach_pi1.filter.admin_code1}
                 }
                 value = "*"
               }
@@ -103,20 +103,20 @@ plugin.tx_radialsearch_pi1 {
               20 = TEXT
               20 {
                 if {
-                  isTrue = {$plugin.tx_radialserach_pi1.andWhere.admin_code1}
+                  isTrue = {$plugin.tx_radialserach_pi1.filter.admin_code1}
                 }
-                value = "{$plugin.tx_radialserach_pi1.andWhere.admin_code1}"
+                value = "{$plugin.tx_radialserach_pi1.filter.admin_code1}"
               }
             }
           }
-            // [String] country_code for the andWhere
+            // [String] country_code for the filter
           country_code = COA
           country_code {
               // if country code isn't set
             10 = TEXT
             10 {
               if {
-                isFalse = {$plugin.tx_radialserach_pi1.andWhere.country_code}
+                isFalse = {$plugin.tx_radialserach_pi1.filter.country_code}
               }
               value = "*"
             }
@@ -124,9 +124,9 @@ plugin.tx_radialsearch_pi1 {
             20 = TEXT
             20 {
               if {
-                isTrue = {$plugin.tx_radialserach_pi1.andWhere.country_code}
+                isTrue = {$plugin.tx_radialserach_pi1.filter.country_code}
               }
-              value = "{$plugin.tx_radialserach_pi1.andWhere.country_code}"
+              value = "{$plugin.tx_radialserach_pi1.filter.country_code}"
             }
           }
             // [String] ID of the input field
