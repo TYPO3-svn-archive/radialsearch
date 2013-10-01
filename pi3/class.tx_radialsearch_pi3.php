@@ -89,7 +89,7 @@ class tx_radialsearch_pi3 extends tslib_pibase
   {
     $content = '
 <p>
-  This is a smaple ready to use:
+  This is a sample ready to use:
 </p>
 <ul>
   <li>
@@ -99,7 +99,10 @@ class tx_radialsearch_pi3 extends tslib_pibase
     Request is answered by geonames.org
   </li>
   <li>
-    This sample should demonstrate, if the radial seaech is proper in priciple on your server.
+    This sample should demonstrate, if the radial search is proper in priciple on your server.
+  </li>
+  <li>
+    The main plugin is running proper, if you have imported postal codes data
   </li>
 </ul>
  <style>
