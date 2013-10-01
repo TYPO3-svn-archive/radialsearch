@@ -403,6 +403,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $arrOptions = explode( ',', $csvOptions );
     $unit       = $this->conf['radiusbox.']['unit'];
     
+    $template = $this->cObj->getSubpart( $content, '###OPTION###' ) ;
+   
     $options = array( );
     $search = array( 
       '0' => '###VALUE###',  
