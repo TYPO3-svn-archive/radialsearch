@@ -206,8 +206,23 @@ class tx_radialsearch_pi1 extends tslib_pibase
     }
       // RETURN file is loaded
 
-    $absPath = $this->getPathAbsolute( $conf, $path_tsConf );
-    if( $absPath == false )
+//    $absPath = $this->getPathAbsolute( $conf, $path_tsConf );
+//    if( $absPath == false )
+//    {
+//      if( $this->drs->drsError )
+//      {
+//        t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->extKey, 3 );
+//      }
+//      return false;
+//    }
+//    
+//    $content =
+//'  <style type="text/css">
+//' . implode( '', file( $absPath ) ) . '
+//  </style>';
+
+    $css = $this->cObj->fileResource( $path );
+    if( $css == false )
     {
       if( $this->drs->drsError )
       {
@@ -218,7 +233,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
     $content =
 '  <style type="text/css">
-' . implode( '', file( $absPath ) ) . '
+' . $css . '
   </style>';
 
       // Fill dynamic locallang or typoscript markers
@@ -340,7 +355,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     if( $content )
     {
       $content = $this->dynamicMarkers->main( $content ); 
-      $content = $this->pi_wrapInBaseClass( $content );    
+      //$content = $this->pi_wrapInBaseClass( $content );    
       return $content;
     }
       
@@ -348,14 +363,14 @@ class tx_radialsearch_pi1 extends tslib_pibase
     if( $content )
     {
       $content = $this->dynamicMarkers->main( $content ); 
-      $content = $this->pi_wrapInBaseClass( $content );    
+      //$content = $this->pi_wrapInBaseClass( $content );    
       return $content;
     }
       
   }
 
  /**
-  * html( )  :
+  * htmlRadiusbox( )  :
   *
   * @return	The		content that is displayed on the website
   * @access     private
@@ -369,6 +384,44 @@ class tx_radialsearch_pi1 extends tslib_pibase
       return null;
     }
     $content = $this->subpart['radiusbox'];
+    $content = $this->htmlRadiusboxOptions( $content );
+    return $content;
+  }
+
+ /**
+  * htmlRadiusbox( )  :
+  *
+  * @return	The		content that is displayed on the website
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function htmlRadiusboxOptions( $content )
+  {
+    $csvOptions = $this->conf['radiusbox.']['options'];
+    $csvOptions = str_replace( ' ', null, $csvOptions );
+    $arrOptions = explode( ',', $csvOptions );
+    $unit       = $this->conf['radiusbox.']['unit'];
+    
+    $options = array( );
+    $search = array( 
+      '0' => '###VALUE###',  
+      '1' => '###SELECTED###',  
+      '2' => '###LABEL###'
+    );
+    foreach( $arrOptions as $value )
+    {
+      $replace = array( 
+        '0' => $value,  
+        '1' => null,  
+        '2' => $value . ' ' . $unit
+      );
+      $options[] = str_replace( $search, $replace, $template );
+    }
+    
+    $strOption = implode( PHP_EOL, $options );
+
+    $content = $this->cObj->substituteSubpart( $content, '###OPTION###', $strOption ) ;
     return $content;
   }
 

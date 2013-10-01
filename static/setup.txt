@@ -148,8 +148,6 @@ plugin.tx_radialsearch_pi1 {
     // Selectbox for the radius: options, unit
   radiusbox =  
   radiusbox {
-      // [String] enabled || disabled. Use the radiusbox?
-    mode = {$plugin.tx_radialserach_pi1.radiusbox.mode}
       // [String/CSV] Comma separated values (CSV) for the options of the selectbox. Example: 5,10,25,50,100
     options = {$plugin.tx_radialserach_pi1.radiusbox.options}
       // [String] miles || km. Important for calculating.
