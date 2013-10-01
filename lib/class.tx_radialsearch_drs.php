@@ -121,7 +121,7 @@ class tx_radialsearch_drs
   private function initByExtmngr( )
   {
 
-    switch( $this->pObj->arr_extConf['debuggingDrs'] )
+    switch( $this->pObj->arr_extConf['drs.enabled'] )
     {
       case( 'Disabled' ):
       case( null ):
@@ -131,8 +131,8 @@ class tx_radialsearch_drs
           // Follow the workflow
         break;
       default:
-        $prompt = 'Error: debuggingDrs is undefined.<br />
-          value is ' . $this->pObj->arr_extConf['debuggingDrs'] . '<br />
+        $prompt = 'Error: drs.enabled is undefined.<br />
+          value is ' . $this->pObj->arr_extConf['drs.enabled'] . '<br />
           <br />
           ' . __METHOD__ . ' line(' . __LINE__. ')';
         die( $prompt );
@@ -140,7 +140,7 @@ class tx_radialsearch_drs
 
     $this->zzDrsPromptsTrue( );
 
-    $prompt = 'The DRS - Development Reporting System is enabled: ' . $this->pObj->arr_extConf['debuggingDrs'];
+    $prompt = 'The DRS - Development Reporting System is enabled: ' . $this->pObj->arr_extConf['drs.enabled'];
     t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0 );
     $prompt = 'The DRS is enabled by the extension manager.';
     t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0 );

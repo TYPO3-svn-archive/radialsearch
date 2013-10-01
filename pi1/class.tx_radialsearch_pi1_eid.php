@@ -67,6 +67,14 @@ require_once( PATH_tslib . 'class.tslib_pibase.php' );
  */
 class tx_radialsearch_pi1_eid extends tslib_pibase {
   
+  private $extKey        = 'radialsearch';
+  private $prefixId      = 'tx_radialsearch_pi1_eid';
+  private $scriptRelPath = 'pi1/class.tx_radialsearch_pi1_eid.php';
+
+  private $extConf = null;
+  
+  
+  
  /***********************************************
   *
   * Main
@@ -124,11 +132,56 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   */
   private function init( )
   {
+    $this->initEidTools( );
+    $this->initExtConf( );
+    $this->initDrs( );
+  }
+
+ /**
+  * the main method
+  *
+  * @return	The		content that is displayed on the website
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function initDrs( )
+  {
+    $path2lib = t3lib_extMgm::extPath( 'radialsearch' ) . 'lib/';
+
+    require_once( $path2lib . 'class.tx_radialsearch_drs.php' );
+    $this->drs = t3lib_div::makeInstance( 'tx_radialsearch_drs' );
+    $this->drs->setParentObject( $this );
+  }
+
+ /**
+  * the main method
+  *
+  * @return	The		content that is displayed on the website
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function initEidTools( )
+  {
       // Initialize FE user object    
 //    $feUserObj = tslib_eidtools::initFeUser(); 
     tslib_eidtools::initFeUser( ); 
       // Connect to database
     tslib_eidtools::connectDB( ); 
+  }
+
+ /**
+  * the main method
+  *
+  * @return	The		content that is displayed on the website
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function initExtConf( )
+  {
+    $this->extConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey] );
   }
 
   
@@ -149,21 +202,107 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   private function sql( )
   {
       // Get the SQL array from the GET-/POST-parameter
-    $sql      = ( array ) t3lib_div::_GP( 'sql' );
+    $sql = ( array ) t3lib_div::_GP( 'sql' );
+
+    $select_fields  = '*';
+    $from_table     = 'tx_radialsearch_postalcodes';
+    $groupBy        = null;
+    $orderBy        = 'country_code, postal_code, place_name';
+    $limit          = $sql[ 'limit' ];
+    $where_clause   = $this->sqlWhere( );
+    
+    $query  = $GLOBALS['TYPO3_DB']->SELECTquery(      $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+    $res    = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+    
+      // RETURN : error in SQL query
+    if( $this->sqlError( $res, $query ) )
+    {
+      return false;
+    }
+      // RETURN : error in SQL query
+    
+    $rows = array( );
+    while( $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc( $res ) )
+    {
+      $rows[ ] = $row; 
+    }
+
+      // RETURN : No DRS
+    if( ! $this->drs->drsSql )
+    {
+      return $rows;
+    }
+      // RETURN : No DRS
+
+      // DRS
+    $query  = $GLOBALS['TYPO3_DB']->SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+    t3lib_div::devlog( '[INFO/SQL] ' . $query, $this->extKey, 0 );
+      // DRS
+    
+    return $rows;
+  }
+
+ /**
+  * sqlError( )  : 
+  *
+  * @return	
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function sqlError( $res, $query )
+  {
+      // RETURN : no error
+    if( $res )
+    {
+      return false;
+    }
+      // RETURN : no error
+    
+      // RETURN : No DRS
+    if( ! $this->drs->drsError )
+    {
+      return true;
+    }
+      // RETURN : No DRS
+
+      // DRS
+    $query  = $GLOBALS['TYPO3_DB']->SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+    t3lib_div::devlog( '[ERROR/SQL] ' . $query, $this->extKey, 3 );
+      // DRS
+
+    return true;
+  }
+
+ /**
+  * sqlWhere( )  : 
+  *
+  * @return	
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function sqlWhere( )
+  {
+      // Get the SQL array from the GET-/POST-parameter
+    $sql = ( array ) t3lib_div::_GP( 'sql' );
     
       // Get sword and limit
-    $sword    = $sql[ 'sword' ];
-    
-    $limit    = $sql[ 'limit' ];
+    $sword = $sql[ 'sword' ];
 
-      // Build the WHERE statement
+      // pid
+    $pid    = (int) $this->extConf[ 'folder.pid' ];
+    $where  = 'pid = ' . $pid;
+
+      // sword
     $or = array(
       '0' => 'postal_code LIKE "' . $sword . '%"',
       '1' => 'place_name LIKE "' . $sword . '%"',
       '2' => 'CONCATENATE(postal_code, " ", place_name) LIKE "' . $sword . '%"',
     );
-    $where = '(' . implode( ' OR ', $or ) . ')';
+    $where = $where . ' AND (' . implode( ' OR ', $or ) . ')';
     
+      // andWhere
     $and = array( );
     foreach( ( array ) $sql[ 'andWhere' ] as $key => $value )
     {
@@ -180,30 +319,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     }
     $andWhere = $andWhere . ' AND deleted = 0';
 
-    $pid            = (int) $arr_pluginConf['row']['pid'];
-    $select_fields  = '*';
-    $from_table     = 'tx_radialsearch_postalcodes';
-    $groupBy        = null;
-    $orderBy        = 'country_code, postal_code, place_name';
-    //$limit          = null;
-    //$where_clause   = "pid = " . $pid . " AND CType = 'list' AND list_type = 'browser_pi5' AND hidden = 0 AND deleted = 0";
-    $where_clause   = $where . $andWhere;
-    
-      // DRS
-    $query  = $GLOBALS['TYPO3_DB']->SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
-    t3lib_div::devlog( '[INFO/SQL] ' . $query, 'radialsearch', 0 );
-      // DRS
-    
-    $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
-      // :TODO: Evaluierung $res
-    
-    $rows = array( );
-    while( $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc( $res ) )
-    {
-      $rows[ ] = $row; 
-    }
-
-    return $rows;
+    return $where . $andWhere;
   }
   
 }
