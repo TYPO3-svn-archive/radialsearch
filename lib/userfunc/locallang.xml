@@ -40,7 +40,7 @@
             Donating and Sponsoring &raquo;</a>.
         </p>
         <p style="font-weight:bold;padding:1em 0;">
-          The initial release ist contracted by:
+          The initial release is contracted by:
         </p>
         <a href="http://leg-thueringen.de/"
           alt="LEG-Thüringen, Germany, contractor of Radial Search"
@@ -215,7 +215,7 @@
       ]]></label>
       <label index="promptCredits"><![CDATA[
         <h1 style="text-align:left;">
-          Spenden und Sponsern
+          Beauftragen, Spenden und Sponsern
         </h1>
         <div style="float:left;padding-right:1em;">
           <img src="../../../../typo3conf/ext/radialsearch/lib/icons/dirk_wildt_30x30.gif"
@@ -224,28 +224,26 @@
             title="Bitte unterst&uuml;tze meine Arbeit!" />        
         </div>
         <p>
-          Bitte spende f&uuml;r Radial Search oder sponser die Extension!<br />
-          Ich brauche das Geld f&uuml;r die Verbesserung und Weiterentwicklung von Radial Search.<br />
-          <br />
+          Bitte spende f&uuml;r Radial Search, sponser die Extension oder beauftrage neue Features!<br />
           Dirk Wildt<br />
           <a href="http://typo3-radialsearch.de/sponsoring/"
             style="text-decoration:underline;"
-            alt="Spenden und Sponsern"
-            title="Spenden und Sponsern"
+            alt="Beauftragen, Spenden und Sponsern"
+            title="Beauftragen, Spenden und Sponsern"
             target="_blank">
             Spenden und Sponsern &raquo;</a>.
         </p>
         <p style="font-weight:bold;padding:1em 0;">
-          Das TYPO3 Radial-Search-Projekt wird gesponsert von
+          Der Startversion von Radial-Search hat beauftragt:
         </p>
         <a href="http://www.made-in-nature.de/"
-          alt="made in nature, Deutschland, Sponsor des TYPO3 Radial-Search-Projekts"
-          title="made in nature, Deutschland, Sponsor des TYPO3 Radial-Search-Projekts"
+          alt="LEG-Thüringen, Deutschland, Auftraggeber"
+          title="LEG-Thüringen, Deutschland, Auftraggeber"
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/made-in-nature.de_120x90.gif"
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/leg-thueringen.de_120x90.gif"
             width="120"
             height="90"
-            title="made in nature, Deutschland, Sponsor des TYPO3 Radial-Search-Projekts" /></a>
+            title="LEG-Thüringen, Deutschland, Auftraggeber" /></a>
         <p style="padding:0 0 1em 0;">
           M&ouml;chtest Du das TYPO3 Radial-Search-Projekt unterst&uuml;tzen?
           <a href="http://typo3-radialsearch.de/sponsoring/"
