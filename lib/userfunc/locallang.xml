@@ -31,7 +31,6 @@
         </div>
         <p>
           Please donate to Radial Search, sponsor it or contract new features!<br />
-          <br />
           Dirk Wildt<br />
           <a href="http://typo3-radialsearch.de/en/sponsoring/"
             style="text-decoration:underline;"
@@ -41,16 +40,16 @@
             Donating and Sponsoring &raquo;</a>.
         </p>
         <p style="font-weight:bold;padding:1em 0;">
-          The TYPO3 Radial-Search project is sponsored by:
+          The initial release ist contracted by:
         </p>
-        <a href="http://www.made-in-nature.de/"
-          alt="made in nature, Germany, sponsors the TYPO3 Radial-Search project"
-          title="made in nature, Germany, sponsors the TYPO3 Radial-Search project"
+        <a href="http://leg-thueringen.de/"
+          alt="LEG-Thüringen, Germany, contractor of Radial Search"
+          title="LEG-Thüringen, Germany, contractor of Radial Search"
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/made-in-nature.de_120x90.gif"
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/leg-thueringen.de_120x90.gif"
             width="120"
             height="90"
-            alt="made in nature, Germany, sponsors the TYPO3 Radial-Search project" /></a>
+            alt="LEG-Thüringen, Germany, contractor of Radial Search" /></a>
         <p style="padding:0 0 1em 0;">
           You like to subsidise the TYPO3 Radial-Search project?
           <a href="http://typo3-radialsearch.de/en/sponsoring/"
