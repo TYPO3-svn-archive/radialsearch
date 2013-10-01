@@ -226,7 +226,7 @@
         <p>
           Bitte spende f&uuml;r Radial Search, sponser die Extension oder beauftrage neue Features!<br />
           Dirk Wildt<br />
-          <a href="http://typo3-radialsearch.de/sponsoring/"
+          <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
             style="text-decoration:underline;"
             alt="Beauftragen, Spenden und Sponsern"
             title="Beauftragen, Spenden und Sponsern"
@@ -234,7 +234,7 @@
             Spenden und Sponsern &raquo;</a>.
         </p>
         <p style="font-weight:bold;padding:1em 0;">
-          Der Startversion von Radial-Search hat beauftragt:
+          Die Startversion von Radial-Search hat beauftragt:
         </p>
         <a href="http://www.made-in-nature.de/"
           alt="LEG-Thüringen, Deutschland, Auftraggeber"
@@ -246,14 +246,14 @@
             title="LEG-Thüringen, Deutschland, Auftraggeber" /></a>
         <p style="padding:0 0 1em 0;">
           M&ouml;chtest Du das TYPO3 Radial-Search-Projekt unterst&uuml;tzen?
-          <a href="http://typo3-radialsearch.de/sponsoring/"
+          <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
             style="text-decoration:underline;"
             alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
             target="_blank">
             Mehr Infos &raquo;</a>.
         </p>
-        <a href="http://typo3-radialsearch.de/sponsoring/"
+        <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
@@ -262,7 +262,7 @@
             height="90" 
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
         &nbsp;&nbsp;
-        <a href="http://typo3-radialsearch.de/sponsoring/"
+        <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
@@ -271,7 +271,7 @@
             height="90" 
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
         &nbsp;&nbsp;
-        <a href="http://typo3-radialsearch.de/sponsoring/"
+        <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
@@ -328,28 +328,14 @@
               target="_blank">Handbuch (PDF) &raquo;</a>
           </li>
           <li style="margin-bottom:.6em;">
-            <a href="http://typo3-radialsearch.de/en"
-              style="text-decoration:underline;"
-              alt="Radial Search - the Shopping Cart"
-              title="Radial Search - the Shopping Cart"
-              target="_blank">Homepage &raquo;</a>
-          </li>
-          <li style="margin-bottom:.6em;">
-            <a href="http://typo3-radialsearch.de/forum/" 
-              style="text-decoration:underline;"
-              alt="TYPO3 Radial-Search - Forum"
-              title="TYPO3 Radial-Search - Forum"
-              target="_blank">Forum &raquo;</a>
-          </li>
-          <li style="margin-bottom:.6em;">
-            <a href="http://typo3-radialsearch.de/support/" 
+            <a href="http://wildt.at.die-netzmaxcher.de/" 
               style="text-decoration:underline;"
               alt="TYPO3 Radial-Search - Support"
               title="TYPO3 Radial-Search - Support"
               target="_blank">Support &raquo;</a>
           </li>
           <li style="margin-bottom:.6em;">
-            <a href="http://typo3-radialsearch.de/sponsoring/" 
+            <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1" 
               style="text-decoration:underline;"
               alt="TYPO3 Radial-Search - Sponsoring"
               title="TYPO3 Radial-Search - Sponsoring"
