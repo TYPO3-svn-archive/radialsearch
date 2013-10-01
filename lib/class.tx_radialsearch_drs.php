@@ -96,7 +96,7 @@ class tx_radialsearch_drs
   */
   public function init( )
   {
-    $this->row  = $this->pObj->cObj->data;
+    $this->row = $this->pObj->cObj->data;
 
     $this->initByExtmngr( );
 
@@ -120,7 +120,7 @@ class tx_radialsearch_drs
   */
   private function initByExtmngr( )
   {
-
+var_dump( __METHOD__, __LINE__, $this->pObj->arr_extConf );
     switch( $this->pObj->arr_extConf['drs.enabled'] )
     {
       case( 'Disabled' ):
