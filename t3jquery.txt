@@ -1,1 +1,0 @@
-script=res/js/tx_radialsearch_pi1.js,res/js/tx_radialsearch_pi2.js
