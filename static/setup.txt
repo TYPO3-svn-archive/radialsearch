@@ -148,6 +148,11 @@ plugin.tx_radialsearch_pi1 {
   _HTMLMARKER {
       // [String] replace _HTMLMARKER_HTMLINPUTID
     htmlinputid = {$plugin.tx_radialserach_pi1.html.input.id}
+      // [String] replace _HTMLMARKER_HTMLINPUTID
+    htmlinputlabel = TEXT
+    htmlinputlabel {
+      data = LLL:EXT:radialsearch/pi1/locallang.xml:htmlinputlabel
+    }
   }
 }
   // plugin.tx_radialsearch_pi1
