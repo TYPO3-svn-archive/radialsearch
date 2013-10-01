@@ -594,8 +594,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
       die( __METHOD__ . ' (' . __LINE__ . '): Template is empty!' );
     }
 
-    $this->subpart['sword']     = $this->pObj->cObj->getSubpart( $template, '###SWORD###' );
-    $this->subpart['radiusbox'] = $this->pObj->cObj->getSubpart( $template, '###RADIUSBOX###' );
+    $this->subpart['sword']     = $this->cObj->getSubpart( $template, '###SWORD###' );
+    $this->subpart['radiusbox'] = $this->cObj->getSubpart( $template, '###RADIUSBOX###' );
 var_dump( $this->subpart );    
   }
 
