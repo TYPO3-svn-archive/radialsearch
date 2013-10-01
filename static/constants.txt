@@ -5,44 +5,51 @@ plugin.tx_radialserach_pi1 {
   # cat=Radial Search - autocomplete/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   autocomplete.external_linksBase = 0
 
-  # cat=Radial Search - css/enable/100;         type=string;     label= CSS default file: Path of the CSS file
+  # cat=Radial Search - css/enable/100;             type=string;     label= CSS default file: Path of the CSS file
   css.default.path               = EXT:radialsearch/res/css/tx_radialsearch_pi1.css
-  # cat=Radial Search - css/enable/101;         type=string;     label= CSS jQuery UI file: Path of the CSS file. Leave it empty, if you don't need the jQuery UI CSS.
+  # cat=Radial Search - css/enable/101;             type=string;     label= CSS jQuery UI file: Path of the CSS file. Leave it empty, if you don't need the jQuery UI CSS.
   css.jquery.path        = EXT:radialsearch/res/css/jQuery/smoothness/jquery-ui.css
-  # cat=Radial Search - html/others/999;        type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  # cat=Radial Search - html/others/999;            type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   css.external_linksBase = 0
 
-  # cat=Radial Search - Filter/enable/100;   type=string;     label= Country Code: ISO country code. For example: DE, GB, US. Leave it empty, if ZIP code of all countries should be available.
+  # cat=Radial Search - Filter/enable/100;          type=string;     label= Country Code: ISO country code. For example: DE, GB, US. Leave it empty, if ZIP code of all countries should be available.
   filter.country_code       = 
-  # cat=Radial Search - Filter/enable/101;   type=string;     label= State Code: Code of the 1. order subdivision (state). For example: TH. Leave it empty, if ZIP code of all subdivisions should be available.
+  # cat=Radial Search - Filter/enable/101;          type=string;     label= State Code: Code of the 1. order subdivision (state). For example: TH. Leave it empty, if ZIP code of all subdivisions should be available.
   filter.admin_code1        = 
-  # cat=Radial Search - Filter/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  # cat=Radial Search - Filter/others/999;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   filter.external_linksBase = 0
 
-  # cat=Radial Search - html/enable/100;        type=string;     label= Input ID: ID of the input field. Without any hash!
+  # cat=Radial Search - html/enable/100;            type=string;     label= Input ID: ID of the input field. Without any hash!
   html.input.id           = lookfromplace
-  # cat=Radial Search - html/enable/101;        type=string;     label= Template: Path of the HTML template file
+  # cat=Radial Search - html/enable/101;            type=string;     label= Template: Path of the HTML template file
   html.path               = EXT:radialsearch/res/html/tx_radialsearch_pi1.html
-  # cat=Radial Search - html/others/999;        type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  # cat=Radial Search - html/others/999;            type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   html.external_linksBase = 0
 
-  # cat=Radial Search - JavaScript/enable/101;  type=string;     label= Path: Path of the JavaScript snippet.
+  # cat=Radial Search - JavaScript/enable/101;      type=string;     label= Path: Path of the JavaScript snippet.
   javascript.path               = EXT:radialsearch/res/js/tx_radialsearch_pi1.js
-  # cat=Radial Search - JavaScript/enable/102;  type=boolean;    label= Place to footer: If enabled, the script will placed at the footer otherwise on the top.
+  # cat=Radial Search - JavaScript/enable/102;      type=boolean;    label= Place to footer: If enabled, the script will placed at the footer otherwise on the top.
   javascript.placeToFooter      = 1
-  # cat=Radial Search - JavaScript/enable/103;  type=boolean;    label= Inline: If enabled, the script will included inline. This is obligated, if the script contains marker, which should replaced at runtime.
+  # cat=Radial Search - JavaScript/enable/103;      type=boolean;    label= Inline: If enabled, the script will included inline. This is obligated, if the script contains marker, which should replaced at runtime.
   javascript.inline             = 1
-  # cat=Radial Search - JavaScript/others/999;  type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  # cat=Radial Search - JavaScript/others/999;      type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   javascript.external_linksBase = 0
 
-  # cat=Radial Search - search/enable/100;      type=options[place,zip,place and zip];     label= Mode: Search in the fields place or zip or place and zip. 
+  # cat=Radial Search - radiusbox/enable/100;      type=options[miles,km];    label= Unit: miles or kilometer
+  radiusbox.unit               = km
+  # cat=Radial Search - radiusbox/enable/101;      type=string;               label= Options: Comma separated values (CSV)
+  radiusbox.options            = 5, 10, 25, 50, 100
+  # cat=Radial Search - searchmode/others/999;      type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  radiusbox.external_linksBase = 0
+
+  # cat=Radial Search - searchmode/enable/100;      type=options[place,zip,place and zip];     label= Mode: Search in the fields place or zip or place and zip. 
   search.mode               = place and zip
-  # cat=Radial Search - search/others/999;      type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  # cat=Radial Search - searchmode/others/999;      type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   search.external_linksBase = 0
 
-  # cat=Radial Search - sql/enable/100;   type=+int;     label= Limit: Maximum amount of rows, which should returned by the database.
+  # cat=Radial Search - sql/enable/100;             type=+int;     label= Limit: Maximum amount of rows, which should returned by the database.
   sql.limit           = 12
-  # cat=Radial Search - sql/others/999;   type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  # cat=Radial Search - sql/others/999;             type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   sql.external_linksBase = 0
 
 }
