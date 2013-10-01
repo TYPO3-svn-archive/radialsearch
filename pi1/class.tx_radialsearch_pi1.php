@@ -124,6 +124,20 @@ class tx_radialsearch_pi1 extends tslib_pibase
     return $this->pi_wrapInBaseClass( $content );
   }
 
+ /**
+  * the main method of the PlugIn
+  *
+  * @param	string		$content: The PlugIn content
+  * @param	array		$conf: The PlugIn configuration
+  * @return	The		content that is displayed on the website
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  public function sword( $content, $conf )
+  {
+    return $this->main( $content, $conf );
+  }
+
 
 
   /***********************************************

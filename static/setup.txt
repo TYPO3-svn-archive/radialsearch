@@ -27,6 +27,7 @@ includeLibs {
   // plugin.tx_radialsearch_pi1
 
 plugin.tx_radialsearch_pi1 {
+  userFunc = tx_radialsearch_pi1->sword
     // Never remove this property!
   pluginCheck = dummy
     // Ressources: js
