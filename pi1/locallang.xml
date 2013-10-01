@@ -6,10 +6,10 @@
   </meta>
   <data type="array">
     <languageKey index="default" type="array">
-      <label index="XXX_htmlinputlabel">ZIP or city</label>
+      <label index="htmlinputlabel">ZIP or city</label>
     </languageKey>
     <languageKey index="de" type="array">
-      <label index="XXX_htmlinputlabel">PLZ oder Stadt</label>
+      <label index="htmlinputlabel">PLZ oder Stadt</label>
     </languageKey>
   </data>
 </T3locallang>
