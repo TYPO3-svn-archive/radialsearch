@@ -433,7 +433,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
     $this->subpart['sword']     = $this->cObj->getSubpart( $template, '###SWORD###' );
     $this->subpart['radiusbox'] = $this->cObj->getSubpart( $template, '###RADIUSBOX###' );
-var_dump( $this->subpart );    
   }
 
 
