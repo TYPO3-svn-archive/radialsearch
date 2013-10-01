@@ -44,7 +44,7 @@ plugin.tx_radialsearch_pi1 {
           html_input_id = {$plugin.tx_radialserach_pi1.html.input.id}
         }
           // [String] Path of the css file
-        path = {$plugin.tx_radialserach_pi1.css.path}
+        path = {$plugin.tx_radialserach_pi1.css.default.path}
       }
     }
       // HTML: tx_radialsearch_pi1
@@ -169,4 +169,15 @@ plugin.tx_radialsearch_pi2 {
 }
   // plugin.tx_radialsearch_pi2
 
-//page.includeJS.tx_radialsearch = typo3conf/ext/radialsearch/res/js/test.js
+
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // page
+
+page {
+  includeJS {
+    tx_radialsearch = {$plugin.tx_radialserach_pi1.css.default.path}
+  }
+}
+  // page
