@@ -186,7 +186,10 @@ plugin.tx_radialsearch_pi2 {
 }
   // plugin.tx_radialsearch_pi2
 
-
+plugin.tx_radialsearch_pi3 < plugin.tx_radialsearch_pi1
+plugin.tx_radialsearch_pi3 {
+  userFunc = tx_radialsearch_pi1->radiusbox
+}
 
   ///////////////////////////////////////////////////////////////
   //
