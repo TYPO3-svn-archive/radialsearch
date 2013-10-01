@@ -571,8 +571,22 @@ class tx_radialsearch_pi1 extends tslib_pibase
   */
   private function initTemplate( )
   {
-    $cObj     = $this->pObj->cObj;
-    $template = $cObj->fileResource( $this->conf['res.']['html.']['tx_radialsearch_pi1.'] );
+    $conf         = $this->conf['res.']['html.']['tx_radialsearch_pi1.'];
+    $path_tsConf  = 'res.html.tx_radialsearch_pi1';
+    $path         = $conf[ 'path' ];
+
+    $absPath = $this->getPathAbsolute( $conf, $path_tsConf );
+    if( $absPath == false )
+    {
+      if( $this->drs->drsError )
+      {
+        t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->extKey, 3 );
+      }
+      return false;
+    }
+
+    $template = file( $absPath );
+    $template = implode ( NULL, $template );
 
       // Die if there isn't any HTML template
     if( empty ( $template ) )
