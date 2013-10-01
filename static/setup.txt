@@ -177,7 +177,7 @@ plugin.tx_radialsearch_pi2 {
   // page
 
 page {
-  includeJS {
+  includeCSS {
     tx_radialsearch_jqueryUi = {$plugin.tx_radialserach_pi1.css.jquery.path}
   }
 }
