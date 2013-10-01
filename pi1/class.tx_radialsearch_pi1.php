@@ -588,6 +588,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $template = file( $absPath );
     $template = implode ( NULL, $template );
 
+    $template = $this->cObj->fileResource( $path );
       // Die if there isn't any HTML template
     if( empty ( $template ) )
     {
