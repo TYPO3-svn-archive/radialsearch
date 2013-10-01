@@ -421,7 +421,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
       $options[] = str_replace( $search, $replace, $template );
     }
     
-    $strOption = implode( PHP_EOL, $options );
+    $strOption = implode( null, $options );
 
     $content = $this->cObj->substituteSubpart( $content, '###OPTION###', $strOption ) ;
     return $content;
