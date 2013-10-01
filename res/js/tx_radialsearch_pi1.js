@@ -25,8 +25,7 @@
           }
           , dataType  : "jsonp"
           , success   : function( data ) {
-            alert( typeof data[ "places2" ] );
-            if( ( typeof data[ "places" ] == "object" ) )
+            if( ( typeof data[ "places" ] !== "undefined" ) )
             {
               response( $.map( data.places, function( item ) {
                 return {
@@ -37,23 +36,7 @@
               }));
               return;
             }
-            if( ( typeof data[ "geonames" ] == "object" ) )
-            {
-              response( $.map( data.geonames, function( item ) {
-                return {
-                  label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                  value: item.name
-                }
-              }));
-              return;
-            }
-            if( ( typeof data[ "_GET" ] == "object" ) )
-            {
-              $( "###HTML_INPUT_ID###" ).removeClass( "ui-autocomplete-loading" );
-              alert( "Server prompts: " + data[ "_GET" ]["andWhere"]["country_code"] );
-              return;
-            }
-            alert( "Sorry, the server returns an undefined result." );
+            alert( "Sorry, the server didn't return the object \"places\"." );
           }
           , error : function( req, error ) {
             alert( "Request failed: " + error );
