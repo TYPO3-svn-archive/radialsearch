@@ -28,7 +28,7 @@
 * @author    Dirk Wildt <http://wildt.at.die-netzmacher.de>
 * @package    TYPO3
 * @subpackage    org
-* @version 2.2.0
+* @version 0.0.1
 * @since 0.3.1
 */
 
@@ -54,12 +54,159 @@ class tx_radialsearch_em
     // [INTEGER] TYPO3 version. Sample: 4.7.7 -> 4007007
   var $typo3Version = null;
 
+/**
+ * databaseInfo():
+ *
+ * @return	string		message wrapped in HTML
+ * @access public
+ * @version 0.0.1
+ * @since 0.0.1
+ */
+  public function databaseInfo( )
+  {
+//.message-notice
+//.message-information
+//.message-ok
+//.message-warning
+//.message-error
+
+    $select_fields  = 'country_code AS country, count( country_code ) AS records';
+    $from_table     = 'tx_radialsearch_postalcodes';
+    $groupBy        = 'country_code';
+    $orderBy        = 'country_code';
+    $limit          = null;
+    $where_clause   = null;
+    
+    $query  = $GLOBALS['TYPO3_DB']->SELECTquery(      $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+    $res    = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
+    $error  = $GLOBALS['TYPO3_DB']->sql_error( );
+    
+      // RETURN : error in SQL query
+    if( $error )
+    {
+      $str_prompt = '
+        <div class="typo3-message message-error">
+          <div class="message-body">
+            <p>
+              ERROR: ' . $error . '
+            </p>
+            <p>
+              Query: ' . $query . '
+            </p>
+          </div>
+        </div>
+        ';
+      return $error;
+    }
+      // RETURN : error in SQL query
+    
+    $rows = array( );
+    while( $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc( $res ) )
+    {
+      $rows[ ] = '<li>' . $row[ 'country' ] . ' #' . $row[ 'records' ] . '</li>'; 
+    }
+
+    if( empty( $rows[ ] ) )
+    {
+      $str_prompt = '
+        <div class="typo3-message message-warning">
+          <div class="message-body">
+            ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
+          </div>
+        </div>
+        <div class="typo3-message message-information">
+          <div class="message-body">
+            ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
+          </div>
+        </div>
+        ';
+      return $str_prompt;
+    }
+    
+    $str_prompt = '
+      <div class="typo3-message message-ok">
+        <div class="message-body">
+          ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
+          <ul>
+            ' . implode( null, $rows ) . '
+          </ul>
+        </div>
+      </div>
+      <div class="typo3-message message-information">
+        <div class="message-body">
+          ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
+        </div>
+      </div>
+      ';
+    return $str_prompt;
+
+  }
+
+/**
+ * databaseSelectbox( ):
+ *
+ * @return	string		message wrapped in HTML
+ * @access public
+ * @version 0.0.1
+ * @since 0.0.1
+ */
+  public function databaseSelectbox( )
+  {
+//.message-notice
+//.message-information
+//.message-ok
+//.message-warning
+//.message-error
+
+    $str_prompt = '
+      <div class="typo3-message message-warning">
+        <div class="message-body">
+          <select name="tx_radialsearch_pi1[radius]" id="tx_radialsearch_pi1_radius" size="1">
+            <option value="5">5 km</option>
+            <option value="10">10 km</option>
+            <option value="25">25 km</option>
+            <option value="50" selected="selected">50 km</option>
+            <option value="100">100 km</option>
+          </select>
+        </div>
+      </div>
+      <div class="typo3-message message-information">
+        <div class="message-body">
+          ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
+        </div>
+      </div>
+      ';
+    return $str_prompt;
+  }
 
 
 
+  /**
+ * promptExternalLinks(): Displays the quick start message.
+ *
+ * @return	string		message wrapped in HTML
+ * @since 0.3.1
+ * @version 0.3.1
+ */
+  function promptExternalLinks()
+  {
+//.message-notice
+//.message-information
+//.message-ok
+//.message-warning
+//.message-error
 
+      $str_prompt = null;
 
+      $str_prompt = $str_prompt.'
+<div class="message-body">
+  ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptExternalLinksBody'). '
+</div>';
 
+    return $str_prompt;
+  }
+
+  
 
   /**
  * promptQuickstart(): Displays the quick start message.
@@ -96,45 +243,12 @@ class tx_radialsearch_em
 
 
 
-
-
-
-
-
-
-  /**
- * promptExternalLinks(): Displays the quick start message.
- *
- * @return	string		message wrapped in HTML
- * @since 0.3.1
- * @version 0.3.1
- */
-  function promptExternalLinks()
-  {
-//.message-notice
-//.message-information
-//.message-ok
-//.message-warning
-//.message-error
-
-      $str_prompt = null;
-
-      $str_prompt = $str_prompt.'
-<div class="message-body">
-  ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptExternalLinksBody'). '
-</div>';
-
-    return $str_prompt;
-  }
-
-
-
 /**
  * promptVersionPrompt():
  *
  * @return	string		message wrapped in HTML
- * @version 2.2.0
- * @since 2.2.0
+ * @version 0.0.1
+ * @since 0.0.1
  */
   function promptVersionPrompt( )
   {
@@ -196,8 +310,8 @@ class tx_radialsearch_em
  * set_typo3Version():
  *
  * @return	void
- * @version 2.2.0
- * @since 2.2.0
+ * @version 0.0.1
+ * @since 0.0.1
  */
   private function set_typo3Version( )
   {
