@@ -25,7 +25,7 @@
           }
           , dataType  : "jsonp"
           , success   : function( data ) {
-            if( ( typeof data[ "places" ] !== "undefined2" ) )
+            if( ( typeof data[ "places" ] == "undefined" ) )
             {
               response( $.map( data.places, function( item ) {
                 return {
