@@ -152,6 +152,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     require_once( $path2lib . 'class.tx_radialsearch_drs.php' );
     $this->drs = t3lib_div::makeInstance( 'tx_radialsearch_drs' );
     $this->drs->setParentObject( $this );
+    $this->drs->init( );
   }
 
  /**
