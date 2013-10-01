@@ -71,7 +71,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   public $prefixId      = 'tx_radialsearch_pi1_eid';
   public $scriptRelPath = 'pi1/class.tx_radialsearch_pi1_eid.php';
 
-  private $arr_extConf = null;
+  public $arr_extConf = null;
   
   
   
