@@ -163,7 +163,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $andWhereElements = array( );
     foreach( ( array ) $sql[ 'andWhere' ] as $key => $value )
     {
-      if( $value == '"*"')
+      if( $value == '*')
       {
         continue;
       }
