@@ -272,7 +272,6 @@ var_dump( __METHOD__, __LINE__ );
       // RETURN : No DRS
 
       // DRS
-    $query  = $GLOBALS['TYPO3_DB']->SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     t3lib_div::devlog( '[ERROR/SQL] ' . $query, $this->extKey, 3 );
       // DRS
 

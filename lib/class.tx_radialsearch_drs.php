@@ -145,11 +145,14 @@ class tx_radialsearch_drs
     t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0 );
     $prompt = 'The DRS is enabled by the extension manager.';
     t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0 );
-    $str_header = $this->row['header'];
-    $int_uid    = $this->row['uid'];
-    $int_pid    = $this->row['pid'];
-    $prompt = '"' . $str_header . '" (pid: ' . $int_pid . ', uid: ' . $int_uid . ')';
-    t3lib_div :: devlog('[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0);
+    if( is_array ( $this->row ) )
+    {
+      $str_header = $this->row['header'];
+      $int_uid    = $this->row['uid'];
+      $int_pid    = $this->row['pid'];
+      $prompt = '"' . $str_header . '" (pid: ' . $int_pid . ', uid: ' . $int_uid . ')';
+      t3lib_div :: devlog('[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0);
+    }
       // DRS
   }
 
