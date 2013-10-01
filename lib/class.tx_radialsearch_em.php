@@ -106,7 +106,7 @@ class tx_radialsearch_em
       $rows[ ] = '<li>' . $row[ 'country' ] . ' #' . $row[ 'records' ] . '</li>'; 
     }
 
-    if( empty( $rows[ ] ) )
+    if( empty( $rows ) )
     {
       $str_prompt = '
         <div class="typo3-message message-warning">
