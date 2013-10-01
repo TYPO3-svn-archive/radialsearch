@@ -85,6 +85,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
     // [Array] template subparts
   public  $subparts       = null;
+    // [String] sword || radiusbox
+  private $userfunc       = null;
 
 
 
@@ -120,8 +122,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $this->css( );
 
     $content  = $this->html( );
-
-    return $this->pi_wrapInBaseClass( $content );
+    return $content;
   }
 
  /**
@@ -135,6 +136,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
   */
   public function sword( $content, $conf )
   {
+    $this->userfunc = 'sword';
     return $this->main( $content, $conf );
   }
 
@@ -149,7 +151,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
   */
   public function radiusbox( $content, $conf )
   {
-    return 'Welcome at Radiusbox' . PHP_EOL;
+    $this->userfunc = 'radiusbox';
+    return $this->main( $content, $conf );
   }
 
 
@@ -324,38 +327,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
   **********************************************/
 
  /**
-  * html( )
-  *
-  * @return	The		content that is displayed on the website
-  * @access     private
-  * @version    0.0.1
-  * @since      0.0.1
-  */
-  private function XXhtml( )
-  {
-    $content = '
-<div class="ui-widget">
-  <label for="city">Your city: </label>
-  <input id="city" />
-  Powered by <a href="http://geonames.org">geonames.org</a>
-</div>
-<div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
-  Result:
-  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
-</div>
-';
-    return $content;
-  }
-
-
-
-  /***********************************************
-  *
-  * HTML
-  *
-  **********************************************/
-
- /**
   * html( )  :
   *
   * @return	The		content that is displayed on the website
@@ -365,8 +336,57 @@ class tx_radialsearch_pi1 extends tslib_pibase
   */
   private function html( )
   {
+    $content = $this->htmlRadiusbox( );
+    if( $content )
+    {
+      $content = $this->dynamicMarkers->main( $content ); 
+      $content = $this->pi_wrapInBaseClass( $content );    
+      return $content;
+    }
+      
+    $content = $this->htmlSword( );
+    if( $content )
+    {
+      $content = $this->dynamicMarkers->main( $content ); 
+      $content = $this->pi_wrapInBaseClass( $content );    
+      return $content;
+    }
+      
+  }
+
+ /**
+  * html( )  :
+  *
+  * @return	The		content that is displayed on the website
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function htmlRadiusbox( )
+  {
+    if( $this->userfunc != 'radiusbox' )
+    {
+      return null;
+    }
+    $content = $this->subpart['radiusbox'];
+    return $content;
+  }
+
+ /**
+  * html( )  :
+  *
+  * @return	The		content that is displayed on the website
+  * @access     private
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  private function htmlSword( )
+  {
+    if( $this->userfunc != 'sword' )
+    {
+      return null;
+    }
     $content = $this->subpart['sword'];
-    $content = $this->dynamicMarkers->main( $content ); 
     return $content;
   }
 
