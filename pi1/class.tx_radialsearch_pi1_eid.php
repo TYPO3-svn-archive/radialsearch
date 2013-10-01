@@ -257,6 +257,7 @@ var_dump( __METHOD__, __LINE__, $rows );
       // RETURN : no error
     if( $res )
     {
+var_dump( __METHOD__, __LINE__ );
       return false;
     }
       // RETURN : no error
@@ -264,6 +265,7 @@ var_dump( __METHOD__, __LINE__, $rows );
       // RETURN : No DRS
     if( ! $this->drs->drsError )
     {
+var_dump( __METHOD__, __LINE__ );
       return true;
     }
       // RETURN : No DRS
@@ -272,6 +274,8 @@ var_dump( __METHOD__, __LINE__, $rows );
     $query  = $GLOBALS['TYPO3_DB']->SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     t3lib_div::devlog( '[ERROR/SQL] ' . $query, $this->extKey, 3 );
       // DRS
+
+var_dump( __METHOD__, __LINE__ );
 
     return true;
   }
