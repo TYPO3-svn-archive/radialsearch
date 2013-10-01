@@ -3,6 +3,9 @@
    */
 
   $(function() {
+    function log( message ) {
+      $( "###HTML_INPUT_ID###" ).text( message ).prependTo( "#log" );
+    }
     $( "###HTML_INPUT_ID###" ).autocomplete({
       source: function( request, response ) {
         $.ajax({
@@ -56,11 +59,11 @@
         });
       }
       , minLength: "###MINLENGTH###"
-      , select: function( event, ui ) {
-        lookfromplace( ui.item ?
-          "Selected: " + ui.item.label :
-          "Nothing selected, input was " + this.value);
-      }
+//      , select: function( event, ui ) {
+//        log( ui.item ?
+//          "Selected: " + ui.item.label :
+//          "Nothing selected, input was " + this.value);
+//      }
       , open: function() {
         $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
       }
