@@ -153,10 +153,13 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     
       // Get sword and limit
     $sword    = $sql[ 'sword' ];
+    $zip      = $sword;
+    $place    = $sword;
+    
     $limit    = $sql[ 'limit' ];
 
       // Build the WHERE statement
-    $where          = '( postal_code LIKE "%' . $sword . '%" OR place_name LIKE "%' . $sword . '%" )';
+    $where          = '( postal_code LIKE "%' . $zip . '%" OR place_name LIKE "%' . $place . '%" )';
     $andWhereElements = array( );
     foreach( ( array ) $sql[ 'andWhere' ] as $key => $value )
     {
