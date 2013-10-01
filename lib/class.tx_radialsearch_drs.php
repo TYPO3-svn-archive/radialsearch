@@ -120,7 +120,6 @@ class tx_radialsearch_drs
   */
   private function initByExtmngr( )
   {
-var_dump( __METHOD__, __LINE__, $this->pObj->arr_extConf );
     switch( $this->pObj->arr_extConf['drs.']['enabled'] )
     {
       case( 'Disabled' ):
@@ -138,8 +137,10 @@ var_dump( __METHOD__, __LINE__, $this->pObj->arr_extConf );
         die( $prompt );
     }
 
+      // Set prompt flags
     $this->zzDrsPromptsTrue( );
 
+      // DRS
     $prompt = 'The DRS - Development Reporting System is enabled: ' . $this->pObj->arr_extConf['drs.']['enabled'];
     t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0 );
     $prompt = 'The DRS is enabled by the extension manager.';
@@ -149,6 +150,7 @@ var_dump( __METHOD__, __LINE__, $this->pObj->arr_extConf );
     $int_pid    = $this->row['pid'];
     $prompt = '"' . $str_header . '" (pid: ' . $int_pid . ', uid: ' . $int_uid . ')';
     t3lib_div :: devlog('[INFO/DRS] ' . $prompt, $this->pObj->extKey, 0);
+      // DRS
   }
 
  /**

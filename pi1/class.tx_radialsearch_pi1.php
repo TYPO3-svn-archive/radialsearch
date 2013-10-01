@@ -107,9 +107,6 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $this->pi_loadLL();
       // Init extension configuration array
     $this->arr_extConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey] );
-var_dump( __METHOD__, __LINE__, $this->arr_extConf );
-      // 130227, dwildt, 1-
-    //$this->pi_USER_INT_obj = 1;
 
       // Init DRS, flexform, gpvars, HTML template, service attributes
     $this->init( );
