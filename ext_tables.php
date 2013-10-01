@@ -189,6 +189,15 @@ t3lib_extMgm::addPlugin(array(
   t3lib_extMgm::extRelPath( $_EXTKEY ) . 'ext_icon.gif'
 ),'list_type');
 t3lib_extMgm::addPiFlexFormValue( $_EXTKEY . '_pi2', 'FILE:EXT:' . $_EXTKEY . '/pi2/flexform.xml' ); 
+
+$TCA['tt_content']['types']['list']['subtypes_excludelist'][ $_EXTKEY . '_pi3' ]  = 'layout,select_key,recursive,pages';
+$TCA['tt_content']['types']['list']['subtypes_addlist'][ $_EXTKEY . '_pi3' ]      = 'pi_flexform';
+t3lib_extMgm::addPlugin(array(
+  'LLL:EXT:radialsearch/locallang_db.xml:pi1',
+  $_EXTKEY . '_pi3',
+  t3lib_extMgm::extRelPath( $_EXTKEY ) . 'ext_icon.gif'
+),'list_type');
+t3lib_extMgm::addPiFlexFormValue( $_EXTKEY . '_pi3', 'FILE:EXT:' . $_EXTKEY . '/pi1/flexform.xml' ); 
   // Plugin Configuration
 
 
