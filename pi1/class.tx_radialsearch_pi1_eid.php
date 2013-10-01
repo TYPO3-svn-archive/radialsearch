@@ -215,9 +215,9 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $query  = $GLOBALS['TYPO3_DB']->SELECTquery(      $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     $res    = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     
-var_dump( __METHOD__, __LINE__, $res, $query );
+var_dump( __METHOD__, __LINE__, $query );
       // RETURN : error in SQL query
-    if( $this->sqlError( $res, $query ) )
+    if( $this->sqlError( $query ) )
     {
       return false;
     }
@@ -253,10 +253,12 @@ var_dump( __METHOD__, __LINE__, $rows );
   * @version    0.0.1
   * @since      0.0.1
   */
-  private function sqlError( $res, $query )
+  private function sqlError( $query )
   {
+    $error  = $GLOBALS['TYPO3_DB']->sql_error( );
+    
       // RETURN : no error
-    if( $res )
+    if( ! $error )
     {
 var_dump( __METHOD__, __LINE__ );
       return false;
@@ -273,6 +275,7 @@ var_dump( __METHOD__, __LINE__ );
 
       // DRS
     t3lib_div::devlog( '[ERROR/SQL] ' . $query, $this->extKey, 3 );
+    t3lib_div::devlog( '[ERROR/SQL] ' . $error, $this->extKey, 3 );
       // DRS
 
 var_dump( __METHOD__, __LINE__ );
