@@ -25,7 +25,7 @@
           }
           , dataType  : "jsonp"
           , success   : function( data ) {
-            if( ( typeof data[ "places" ] == "object" ) && ( data[ "places" ] !== null ))
+            if( ( typeof data[ "places" ] == "object" ) )
             {
               response( $.map( data.places, function( item ) {
                 return {
@@ -36,7 +36,7 @@
               }));
               return;
             }
-            if( ( typeof data[ "geonames" ] == "object" ) && ( data[ "geonames" ] !== null ))
+            if( ( typeof data[ "geonames" ] == "object" ) )
             {
               response( $.map( data.geonames, function( item ) {
                 return {
@@ -46,7 +46,7 @@
               }));
               return;
             }
-            if( ( typeof data[ "_GET" ] == "object" ) && ( data[ "_GET" ] !== null ) )
+            if( ( typeof data[ "_GET" ] == "object" ) )
             {
               $( "###HTML_INPUT_ID###" ).removeClass( "ui-autocomplete-loading" );
               alert( "Server prompts: " + data[ "_GET" ]["andWhere"]["country_code"] );
