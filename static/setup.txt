@@ -152,7 +152,7 @@ plugin.tx_radialsearch_pi1 {
       // [String] miles || km. Important for calculating.
     unit    = {$plugin.tx_radialserach_pi1.radiusbox.unit} 
   }
-    // [Array] htmlinputid, htmlinputlabel, htmlinputvalue
+    // htmlinputid, htmlinputlabel, htmlinputvalue
   _HTMLMARKER =
   _HTMLMARKER {
       // [String] replace _HTMLMARKER_HTMLINPUTID

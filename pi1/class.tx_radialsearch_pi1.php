@@ -70,15 +70,21 @@ class tx_radialsearch_pi1 extends tslib_pibase
   public $prefixId      = 'tx_radialsearch_pi1';
   public $scriptRelPath = 'pi1/class.tx_radialsearch_pi1.php';
 
+    // [Object]
+  private $dynamicMarkers = null;
+    // [Object]
+  private $drs            = null;
+    // [Object]
+  private $flexform       = null;
+    // [Object]
+  private $jss            = null;
 
-  private $dynamicMarkers   = null;
-  public  $drs              = null;
-  public  $flexform         = null;
+  public  $local_cObj     = null;
+  public  $conf           = null;
+  public  $arr_extConf    = null;
 
-  public  $local_cObj       = null;
-  public  $conf             = null;
-  public  $arr_extConf      = null;
-  public  $tmpl             = null;
+    // [Array] template subparts
+  public  $subparts       = null;
 
 
 
@@ -509,6 +515,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $this->initInstances( );
     $this->drs->init( );
     $this->initFlexform( );
+    $this->initTemplate( );
   }
 
  /**
@@ -564,6 +571,17 @@ class tx_radialsearch_pi1 extends tslib_pibase
   */
   private function initTemplate( )
   {
+    $template = $this->local_cObj->fileResource( $this->conf['res.']['html.']['tx_radialsearch_pi1.'] );
+
+      // Die if there isn't any HTML template
+    if( empty ( $template ) )
+    {
+      die( __METHOD__ . ' (' . __LINE__ . '): Template is empty!' );
+    }
+
+    $this->subpart['sword']     = $this->local_cObj->getSubpart( $template, '###SWORD###' );
+    $this->subpart['radiusbox'] = $this->local_cObj->getSubpart( $template, '###RADIUSBOX###' );
+var_dump( $this->subpart );    
   }
 
 
