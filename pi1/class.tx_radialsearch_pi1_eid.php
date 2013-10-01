@@ -67,9 +67,9 @@ require_once( PATH_tslib . 'class.tslib_pibase.php' );
  */
 class tx_radialsearch_pi1_eid extends tslib_pibase {
   
-  private $extKey        = 'radialsearch';
-  private $prefixId      = 'tx_radialsearch_pi1_eid';
-  private $scriptRelPath = 'pi1/class.tx_radialsearch_pi1_eid.php';
+  public $extKey        = 'radialsearch';
+  public $prefixId      = 'tx_radialsearch_pi1_eid';
+  public $scriptRelPath = 'pi1/class.tx_radialsearch_pi1_eid.php';
 
   private $extConf = null;
   
