@@ -246,6 +246,7 @@ class tx_radialsearch_pi2 extends tslib_pibase
   private function initInstances( )
   {
     $path2lib = t3lib_extMgm::extPath( 'radialsearch' ) . 'lib/';
+    $path2pi1 = t3lib_extMgm::extPath( 'radialsearch' ) . 'pi1/';
 
     require_once( $path2lib . 'class.tx_radialsearch_drs.php' );
     $this->drs            = t3lib_div::makeInstance( 'tx_radialsearch_drs' );
@@ -253,8 +254,8 @@ class tx_radialsearch_pi2 extends tslib_pibase
     require_once( $path2lib . 'class.tx_radialsearch_dynamicmarkers.php' );
     $this->dynamicMarkers = t3lib_div::makeInstance( 'tx_radialsearch_dynamicmarkers' );
 
-    require_once( 'class.tx_radialsearch_pi2_flexform.php' );
-    $this->flexform       = t3lib_div::makeInstance( 'tx_radialsearch_pi2_flexform' );
+    require_once( $path2pi1 . 'class.tx_radialsearch_pi1_flexform.php' );
+    $this->flexform       = t3lib_div::makeInstance( 'tx_radialsearch_pi1_flexform' );
 
     $this->dynamicMarkers->setParentObject( $this );
     $this->flexform->setParentObject( $this );
