@@ -144,7 +144,7 @@ plugin.tx_radialsearch_pi1 {
       }
     }
   }
-    // [Array] options, unit
+    // [Array] Selectbox for the radius: options, unit
   radiusbox =
   radiusbox {
       // [String/CSV] Comma separated values (CSV) for the options of the selectbox. Example: 5,10,25,50,100
