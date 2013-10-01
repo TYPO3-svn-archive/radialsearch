@@ -7,79 +7,137 @@
   <data type="array">
     <languageKey index="default" type="array">
       <label index="promptExternalLinksBody"><![CDATA[
-        <div style="float:right;padding-left:1em;">
-          <a href="http://die-netzmacher.de/" 
-            alt="Die Netzmacher - Internet ist Handwerk"
-            title="Die Netzmacher - Internet ist Handwerk"
+        <h1 style="text-align:left;">
+          Contracting, Donating and Sponsoring
+        </h1>
+        <div style="float:left;padding-right:1em;">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/dirk_wildt_30x30.gif"
+            width="30"
+            height="30"
+            title="Please support my job!" />        
+        </div>
+        <p>
+          Please donate to Radial Search, sponsor it or contract new features!<br />
+          Dirk Wildt<br />
+          <a href="http://typo3-radialsearch.de/en/sponsoring/"
+            style="text-decoration:underline;"
+            alt="Donating and Sponsoring"
+            title="Donating and Sponsoring"
             target="_blank">
-            <img src="../../../../typo3conf/ext/radialsearch/lib/icons/die-netzmacher.de_200px.gif" 
-              width="200" 
-              height="80" 
-              alt="Die Netzmacher - Internet ist Handwerk" /></a>
-        </div>
-        <ul style="list-style:outside;">
-          <li>
-            Organiser website<br />
-            <a href="http://typo3-organiser.de/" 
-              style="text-decoration:underline;"
-              alt="TYPO3-Organiser - news, events, staff, tickets online"
-              title="TYPO3-Organiser - news, events, staff, tickets online"
-              target="_blank">typo3-organiser.de</a>
-          </li>
-          <li>
-            Organiser forum<br />
-            <a href="http://typo3-organiser.de/forum/" 
-              style="text-decoration:underline;"
-              alt="TYPO3-Organiser - Forum"
-              title="TYPO3-Organiser - Forum"
-              target="_blank">typo3-organiser.de/forum</a>
-          </li>
-          <li>
-            Organiser developer<br />
-            <a href="http://die-netzmacher.de/" 
-              style="text-decoration:underline;"
-              alt="Die Netzmacher - Internet ist Handwerk"
-              title="Die Netzmacher - Internet ist Handwerk"
-              target="_blank">die-netzmacher.de</a>
-          </li>
-        </ul>
-        </div>
-        <p style="font-weight:bold;padding:1em 0;">
-          Organiser is sponsored by:
+            Donating and Sponsoring &raquo;</a>.
         </p>
+        <p style="font-weight:bold;padding:1em 0;">
+          The initial release is contracted by:
+        </p>
+        <a href="http://leg-thueringen.de/"
+          alt="LEG-Thüringen, Germany, contractor of Radial Search"
+          title="LEG-Thüringen, Germany, contractor of Radial Search"
+          target="_blank">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/leg-thueringen.de_120x90.gif"
+            width="120"
+            height="90"
+            alt="LEG-Thüringen, Germany, contractor of Radial Search" /></a>
         <p style="padding:0 0 1em 0;">
-          You like to subsidise the TYPO3 Organiser?
-          <a href="http://typo3-organiser.de/sponsoring/" 
+          You like to subsidise the TYPO3 Radial-Search project?
+          <a href="http://typo3-radialsearch.de/en/sponsoring/"
             style="text-decoration:underline;"
             alt="Your logo with your URL. 120 x 90 pixel."
             title="Your logo with your URL. 120 x 90 pixel."
             target="_blank">
-            Further information</a>.
+            Further information &raquo;</a>.
         </p>
-        <a href="http://typo3-organiser.de/sponsoring/" 
+        <a href="http://typo3-radialsearch.de/en/sponsoring/"
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
           <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-blue.gif" 
             width="120" 
             height="90" 
-            alt="Your logo with your URL. 120 x 90 pixel." /></a>
-        <a href="http://typo3-organiser.de/sponsoring/" 
+            title="Your logo with your URL. 120 x 90 pixel." /></a>
+        &nbsp;&nbsp;
+        <a href="http://typo3-radialsearch.de/en/sponsoring/"
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
           <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
             width="120" 
             height="90" 
-            alt="Your logo with your URL. 120 x 90 pixel." /></a>
-        <a href="http://typo3-organiser.de/sponsoring/" 
+            title="Your logo with your URL. 120 x 90 pixel." /></a>
+        &nbsp;&nbsp;
+        <a href="http://typo3-radialsearch.de/en/sponsoring/"
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
           <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
             width="120" 
             height="90" 
-            alt="Your logo with your URL. 120 x 90 pixel." /></a>
+            title="Your logo with your URL. 120 x 90 pixel." /></a>
+        <div style="float:right;padding-left:1em;">
+          <a href="http://typo3-radialsearch.de/en/" th
+            alt="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
+            title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
+            target="_blank">
+            <img src="../../../../typo3conf/ext/radialsearch/lib/icons/radialsearch_80x80.gif"
+              width="80" 
+              height="80" 
+              title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)" /></a>
+          <a href="http://wildt.at.die-netzmacher.de/" 
+            alt="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
+            title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
+            target="_blank">
+            <img src="../../../../typo3conf/ext/radialsearch/lib/icons/die-netzmacher-logo-quadrat.png"
+              width="80" 
+              height="80" 
+              title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)" /></a>
+        </div>
+        <h1 style="text-align:left;">
+          Helpful Links
+        </h1>
+        <h2 style="font-size: 1em;margin: 1em 0 0.4em;text-align: left;">
+          Radial Search
+        </h2>
+        <ul style="list-style:outside;margin-left:2em;">
+          <li style="margin-bottom:.6em;">
+            <a href="http://typo3.org/extension-manuals/radialsearch/"
+              style="text-decoration:underline;"
+              alt="Radial Search - online manual"
+              title="Radial Search - online manual"
+              target="_blank">Manual (HTML) &raquo;</a>
+          </li>
+          <li style="margin-bottom:.6em;">
+            <a href="../../../../typo3conf/ext/radialsearch/doc/manual.pdf"
+              style="text-decoration:underline;"
+              alt="Radial Search - PDF manual"
+              title="Radial Search - PDF manual"
+              target="_blank">Manual (PDF) &raquo;</a>
+          </li>
+          <li style="margin-bottom:.6em;">
+            <a href="http://typo3-radialsearch.de/en/support"
+              style="text-decoration:underline;"
+              alt="Radial Search - the Shopping Cart"
+              title="Radial Search - the Shopping Cart"
+              target="_blank">Support &raquo;</a>
+          </li>
+          <li style="margin-bottom:.6em;">
+            <a href="http://typo3-radialsearch.de/en/sponsoring"
+              style="text-decoration:underline;"
+              alt="Radial Search - the Shopping Cart"
+              title="Radial Search - the Shopping Cart"
+                target="_blank">Sponsoring &raquo;</a>
+          </li>
+        </ul>
+        <h2 style="font-size: 1em;margin: 1em 0 0.4em;text-align: left;">
+          Developer
+        </h2>
+        <ul style="list-style:outside;margin-left:2em;">
+          <li style="margin-bottom:.6em;">
+            <a href="http://wildt.at.die-netzmacher.de/" 
+              style="text-decoration:underline;"
+              alt="Dirk Wildt (Die Netzmacher) - the developer of TYPO3 Radial-Search."
+              title="Dirk Wildt (Die Netzmacher) - the developer of TYPO3 Radial-Search."
+              target="_blank">Dirk Wildt (Die Netzmacher) &raquo;</a>
+          </li>
+        </ul>
       ]]></label>
       <label index="promptGeneralInfo"><![CDATA[
         All alignments in the extension manager effect the TYPO3 backend only.
