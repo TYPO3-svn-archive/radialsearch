@@ -87,7 +87,21 @@ class tx_radialsearch_pi3 extends tslib_pibase
 
   public function main( $content, $conf )
   {
-    $content = $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/locallang_db.xml:pi3prompt') . '
+    $content = '
+<p>
+  This is a smaple ready to use:
+</p>
+<ul>
+  <li>
+    It is similar to http://jqueryui.com/autocomplete/#remote-jsonp
+  </li>
+  <li>
+    Request is answered by geonames.org
+  </li>
+  <li>
+    This sample should demonstrate, if the radial seaech is proper in priciple on your server.
+  </li>
+</ul>
  <style>
   .ui-autocomplete-loading {
     background: white url(\'typo3conf/ext/radialsearch/lib/icons/ajax-loader.gif\') right center no-repeat;
