@@ -163,25 +163,6 @@
           </li>
         </ul>
         <h2 style="font-size: 1em;margin: 1em 0 0.4em;text-align: left;">
-          One-Click-Installer
-        </h2>
-        <ul style="list-style:outside;margin-left:2em;">
-          <li style="margin-bottom:.6em;">
-            <a href="http://typo3-organiser.de/en/one-click/" 
-              style="text-decoration:underline;"
-              alt="TYPO3 Organiser Installer"
-              title="TYPO3 Organiser Installer"
-              target="_blank">Organiser &raquo;</a>
-          </li>
-          <li style="margin-bottom:.6em;">
-            <a href="http://typo3-quick-shop.de/en/one-click/" 
-              style="text-decoration:underline;"
-              alt="TYPO3 Quick Shop Installer"
-              title="TYPO3 Quick Shop Installer"
-              target="_blank">Quick Shop &raquo;</a>
-          </li>
-        </ul>
-        <h2 style="font-size: 1em;margin: 1em 0 0.4em;text-align: left;">
           Developer
         </h2>
         <ul style="list-style:outside;margin-left:2em;">
@@ -340,25 +321,6 @@
               alt="TYPO3 Radial-Search - Sponsoring"
               title="TYPO3 Radial-Search - Sponsoring"
               target="_blank">Sponsoring &raquo;</a>
-          </li>
-        </ul>
-        <h2 style="font-size: 1em;margin: 1em 0 0.4em;text-align: left;">
-          Ein-Klick-Installer
-        </h2>
-        <ul style="list-style:outside;margin-left:2em;">
-          <li style="margin-bottom:.6em;">
-            <a href="http://typo3-organiser.de/en/one-click/" 
-              style="text-decoration:underline;"
-              alt="TYPO3 Organiser Installer"
-              title="TYPO3 Organiser Installer"
-              target="_blank">Organiser &raquo;</a>
-          </li>
-          <li style="margin-bottom:.6em;">
-            <a href="http://typo3-quick-shop.de/en/one-click/" 
-              style="text-decoration:underline;"
-              alt="TYPO3 Quick Shop Installer"
-              title="TYPO3 Quick Shop Installer"
-              target="_blank">Quick Shop &raquo;</a>
           </li>
         </ul>
         <h2 style="font-size: 1em;margin: 1em 0 0.4em;text-align: left;">
