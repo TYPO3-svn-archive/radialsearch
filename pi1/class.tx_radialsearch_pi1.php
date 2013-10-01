@@ -571,7 +571,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
   */
   private function initTemplate( )
   {
-    $template = $this->local_cObj->fileResource( $this->conf['res.']['html.']['tx_radialsearch_pi1.'] );
+    $cObj     = $this->pObj->cObj;
+    $template = $cObj->fileResource( $this->conf['res.']['html.']['tx_radialsearch_pi1.'] );
 
       // Die if there isn't any HTML template
     if( empty ( $template ) )
@@ -579,8 +580,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
       die( __METHOD__ . ' (' . __LINE__ . '): Template is empty!' );
     }
 
-    $this->subpart['sword']     = $this->local_cObj->getSubpart( $template, '###SWORD###' );
-    $this->subpart['radiusbox'] = $this->local_cObj->getSubpart( $template, '###RADIUSBOX###' );
+    $this->subpart['sword']     = $cObj->getSubpart( $template, '###SWORD###' );
+    $this->subpart['radiusbox'] = $cObj->getSubpart( $template, '###RADIUSBOX###' );
 var_dump( $this->subpart );    
   }
 
