@@ -73,7 +73,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     // [Object]
   private $dynamicMarkers = null;
     // [Object]
-  private $drs            = null;
+  public  $drs            = null;
     // [Object]
   private $flexform       = null;
     // [Object]
