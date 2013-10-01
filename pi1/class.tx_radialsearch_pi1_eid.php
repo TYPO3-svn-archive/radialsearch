@@ -215,7 +215,6 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $query  = $GLOBALS['TYPO3_DB']->SELECTquery(      $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     $res    = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     
-var_dump( __METHOD__, __LINE__, $query );
       // RETURN : error in SQL query
     if( $this->sqlError( $query ) )
     {
@@ -228,7 +227,6 @@ var_dump( __METHOD__, __LINE__, $query );
     {
       $rows[ ] = $row; 
     }
-var_dump( __METHOD__, __LINE__, $rows );
 
       // RETURN : No DRS
     if( ! $this->drs->drsSql )
@@ -260,7 +258,6 @@ var_dump( __METHOD__, __LINE__, $rows );
       // RETURN : no error
     if( ! $error )
     {
-var_dump( __METHOD__, __LINE__ );
       return false;
     }
       // RETURN : no error
@@ -268,7 +265,6 @@ var_dump( __METHOD__, __LINE__ );
       // RETURN : No DRS
     if( ! $this->drs->drsError )
     {
-var_dump( __METHOD__, __LINE__ );
       return true;
     }
       // RETURN : No DRS
@@ -277,8 +273,6 @@ var_dump( __METHOD__, __LINE__ );
     t3lib_div::devlog( '[ERROR/SQL] ' . $query, $this->extKey, 3 );
     t3lib_div::devlog( '[ERROR/SQL] ' . $error, $this->extKey, 3 );
       // DRS
-
-var_dump( __METHOD__, __LINE__ );
 
     return true;
   }
@@ -307,7 +301,7 @@ var_dump( __METHOD__, __LINE__ );
     $or = array(
       '0' => 'postal_code LIKE "' . $sword . '%"',
       '1' => 'place_name LIKE "' . $sword . '%"',
-      '2' => 'CONCATENATE(postal_code, " ", place_name) LIKE "' . $sword . '%"',
+      '2' => 'CONCAT(postal_code, " ", place_name) LIKE "' . $sword . '%"',
     );
     $where = $where . ' AND (' . implode( ' OR ', $or ) . ')';
     
