@@ -56,7 +56,7 @@
  *  441:     public function promptCurrIP( )
  *  463:     public function promptEvaluatorTYPO3version()
  *  563:     public function promptExternalLinks()
- *  589:     public function promptSponsors()
+ *  589:     public function promptCredits()
  *
  *              SECTION: TYPO3
  *  623:     private function set_TYPO3Version( )
@@ -579,14 +579,14 @@ class tx_radialsearch_userfunc
   }
 
   /**
- * promptSponsors( ): Displays the quick start message.
+ * promptCredits( ): Displays the quick start message.
  *
  * @return	string		message wrapped in HTML
  * @access public
  * @version 0.0.1
  * @since   0.0.1
  */
-  public function promptSponsors()
+  public function promptCredits()
   {
 //.message-notice
 //.message-information
@@ -598,7 +598,7 @@ class tx_radialsearch_userfunc
 
       $prompt = $prompt . '
 <div class="message-body" style="max-width:600px;">
-  ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptSponsors') . '
+  ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptCredits') . '
 </div>';
 
     return $prompt;

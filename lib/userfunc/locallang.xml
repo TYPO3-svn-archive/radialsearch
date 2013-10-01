@@ -19,6 +19,74 @@
       <label index="pi1FfSdefReportPerformance"><![CDATA[
         Please disable the check it!-report. It costs performance!
       ]]></label>
+      <label index="promptCredits"><![CDATA[
+        <h1 style="text-align:left;">
+          Contracting, Donating and Sponsoring
+        </h1>
+        <div style="float:left;padding-right:1em;">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/dirk_wildt_30x30.gif"
+            width="30"
+            height="30"
+            title="Please support my job!" />        
+        </div>
+        <p>
+          Please donate to Radial Search, sponsor it or contract new features!<br />
+          <br />
+          Dirk Wildt<br />
+          <a href="http://typo3-radialsearch.de/en/sponsoring/"
+            style="text-decoration:underline;"
+            alt="Donating and Sponsoring"
+            title="Donating and Sponsoring"
+            target="_blank">
+            Donating and Sponsoring &raquo;</a>.
+        </p>
+        <p style="font-weight:bold;padding:1em 0;">
+          The TYPO3 Radial-Search project is sponsored by:
+        </p>
+        <a href="http://www.made-in-nature.de/"
+          alt="made in nature, Germany, sponsors the TYPO3 Radial-Search project"
+          title="made in nature, Germany, sponsors the TYPO3 Radial-Search project"
+          target="_blank">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/made-in-nature.de_120x90.gif"
+            width="120"
+            height="90"
+            alt="made in nature, Germany, sponsors the TYPO3 Radial-Search project" /></a>
+        <p style="padding:0 0 1em 0;">
+          You like to subsidise the TYPO3 Radial-Search project?
+          <a href="http://typo3-radialsearch.de/en/sponsoring/"
+            style="text-decoration:underline;"
+            alt="Your logo with your URL. 120 x 90 pixel."
+            title="Your logo with your URL. 120 x 90 pixel."
+            target="_blank">
+            Further information &raquo;</a>.
+        </p>
+        <a href="http://typo3-radialsearch.de/en/sponsoring/"
+          alt="Your logo with your URL. 120 x 90 pixel."
+          title="Your logo with your URL. 120 x 90 pixel."
+          target="_blank">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-blue.gif" 
+            width="120" 
+            height="90" 
+            title="Your logo with your URL. 120 x 90 pixel." /></a>
+        &nbsp;&nbsp;
+        <a href="http://typo3-radialsearch.de/en/sponsoring/"
+          alt="Your logo with your URL. 120 x 90 pixel."
+          title="Your logo with your URL. 120 x 90 pixel."
+          target="_blank">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
+            width="120" 
+            height="90" 
+            title="Your logo with your URL. 120 x 90 pixel." /></a>
+        &nbsp;&nbsp;
+        <a href="http://typo3-radialsearch.de/en/sponsoring/"
+          alt="Your logo with your URL. 120 x 90 pixel."
+          title="Your logo with your URL. 120 x 90 pixel."
+          target="_blank">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
+            width="120" 
+            height="90" 
+            title="Your logo with your URL. 120 x 90 pixel." /></a>
+      ]]></label>
       <label index="promptCurrIPBody">Your current IP</label>
       <label index="promptEvaluatorIncludeCss4-6"><![CDATA[Please iclude the static template [+Flip it!: Basis for TYPO3 < 4.7 (obligate!)]]]></label>
       <label index="promptEvaluatorTYPO3version45smaller">Your are using a TYPO3 version smaller than 4.5. Flip it! isn't tested in this version. Try it!</label>
@@ -127,75 +195,6 @@
           </li>
         </ul>
       ]]></label>
-      <label index="promptSponsors"><![CDATA[
-        <h1 style="text-align:left;">
-          Donating and Sponsoring
-        </h1>
-        <div style="float:left;padding-right:1em;">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/dirk_wildt_30x30.gif"
-            width="30"
-            height="30"
-            title="Please support my job!" />        
-        </div>
-        <p>
-          Please donate to Radial Search or sponsor it!<br />
-          I need the money for improving and developing Radial Search.<br />
-          <br />
-          Dirk Wildt<br />
-          <a href="http://typo3-radialsearch.de/en/sponsoring/"
-            style="text-decoration:underline;"
-            alt="Donating and Sponsoring"
-            title="Donating and Sponsoring"
-            target="_blank">
-            Donating and Sponsoring &raquo;</a>.
-        </p>
-        <p style="font-weight:bold;padding:1em 0;">
-          The TYPO3 Radial-Search project is sponsored by:
-        </p>
-        <a href="http://www.made-in-nature.de/"
-          alt="made in nature, Germany, sponsors the TYPO3 Radial-Search project"
-          title="made in nature, Germany, sponsors the TYPO3 Radial-Search project"
-          target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/made-in-nature.de_120x90.gif"
-            width="120"
-            height="90"
-            alt="made in nature, Germany, sponsors the TYPO3 Radial-Search project" /></a>
-        <p style="padding:0 0 1em 0;">
-          You like to subsidise the TYPO3 Radial-Search project?
-          <a href="http://typo3-radialsearch.de/en/sponsoring/"
-            style="text-decoration:underline;"
-            alt="Your logo with your URL. 120 x 90 pixel."
-            title="Your logo with your URL. 120 x 90 pixel."
-            target="_blank">
-            Further information &raquo;</a>.
-        </p>
-        <a href="http://typo3-radialsearch.de/en/sponsoring/"
-          alt="Your logo with your URL. 120 x 90 pixel."
-          title="Your logo with your URL. 120 x 90 pixel."
-          target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-blue.gif" 
-            width="120" 
-            height="90" 
-            title="Your logo with your URL. 120 x 90 pixel." /></a>
-        &nbsp;&nbsp;
-        <a href="http://typo3-radialsearch.de/en/sponsoring/"
-          alt="Your logo with your URL. 120 x 90 pixel."
-          title="Your logo with your URL. 120 x 90 pixel."
-          target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
-            width="120" 
-            height="90" 
-            title="Your logo with your URL. 120 x 90 pixel." /></a>
-        &nbsp;&nbsp;
-        <a href="http://typo3-radialsearch.de/en/sponsoring/"
-          alt="Your logo with your URL. 120 x 90 pixel."
-          title="Your logo with your URL. 120 x 90 pixel."
-          target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
-            width="120" 
-            height="90" 
-            title="Your logo with your URL. 120 x 90 pixel." /></a>
-      ]]></label>
       <label index="typoscriptMissing"><![CDATA[
         There isn't any typoscript template for radialsearch.<br />
         Please add the include static template!
@@ -214,6 +213,75 @@
       ]]></label>
       <label index="pi1FfSdefReportPerformance"><![CDATA[
         Bitte schalte den Check it!-Bericht ab. Der Bericht belastet die Performance!
+      ]]></label>
+      <label index="promptCredits"><![CDATA[
+        <h1 style="text-align:left;">
+          Spenden und Sponsern
+        </h1>
+        <div style="float:left;padding-right:1em;">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/dirk_wildt_30x30.gif"
+            width="30"
+            height="30"
+            title="Bitte unterst&uuml;tze meine Arbeit!" />        
+        </div>
+        <p>
+          Bitte spende f&uuml;r Radial Search oder sponser die Extension!<br />
+          Ich brauche das Geld f&uuml;r die Verbesserung und Weiterentwicklung von Radial Search.<br />
+          <br />
+          Dirk Wildt<br />
+          <a href="http://typo3-radialsearch.de/sponsoring/"
+            style="text-decoration:underline;"
+            alt="Spenden und Sponsern"
+            title="Spenden und Sponsern"
+            target="_blank">
+            Spenden und Sponsern &raquo;</a>.
+        </p>
+        <p style="font-weight:bold;padding:1em 0;">
+          Das TYPO3 Radial-Search-Projekt wird gesponsert von
+        </p>
+        <a href="http://www.made-in-nature.de/"
+          alt="made in nature, Deutschland, Sponsor des TYPO3 Radial-Search-Projekts"
+          title="made in nature, Deutschland, Sponsor des TYPO3 Radial-Search-Projekts"
+          target="_blank">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/made-in-nature.de_120x90.gif"
+            width="120"
+            height="90"
+            title="made in nature, Deutschland, Sponsor des TYPO3 Radial-Search-Projekts" /></a>
+        <p style="padding:0 0 1em 0;">
+          M&ouml;chtest Du das TYPO3 Radial-Search-Projekt unterst&uuml;tzen?
+          <a href="http://typo3-radialsearch.de/sponsoring/"
+            style="text-decoration:underline;"
+            alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
+            title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
+            target="_blank">
+            Mehr Infos &raquo;</a>.
+        </p>
+        <a href="http://typo3-radialsearch.de/sponsoring/"
+          alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
+          title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
+          target="_blank">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-blue.gif" 
+            width="120" 
+            height="90" 
+            title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
+        &nbsp;&nbsp;
+        <a href="http://typo3-radialsearch.de/sponsoring/"
+          alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
+          title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
+          target="_blank">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif" 
+            width="120" 
+            height="90" 
+            title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
+        &nbsp;&nbsp;
+        <a href="http://typo3-radialsearch.de/sponsoring/"
+          alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
+          title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
+          target="_blank">
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif" 
+            width="120" 
+            height="90" 
+            title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
       ]]></label>
       <label index="promptCurrIPBody">Deine aktuelle IP-Adresse</label>
       <label index="promptEvaluatorIncludeCss4-6"><![CDATA[Du musst das Static Template [+Flip it!: Basis fuer TYPO3 < 4.7 einbinden.]]]></label>
@@ -322,75 +390,6 @@
               target="_blank">Dirk Wildt (Die Netzmacher) - der Entwickler von TYPO3 Radial-Search &raquo;</a>
           </li>
         </ul>
-      ]]></label>
-      <label index="promptSponsors"><![CDATA[
-        <h1 style="text-align:left;">
-          Spenden und Sponsern
-        </h1>
-        <div style="float:left;padding-right:1em;">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/dirk_wildt_30x30.gif"
-            width="30"
-            height="30"
-            title="Bitte unterst&uuml;tze meine Arbeit!" />        
-        </div>
-        <p>
-          Bitte spende f&uuml;r Radial Search oder sponser die Extension!<br />
-          Ich brauche das Geld f&uuml;r die Verbesserung und Weiterentwicklung von Radial Search.<br />
-          <br />
-          Dirk Wildt<br />
-          <a href="http://typo3-radialsearch.de/sponsoring/"
-            style="text-decoration:underline;"
-            alt="Spenden und Sponsern"
-            title="Spenden und Sponsern"
-            target="_blank">
-            Spenden und Sponsern &raquo;</a>.
-        </p>
-        <p style="font-weight:bold;padding:1em 0;">
-          Das TYPO3 Radial-Search-Projekt wird gesponsert von
-        </p>
-        <a href="http://www.made-in-nature.de/"
-          alt="made in nature, Deutschland, Sponsor des TYPO3 Radial-Search-Projekts"
-          title="made in nature, Deutschland, Sponsor des TYPO3 Radial-Search-Projekts"
-          target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/made-in-nature.de_120x90.gif"
-            width="120"
-            height="90"
-            title="made in nature, Deutschland, Sponsor des TYPO3 Radial-Search-Projekts" /></a>
-        <p style="padding:0 0 1em 0;">
-          M&ouml;chtest Du das TYPO3 Radial-Search-Projekt unterst&uuml;tzen?
-          <a href="http://typo3-radialsearch.de/sponsoring/"
-            style="text-decoration:underline;"
-            alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
-            title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
-            target="_blank">
-            Mehr Infos &raquo;</a>.
-        </p>
-        <a href="http://typo3-radialsearch.de/sponsoring/"
-          alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
-          title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
-          target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-blue.gif" 
-            width="120" 
-            height="90" 
-            title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
-        &nbsp;&nbsp;
-        <a href="http://typo3-radialsearch.de/sponsoring/"
-          alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
-          title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
-          target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif" 
-            width="120" 
-            height="90" 
-            title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
-        &nbsp;&nbsp;
-        <a href="http://typo3-radialsearch.de/sponsoring/"
-          alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
-          title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
-          target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif" 
-            width="120" 
-            height="90" 
-            title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
       ]]></label>
       <label index="typoscriptMissing"><![CDATA[
         Es gibt keine Typoscript f&uuml;r die Umkreissuche (Radial Search).<br />

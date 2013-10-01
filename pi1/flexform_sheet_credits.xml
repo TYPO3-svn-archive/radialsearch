@@ -2,18 +2,18 @@
 <T3DataStructure>
   <ROOT>
     <TCEforms>
-      <sheetTitle>LLL:EXT:radialsearch/pi1/locallang_flexform.xml:sponsors</sheetTitle>
+      <sheetTitle>LLL:EXT:radialsearch/pi1/locallang_flexform.xml:credits</sheetTitle>
     </TCEforms>
     <type>array</type>
     <el>
-      <sponsorsExternallinks>
+      <creditsExternallinks>
         <TCEforms>
           <config>
             <type>user</type>
-            <userFunc>tx_radialsearch_userfunc->promptSponsors</userFunc>
+            <userFunc>tx_radialsearch_userfunc->promptCredits</userFunc>
           </config>
         </TCEforms>
-      </sponsorsExternallinks>
+      </creditsExternallinks>
     </el>
   </ROOT>
 </T3DataStructure>

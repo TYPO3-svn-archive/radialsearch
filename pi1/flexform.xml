@@ -6,8 +6,7 @@
   <sheets>
     <sDEF>EXT:radialsearch/pi1/flexform_sheet_sDEF.xml</sDEF>
     <note>EXT:radialsearch/pi1/flexform_sheet_note.xml</note>
-    <paths>EXT:radialsearch/pi1/flexform_sheet_paths.xml</paths>
-    <sponsors>EXT:radialsearch/pi1/flexform_sheet_sponsors.xml</sponsors>
+    <credits>EXT:radialsearch/pi1/flexform_sheet_credits.xml</credits>
     <help>EXT:radialsearch/pi1/flexform_sheet_help.xml</help>
   </sheets>
 </T3DataStructure>
