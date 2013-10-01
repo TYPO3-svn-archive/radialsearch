@@ -237,7 +237,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
 
       // DRS
     $query  = $GLOBALS['TYPO3_DB']->SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
-    t3lib_div::devlog( '[INFO/SQL] ' . $query, $this->extKey, 0 );
+    t3lib_div::devlog( '[OK/SQL] ' . $query, $this->extKey, -1 );
       // DRS
     
     return $rows;
