@@ -25,7 +25,7 @@
           }
           , dataType  : "jsonp"
           , success   : function( data ) {
-            alert( typeof data[ "places" ] );
+            alert( typeof data[ "places2" ] );
             if( ( typeof data[ "places" ] == "object" ) )
             {
               response( $.map( data.places, function( item ) {
