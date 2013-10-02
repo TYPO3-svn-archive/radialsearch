@@ -163,10 +163,9 @@ class tx_radialsearch_em
 //.message-error
     $extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
     $data     = $_POST['data'];
-    $prompt   = 'extConf: ' . var_export( $extConf, true ) . '<br />'
-              . 'data: ' . var_export( $data, true )
-              ;
-    //var_dump( $data );
+//    $prompt   = 'extConf: ' . var_export( $extConf, true ) . '<br />'
+//              . 'data: ' . var_export( $data, true )
+//              ;
     $path = $extConf[ 'database.']['path' ];
     if( isset( $data[ 'database.path' ] ) )
     {
@@ -184,10 +183,9 @@ class tx_radialsearch_em
         ';
       return $str_prompt;
     }
-      
 
     $str_prompt = '
-      <div class="typo3-message message-warning">
+      <div class="typo3-message message-ok">
         <div class="message-body">
           <select name="data[database.selectbox]" size="1">
             <option value="">Don\'t import any txt-file</option>
