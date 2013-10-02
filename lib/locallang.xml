@@ -41,6 +41,10 @@
         <p>
           Data will imported into the folder with the given <strong>page ID</strong> from above.
         </p>
+        <p>
+          <strong>Warning:</strong> There isn't any check, if your txt-file is a proper file with postal codes.<br />
+          It's your job, to take care of proper files.
+        </p>
       ]]></label>
       <label index="databaseWithoutContentWarn"><![CDATA[
         <p>
