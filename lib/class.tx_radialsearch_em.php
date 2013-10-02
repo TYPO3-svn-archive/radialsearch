@@ -161,10 +161,15 @@ class tx_radialsearch_em
 //.message-ok
 //.message-warning
 //.message-error
-    $data   = $_POST['data'];
-    $prompt = var_export( $data, true );
+    $extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
+    $data     = $_POST['data'];
+    $prompt   = 'data: ' . var_export( $data, true );
     //var_dump( $data );
-    $path   = $data[ 'database.path' ];
+    $path = $extConf[ 'database.path' ];
+    if( isset( $data[ 'database.path' ] ) )
+    {
+      $path = $data[ 'database.path' ];
+    }
     if( empty( $path ) )
     {
       $str_prompt = '
@@ -192,6 +197,7 @@ class tx_radialsearch_em
       </div>
       <div class="typo3-message message-information">
         <div class="message-body">
+          ' . $path . '<br />
           ' . $prompt . '
         </div>
       </div>
