@@ -30,6 +30,18 @@ plugin.tx_radialsearch_pi1 {
   userFunc = tx_radialsearch_pi1->sword
     // Never remove this property!
   pluginCheck = dummy
+    // radiusOfEarth
+  constants =
+  constants {
+      // km, miles
+    radiusOfEarth =
+    radiusOfEarth {
+        // [String] http://de.wikipedia.org/wiki/Erdradius
+      km    = 6378.2
+      miles = 3963.2
+    }
+  }
+      // CSS: tx_radialsearch_pi1
     // Ressources: js
   res =
   res {
