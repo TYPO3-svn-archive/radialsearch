@@ -225,15 +225,23 @@ class tx_radialsearch_em
     
     $options = implode( PHP_EOL, ( array ) $files );
     
+//    $str_prompt = '
+//      <div class="typo3-message message-ok">
+//        <div class="message-body">
+//          <select name="data[database.selectbox]" size="1">
+//            <option value="">Don\'t import anything</option>
+//            ' . $options . '
+//          </select>
+//        </div>
+//      </div>
+//      ';
     $str_prompt = '
-      <div class="typo3-message message-ok">
-        <div class="message-body">
-          <select name="data[database.selectbox]" size="1">
-            <option value="">Don\'t import anything</option>
-            ' . $options . '
-          </select>
-        </div>
-      </div>
+      <dd>
+        <select name="data[database.selectbox]" size="1">
+          <option value="">Don\'t import anything</option>
+          ' . $options . '
+        </select>
+      </dd>
       ';
     return $str_prompt;
   }
