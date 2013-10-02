@@ -163,7 +163,9 @@ class tx_radialsearch_em
 //.message-error
     $extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
     $data     = $_POST['data'];
-    $prompt   = 'data: ' . var_export( $data, true );
+    $prompt   = 'extConf: ' . var_export( $extConf, true ) . '<br />'
+              . 'data: ' . var_export( $data, true )
+              ;
     //var_dump( $data );
     $path = $extConf[ 'database.path' ];
     if( isset( $data[ 'database.path' ] ) )
@@ -175,7 +177,8 @@ class tx_radialsearch_em
       $str_prompt = '
         <div class="typo3-message message-warning">
           <div class="message-body">
-            Path is missing in the field below!
+            Path is missing in the field below!<br />
+            ' . $prompt . '
           </div>
         </div>
         ';
