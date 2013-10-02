@@ -202,7 +202,7 @@ class tx_radialsearch_em
     if( empty( $files ) )
     {
       $str_prompt = '
-        <div class="typo3-message message-warn">
+        <div class="typo3-message message-warning">
           <div class="message-body">
             The directoty from above doesn\'t contain any txt-file. 
           </div>
