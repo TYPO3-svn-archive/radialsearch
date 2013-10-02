@@ -73,10 +73,10 @@ class tx_radialsearch_em
     $extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
     $data     = $_POST['data'];
 
-    $pid      = $extConf[ 'database.']['pid' ];
+    $pid      = ( int ) $extConf[ 'database.']['pid' ];
     if( isset( $data[ 'database.pid' ] ) )
     {
-      $pid = $data[ 'database.pid' ];
+      $pid = ( int ) $data[ 'database.pid' ];
     }    
 
     $str_prompt = $this->importPostalcodes( );
