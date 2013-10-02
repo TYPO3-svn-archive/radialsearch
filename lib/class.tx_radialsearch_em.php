@@ -185,12 +185,15 @@ class tx_radialsearch_em
     }
     
     $files = scandir( $GLOBALS[ 'TYPO3_DOCUMENT_ROOT' ] . '/' . $path );
+    $prompt   = 'path: ' . $GLOBALS[ 'TYPO3_DOCUMENT_ROOT' ] . '/' . $path . '<br />'
+              . 'files: ' . var_export( $files, true )
+              ;
     foreach( $files as $key => $file )
     {
       $path_parts = pathinfo( $file );
       if( $path_parts['extension'] == 'txt' )
       {
-        $files[ $key] = '<option value="' . $file . '">' . $file . '</option>';
+        $files[ $key ] = '<option value="' . $file . '">' . $file . '</option>';
         continue;
       }
       unset( $files[ $key] );
