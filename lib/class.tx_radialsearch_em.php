@@ -309,6 +309,13 @@ class tx_radialsearch_em
     {
       $query = 'TRUNCATE tx_radialsearch_postalcodes';
       $res    = $GLOBALS['TYPO3_DB']->sql_query( $query ); 
+      $str_prompt = $str_prompt . '
+        <div class="typo3-message message-warn">
+          <div class="message-body">
+            Databse was truncated before the import.
+          </div>
+        </div>
+        ';
     }
 
     $keys = 'INSERT INTO typo3_browser.tx_radialsearch_postalcodes ( uid, pid, tstamp, crdate, cruser_id, deleted, country_code, postal_code, place_name, admin_name1, admin_code1, admin_name2, admin_code2, admin_name3, admin_code3, latitude, longitude, accuracy ) VALUES ' . PHP_EOL;
@@ -364,7 +371,7 @@ class tx_radialsearch_em
     if( ! feof( $handle ) ) 
     {
       fclose( $handle );
-      $str_prompt = '
+      $str_prompt = $str_prompt . '
         <div class="typo3-message message-warning">
           <div class="message-body">
             ERROR: ' . $file . ' seems to have an unproper end.<br />
@@ -376,7 +383,7 @@ class tx_radialsearch_em
     }
     fclose( $handle );
 
-    $str_prompt = '
+    $str_prompt = $str_prompt . '
       <div class="typo3-message message-ok">
         <div class="message-body">
           SUCCESS: ' . $file . ' is imported.
