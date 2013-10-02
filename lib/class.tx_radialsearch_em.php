@@ -310,7 +310,7 @@ class tx_radialsearch_em
       $query = 'TRUNCATE tx_radialsearch_postalcodes';
       $res    = $GLOBALS['TYPO3_DB']->sql_query( $query ); 
       $str_prompt = $str_prompt . '
-        <div class="typo3-message message-warn">
+        <div class="typo3-message message-notice">
           <div class="message-body">
             Database was truncated before the import.
           </div>
