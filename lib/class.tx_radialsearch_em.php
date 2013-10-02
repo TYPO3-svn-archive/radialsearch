@@ -310,7 +310,7 @@ class tx_radialsearch_em
       {
         $i = 0;
         $values = '  ( ' . implode( ' ),' . PHP_EOL . '  ( ', $rows ) . ' );';
-        $insert = $keys . $values . PHP_EOL . PHP_EOL;
+        $query  = $keys . $values . PHP_EOL . PHP_EOL;
         
         $res    = $GLOBALS['TYPO3_DB']->sql_query( $query ); 
         $error  = $GLOBALS['TYPO3_DB']->sql_error( );
