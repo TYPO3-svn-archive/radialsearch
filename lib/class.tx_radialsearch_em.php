@@ -278,10 +278,89 @@ class tx_radialsearch_em
     
     $path = t3lib_div::getIndpEnv( 'TYPO3_DOCUMENT_ROOT' ) . '/' . $path . '/' . $file;
 
+    $handle = @fopen( $path, 'r' );
+    
+    if ( ! $handle) {
+      $str_prompt = '
+        <div class="typo3-message message-error">
+          <div class="message-body">
+            ERROR: Can\'t open ' . $path . '.
+          </div>
+        </div>
+        ';
+      return $str_prompt;
+    }
+    
+    $rows = array( );
+    $keys = 'INSERT INTO typo3_browser.tx_radialsearch_postalcodes ( uid, pid, tstamp, crdate, cruser_id, deleted, country_code, postal_code, place_name, admin_name1, admin_code1, admin_name2, admin_code2, admin_name3, admin_code3, latitude, longitude, accuracy ) VALUES ' . PHP_EOL;
+    $i = 0;
+    $j = 0;
+    while( ( $line = fgets( $handle, 4096 ) ) !== false ) 
+    {
+      $defaultValues = 'NULL, 8429, UNIX_TIMESTAMP( ), UNIX_TIMESTAMP( ), 0, 0';
+      $line = utf8_decode( $line );
+      $line = str_replace( array( "\t" . PHP_EOL, PHP_EOL, "\t\t", "\t" ), array( '\', NULL', NULL, '\', NULL, \'', '\', \'' ), $line );
+      $line = '\'' . $line . '\'';
+      $line = str_replace( array( "'NULL'", "NULL'", "'NULL" ), array( 'NULL', 'NULL', 'NULL' ), $line );
+      $line = $defaultValues . ', ' .  $line;
+      $rows[ $j ] = $line;
+      $i++;
+      $j++;
+      if( $i >= 100 )
+      {
+        $i = 0;
+        $values = '  ( ' . implode( ' ),' . PHP_EOL . '  ( ', $rows ) . ' );';
+        $insert = $keys . $values . PHP_EOL . PHP_EOL;
+        
+        $res    = $GLOBALS['TYPO3_DB']->sql_query( $query ); 
+        $error  = $GLOBALS['TYPO3_DB']->sql_error( );
+
+        $rows = array( );
+        
+          // RETURN : error in SQL query
+        if( $error )
+        {
+          $str_prompt = $str_prompt . '
+            <div class="typo3-message message-error">
+              <div class="message-body">
+                <p>
+                  ERROR: ' . $error . '
+                </p>
+                <p>
+                  Query: ' . $query . '
+                </p>
+              </div>
+            </div>
+            ';
+          return $error;
+        }
+          // RETURN : error in SQL query
+      }
+      if( $j >= 1000 && 0 )
+      {
+        fclose($handle);
+        return;
+      }
+    }
+    if( ! feof( $handle ) ) 
+    {
+      fclose( $handle );
+      $str_prompt = '
+        <div class="typo3-message message-warning">
+          <div class="message-body">
+            ERROR: ' . $file . ' seems to have an unproper end.<br />
+            Please check, if imported data are proper.
+          </div>
+        </div>
+        ';
+      return $str_prompt;
+    }
+    fclose( $handle );
+
     $str_prompt = '
       <div class="typo3-message message-ok">
         <div class="message-body">
-          ' . $file . ' is impoted.
+          SUCCESS: ' . $file . ' is imported.
         </div>
       </div>
       ';
