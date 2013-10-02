@@ -167,7 +167,7 @@ class tx_radialsearch_em
               . 'data: ' . var_export( $data, true )
               ;
     //var_dump( $data );
-    $path = $extConf[ 'database.path' ];
+    $path = $extConf[ 'database.']['path' ];
     if( isset( $data[ 'database.path' ] ) )
     {
       $path = $data[ 'database.path' ];
