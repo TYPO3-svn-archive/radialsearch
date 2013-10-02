@@ -15,8 +15,8 @@
         <p>
           <strong>Update the database?
         </p>
-        <ul style="list-style:outside;margin-left:2em;">
-          <li style="margin-bottom:.6em;">
+        <ul>
+          <li style="margin-bottom:0;">
             Please download a zip-file with the postal codes from 
             <a href="http://download.geonames.org/export/zip/"
               style="text-decoration:underline;"
@@ -25,16 +25,16 @@
               target="_blank">
               geonames.org &raquo;</a>
           </li>
-          <li style="margin-bottom:.6em;">
+          <li style="margin-bottom:0;">
             Unzip the file. It will becomes a txt-file.
           </li>
-          <li style="margin-bottom:.6em;">
+          <li style="margin-bottom:0;">
             Upload the txt-file to the directory from below.
           </li>
-          <li style="margin-bottom:.6em;">
+          <li style="margin-bottom:0;">
             Select the txt-file with the selector below.
           </li>
-          <li style="margin-bottom:.6em;">
+          <li style="margin-bottom:0;">
             Import the file with [Update].
           </li>
         </ul>
