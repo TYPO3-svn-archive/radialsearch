@@ -69,6 +69,16 @@ class tx_radialsearch_em
 //.message-ok
 //.message-warning
 //.message-error
+    
+    $extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
+    $data     = $_POST['data'];
+
+    $pid      = $extConf[ 'database.']['pid' ];
+    if( isset( $data[ 'database.pid' ] ) )
+    {
+      $pid = $data[ 'database.pid' ];
+    }    
+
     $str_prompt = $this->importPostalcodes( );
 
     $select_fields  = 'country_code AS country, count( country_code ) AS records';
@@ -76,7 +86,7 @@ class tx_radialsearch_em
     $groupBy        = 'country_code';
     $orderBy        = 'country_code';
     $limit          = null;
-    $where_clause   = null;
+    $where_clause   = 'pid = ' . $pid;
     
     $query  = $GLOBALS['TYPO3_DB']->SELECTquery(      $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     $res    = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
@@ -246,6 +256,7 @@ class tx_radialsearch_em
     $str_prompt = null;
     $data       = $_POST['data'];
     $file       = $data[ 'database.selectbox' ];
+    $pid        = $data[ 'database.pid' ];
     
       // RETURN : no file selected
     if( empty( $file ) )
@@ -301,7 +312,7 @@ class tx_radialsearch_em
     $j = 0;
     while( ( $line = fgets( $handle, 4096 ) ) !== false ) 
     {
-      $defaultValues = 'NULL, 8429, UNIX_TIMESTAMP( ), UNIX_TIMESTAMP( ), 0, 0';
+      $defaultValues = 'NULL, ' . $pid . ', UNIX_TIMESTAMP( ), UNIX_TIMESTAMP( ), 0, 0';
       //$line = utf8_decode( $line );
       $line = str_replace( array( "\t" . PHP_EOL, PHP_EOL, "\t\t", "\t" ), array( '\', NULL', NULL, '\', NULL, \'', '\', \'' ), $line );
       $line = '\'' . $line . '\'';

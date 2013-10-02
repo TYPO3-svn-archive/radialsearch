@@ -294,7 +294,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $sword = $sql[ 'sword' ];
 
       // pid
-    $pid    = (int) $this->arr_extConf[ 'folder.']['pid' ];
+    $pid    = (int) $this->arr_extConf[ 'database.']['pid' ];
     $where  = 'pid = ' . $pid;
 
       // sword

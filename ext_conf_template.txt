@@ -5,13 +5,15 @@ LLstatic                  = English
   # cat=basic/others/999;             type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
 external_linksBase        = 0
 
-  # cat=database/enable/100;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->databaseInfo]; label=Database Info
+  # cat=database/enable/100;            type=+int; label=Page ID: Page ID of the folder with your postal code records. 0: root page.
+database.pid  = 0
+  # cat=database/enable/200;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->databaseInfo]; label=Database Info
 database.info             = fileadmin/extensions/radialsearch/
-  # cat=database/enable/200;          type=string; label=Path: Path to the folder with the postal code *.txt files with an ending slash. Recommended: fileadmin/extensions/radialsearch/
+  # cat=database/enable/201;          type=string; label=Path: Path to the folder with the postal code *.txt files with an ending slash. Recommended: fileadmin/extensions/radialsearch/
 database.path             = fileadmin/extensions/radialsearch/
-  # cat=database/enable/201;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->databaseSelectbox]; label=Selectbox
+  # cat=database/enable/300;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->databaseSelectbox]; label=Selectbox
 database.selectbox        = fileadmin/extensions/radialsearch/
-  # cat=database/enable/202;          type=boolean; label=Truncate: Database will truncated before update. All records will removed! It is recommended, if you like to overwrite data.
+  # cat=database/enable/301;          type=boolean; label=Truncate: Database will truncated before update. All records will removed! It is recommended, if you like to overwrite data.
 database.truncate         = 0
   # cat=database/others/999;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
 database.externalLinks    = 0
@@ -20,8 +22,3 @@ database.externalLinks    = 0
 drs.enabled               = Disabled
   # cat=debugging/others/999;         type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
 drs.externalLinks         = 0
-
-  # cat=folder/enable/200;            type=+int; label=Page ID: Page ID of the folder with your postal code data. 0: root page.
-folder.pid  = 0
-  # cat=folder/others/999;            type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
-folder.external_linksConf = 0
