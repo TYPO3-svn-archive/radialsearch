@@ -421,7 +421,7 @@ class tx_radialsearch_em
     $str_prompt = $str_prompt . '
       <div class="typo3-message message-ok">
         <div class="message-body">
-          SUCCESS: ' . $file . ' (#' . $sumRows . ' records) is imported.
+          SUCCESS: ' . $file . ' (#' . $sumRows . ' records) are imported.
         </div>
       </div>
       ';
