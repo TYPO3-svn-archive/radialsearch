@@ -10,17 +10,34 @@
         <p>
           <strong>Database seems to be proper</strong>
         </p>
-        <p>
-          This is the content:
-        </p>
       ]]></label>
       <label index="databaseWithContentPrompt"><![CDATA[
         <p>
-          <strong>Database seems to be proper</strong>
+          <strong>Update the database?
         </p>
-        <p>
-          This is the content:
-        </p>
+        <ul>
+          <li>
+            Please download a zip-file with the postal codes from 
+            <a href="http://download.geonames.org/export/zip/"
+              style="text-decoration:underline;"
+              alt="Postal Codes from geonames.org"
+              title="Donating and Sponsoring"
+              target="_blank">
+              geonames.org &raquo;</a>
+          </li>
+          <li>
+            Unzip the file. It will becomes a txt-file.
+          </li>
+          <li>
+            Upload the txt-file to the directory from below.
+          </li>
+          <li>
+            Select the txt-file with the selector below.
+          </li>
+          <li>
+            Import the file with [Update].
+          </li>
+        </ul>
       ]]></label>
       <label index="promptExternalLinksBody"><![CDATA[
         <h1 style="text-align:left;">
