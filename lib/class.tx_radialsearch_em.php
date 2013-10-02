@@ -360,7 +360,7 @@ class tx_radialsearch_em
               </div>
             </div>
             ';
-          return $error;
+          return $str_prompt;
         }
           // RETURN : error in SQL query
       }
@@ -391,7 +391,7 @@ class tx_radialsearch_em
           </div>
         </div>
         ';
-      return $error;
+      return $str_prompt;
     }
       // RETURN : error in SQL query
 
