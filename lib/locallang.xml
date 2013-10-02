@@ -39,6 +39,11 @@
           </li>
         </ul>
       ]]></label>
+      <label index="databaseWithoutContentWarn"><![CDATA[
+        <p>
+          <strong>Database is empty.</strong>
+        </p>
+      ]]></label>
       <label index="promptExternalLinksBody"><![CDATA[
         <h1 style="text-align:left;">
           Contracting, Donating and Sponsoring

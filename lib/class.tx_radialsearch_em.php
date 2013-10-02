@@ -123,12 +123,12 @@ class tx_radialsearch_em
       $str_prompt = $str_prompt . '
         <div class="typo3-message message-warning">
           <div class="message-body">
-            ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
+            ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:databaseWithoutContentWarn'). '
           </div>
         </div>
         <div class="typo3-message message-information">
           <div class="message-body">
-            ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
+            ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:databaseWithContentPrompt'). '
           </div>
         </div>
         ';
