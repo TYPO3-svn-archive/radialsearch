@@ -103,7 +103,7 @@ class tx_radialsearch_em
     $rows = array( );
     while( $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc( $res ) )
     {
-      $rows[ ] = '<li>' . $row[ 'country' ] . ': #' . $row[ 'records' ] . ' records</li>'; 
+      $rows[ ] = '<li style="margin-bottom:0;">' . $row[ 'country' ] . ': #' . $row[ 'records' ] . ' records</li>'; 
     }
 
       // Database is empty
@@ -161,6 +161,10 @@ class tx_radialsearch_em
 //.message-ok
 //.message-warning
 //.message-error
+    $confArr    = $_POST['data'];
+    //var_dump( $_POST['data'] );
+    $llStatic   = $confArr['LLstatic'];
+    $prompt = var_export( $confArr, true );
 
     $str_prompt = '
       <div class="typo3-message message-warning">
@@ -176,7 +180,7 @@ class tx_radialsearch_em
       </div>
       <div class="typo3-message message-information">
         <div class="message-body">
-          ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
+          ' . $prompt . '
         </div>
       </div>
       ';
