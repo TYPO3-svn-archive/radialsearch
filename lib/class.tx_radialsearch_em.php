@@ -319,8 +319,9 @@ class tx_radialsearch_em
     }
 
     $keys = 'INSERT INTO typo3_browser.tx_radialsearch_postalcodes ( uid, pid, tstamp, crdate, cruser_id, deleted, country_code, postal_code, place_name, admin_name1, admin_code1, admin_name2, admin_code2, admin_name3, admin_code3, latitude, longitude, accuracy ) VALUES ' . PHP_EOL;
-    $i = 0;
-    $j = 0;
+    $i        = 0;
+    $j        = 0;
+    $sumRows  = 0;
     while( ( $line = fgets( $handle, 4096 ) ) !== false ) 
     {
       $defaultValues = 'NULL, ' . $pid . ', UNIX_TIMESTAMP( ), UNIX_TIMESTAMP( ), 0, 0';
@@ -330,6 +331,7 @@ class tx_radialsearch_em
       $line = str_replace( array( "'NULL'", "NULL'", "'NULL" ), array( 'NULL', 'NULL', 'NULL' ), $line );
       $line = $defaultValues . ', ' .  $line;
       $rows[ $j ] = $line;
+      $sumRows++;
       $i++;
       $j++;
       if( $i >= 100 )
@@ -386,7 +388,7 @@ class tx_radialsearch_em
     $str_prompt = $str_prompt . '
       <div class="typo3-message message-ok">
         <div class="message-body">
-          SUCCESS: ' . $file . ' is imported.
+          SUCCESS: ' . $file . ' (#' . $sumRows . ' records) is imported.
         </div>
       </div>
       ';
