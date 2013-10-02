@@ -199,22 +199,27 @@ class tx_radialsearch_em
       unset( $files[ $key] );
     }
     
-    $options = implode( PHP_EOL, $files );
+    if( empty( $files ) )
+    {
+      $str_prompt = '
+        <div class="typo3-message message-warn">
+          <div class="message-body">
+            The directoty from above doesn\'t contain any txt-file. 
+          </div>
+        </div>
+        ';
+      return $str_prompt;
+    }
     
-
+    $options = implode( PHP_EOL, ( array ) $files );
+    
     $str_prompt = '
       <div class="typo3-message message-ok">
         <div class="message-body">
           <select name="data[database.selectbox]" size="1">
-            <option value="">Don\'t import any txt-file</option>
+            <option value="">Don\'t import anything</option>
             ' . $options . '
           </select>
-        </div>
-      </div>
-      <div class="typo3-message message-information">
-        <div class="message-body">
-          ' . $path . '<br />
-          ' . $prompt . '
         </div>
       </div>
       ';
