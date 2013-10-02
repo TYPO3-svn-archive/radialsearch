@@ -292,13 +292,17 @@ class tx_radialsearch_em
     }
     
     $rows = array( );
+    
+    $query = 'TRUNCATE tx_radialsearch_postalcodes';
+    $res    = $GLOBALS['TYPO3_DB']->sql_query( $query ); 
+
     $keys = 'INSERT INTO typo3_browser.tx_radialsearch_postalcodes ( uid, pid, tstamp, crdate, cruser_id, deleted, country_code, postal_code, place_name, admin_name1, admin_code1, admin_name2, admin_code2, admin_name3, admin_code3, latitude, longitude, accuracy ) VALUES ' . PHP_EOL;
     $i = 0;
     $j = 0;
     while( ( $line = fgets( $handle, 4096 ) ) !== false ) 
     {
       $defaultValues = 'NULL, 8429, UNIX_TIMESTAMP( ), UNIX_TIMESTAMP( ), 0, 0';
-      $line = utf8_decode( $line );
+      //$line = utf8_decode( $line );
       $line = str_replace( array( "\t" . PHP_EOL, PHP_EOL, "\t\t", "\t" ), array( '\', NULL', NULL, '\', NULL, \'', '\', \'' ), $line );
       $line = '\'' . $line . '\'';
       $line = str_replace( array( "'NULL'", "NULL'", "'NULL" ), array( 'NULL', 'NULL', 'NULL' ), $line );
