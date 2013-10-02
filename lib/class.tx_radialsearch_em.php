@@ -176,7 +176,7 @@ class tx_radialsearch_em
       $str_prompt = '
         <div class="typo3-message message-warning">
           <div class="message-body">
-            Path is missing in the field below!<br />
+            Path is missing in the field above!<br />
             ' . $prompt . '
           </div>
         </div>
