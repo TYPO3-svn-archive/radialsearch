@@ -69,7 +69,7 @@ class tx_radialsearch_em
 //.message-ok
 //.message-warning
 //.message-error
-    $this->importPostalcodes( );
+    $str_prompt = $this->importPostalcodes( );
 
     $select_fields  = 'country_code AS country, count( country_code ) AS records';
     $from_table     = 'tx_radialsearch_postalcodes';
@@ -85,7 +85,7 @@ class tx_radialsearch_em
       // RETURN : error in SQL query
     if( $error )
     {
-      $str_prompt = '
+      $str_prompt = $str_prompt . '
         <div class="typo3-message message-error">
           <div class="message-body">
             <p>
@@ -110,7 +110,7 @@ class tx_radialsearch_em
       // Database is empty
     if( empty( $rows ) )
     {
-      $str_prompt = '
+      $str_prompt = $str_prompt . '
         <div class="typo3-message message-warning">
           <div class="message-body">
             ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47smaller'). '
@@ -127,7 +127,7 @@ class tx_radialsearch_em
       // Database is empty
     
       // Database has content
-    $str_prompt = '
+    $str_prompt = $str_prompt . '
       <div class="typo3-message message-ok">
         <div class="message-body">
           ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:databaseWithContentOk'). '
@@ -243,21 +243,22 @@ class tx_radialsearch_em
 //.message-ok
 //.message-warning
 //.message-error
-    $data = $_POST['data'];
-    $file = $data[ 'database.selectbox' ];
+    $str_prompt = null;
+    $data       = $_POST['data'];
+    $file       = $data[ 'database.selectbox' ];
     
+      // RETURN : no file selected
     if( empty( $file ) )
     {
       return;
     }
+      // RETURN : no file selected
     
     var_dump( $file );
     
+      // Get the path
     $extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
-//    $prompt   = 'extConf: ' . var_export( $extConf, true ) . '<br />'
-//              . 'data: ' . var_export( $data, true )
-//              ;
-    $path = $extConf[ 'database.']['path' ];
+    $path     = $extConf[ 'database.']['path' ];
     if( isset( $data[ 'database.path' ] ) )
     {
       $path = $data[ 'database.path' ];
@@ -265,53 +266,22 @@ class tx_radialsearch_em
     if( empty( $path ) )
     {
       $str_prompt = '
-        <div class="typo3-message message-warning">
+        <div class="typo3-message message-error">
           <div class="message-body">
-            Path is missing in the field above!<br />
-            ' . $prompt . '
+            Path is missing in the field path!<br />
+            Sorry, but ' . $file . ' can\'t impoted.
           </div>
         </div>
         ';
       return $str_prompt;
     }
     
-    $files = scandir( t3lib_div::getIndpEnv( 'TYPO3_DOCUMENT_ROOT' ) . '/' . $path );
-    $prompt   = 'path: ' . t3lib_div::getIndpEnv( 'TYPO3_DOCUMENT_ROOT' ) . '/' . $path . '<br />'
-              . 'files: ' . var_export( $files, true )
-              ;
-    foreach( $files as $key => $file )
-    {
-      $path_parts = pathinfo( $file );
-      if( $path_parts['extension'] == 'txt' )
-      {
-        $files[ $key ] = '<option value="' . $file . '">' . $file . '</option>';
-        continue;
-      }
-      unset( $files[ $key] );
-    }
-    
-    if( empty( $files ) )
-    {
-      $str_prompt = '
-        <div class="typo3-message message-warning">
-          <div class="message-body">
-            The directoty from above doesn\'t contain any txt-file.<br />
-            Sorry, you can\'t import anything.
-          </div>
-        </div>
-        ';
-      return $str_prompt;
-    }
-    
-    $options = implode( PHP_EOL, ( array ) $files );
-    
+    $path = t3lib_div::getIndpEnv( 'TYPO3_DOCUMENT_ROOT' ) . '/' . $path . '/' . $file;
+
     $str_prompt = '
       <div class="typo3-message message-ok">
         <div class="message-body">
-          <select name="data[database.selectbox]" size="1">
-            <option value="">Don\'t import anything</option>
-            ' . $options . '
-          </select>
+          ' . $file . ' is impoted.
         </div>
       </div>
       ';
