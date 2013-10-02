@@ -370,6 +370,31 @@ class tx_radialsearch_em
         return;
       }
     }
+    $values = '  ( ' . implode( ' ),' . PHP_EOL . '  ( ', $rows ) . ' );';
+    $query  = $keys . $values . PHP_EOL . PHP_EOL;
+
+    $res    = $GLOBALS['TYPO3_DB']->sql_query( $query ); 
+    $error  = $GLOBALS['TYPO3_DB']->sql_error( );
+
+      // RETURN : error in SQL query
+    if( $error )
+    {
+      $str_prompt = $str_prompt . '
+        <div class="typo3-message message-error">
+          <div class="message-body">
+            <p>
+              ERROR: ' . $error . '
+            </p>
+            <p>
+              Query: ' . $query . '
+            </p>
+          </div>
+        </div>
+        ';
+      return $error;
+    }
+      // RETURN : error in SQL query
+
     if( ! feof( $handle ) ) 
     {
       fclose( $handle );
