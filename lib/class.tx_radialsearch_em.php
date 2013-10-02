@@ -254,7 +254,7 @@ class tx_radialsearch_em
     }
       // RETURN : no file selected
     
-    var_dump( $file );
+    //var_dump( $file );
     
       // Get the path
     $extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
