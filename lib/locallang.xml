@@ -39,7 +39,7 @@
           </li>
         </ul>
         <p>
-          Data will imported into the folder with the given page ID from above.
+          Data will imported into the folder with the given <strong>page ID</strong> from above.
         </p>
       ]]></label>
       <label index="databaseWithoutContentWarn"><![CDATA[
