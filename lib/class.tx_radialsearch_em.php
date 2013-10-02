@@ -169,11 +169,11 @@ class tx_radialsearch_em
     $str_prompt = '
       <div class="typo3-message message-warning">
         <div class="message-body">
-          <select name="tx_radialsearch_pi1[radius]" id="tx_radialsearch_pi1_radius" size="1">
-            <option value="5">5 km</option>
+          <select name="data[database.selectbox]" size="1">
+            <option value="">Don\'t import any txt-file</option>
             <option value="10">10 km</option>
             <option value="25">25 km</option>
-            <option value="50" selected="selected">50 km</option>
+            <option value="50">50 km</option>
             <option value="100">100 km</option>
           </select>
         </div>
