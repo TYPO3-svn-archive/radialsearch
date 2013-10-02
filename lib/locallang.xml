@@ -15,7 +15,7 @@
         <p>
           <strong>Update the database?
         </p>
-        <ul>
+        <ul style="list-style:outside;margin-left:2em;">
           <li>
             Please download a zip-file with the postal codes from 
             <a href="http://download.geonames.org/export/zip/"
