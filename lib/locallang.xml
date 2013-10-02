@@ -13,7 +13,7 @@
       ]]></label>
       <label index="databaseWithContentPrompt"><![CDATA[
         <p>
-          <strong>Update the database?
+          <strong>Update the database?</strong>
         </p>
         <ul>
           <li style="margin-bottom:0;">
@@ -38,6 +38,9 @@
             Import the file with the [Update] button at the bottom of this page.
           </li>
         </ul>
+        <p>
+          Data will imported into the folder with the given page ID from above.
+        </p>
       ]]></label>
       <label index="databaseWithoutContentWarn"><![CDATA[
         <p>
