@@ -11,10 +11,10 @@ database.pid  = 0
 database.info             = fileadmin/extensions/radialsearch/
   # cat=database/enable/201;          type=string; label=Path: Path to the folder with the postal code *.txt files with an ending slash. Recommended: fileadmin/extensions/radialsearch/
 database.path             = fileadmin/extensions/radialsearch/
-  # cat=database/enable/300;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->databaseSelectbox]; label=Selectbox
-database.selectbox        = fileadmin/extensions/radialsearch/
-  # cat=database/enable/301;          type=boolean; label=Truncate: Database will truncated before update. All records will removed! It is recommended, if you like to overwrite data.
+  # cat=database/enable/300;          type=boolean; label=Truncate: Database will truncated before update. All records will removed! It is recommended, if you like to overwrite data.
 database.truncate         = 0
+  # cat=database/enable/301;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->databaseSelectbox]; label=Selectbox
+database.selectbox        = fileadmin/extensions/radialsearch/
   # cat=database/others/999;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
 database.externalLinks    = 0
 
