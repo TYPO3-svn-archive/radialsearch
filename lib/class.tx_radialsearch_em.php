@@ -312,7 +312,7 @@ class tx_radialsearch_em
       $str_prompt = $str_prompt . '
         <div class="typo3-message message-warn">
           <div class="message-body">
-            Databse was truncated before the import.
+            Database was truncated before the import.
           </div>
         </div>
         ';
