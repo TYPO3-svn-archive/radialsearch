@@ -183,16 +183,28 @@ class tx_radialsearch_em
         ';
       return $str_prompt;
     }
+    
+    $files = scandir( $GLOBALS[ 'TYPO3_DOCUMENT_ROOT' ] . '/' . $path );
+    foreach( $files as $key => $file )
+    {
+      $path_parts = pathinfo( $file );
+      if( $path_parts['extension'] == 'txt' )
+      {
+        $files[ $key] = '<option value="' . $file . '">' . $file . '</option>';
+        continue;
+      }
+      unset( $files[ $key] );
+    }
+    
+    $options = implode( PHP_EOL, $files );
+    
 
     $str_prompt = '
       <div class="typo3-message message-ok">
         <div class="message-body">
           <select name="data[database.selectbox]" size="1">
             <option value="">Don\'t import any txt-file</option>
-            <option value="10">10 km</option>
-            <option value="25">25 km</option>
-            <option value="50">50 km</option>
-            <option value="100">100 km</option>
+            ' . $options . '
           </select>
         </div>
       </div>
