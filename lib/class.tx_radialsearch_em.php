@@ -184,8 +184,8 @@ class tx_radialsearch_em
       return $str_prompt;
     }
     
-    $files = scandir( TYPO3_DOCUMENT_ROOT . '/' . $path );
-    $prompt   = 'path: ' . TYPO3_DOCUMENT_ROOT . '/' . $path . '<br />'
+    $files = scandir( t3lib_div::getIndpEnv( 'TYPO3_DOCUMENT_ROOT' ) . '/' . $path );
+    $prompt   = 'path: ' . t3lib_div::getIndpEnv( 'TYPO3_DOCUMENT_ROOT' ) . '/' . $path . '<br />'
               . 'files: ' . var_export( $files, true )
               ;
     foreach( $files as $key => $file )
