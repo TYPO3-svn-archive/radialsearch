@@ -161,10 +161,22 @@ class tx_radialsearch_em
 //.message-ok
 //.message-warning
 //.message-error
-    $confArr    = $_POST['data'];
-    //var_dump( $_POST['data'] );
-    $llStatic   = $confArr['LLstatic'];
-    $prompt = var_export( $confArr, true );
+    $data   = $_POST['data'];
+    $prompt = var_export( $data, true );
+    //var_dump( $data );
+    $path   = $data[ 'database.path' ];
+    if( empty( $path ) )
+    {
+      $str_prompt = '
+        <div class="typo3-message message-warning">
+          <div class="message-body">
+            Path is missing in the field below!
+          </div>
+        </div>
+        ';
+      return $str_prompt;
+    }
+      
 
     $str_prompt = '
       <div class="typo3-message message-warning">
