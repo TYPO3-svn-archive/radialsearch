@@ -15,7 +15,7 @@
         <p>
           <strong>Update the database?</strong>
         </p>
-        <ul>
+        <ol>
           <li style="margin-bottom:0;">
             Please download a zip-file with the postal codes from 
             <a href="http://download.geonames.org/export/zip/"
@@ -37,7 +37,7 @@
           <li style="margin-bottom:0;">
             Import the file with the [Update] button at the bottom of this page.
           </li>
-        </ul>
+        </ol>
         <p>
           Data will imported into the folder with the given <strong>page ID</strong> from above.
         </p>
