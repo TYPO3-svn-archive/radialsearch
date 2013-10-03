@@ -30,5 +30,8 @@ CREATE TABLE tx_radialsearch_postalcodes (
   accuracy      int(1) DEFAULT NULL,
   
   PRIMARY KEY (uid),
-  KEY parent (pid)
+  KEY parent (pid),
+  KEY postal_code (postal_code),
+  KEY place_name (place_name),
+  KEY country_code (country_code,postal_code,place_name)
 );
