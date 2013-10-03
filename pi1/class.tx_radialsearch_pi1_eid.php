@@ -208,7 +208,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $select_fields  = '*';
     $from_table     = 'tx_radialsearch_postalcodes';
     $groupBy        = null;
-    $orderBy        = 'country_code, postal_code, place_name';
+    $orderBy        = $sql[ 'orderBy' ];
     $limit          = $sql[ 'limit' ];
     $where_clause   = $this->sqlWhere( );
     

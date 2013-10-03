@@ -19,7 +19,8 @@
               , andWhere  : {
                   country_code  : "###COUNTRY_CODE###"
                 , admin_code1   : "###ADMIN_CODE1###"
-              }            
+              }
+              , orderBy   : "country_code, postal_code, place_name"
               , limit     : "###LIMIT###"
             }            
           }
