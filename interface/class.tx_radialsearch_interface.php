@@ -188,9 +188,12 @@ class tx_radialsearch_interface
     }
       // RETURN : there isn't any sword
 
-    $table = $this->currentObj->radialsearchTable;
-
-    $confFilter = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'filter.' ];
+    $km = ( double ) $this->extConf[ 'earth.']['radius.' ]['km' ];
+    if( empty ( $km ) )
+    {
+        //  http://de.wikipedia.org/wiki/Erdradius
+      $km = 6378.2;
+    }
 
       // Set the andSelect statement
     $andSelect = '' .
@@ -198,7 +201,7 @@ class tx_radialsearch_interface
       SIN( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * SIN( RADIANS( tx_org_headquarters.mail_lat ) ) 
     + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( tx_org_headquarters.mail_lat   ) )
     * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( tx_org_headquarters.mail_lon ) )
-) * 6380 AS distance
+) * ' . $km . ' AS distance
 ';
 
     return $andSelect;
