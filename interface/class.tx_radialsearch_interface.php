@@ -138,8 +138,8 @@ class tx_radialsearch_interface
 
       // Set the andFrom statement
     $andSelect = '' .
-' tx_org_headquarters.mail_lat, 
-tx_org_headquarters.mail_lon, 
+', tx_org_headquarters.mail_lat AS \'tx_org_headquarters.mail_lat\', 
+tx_org_headquarters.mail_lon AS \'tx_org_headquarters.mail_lat\', 
 ACOS(
       SIN( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * SIN( RADIANS( tx_org_headquarters.mail_lat ) ) 
     + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( tx_org_headquarters.mail_lat   ) )
@@ -266,11 +266,9 @@ ACOS(
   private function andWhereSword( )
   {
     $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+
     $sword = $tx_radialsearch_pi1[ 'sword' ];
-    
     $sword = $GLOBALS['TYPO3_DB']->quoteStr( $sword, 'tx_radialsearch_postalcodes' ) ;
-    $this->pObj->dev_var_dump( $sword );
-    
 
     $andWhere = '' .
 'AND
