@@ -233,7 +233,7 @@ ACOS(
 
       // Set the andWhere statement
     $andWhere = '' .
-' tx_radialsearch_postalcodes.pid = ' . $pid . ' 
+' AND tx_radialsearch_postalcodes.pid = ' . $pid . ' 
 ' . $this->andWhereFilter( ) . '  
 ' . $this->andWhereSword( ) . '  
 ' . $this->andWhereEnabledFields( ) . ' 
