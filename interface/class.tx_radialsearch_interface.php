@@ -102,7 +102,6 @@ class tx_radialsearch_interface
     }
       // RETURN : there isn't any sword
 
-
       // Set the andFrom statement
     $andFrom = '' .
 ' CROSS JOIN  tx_radialsearch_postalcodes ';
@@ -130,10 +129,13 @@ class tx_radialsearch_interface
     }
       // RETURN : there isn't any sword
 
+    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+
+    $radius = ( int ) $tx_radialsearch_pi1[ 'radius' ];
 
       // Set the andHaving statement
     $andHaving = '' .
-' HAVING distance < 1000 ';
+' HAVING distance < ' . $radius . ' ';
 
     return $andHaving;
   }
