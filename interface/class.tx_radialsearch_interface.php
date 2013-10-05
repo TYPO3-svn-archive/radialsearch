@@ -135,17 +135,42 @@ AND
   {
     $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
     
-    $table = $this->radialsearchTable;
-
-    $name = $this->conf_view[ 'filter.' ][ $table . '.' ][ 'content' ];
-    $conf = $this->conf_view[ 'filter.' ][ $table . '.' ][ 'content.' ];
-    $html = $this->pObj->cObj->cObjGetSingle( $name, $conf );
+    $arrAndWhere = array( );
     
+    $table = $this->filter->radialsearchTable;
 
-    $andWhere = '' .
-'AND tx_radialsearch_postalcodes.country_code LIKE "DE" 
-AND tx_radialsearch_postalcodes.admin_code1 LIKE "TH"
-';
+    foreach( array_keys( ( array ) $this->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ] ) as $filter )
+    {
+        // CONTINUE : filter has an dot
+      if( rtrim( $filter, '.') != $filter )
+      {
+        continue;
+      }
+        // CONTINUE : field has an dot
+      
+      $name   = $this->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ $filter ];
+      $conf   = $this->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ $filter . '.' ];
+      $value  = $this->pObj->cObj->cObjGetSingle( $name, $conf );
+      
+      switch( true )
+      {
+        case( $value === null ):
+        case( $value == '*' ):
+            // do nothing
+          break;
+        default:
+          $value = $GLOBALS['TYPO3_DB']->fullQuoteStr( $value, 'tx_radialsearch_postalcodes' ) ;
+          $arrAndWhere[ ] = $filter . ' LIKE "' . $value . '"'; 
+          break;
+      }
+    }
+    
+    if( empty( $arrAndWhere ) )
+    {
+      return null;
+    }
+    
+    $andWhere = ' AND ' . implode( ' AND ', $arrAndWhere );
     return $andWhere;
   }
 
