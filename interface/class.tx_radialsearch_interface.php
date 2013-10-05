@@ -203,7 +203,7 @@ $this->pObj->dev_var_dump( $sword );
 (
       tx_radialsearch_postalcodes.postal_code LIKE ' . $sword . ' 
   OR  tx_radialsearch_postalcodes.place_name LIKE ' . $sword . ' 
-  OR  CONCAT(tx_radialsearch_postalcodes.postal_code, " ", tx_radialsearch_postalcodes.place_name) LIKE "' . $sword . '%"
+  OR  CONCAT(tx_radialsearch_postalcodes.postal_code, " ", tx_radialsearch_postalcodes.place_name) LIKE ' . $sword . '
 )';
 
     return $andWhere;
