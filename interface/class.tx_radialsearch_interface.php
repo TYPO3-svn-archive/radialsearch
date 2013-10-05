@@ -67,7 +67,7 @@ class tx_radialsearch_interface
     // [Object] Parent object
   private $pObj     = null;
     // [Object] Filter object
-  private $filter   = null;
+  private $currentObj   = null;
     // [Boolean] True, if sword is set. False if not.
   private $isSword  = null;
   
@@ -218,9 +218,9 @@ ACOS(
   {
     $arrAndWhere = array( );
     
-    $table = $this->filter->radialsearchTable;
+    $table = $this->currentObj->radialsearchTable;
 
-    $confFilter = $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'filter.' ];
+    $confFilter = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'filter.' ];
     foreach( array_keys( ( array ) $confFilter ) as $filter )
     {
         // CONTINUE : filter has an dot
@@ -311,7 +311,7 @@ ACOS(
 
     }
 
-    if( ! is_object( $this->filter ) )
+    if( ! is_object( $this->currentObj ) )
     {
       $prompt = 'ERROR: no object!<br />' . PHP_EOL .
                 'Sorry for the trouble.<br />' . PHP_EOL .
@@ -319,7 +319,7 @@ ACOS(
               __METHOD__ . ' (' . __LINE__ . ')';
       die( $prompt );
     }
-    $this->filter = $this->pObj->objFltr4x;
+    $this->currentObj = $this->pObj->objFltr4x;
 
     $this->initExtConf( );
     $this->initSword( );
@@ -409,7 +409,7 @@ ACOS(
   }
 
  /**
-  * setFilterObject( )  : 
+  * setCurrentObject( )  : 
   *
   * @param	object
   * @return	void
@@ -417,9 +417,9 @@ ACOS(
   * @version    0.0.1
   * @since      0.0.1
   */
-  public function setFilterObject( $filterObj )
+  public function setCurrentObject( $currentObj )
   {
-    if( ! is_object( $filterObj ) )
+    if( ! is_object( $currentObj ) )
     {
       $prompt = 'ERROR: no object!<br />' . PHP_EOL .
                 'Sorry for the trouble.<br />' . PHP_EOL .
@@ -428,7 +428,7 @@ ACOS(
       die( $prompt );
 
     }
-    $this->filter = $filterObj;
+    $this->currentObj = $currentObj;
   }
 }
 
