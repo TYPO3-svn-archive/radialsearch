@@ -140,10 +140,8 @@ AND
     $table = $this->filter->radialsearchTable;
 
     $confFilter = $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'filter.' ];
-$this->pObj->dev_var_dump( array_keys( $confFilter ) );
     foreach( array_keys( ( array ) $confFilter ) as $filter )
     {
-$this->pObj->dev_var_dump( $filter );
         // CONTINUE : filter has an dot
       if( rtrim( $filter, '.') != $filter )
       {
@@ -154,6 +152,7 @@ $this->pObj->dev_var_dump( $filter );
       $name   = $confFilter[ $filter ];
       $conf   = $confFilter[ $filter . '.' ];
       $value  = $this->pObj->cObj->cObjGetSingle( $name, $conf );
+$this->pObj->dev_var_dump( $value );
       
       switch( true )
       {
@@ -174,6 +173,7 @@ $this->pObj->dev_var_dump( $filter );
     }
     
     $andWhere = ' AND ' . implode( ' AND ', $arrAndWhere );
+$this->pObj->dev_var_dump( $andWhere );
     return $andWhere;
   }
 
