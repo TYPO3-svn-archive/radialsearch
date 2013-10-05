@@ -96,8 +96,8 @@ class tx_radialsearch_interface
     $sword = $tx_radialsearch_pi1[ 'sword' ];
     switch( true )
     {
-      case( $value === null ):
-      case( $value == '*' ):
+      case( $sword === null ):
+      case( $sword == '*' ):
         return null;
       default:
           // Follow the workflow
