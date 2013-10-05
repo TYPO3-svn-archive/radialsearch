@@ -35,7 +35,7 @@ plugin.tx_radialserach_pi1 {
   # cat=Radial Search - JavaScript/others/999;      type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   javascript.external_linksBase = 0
 
-  # cat=Radial Search - radiusbox/enable/101;       type=options[miles,Km];         label= Unit: miles or kilometer
+  # cat=Radial Search - radiusbox/enable/101;       type=options[Km];         label= Unit: kilometer (sorry, miles aren't supported in the current version)
   radiusbox.unit               = Km
   # cat=Radial Search - radiusbox/enable/102;       type=string;                    label= Options: Comma separated values (CSV)
   radiusbox.options            = 5, 10, 25, 50, 100

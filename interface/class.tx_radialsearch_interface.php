@@ -109,6 +109,46 @@ class tx_radialsearch_interface
 
     return $andFrom;
   }
+  
+ /***********************************************
+  *
+  * andSelect
+  *
+  **********************************************/
+
+/**
+ * andSelect( ) : Returns the andSelect statement.
+ *                Returns null, if there isn't any sword.
+ *
+ * @return	string    $andSelect : andSelect statement
+ * @access public
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  public function andSelect( )
+  {
+    $this->init( );
+
+      // RETURN : there isn't any sword
+    if( ! $this->isSword )
+    {
+      return null;
+    }
+      // RETURN : there isn't any sword
+
+      // Set the andFrom statement
+    $andSelect = '' .
+' tx_org_headquarters.mail_lat, 
+tx_org_headquarters.mail_lon, 
+ACOS(
+      SIN( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * SIN( RADIANS( tx_org_headquarters.mail_lat ) ) 
+    + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( tx_org_headquarters.mail_lat   ) )
+    * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( tx_org_headquarters.mail_lon ) )
+) * 6380 AS distance
+';
+
+    return $andSelect;
+  }
 
   
   
