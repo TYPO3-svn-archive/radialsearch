@@ -187,7 +187,6 @@ ACOS(
 ' . $this->andWhereFilter( ) . '  
 ' . $this->andWhereSword( ) . '  
 ' . $this->andWhereEnabledFields( ) . ' 
-HAVING      distance < 50
 ';
 
     return $andWhere;
