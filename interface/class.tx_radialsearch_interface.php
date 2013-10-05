@@ -90,7 +90,7 @@ class tx_radialsearch_interface
   {
     $this->init( );
 
-    $pid      = ( int ) $$this->extConf[ 'database.']['pid' ];
+    $pid      = ( int ) $this->extConf[ 'database.']['pid' ];
 
     $andWhere = '' .
 'AND tx_radialsearch_postalcodes.pid = ' . $pid . ' 
