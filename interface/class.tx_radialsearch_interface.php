@@ -105,7 +105,7 @@ class tx_radialsearch_interface
 
       // Set the andFrom statement
     $andFrom = '' .
-' CROSS JOIN  tx_radialsearch_postalcodes AS tx_radialsearch_postalcodes ';
+' CROSS JOIN  tx_radialsearch_postalcodes ';
 
     return $andFrom;
   }
