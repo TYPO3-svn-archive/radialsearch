@@ -98,6 +98,7 @@ $this->pObj->dev_var_dump( $sword );
     switch( true )
     {
       case( $sword === null ):
+      case( $sword == '' ):
       case( $sword == '*' ):
         return null;
       default:
