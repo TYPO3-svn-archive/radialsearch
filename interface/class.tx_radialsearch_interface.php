@@ -78,7 +78,7 @@ class tx_radialsearch_interface
   
  /***********************************************
   *
-  * andFrom
+  * and
   *
   **********************************************/
 
@@ -110,12 +110,62 @@ class tx_radialsearch_interface
     return $andFrom;
   }
   
- /***********************************************
-  *
-  * andSelect
-  *
-  **********************************************/
+/**
+ * andHaving( ) : Returns the andHaving statement.
+ *              Returns null, if there isn't any sword.
+ *
+ * @return	string    $andHaving : andHaving statement
+ * @access public
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  public function andHaving( )
+  {
+    $this->init( );
 
+      // RETURN : there isn't any sword
+    if( ! $this->isSword )
+    {
+      return null;
+    }
+      // RETURN : there isn't any sword
+
+
+      // Set the andHaving statement
+    $andHaving = '' .
+' HAVING distance < 1000 ';
+
+    return $andHaving;
+  }
+  
+/**
+ * andOrderBy( ) : Returns the andOrderBy statement.
+ *              Returns null, if there isn't any sword.
+ *
+ * @return	string    $andOrderBy : andOrderBy statement
+ * @access public
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  public function andOrderBy( )
+  {
+    $this->init( );
+
+      // RETURN : there isn't any sword
+    if( ! $this->isSword )
+    {
+      return null;
+    }
+      // RETURN : there isn't any sword
+
+
+      // Set the andOrderBy statement
+    $andOrderBy = '' .
+' distance ';
+
+    return $andOrderBy;
+  }
+  
 /**
  * andSelect( ) : Returns the andSelect statement.
  *                Returns null, if there isn't any sword.
@@ -136,7 +186,7 @@ class tx_radialsearch_interface
     }
       // RETURN : there isn't any sword
 
-      // Set the andFrom statement
+      // Set the andSelect statement
     $andSelect = '' .
 ', tx_org_headquarters.mail_lat AS \'tx_org_headquarters.mail_lat\', 
 tx_org_headquarters.mail_lon AS \'tx_org_headquarters.mail_lat\', 
@@ -368,8 +418,10 @@ ACOS(
       case( $sword == '' ):
       case( $sword == '*' ):
         $this->isSword = false;
+        break;
       default:
         $this->isSword = true;
+        break;
     }
     unset( $sword );
       // Set class var $isSword
