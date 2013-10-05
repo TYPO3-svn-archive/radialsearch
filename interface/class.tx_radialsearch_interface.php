@@ -284,6 +284,7 @@ class tx_radialsearch_interface
     $this->filter = $this->pObj->objFltr4x;
 
     $this->initExtConf( );
+    $this->initSword( );
     return true;
   }
 
