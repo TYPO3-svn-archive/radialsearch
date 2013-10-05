@@ -320,6 +320,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     {
       $andWhere = ' AND ' . $andWhere;
     }
+      // enableFields( ) not possible, because it is a cObj method
     $andWhere = $andWhere . ' AND deleted = 0';
 
     return $where . $andWhere;
