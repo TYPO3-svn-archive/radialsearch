@@ -90,6 +90,7 @@ class tx_radialsearch_interface
  */
   public function andWhere( )
   {
+    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
     $this->init( );
 
     $pid      = ( int ) $this->extConf[ 'database.']['pid' ];
@@ -97,12 +98,7 @@ class tx_radialsearch_interface
     $andWhere = '' .
 ' tx_radialsearch_postalcodes.pid = ' . $pid . ' 
 ' . $this->andWhereFilter( ) . '  
-AND
-(
-      tx_radialsearch_postalcodes.postal_code LIKE "99084 Erfurt%" 
-  OR  tx_radialsearch_postalcodes.place_name LIKE "99084 Erfurt%" 
-  OR  CONCAT(tx_radialsearch_postalcodes.postal_code, " ", tx_radialsearch_postalcodes.place_name) LIKE "99084 Erfurt%"
-) 
+' . $this->andWhereSword( ) . '  
 ' . $this->andWhereEnabledFields( ) . ' 
 ';
 
@@ -133,8 +129,6 @@ AND
  */
   private function andWhereFilter( )
   {
-    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
-    
     $arrAndWhere = array( );
     
     $table = $this->filter->radialsearchTable;
@@ -152,8 +146,7 @@ AND
       $name   = $confFilter[ $filter ];
       $conf   = $confFilter[ $filter . '.' ];
       $value  = $this->pObj->cObj->cObjGetSingle( $name, $conf );
-$this->pObj->dev_var_dump( $value );
-      
+
       switch( true )
       {
         case( $value === null ):
@@ -161,7 +154,6 @@ $this->pObj->dev_var_dump( $value );
             // do nothing
           break;
         default:
-          //$value = $GLOBALS['TYPO3_DB']->fullQuoteStr( $value, 'tx_radialsearch_postalcodes' ) ;
           $arrAndWhere[ ] = $filter . ' LIKE ' . $value; 
           break;
       }
@@ -173,7 +165,33 @@ $this->pObj->dev_var_dump( $value );
     }
     
     $andWhere = ' AND ' . implode( ' AND ', $arrAndWhere );
-$this->pObj->dev_var_dump( $andWhere );
+    return $andWhere;
+  }
+
+/**
+ * andWhereSword( ): 
+ *
+ * @return	string    $andWhere : andWhere clause
+ * @access private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  private function andWhereSword( )
+  {
+    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+    $sword = $tx_radialsearch_pi1[ 'sword' ];
+    
+    $sword = $GLOBALS['TYPO3_DB']->fullQuoteStr( $sword, 'tx_radialsearch_postalcodes' ) ;
+    
+
+    $andWhere = '' .
+'AND
+(
+      tx_radialsearch_postalcodes.postal_code LIKE "' . $sword . '%" 
+  OR  tx_radialsearch_postalcodes.place_name LIKE "' . $sword . '%" 
+  OR  CONCAT(tx_radialsearch_postalcodes.postal_code, " ", tx_radialsearch_postalcodes.place_name) LIKE "' . $sword . '%"
+)';
+
     return $andWhere;
   }
 
