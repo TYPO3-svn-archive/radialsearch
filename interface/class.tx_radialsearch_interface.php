@@ -102,13 +102,23 @@ AND
   OR  tx_radialsearch_postalcodes.place_name LIKE "99084 Erfurt%" 
   OR  CONCAT(tx_radialsearch_postalcodes.postal_code, " ", tx_radialsearch_postalcodes.place_name) LIKE "99084 Erfurt%"
 ) 
-AND tx_radialsearch_postalcodes.deleted = 0 
+' . $this->andWhereEnabledFields( ) . ' 
 ';
-      // Prompt the expired time to devlog
 
-    $debugTrailLevel = 1;
-    $this->pObj->timeTracking_log( $debugTrailLevel,  'end' );
+    return $andWhere;
+  }
 
+/**
+ * andWhereEnabledFields( ): 
+ *
+ * @return	string		
+ * @access  private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  private function andWhereEnabledFields( )
+  {
+    $andWhere = $this->pObj->cObj->enableFields( 'tx_radialsearch_postalcodes' );
     return $andWhere;
   }
  
