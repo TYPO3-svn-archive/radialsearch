@@ -90,8 +90,19 @@ class tx_radialsearch_interface
  */
   public function andWhere( )
   {
-    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
     $this->init( );
+
+    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+    $sword = $tx_radialsearch_pi1[ 'sword' ];
+    switch( true )
+    {
+      case( $value === null ):
+      case( $value == '*' ):
+        return null;
+      default:
+          // Follow the workflow
+        break;
+    }
 
     $pid      = ( int ) $this->extConf[ 'database.']['pid' ];
 
