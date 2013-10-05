@@ -197,7 +197,7 @@ $this->pObj->dev_var_dump( $sword );
     
     $sword = $GLOBALS['TYPO3_DB']->fullQuoteStr( $sword, 'tx_radialsearch_postalcodes' ) ;
 //    $sword = trim( $tx_radialsearch_pi1[ 'sword' ], "'");
-$this->pObj->dev_var_dump( $sword );
+$this->pObj->dev_var_dump( $sword, 'Arnstadt' );
     
 
     $andWhere = '' .
