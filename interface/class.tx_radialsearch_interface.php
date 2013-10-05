@@ -193,11 +193,13 @@ class tx_radialsearch_interface
     $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
     $sword = $tx_radialsearch_pi1[ 'sword' ];
     $sword = trim( $sword, "'" );
+    $test   = 'Arnstadt';
 $this->pObj->dev_var_dump( $sword );
     
     $sword = $GLOBALS['TYPO3_DB']->fullQuoteStr( $sword, 'tx_radialsearch_postalcodes' ) ;
+    $test = $GLOBALS['TYPO3_DB']->fullQuoteStr( $test, 'tx_radialsearch_postalcodes' ) ;
 //    $sword = trim( $tx_radialsearch_pi1[ 'sword' ], "'");
-$this->pObj->dev_var_dump( $sword, 'Arnstadt' );
+$this->pObj->dev_var_dump( $sword, $test );
     
 
     $andWhere = '' .
