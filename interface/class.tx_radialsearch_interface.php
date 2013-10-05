@@ -95,7 +95,7 @@ class tx_radialsearch_interface
     $pid      = ( int ) $this->extConf[ 'database.']['pid' ];
 
     $andWhere = '' .
-'AND tx_radialsearch_postalcodes.pid = ' . $pid . ' 
+' tx_radialsearch_postalcodes.pid = ' . $pid . ' 
 ' . $this->andWhereFilter( ) . '  
 AND
 (
@@ -139,6 +139,7 @@ AND
     
     $table = $this->filter->radialsearchTable;
 
+$this->pObj->dev_var_dump( $table, $this->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ] );
     foreach( array_keys( ( array ) $this->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ] ) as $filter )
     {
         // CONTINUE : filter has an dot
