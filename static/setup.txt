@@ -85,9 +85,9 @@ plugin.tx_radialsearch_pi1 {
       tx_radialsearch_pi1 {
           // [Boolean] 0 (default): link to the script file, 1: include the script inline
         inline = {$plugin.tx_radialserach_pi1.javascript.inline}
-          // [Array] admin_code1, country_code, html_input_id, maxrows, minlength
-        marker =
-        marker {
+          // [Array] admin_code1, country_code
+        filter =
+        filter {
             // [String] admin_code1 (1. subdivision/state) for the filter
           admin_code1 = COA
           admin_code1 {
@@ -143,6 +143,10 @@ plugin.tx_radialsearch_pi1 {
               value = "{$plugin.tx_radialserach_pi1.filter.country_code}"
             }
           }
+        }
+          // [Array] html_input_id, maxrows, minlength
+        marker =
+        marker {
             // [String] ID of the input field
           html_input_id = "#{$plugin.tx_radialserach_pi1.html.input.id}"
             // [String] Limit for rows of the database query

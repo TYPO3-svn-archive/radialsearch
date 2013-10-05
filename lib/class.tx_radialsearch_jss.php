@@ -347,7 +347,8 @@ class tx_radialsearch_jss
   //-->
   </script>';
 
-    $script = $this->getTagScriptInlineMarker( $conf, $script );
+    $script = $this->getTagScriptInlineMarker( $conf, $script, 'marker' );
+    $script = $this->getTagScriptInlineMarker( $conf, $script, 'filter' );
 
       // No DRS
     if( ! $this->pObj->drs->drsJavascript )
@@ -376,10 +377,10 @@ class tx_radialsearch_jss
  * @since     0.0.1
  * @version   0.0.1
  */
-  private function getTagScriptInlineMarker( $conf, $script )
+  private function getTagScriptInlineMarker( $conf, $script, $property )
   {
     $marker     = array( );
-    $confMarker = $conf['marker.'];
+    $confMarker = $conf[ $property . '.' ];
 
     if( ! is_array( $confMarker ) )
     {

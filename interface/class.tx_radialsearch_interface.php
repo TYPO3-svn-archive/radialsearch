@@ -131,6 +131,8 @@ AND
  */
   private function andWhereFilter( )
   {
+    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+
     $andWhere = '' .
 'AND tx_radialsearch_postalcodes.country_code LIKE "DE" 
 AND tx_radialsearch_postalcodes.admin_code1 LIKE "TH"
