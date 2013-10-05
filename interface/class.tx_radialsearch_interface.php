@@ -139,8 +139,8 @@ AND
     
     $table = $this->filter->radialsearchTable;
 
-    $confFilter = $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ ' filter.' ];
-$this->pObj->dev_var_dump( $table, $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ], $confFilter );
+    $confFilter = $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'filter.' ];
+$this->pObj->dev_var_dump( $table, $confFilter );
     foreach( array_keys( ( array ) $confFilter ) as $filter )
     {
         // CONTINUE : filter has an dot
