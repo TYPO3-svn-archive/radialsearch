@@ -188,11 +188,13 @@ class tx_radialsearch_interface
     }
       // RETURN : there isn't any sword
 
+    $table = $this->currentObj->radialsearchTable;
+
+    $confFilter = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'filter.' ];
+
       // Set the andSelect statement
     $andSelect = '' .
-', tx_org_headquarters.mail_lat AS \'tx_org_headquarters.mail_lat\', 
-tx_org_headquarters.mail_lon AS \'tx_org_headquarters.mail_lat\', 
-ACOS(
+', ACOS(
       SIN( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * SIN( RADIANS( tx_org_headquarters.mail_lat ) ) 
     + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( tx_org_headquarters.mail_lat   ) )
     * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( tx_org_headquarters.mail_lon ) )

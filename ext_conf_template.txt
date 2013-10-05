@@ -22,3 +22,10 @@ database.externalLinks    = 0
 drs.enabled               = Disabled
   # cat=debugging/others/999;         type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
 drs.externalLinks         = 0
+
+  # cat=earth/enable/100;         type=float; label= Radius in km: Radius of the earth in kilometer (http://de.wikipedia.org/wiki/Erdradius)
+earth.radius.km             = 6378.2
+  # cat=earth/enable/101;         type=float; label= Radius in miles: Radius of the earth in miles
+earth.radius.miles          = 3963.2
+  # cat=earth/others/999;         type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+earth.externalLinks         = 0
