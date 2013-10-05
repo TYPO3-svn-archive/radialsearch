@@ -12,13 +12,13 @@
         var term = request.term;
         if ( term in cache )
         {
+          alert( term );
           response( $.map( cache[ term ], function( item ) {
             return {
               label: item.postal_code + " " + item.place_name,
               value: item.postal_code + " " + item.place_name
             }
           }));
-          response( cache[ term ] );
           return;
         }
         $.ajax({
