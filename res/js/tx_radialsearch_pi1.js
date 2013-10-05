@@ -42,6 +42,8 @@
             if( ( typeof data[ "places" ] !== "undefined" ) )
             {
               cache[ term ] = data.places;
+              alert( term );
+              alert( cache[ term ] );
               response( $.map( data.places, function( item ) {
                 return {
                   label: item.postal_code + " " + item.place_name,
