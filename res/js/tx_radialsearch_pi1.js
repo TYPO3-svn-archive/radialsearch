@@ -6,8 +6,21 @@
     function log( message ) {
       $( "###HTML_INPUT_ID###" ).text( message ).prependTo( "#log" );
     }
+    var cache = {};
     $( "###HTML_INPUT_ID###" ).autocomplete({
       source: function( request, response ) {
+        var term = request.term;
+        if ( term in cache )
+        {
+          response( $.map( cache[ term ], function( item ) {
+            return {
+              label: item.postal_code + " " + item.place_name,
+              value: item.postal_code + " " + item.place_name
+            }
+          }));
+          response( cache[ term ] );
+          return;
+        }
         $.ajax({
             url   : "index.php"
           , type  : "GET"
@@ -28,6 +41,7 @@
           , success   : function( data ) {
             if( ( typeof data[ "places" ] !== "undefined" ) )
             {
+              cache[ term ] = data.places;
               response( $.map( data.places, function( item ) {
                 return {
                   label: item.postal_code + " " + item.place_name,
