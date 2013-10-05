@@ -65,7 +65,9 @@ class tx_radialsearch_interface
   public $extKey = 'radialsearch';
 
     // [Object] Parent object
-  private $pObj = null;
+  private $pObj   = null;
+    // [Object] Filter object
+  private $filter = null;
   
     // [Array] Current configuration of the extension manager
   private $extConf  = null;
@@ -132,6 +134,13 @@ AND
   private function andWhereFilter( )
   {
     $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+    
+    $table = $this->radialsearchTable;
+
+    $name = $this->conf_view[ 'filter.' ][ $table . '.' ][ 'content' ];
+    $conf = $this->conf_view[ 'filter.' ][ $table . '.' ][ 'content.' ];
+    $html = $this->pObj->cObj->cObjGetSingle( $name, $conf );
+    
 
     $andWhere = '' .
 'AND tx_radialsearch_postalcodes.country_code LIKE "DE" 
@@ -169,6 +178,16 @@ AND tx_radialsearch_postalcodes.admin_code1 LIKE "TH"
       die( $prompt );
 
     }
+
+    if( ! is_object( $this->filter ) )
+    {
+      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search (Umkreissuche)<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+    }
+    $this->filter = $this->pObj->objFltr4x;
 
     $this->initExtConf( );
     return true;
@@ -217,6 +236,29 @@ AND tx_radialsearch_postalcodes.admin_code1 LIKE "TH"
 
     }
     $this->pObj = $pObj;
+  }
+
+ /**
+  * setFilterObject( )  : 
+  *
+  * @param	object
+  * @return	void
+  * @access public
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  public function setFilterObject( $filterObj )
+  {
+    if( ! is_object( $filterObj ) )
+    {
+      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+
+    }
+    $this->filter = $filterObj;
   }
 }
 
