@@ -139,8 +139,9 @@ AND
     
     $table = $this->filter->radialsearchTable;
 
-$this->pObj->dev_var_dump( $table, $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ] );
-    foreach( array_keys( ( array ) $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ] ) as $filter )
+//$this->pObj->dev_var_dump( $table, $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ] );
+    $confFilter = $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ ' filter.' ];
+    foreach( array_keys( ( array ) $confFilter ) as $filter )
     {
         // CONTINUE : filter has an dot
       if( rtrim( $filter, '.') != $filter )
@@ -149,8 +150,8 @@ $this->pObj->dev_var_dump( $table, $this->filter->conf_view[ 'filter.' ][ $table
       }
         // CONTINUE : field has an dot
       
-      $name   = $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ $filter ];
-      $conf   = $this->filter->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ $filter . '.' ];
+      $name   = $confFilter[ $filter ];
+      $conf   = $confFilter[ $filter . '.' ];
       $value  = $this->pObj->cObj->cObjGetSingle( $name, $conf );
       
       switch( true )
