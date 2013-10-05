@@ -66,6 +66,9 @@ class tx_radialsearch_interface
 
     // [Object] Parent object
   private $pObj = null;
+  
+    // [Array] Current configuration of the extension manager
+  private $extConf  = null;
 
   
   
@@ -87,15 +90,11 @@ class tx_radialsearch_interface
   {
     $this->init( );
 
-      // Prompt the expired time to devlog
-    $debugTrailLevel = 1;
-    $this->pObj->timeTracking_log( $debugTrailLevel,  'begin' );
+    $pid      = ( int ) $$this->extConf[ 'database.']['pid' ];
 
-    
     $andWhere = '' .
-'AND tx_radialsearch_postalcodes.pid = 0 
-AND tx_radialsearch_postalcodes.country_code LIKE "DE" 
-AND tx_radialsearch_postalcodes.admin_code1 LIKE "TH"
+'AND tx_radialsearch_postalcodes.pid = ' . $pid . ' 
+' . $this->andWhereFilter( ) . '  
 AND
 (
       tx_radialsearch_postalcodes.postal_code LIKE "99084 Erfurt%" 
@@ -121,6 +120,24 @@ AND
     $andWhere = $this->pObj->cObj->enableFields( 'tx_radialsearch_postalcodes' );
     return $andWhere;
   }
+  
+/**
+ * andWhereFilter( ): 
+ *
+ * @return	string    $andWhere : andWhere clause
+ * @access private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  private function andWhereFilter( )
+  {
+    $andWhere = '' .
+'AND tx_radialsearch_postalcodes.country_code LIKE "DE" 
+AND tx_radialsearch_postalcodes.admin_code1 LIKE "TH"
+';
+    return $andWhere;
+  }
+
  
 
 
@@ -151,6 +168,21 @@ AND
 
     }
 
+    $this->initExtConf( );
+    return true;
+  }
+
+/**
+ * initExtConf( ): 
+ *
+ * @return	boolen        true
+ * @access  private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  private function initExtConf( )
+  {
+    $this->extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
     return true;
   }
 
