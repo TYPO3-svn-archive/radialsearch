@@ -161,7 +161,7 @@ $this->pObj->dev_var_dump( $value );
             // do nothing
           break;
         default:
-          $value = $GLOBALS['TYPO3_DB']->fullQuoteStr( $value, 'tx_radialsearch_postalcodes' ) ;
+          //$value = $GLOBALS['TYPO3_DB']->fullQuoteStr( $value, 'tx_radialsearch_postalcodes' ) ;
           $arrAndWhere[ ] = $filter . ' LIKE ' . $value; 
           break;
       }
