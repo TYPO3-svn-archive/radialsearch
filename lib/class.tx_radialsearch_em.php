@@ -335,7 +335,7 @@ class tx_radialsearch_em
       $defaultValues = 'NULL, ' . $pid . ', UNIX_TIMESTAMP( ), UNIX_TIMESTAMP( ), 0, 0';
       $line = $GLOBALS['TYPO3_DB']->quoteStr( $line, 'tx_radialsearch_postalcodes' );
       $line = str_replace( array( "\t" . PHP_EOL, PHP_EOL, "\t\t", "\t" ), array( '\', NULL', NULL, '\', NULL, \'', '\', \'' ), $line );
-      $line = '\'' . $line . '\'';
+        $line = '\'' . $line . '\'';
       $line = str_replace( array( "'NULL'", "NULL'", "'NULL" ), array( 'NULL', 'NULL', 'NULL' ), $line );
       $line = $defaultValues . ', ' .  $line;
       $rows[ $j ] = $line;

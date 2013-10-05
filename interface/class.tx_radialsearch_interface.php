@@ -65,12 +65,50 @@ class tx_radialsearch_interface
   public $extKey = 'radialsearch';
 
     // [Object] Parent object
-  private $pObj   = null;
+  private $pObj     = null;
     // [Object] Filter object
-  private $filter = null;
+  private $filter   = null;
+    // [Boolean] True, if sword is set. False if not.
+  private $isSword  = null;
   
     // [Array] Current configuration of the extension manager
   private $extConf  = null;
+
+  
+  
+ /***********************************************
+  *
+  * andFrom
+  *
+  **********************************************/
+
+/**
+ * andFrom( ) : Returns the andFrom statement.
+ *              Returns null, if there isn't any sword.
+ *
+ * @return	string    $andFrom : andFrom statement
+ * @access public
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  public function andFrom( )
+  {
+    $this->init( );
+
+      // RETURN : there isn't any sword
+    if( ! $this->isSword )
+    {
+      return null;
+    }
+      // RETURN : there isn't any sword
+
+
+      // Set the andFrom statement
+    $andFrom = '' .
+' CROSS JOIN  tx_radialsearch_postalcodes AS tx_radialsearch_postalcodes ';
+
+    return $andFrom;
+  }
 
   
   
@@ -81,8 +119,9 @@ class tx_radialsearch_interface
   **********************************************/
 
 /**
- * andWhere( ): 
- *
+ * andWhere( )  : Returns the andWhere clause.
+ *                Returns null, if there isn't set any sword.
+ * 
  * @return	string    $andWhere : andWhere clause
  * @access public
  * @version 0.0.1
@@ -92,21 +131,17 @@ class tx_radialsearch_interface
   {
     $this->init( );
 
-    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
-    $sword = $tx_radialsearch_pi1[ 'sword' ];
-    switch( true )
+      // RETURN : there isn't any sword
+    if( ! $this->isSword )
     {
-      case( $sword === null ):
-      case( $sword == '' ):
-      case( $sword == '*' ):
-        return null;
-      default:
-          // Follow the workflow
-        break;
+      return null;
     }
+      // RETURN : there isn't any sword
 
-    $pid      = ( int ) $this->extConf[ 'database.']['pid' ];
+      // Get the pid
+    $pid = ( int ) $this->extConf[ 'database.']['pid' ];
 
+      // Set the andWhere statement
     $andWhere = '' .
 ' tx_radialsearch_postalcodes.pid = ' . $pid . ' 
 ' . $this->andWhereFilter( ) . '  
@@ -221,7 +256,7 @@ class tx_radialsearch_interface
 /**
  * init( ): 
  *
- * @return	boolen        true
+ * @return	boolean        true
  * @access  private
  * @version 0.0.1
  * @since   0.0.1
@@ -255,7 +290,7 @@ class tx_radialsearch_interface
 /**
  * initExtConf( ): 
  *
- * @return	boolen        true
+ * @return	boolean        true
  * @access  private
  * @version 0.0.1
  * @since   0.0.1
@@ -264,6 +299,43 @@ class tx_radialsearch_interface
   {
     $this->extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
     return true;
+  }
+
+/**
+ * initSword( ): Set the class var $isSword
+ *
+ * @return	boolean        true, if sword is set. False, if not.
+ * @access  private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  private function initSword( )
+  {
+      // RETURN : sword is set before
+    if( $this->isSword !== null )
+    {
+      return $this->isSword;
+    }
+      // RETURN : sword is set before
+
+      // Get the current sword
+    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+    $sword = $tx_radialsearch_pi1[ 'sword' ];
+    
+      // Set class var $isSword
+    switch( true )
+    {
+      case( $sword === null ):
+      case( $sword == '' ):
+      case( $sword == '*' ):
+        $this->isSword = false;
+      default:
+        $this->isSword = true;
+    }
+    unset( $sword );
+      // Set class var $isSword
+
+    return $this->isSword;
   }
 
 
