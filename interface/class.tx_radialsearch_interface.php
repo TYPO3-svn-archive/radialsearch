@@ -93,6 +93,7 @@ class tx_radialsearch_interface
     $this->init( );
 
     $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+    $sword = $tx_radialsearch_pi1[ 'sword' ];
     switch( true )
     {
       case( $sword === null ):
