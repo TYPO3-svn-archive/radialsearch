@@ -191,19 +191,20 @@ class tx_radialsearch_interface
   private function andWhereSword( )
   {
     $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
-    $sword  = $tx_radialsearch_pi1[ 'sword' ] . '%';
+    $sword = $tx_radialsearch_pi1[ 'sword' ];
 $this->pObj->dev_var_dump( $sword );
     
     $sword = $GLOBALS['TYPO3_DB']->fullQuoteStr( $sword, 'tx_radialsearch_postalcodes' ) ;
-$this->pObj->dev_var_dump( $sword );
+    $sword = trim( $sword, "\'" );
+    $this->pObj->dev_var_dump( $sword );
     
 
     $andWhere = '' .
 'AND
 (
-      tx_radialsearch_postalcodes.postal_code LIKE ' . $sword . ' 
-  OR  tx_radialsearch_postalcodes.place_name LIKE ' . $sword . ' 
-  OR  CONCAT(tx_radialsearch_postalcodes.postal_code, " ", tx_radialsearch_postalcodes.place_name) LIKE ' . $sword . '
+      tx_radialsearch_postalcodes.postal_code LIKE "' . $sword . '%" 
+  OR  tx_radialsearch_postalcodes.place_name LIKE "' . $sword . '%" 
+  OR  CONCAT(tx_radialsearch_postalcodes.postal_code, " ", tx_radialsearch_postalcodes.place_name) LIKE "' . $sword . '%"
 )';
 
     return $andWhere;
