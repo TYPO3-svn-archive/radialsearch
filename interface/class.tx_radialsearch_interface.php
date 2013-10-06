@@ -282,8 +282,8 @@ class tx_radialsearch_interface
       return null;
     }
     
-    $gp  = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
-    $maxRadius            = ( int ) $gp[ $this->confGP[ 'select' ] ];
+    $gp         = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
+    $maxRadius  = ( int ) $gp[ $this->confGP[ 'select' ] ];
     
     $km = ( double ) $this->extConf[ 'earth.']['radius.' ]['km' ];
     if( empty ( $km ) )
