@@ -352,7 +352,7 @@ $this->pObj->dev_var_dump( $table, $constanteditor );
       switch( true )
       {
         case( $value === null ):
-        case( $value == '*' ):
+        case( $value == '"*"' ):
             // do nothing
           break;
         default:
