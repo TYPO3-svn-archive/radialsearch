@@ -398,8 +398,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
   */
   private function htmlRadiusboxOptions( $content )
   {
-    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
-    $radius               = $tx_radialsearch_pi1[ 'radius' ];
+    $gp     = ( array ) t3lib_div::_GP( $this->conf['gp.']['parameter'] );
+    $radius = $gp[ 'select' ];
 
     $csvOptions = $this->conf['radiusbox.']['options'];
     $csvOptions = str_replace( ' ', null, $csvOptions );
