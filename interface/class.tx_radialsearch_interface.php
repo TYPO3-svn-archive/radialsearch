@@ -116,6 +116,18 @@ class tx_radialsearch_interface
     $andFrom = '' .
 ' CROSS JOIN  tx_radialsearch_postalcodes ';
 
+      // RETURN : no DRS
+    if( ! $this->drs )
+    {
+      return $andFrom;    
+    }
+      // RETURN : no DRS
+
+      // DRS
+    $prompt = $andFrom;
+    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 0 );
+      // DRS
+
     return $andFrom;
   }
   
@@ -147,6 +159,18 @@ class tx_radialsearch_interface
     $andHaving = '' .
 ' HAVING distance < ' . $radius . ' ';
 
+      // RETURN : no DRS
+    if( ! $this->drs )
+    {
+      return $andHaving;    
+    }
+      // RETURN : no DRS
+
+      // DRS
+    $prompt = $andHaving;
+    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 0 );
+      // DRS
+
     return $andHaving;
   }
   
@@ -174,6 +198,18 @@ class tx_radialsearch_interface
       // Set the andOrderBy statement
     $andOrderBy = '' .
 ' distance ';
+
+      // RETURN : no DRS
+    if( ! $this->drs )
+    {
+      return $andOrderBy;    
+    }
+      // RETURN : no DRS
+
+      // DRS
+    $prompt = $andOrderBy;
+    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 0 );
+      // DRS
 
     return $andOrderBy;
   }
@@ -219,6 +255,18 @@ class tx_radialsearch_interface
 * ' . $km . ' AS distance
 ';
 
+      // RETURN : no DRS
+    if( ! $this->drs )
+    {
+      return $andSelect;    
+    }
+      // RETURN : no DRS
+
+      // DRS
+    $prompt = $andSelect;
+    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 0 );
+      // DRS
+
     return $andSelect;
   }
 
@@ -262,6 +310,18 @@ class tx_radialsearch_interface
 ' . $this->andWhereEnabledFields( ) . ' 
 ' . $this->andWhereDistance( $withDistance ) . ' 
 ';
+
+      // RETURN : no DRS
+    if( ! $this->drs )
+    {
+      return $andWhere;    
+    }
+      // RETURN : no DRS
+
+      // DRS
+    $prompt = $andWhere;
+    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 0 );
+      // DRS
 
     return $andWhere;
   }
