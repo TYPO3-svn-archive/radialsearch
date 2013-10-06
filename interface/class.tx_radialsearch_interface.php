@@ -416,6 +416,36 @@ class tx_radialsearch_interface
  */
   private function init( )
   {
+    $this->initRequirements( );
+    $this->initExtConf( );
+    $this->initSword( );
+    return true;
+  }
+
+/**
+ * initExtConf( ): 
+ *
+ * @return	boolean        true
+ * @access  private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  private function initExtConf( )
+  {
+    $this->extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
+    return true;
+  }
+  
+/**
+ * initRequirements( ): 
+ *
+ * @return	void
+ * @access  private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  private function initRequirements( )
+  {
     if( ! is_object( $this->pObj ) )
     {
       $prompt = 'ERROR: no object!<br />' . PHP_EOL .
@@ -435,23 +465,23 @@ class tx_radialsearch_interface
       die( $prompt );
     }
 
-    $this->initExtConf( );
-    $this->initSword( );
-    return true;
-  }
+    if( ! is_array( $this->fields ) )
+    {
+      $prompt = 'ERROR: no array!<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+    }
 
-/**
- * initExtConf( ): 
- *
- * @return	boolean        true
- * @access  private
- * @version 0.0.1
- * @since   0.0.1
- */
-  private function initExtConf( )
-  {
-    $this->extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
-    return true;
+    if( ! is_array( $this->filter ) )
+    {
+      $prompt = 'ERROR: no array!<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+    }    
   }
 
 /**
@@ -502,26 +532,58 @@ class tx_radialsearch_interface
   **********************************************/
 
  /**
-  * setParentObject( )  : Set the parent object
+  * setConfiguration( )  : Set fields and filter
   *
-  * @param	object		$pObj: Parent Object
+  * @param	array		$fields: array with elements lat and lon
   * @return	void
   * @access public
-  * @version    0.0.1
-  * @since      0.0.1
+  * @version    4.7.0
+  * @since      4.7.0
   */
-  public function setParentObject( $pObj )
+  public function setConfiguration( $fields, $filter )
   {
-    if( ! is_object( $pObj ) )
+    if( ! is_array( $fields ) )
     {
-      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
+      $prompt = 'ERROR: no array!<br />' . PHP_EOL .
                 'Sorry for the trouble.<br />' . PHP_EOL .
                 'TYPO3 Radial Search<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
       die( $prompt );
-
     }
-    $this->pObj = $pObj;
+
+    if( ! is_array( $filter ) )
+    {
+      $prompt = 'ERROR: no array!<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+    }
+    
+    if( empty( $fields[ 'lat' ] ) )
+    {
+      $prompt = 'ERROR: field[ lat ] is empty!<br />' . PHP_EOL .
+                'Take care of a prpoper configuration and PHP code..<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+    }
+
+    if( empty( $fields[ 'lon' ] ) )
+    {
+      $prompt = 'ERROR: field[ lon ] is empty!<br />' . PHP_EOL .
+                'Take care of a prpoper configuration and PHP code..<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+    }
+
+    $this->fields = $fields;
+    $this->filter = $filter;
+
+    return true;
   }
 
  /**
@@ -545,6 +607,29 @@ class tx_radialsearch_interface
 
     }
     $this->currentObj = $currentObj;
+  }
+
+ /**
+  * setParentObject( )  : Set the parent object
+  *
+  * @param	object		$pObj: Parent Object
+  * @return	void
+  * @access public
+  * @version    0.0.1
+  * @since      0.0.1
+  */
+  public function setParentObject( $pObj )
+  {
+    if( ! is_object( $pObj ) )
+    {
+      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+
+    }
+    $this->pObj = $pObj;
   }
 }
 
