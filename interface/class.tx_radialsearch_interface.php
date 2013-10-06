@@ -433,7 +433,6 @@ $this->pObj->dev_var_dump( $table, $this->currentObj->conf_view[ 'filter.' ][ $t
               __METHOD__ . ' (' . __LINE__ . ')';
       die( $prompt );
     }
-    $this->currentObj = $this->pObj->objFltr4x;
 
     $this->initExtConf( );
     $this->initSword( );
