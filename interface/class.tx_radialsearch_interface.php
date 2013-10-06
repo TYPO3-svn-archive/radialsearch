@@ -74,9 +74,12 @@ class tx_radialsearch_interface
     // [Boolean] True, if sword is set. False if not.
   private $isSword    = null;
     // [Array] Array with elemenst lat and lon
-  private $fields     = null;
+  private $confFields = null;
     // [Array] TypoScript configuration of the filter 
-  private $tsFilter   = null;
+  private $confFilter = null;
+    // [Array] TypoScript configuration of GETPOST 
+  private $confGP     = null;
+
 
 
   
@@ -136,9 +139,9 @@ class tx_radialsearch_interface
     }
       // RETURN : there isn't any sword
 
-    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+    $gp  = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
 
-    $radius = ( int ) $tx_radialsearch_pi1[ 'radius' ];
+    $radius = ( int ) $gp[ $this->confGP[ 'select' ] ];
 
       // Set the andHaving statement
     $andHaving = '' .
@@ -202,8 +205,8 @@ class tx_radialsearch_interface
       $km = 6378.2;
     }
 
-    $destLat        = $this->fields[ 'lat' ];
-    $destLon        = $this->fields[ 'lon' ];
+    $destLat        = $this->confFields[ 'lat' ];
+    $destLon        = $this->confFields[ 'lon' ];
     
       // Set the andSelect statement
     $andSelect = '' .
@@ -279,8 +282,8 @@ class tx_radialsearch_interface
       return null;
     }
     
-    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
-    $maxRadius            = ( int ) $tx_radialsearch_pi1[ 'radius' ];
+    $gp  = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
+    $maxRadius            = ( int ) $gp[ $this->confGP[ 'select' ] ];
     
     $km = ( double ) $this->extConf[ 'earth.']['radius.' ]['km' ];
     if( empty ( $km ) )
@@ -289,8 +292,8 @@ class tx_radialsearch_interface
       $km = 6378.2;
     }
 
-    $destLat        = $this->fields[ 'lat' ];
-    $destLon        = $this->fields[ 'lon' ];
+    $destLat        = $this->confFields[ 'lat' ];
+    $destLon        = $this->confFields[ 'lon' ];
     
     $andWhere = '' .
 'AND 
@@ -334,7 +337,7 @@ class tx_radialsearch_interface
   {
     $arrAndWhere = array( );
     
-    foreach( array_keys( ( array ) $this->tsFilter ) as $filter )
+    foreach( array_keys( ( array ) $this->confFilter ) as $filter )
     {
         // CONTINUE : filter has an dot
       if( rtrim( $filter, '.') != $filter )
@@ -343,8 +346,8 @@ class tx_radialsearch_interface
       }
         // CONTINUE : field has an dot
       
-      $name   = $this->tsFilter[ $filter ];
-      $conf   = $this->tsFilter[ $filter . '.' ];
+      $name   = $this->confFilter[ $filter ];
+      $conf   = $this->confFilter[ $filter . '.' ];
       $value  = $this->pObj->cObj->cObjGetSingle( $name, $conf );
 
       switch( true )
@@ -379,9 +382,9 @@ class tx_radialsearch_interface
  */
   private function andWhereSword( )
   {
-    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+    $gp  = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
 
-    $sword = $tx_radialsearch_pi1[ 'sword' ];
+    $sword = $gp[ $this->confGP[ 'input' ] ];
     $sword = $GLOBALS['TYPO3_DB']->quoteStr( $sword, 'tx_radialsearch_postalcodes' ) ;
 
     $andWhere = '' .
@@ -454,7 +457,7 @@ class tx_radialsearch_interface
       die( $prompt );
     }
 
-    if( ! is_array( $this->fields ) )
+    if( ! is_array( $this->confFields ) )
     {
       $prompt = 'ERROR: no array!<br />' . PHP_EOL .
                 'Sorry for the trouble.<br />' . PHP_EOL .
@@ -463,7 +466,7 @@ class tx_radialsearch_interface
       die( $prompt );
     }
 
-    if( ! is_array( $this->filter ) )
+    if( ! is_array( $this->confFilter ) )
     {
       $prompt = 'ERROR: no array!<br />' . PHP_EOL .
                 'Sorry for the trouble.<br />' . PHP_EOL .
@@ -491,8 +494,8 @@ class tx_radialsearch_interface
       // RETURN : sword is set before
 
       // Get the current sword
-    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
-    $sword = $tx_radialsearch_pi1[ 'sword' ];
+    $gp  = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
+    $sword = $gp[ $this->confGP[ 'input' ] ];
     
       // Set class var $isSword
     switch( true )
@@ -523,14 +526,14 @@ class tx_radialsearch_interface
  /**
   * setConfiguration( )  : Set fields and filter
   *
-  * @param	array		$fields   : array with elements lat and lon
-  * @param	array		$tsFilter : TypoScript configuration of the filter 
+  * @param	array		$fields : array with elements lat and lon
+  * @param	array		$filter : TypoScript configuration of the filter 
   * @return	void
   * @access public
   * @version    4.7.0
   * @since      4.7.0
   */
-  public function setConfiguration( $fields, $tsFilter )
+  public function setConfiguration( $fields, $filter, $gp )
   {
     if( ! is_array( $fields ) )
     {
@@ -541,7 +544,7 @@ class tx_radialsearch_interface
       die( $prompt );
     }
 
-    if( ! is_array( $tsFilter ) )
+    if( ! is_array( $filter ) )
     {
       $prompt = 'ERROR: no array!<br />' . PHP_EOL .
                 'Sorry for the trouble.<br />' . PHP_EOL .
@@ -570,8 +573,18 @@ class tx_radialsearch_interface
       die( $prompt );
     }
 
-    $this->fields = $fields;
-    $this->filter = $tsFilter;
+    if( ! is_array( $gp ) )
+    {
+      $prompt = 'ERROR: no array!<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+    }
+    
+    $this->confFields = $fields;
+    $this->confFilter = $filter;
+    $this->confGP     = $gp;
 
     return true;
   }
