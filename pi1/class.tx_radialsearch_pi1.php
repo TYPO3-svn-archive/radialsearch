@@ -75,7 +75,7 @@ class tx_radialsearch_pi1 extends tslib_pibase
     // [Object]
   public  $drs            = null;
     // [Object]
-  private $flexform       = null;
+  public  $flexform       = null;
     // [Object]
   private $jss            = null;
 
