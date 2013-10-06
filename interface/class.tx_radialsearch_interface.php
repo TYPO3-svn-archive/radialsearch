@@ -194,6 +194,8 @@ class tx_radialsearch_interface
         //  http://de.wikipedia.org/wiki/Erdradius
       $km = 6378.2;
     }
+    
+    $table          = $this->currentObj->radialsearchTable;
     $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
     $destLat        = $constanteditor[ 'lat' ];
     $destLon        = $constanteditor[ 'lon' ];
@@ -282,6 +284,7 @@ class tx_radialsearch_interface
       $km = 6378.2;
     }
 
+    $table          = $this->currentObj->radialsearchTable;
     $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
     $destLat        = $constanteditor[ 'lat' ];
     $destLon        = $constanteditor[ 'lon' ];
