@@ -19,6 +19,15 @@ plugin.tx_radialserach_pi1 {
   # cat=Radial Search - Filter/others/999;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   filter.external_linksBase = 0
 
+  # cat=Radial Search - GET POST/enable/100;          type=string;     label= Parameter: Parameter for the URL. Sent by GET or Post. Usually the piVar parameter of your extension. Examples: tx_browser_pi1, tx_myext_pi1
+  gp.parameter          = tx_browser_pi1
+  # cat=Radial Search - GET POST/enable/101;          type=string;     label= Sword: HTML name of the input field for the search word. Example: radialsearch. Would become in URL: tx_browser_pi1[radialsearch]
+  gp.fieldsword         = radialsearch
+  # cat=Radial Search - GET POST/enable/102;          type=string;     label= Radius: HTML name of the select box with options for the radius. Example: radius. Would become in URL: tx_browser_pi1[radius]
+  gp.fieldradius        = radius 
+  # cat=Radial Search - GET POST/others/999;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  gp.external_linksBase = 0
+
   # cat=Radial Search - html/enable/100;            type=string;     label= Input ID: ID of the input field. Without any hash!
   html.input.id           = lookfromplace
   # cat=Radial Search - html/enable/101;            type=string;     label= Template: Path of the HTML template file

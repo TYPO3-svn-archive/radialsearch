@@ -97,22 +97,24 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $arrReturn = array( 
      'places' => $rows
     );
-    $json = json_encode( $arrReturn );  
-    $jsonp_callback = isset( $_GET['callback'] ) ? $_GET['callback'] : null;
-    $return = $jsonp_callback ? "$jsonp_callback( $json )" : $json;
-    t3lib_div::devlog( '[INFO/DRS] ' . $return, 'radialsearch', 0 );
-    return $return;
+    $json           = json_encode( $arrReturn );  
+    $jsonp_callback = null;
+    if ( isset( $_GET['callback'] ) )
+    {
+      $jsonp_callback = $_GET['callback'];
+    }
+    $return         = $json;
+    if( $jsonp_callback )
+    {
+      $return = "$jsonp_callback( $json )";
+    }
+
+    if( $this->drs->drsEid )
+    {
+      $prompt = $return;
+      t3lib_div::devlog( '[INFO/EID] ' . $prompt, $this->extKey, 0 );
+    }
     
-    //echo "<pre>", print_r($GLOBALS["TYPO3_DB"]), "</pre>";
-    $return = array(
-      'TYPO3_DB'  => $GLOBALS[ 'TYPO3_DB' ],
-      '_GET'      => $GLOBALS[ '_GET'     ],
-      '_POST'     => $GLOBALS[ '_POST'    ]
-    );
-    $json = json_encode( $return );  
-    $jsonp_callback = isset($_GET['callback']) ? $_GET['callback'] : null;
-    $return = $jsonp_callback ? "$jsonp_callback($json)" : $json;
-    t3lib_div::devlog( '[INFO/DRS] ' . $return, 'radialsearch', 0 );
     return $return;
   }
   
@@ -147,7 +149,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   */
   private function initDrs( )
   {
-    $path2lib = t3lib_extMgm::extPath( 'radialsearch' ) . 'lib/';
+    $path2lib = t3lib_extMgm::extPath( $this->extKey ) . 'lib/';
 
     require_once( $path2lib . 'class.tx_radialsearch_drs.php' );
     $this->drs = t3lib_div::makeInstance( 'tx_radialsearch_drs' );

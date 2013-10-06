@@ -184,15 +184,6 @@
           </li>
         </ul>
       ]]></label>
-      <label index="promptGeneralInfo"><![CDATA[
-        All alignments in the extension manager effect the TYPO3 backend only.
-      ]]></label>
-      <label index="promptQuickstartBody"><![CDATA[
-        You can start with the Organiser immediately without any changing of the properties below.<br />
-        Properties below are for special needs only.<br />
-        <br />
-        Have fun!
-      ]]></label>
       <label index="promptVersionPrompt47equal"><![CDATA[
         Best case: your TYPO3 version is 4.7.
       ]]></label>
@@ -340,15 +331,6 @@
               target="_blank">Dirk Wildt (Die Netzmacher) - der Entwickler von TYPO3 Radial-Search &raquo;</a>
           </li>
         </ul>
-      ]]></label>
-      <label index="promptGeneralInfo"><![CDATA[
-        Alle Einstellungen im Extension Manager beeinflussen ausschlie&szlig;lich das TYPO3-Backend.
-      ]]></label>
-      <label index="promptQuickstartBody"><![CDATA[
-        Du kannst mit dem Organiser sofort starten, ohne eine der Einstellungen unten zu ändern.<br />
-        Die Einstellungen sind nur für spezielle Anforderungen.<br />
-        <br />
-        Viele Spa&szlig;!
       ]]></label>
       <label index="promptVersionPrompt47equal"><![CDATA[
         Optimal: Deine TYPO3 Version ist 4.7.

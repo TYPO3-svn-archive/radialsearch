@@ -30,7 +30,7 @@ plugin.tx_radialsearch_pi1 {
   userFunc = tx_radialsearch_pi1->sword
     // Never remove this property!
   pluginCheck = dummy
-      // CSS: tx_radialsearch_pi1
+      // css, gp, html, js
     // Ressources: js
   res =
   res {
@@ -48,6 +48,20 @@ plugin.tx_radialsearch_pi1 {
         }
           // [String] Path of the css file
         path = {$plugin.tx_radialserach_pi1.css.default.path}
+      }
+    }
+      // GP: tx_radialsearch_pi1
+    gp =
+    gp {
+        // fieldradius, fieldsword, parameter
+      tx_radialsearch_pi1 =
+      tx_radialsearch_pi1 {
+          // [String] Radius: HTML name of the select box with options for the radius. Example: radius. Would become in URL: tx_browser_pi1[radius]
+        fieldradius = {$plugin.tx_radialserach_pi1.gp.parameter}
+          // [String] Sword: HTML name of the input field for the search word. Example: radialsearch. Would become in URL: tx_browser_pi1[radialsearch]
+        fieldsword = {$plugin.tx_radialserach_pi1.gp.parameter}
+          // [String] Parameter for the URL. Sent by GET or Post. Usually the piVar parameter of your extension. Examples: tx_browser_pi1, tx_myext_pi1
+        parameter = {$plugin.tx_radialserach_pi1.gp.parameter}
       }
     }
       // HTML: tx_radialsearch_pi1
