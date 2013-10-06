@@ -190,7 +190,7 @@ plugin.tx_radialsearch_pi1 {
       // [String] replace _HTMLMARKER_HTMLINPUTVALUE
     htmlinputvalue = TEXT
     htmlinputvalue {
-      data = GP:tx_radialsearch_pi1|sword
+      data = GP:{$plugin.tx_radialserach_pi1.gp.parameter}|{$plugin.tx_radialserach_pi1.gp.input}
     }
       // [String] replace _HTMLMARKER_HTMLSELECTID
     htmlselectid    = {$plugin.tx_radialserach_pi1.gp.parameter}_{$plugin.tx_radialserach_pi1.gp.select}
