@@ -185,13 +185,17 @@ plugin.tx_radialsearch_pi1 {
     htmlinputlabel {
       data = LLL:EXT:radialsearch/pi1/locallang.xml:htmlinputlabel
     }
+      // [String] replace _HTMLMARKER_HTMLINPUTNAME
     htmlinputname = {$plugin.tx_radialserach_pi1.gp.parameter}[{$plugin.tx_radialserach_pi1.gp.input}]
       // [String] replace _HTMLMARKER_HTMLINPUTVALUE
     htmlinputvalue = TEXT
     htmlinputvalue {
       data = GP:tx_radialsearch_pi1|sword
     }
-    htmlselectname = {$plugin.tx_radialserach_pi1.gp.parameter}[{$plugin.tx_radialserach_pi1.gp.select}]
+      // [String] replace _HTMLMARKER_HTMLSELECTID
+    htmlselectid    = {$plugin.tx_radialserach_pi1.gp.parameter}_{$plugin.tx_radialserach_pi1.gp.select}
+      // [String] replace _HTMLMARKER_HTMLSELECTNAME
+    htmlselectname  = {$plugin.tx_radialserach_pi1.gp.parameter}[{$plugin.tx_radialserach_pi1.gp.select}]
   }
 }
   // plugin.tx_radialsearch_pi1
