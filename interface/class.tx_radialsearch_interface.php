@@ -256,7 +256,7 @@ class tx_radialsearch_interface
   + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( ' . $destLat . ' ) )
   * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( ' . $destLon . ' ) )
 ) 
-* ' . $km . ' AS ' . $distance . '
+* ' . $km . ' AS \'' . $distance . '\'
 ';
 
       // RETURN : no DRS
@@ -499,9 +499,6 @@ class tx_radialsearch_interface
  */
   private function initDRS( )
   {
-    $prompt = 'TEST';
-    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 3 );
-
     if( $this->drs !== null )
     {
       return;
