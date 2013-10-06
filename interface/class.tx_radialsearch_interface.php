@@ -199,7 +199,7 @@ class tx_radialsearch_interface
     $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
     $destLat        = $constanteditor[ 'lat' ];
     $destLon        = $constanteditor[ 'lon' ];
-$this->pObj->dev_var_dump( $table, $constanteditor );
+//$this->pObj->dev_var_dump( $table, $constanteditor );
     
       // Set the andSelect statement
     $andSelect = '' .
@@ -289,7 +289,6 @@ $this->pObj->dev_var_dump( $table, $constanteditor );
     $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
     $destLat        = $constanteditor[ 'lat' ];
     $destLon        = $constanteditor[ 'lon' ];
-$this->pObj->dev_var_dump( $table, $constanteditor );
     
     $andWhere = '' .
 'AND 
@@ -352,6 +351,7 @@ $this->pObj->dev_var_dump( $table, $constanteditor );
       switch( true )
       {
         case( $value === null ):
+        case( $value == '*' ):
         case( $value == '"*"' ):
             // do nothing
           break;
@@ -365,7 +365,6 @@ $this->pObj->dev_var_dump( $table, $constanteditor );
     {
       return null;
     }
-$this->pObj->dev_var_dump( $arrAndWhere );
     
     $andWhere = ' AND ' . implode( ' AND ', $arrAndWhere );
     return $andWhere;
