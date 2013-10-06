@@ -495,7 +495,7 @@ class tx_radialsearch_interface
  */
   private function initDRS( )
   {
-    $prompt = 'The DRS is enabled by the extension manager.';
+    $prompt = 'TEST';
     t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 3 );
 
     if( $this->drs !== null )
@@ -642,6 +642,9 @@ class tx_radialsearch_interface
   */
   public function setConfiguration( $fields, $filter, $gp )
   {
+    $prompt = 'TEST';
+    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 3 );
+
     if( ! is_array( $fields ) )
     {
       $prompt = 'ERROR: no array!<br />' . PHP_EOL .
@@ -707,6 +710,9 @@ class tx_radialsearch_interface
   */
   public function setParentObject( $pObj )
   {
+    $prompt = 'TEST';
+    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 3 );
+
     if( ! is_object( $pObj ) )
     {
       $prompt = 'ERROR: no object!<br />' . PHP_EOL .
