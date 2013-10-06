@@ -9,8 +9,15 @@ plugin.tx_radialserach_pi1 {
   css.default.path               = EXT:radialsearch/res/css/tx_radialsearch_pi1.css
   # cat=Radial Search - css/enable/101;             type=string;     label= CSS jQuery UI file: Path of the CSS file. Leave it empty, if you don't need the jQuery UI CSS.
   css.jquery.path        = EXT:radialsearch/res/css/jQuery/smoothness/jquery-ui.css
-  # cat=Radial Search - html/others/999;            type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  # cat=Radial Search - css/others/999;             type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   css.external_linksBase = 0
+
+  # cat=Radial Search - database/enable/100;        type=string;     label= Latitude: Label of table and field, which contains the latitude - it is used in SQL queries. Example: tx_org_headquarters.mail_lat, tx_myext_address.lat
+  database.lat        = 
+  # cat=Radial Search - database/enable/100;        type=string;     label= Longitude: Label of table and field, which contains the longitude - it is used in SQL queries. Example: tx_org_headquarters.mail_lon, tx_myext_address.lon
+  database.lon        = 
+  # cat=Radial Search - database/others/999;        type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  database.external_linksBase = 0
 
   # cat=Radial Search - Filter/enable/100;          type=string;     label= Country Code: ISO country code. For example: DE, GB, US. Leave it empty, if ZIP code of all countries should be available.
   filter.country_code       = 
@@ -19,13 +26,13 @@ plugin.tx_radialserach_pi1 {
   # cat=Radial Search - Filter/others/999;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   filter.external_linksBase = 0
 
-  # cat=Radial Search - GET POST/enable/100;          type=string;     label= Parameter: Parameter for the URL. Sent by GET or Post. Usually the piVar parameter of your extension. Examples: tx_browser_pi1, tx_myext_pi1
+  # cat=Radial Search - GET POST/enable/100;        type=string;     label= Parameter: Parameter for the URL. Sent by GET or Post. Usually the piVar parameter of your extension. Examples: tx_browser_pi1, tx_myext_pi1
   gp.parameter          = tx_browser_pi1
-  # cat=Radial Search - GET POST/enable/101;          type=string;     label= Sword: HTML name of the input field for the search word. Example: radialsearch. Would become in URL: tx_browser_pi1[radialsearch]
+  # cat=Radial Search - GET POST/enable/101;        type=string;     label= Sword: HTML name of the input field for the search word. Example: radialsearch. Would become in URL: tx_browser_pi1[radialsearch]
   gp.fieldsword         = radialsearch
-  # cat=Radial Search - GET POST/enable/102;          type=string;     label= Radius: HTML name of the select box with options for the radius. Example: radius. Would become in URL: tx_browser_pi1[radius]
+  # cat=Radial Search - GET POST/enable/102;        type=string;     label= Radius: HTML name of the select box with options for the radius. Example: radius. Would become in URL: tx_browser_pi1[radius]
   gp.fieldradius        = radius 
-  # cat=Radial Search - GET POST/others/999;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+  # cat=Radial Search - GET POST/others/999;        type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   gp.external_linksBase = 0
 
   # cat=Radial Search - html/enable/100;            type=string;     label= Input ID: ID of the input field. Without any hash!

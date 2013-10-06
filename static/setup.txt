@@ -30,7 +30,7 @@ plugin.tx_radialsearch_pi1 {
   userFunc = tx_radialsearch_pi1->sword
     // Never remove this property!
   pluginCheck = dummy
-      // css, gp, html, js
+      // css, database, gp, html, js
   res =
   res {
       // marker, path
@@ -47,6 +47,18 @@ plugin.tx_radialsearch_pi1 {
         }
           // [String] Path of the css file
         path = {$plugin.tx_radialserach_pi1.css.default.path}
+      }
+    }
+      // fieldradius, fieldsword, parameter
+    database =
+    database {
+        // fieldradius, fieldsword, parameter
+      tx_radialsearch_pi1 =
+      tx_radialsearch_pi1 {
+          // [String] Latitude: Label of table and field, which contains the latitude - it is used in SQL queries. Example: tx_org_headquarters.mail_lat, tx_myext_address.lat
+        lat = {$plugin.tx_radialserach_pi1.database.lat}
+          // [String] Longitude: Label of table and field, which contains the longitude - it is used in SQL queries. Example: tx_org_headquarters.mail_lon, tx_myext_address.lon
+        lon = {$plugin.tx_radialserach_pi1.database.lon}
       }
     }
       // fieldradius, fieldsword, parameter
