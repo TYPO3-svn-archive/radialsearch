@@ -34,19 +34,19 @@ plugin.tx_radialsearch_pi1 {
   database =
   database {
       // [String] Latitude: Label of table and field, which contains the latitude - it is used in SQL queries. Example: tx_org_headquarters.mail_lat, tx_myext_address.lat
-    lat = {$plugin.tx_radialserach_pi1.database.lat}
+    lat = {$plugin.tx_radialsearch_pi1.database.lat}
       // [String] Longitude: Label of table and field, which contains the longitude - it is used in SQL queries. Example: tx_org_headquarters.mail_lon, tx_myext_address.lon
-    lon = {$plugin.tx_radialserach_pi1.database.lon}
+    lon = {$plugin.tx_radialsearch_pi1.database.lon}
   }
     // GETPOST: fieldradius, fieldsword, parameter
   gp =
   gp {
       // [String] Radius: HTML name of the select box with options for the radius. Example: radius. Would become in URL: tx_browser_pi1[radius]
-    select    = {$plugin.tx_radialserach_pi1.gp.select}
+    select    = {$plugin.tx_radialsearch_pi1.gp.select}
       // [String] Sword: HTML name of the input field for the search word. Example: radialsearch. Would become in URL: tx_browser_pi1[radialsearch]
-    input     = {$plugin.tx_radialserach_pi1.gp.input}
+    input     = {$plugin.tx_radialsearch_pi1.gp.input}
       // [String] Parameter for the URL. Sent by GET or Post. Usually the piVar parameter of your extension. Examples: tx_browser_pi1, tx_myext_pi1
-    parameter = {$plugin.tx_radialserach_pi1.gp.parameter}
+    parameter = {$plugin.tx_radialsearch_pi1.gp.parameter}
   }
       // css, html, js
   res =
@@ -61,10 +61,10 @@ plugin.tx_radialsearch_pi1 {
         marker =
         marker {
             // [String] ID of the input field
-          html_input_id = {$plugin.tx_radialserach_pi1.html.input.id}
+          html_input_id = {$plugin.tx_radialsearch_pi1.html.input.id}
         }
           // [String] Path of the css file
-        path = {$plugin.tx_radialserach_pi1.css.default.path}
+        path = {$plugin.tx_radialsearch_pi1.css.default.path}
       }
     }
       // marker, path
@@ -77,10 +77,10 @@ plugin.tx_radialsearch_pi1 {
         marker =
         marker {
             // [String] ID of the input field
-          html_input_id = {$plugin.tx_radialserach_pi1.html.input.id}
+          html_input_id = {$plugin.tx_radialsearch_pi1.html.input.id}
         }
           // [String] Path of the html template
-        path = {$plugin.tx_radialserach_pi1.html.path}
+        path = {$plugin.tx_radialsearch_pi1.html.path}
       }
     }
       // inline, filter, marker, path, placeToFooter
@@ -90,7 +90,7 @@ plugin.tx_radialsearch_pi1 {
       tx_radialsearch_pi1 =
       tx_radialsearch_pi1 {
           // [Boolean] 0 (default): link to the script file, 1: include the script inline
-        inline = {$plugin.tx_radialserach_pi1.javascript.inline}
+        inline = {$plugin.tx_radialsearch_pi1.javascript.inline}
           // [Array] admin_code1, country_code
         filter =
         filter {
@@ -101,7 +101,7 @@ plugin.tx_radialsearch_pi1 {
             10 = TEXT
             10 {
               if {
-                isFalse = {$plugin.tx_radialserach_pi1.filter.country_code}
+                isFalse = {$plugin.tx_radialsearch_pi1.filter.country_code}
               }
               value = "*"
             }
@@ -109,13 +109,13 @@ plugin.tx_radialsearch_pi1 {
             20 = COA
             20 {
               if {
-                isTrue = {$plugin.tx_radialserach_pi1.filter.country_code}
+                isTrue = {$plugin.tx_radialsearch_pi1.filter.country_code}
               }
                 // if admin_code1 isn't set
               10 = TEXT
               10 {
                 if {
-                  isFalse = {$plugin.tx_radialserach_pi1.filter.admin_code1}
+                  isFalse = {$plugin.tx_radialsearch_pi1.filter.admin_code1}
                 }
                 value = "*"
               }
@@ -123,9 +123,9 @@ plugin.tx_radialsearch_pi1 {
               20 = TEXT
               20 {
                 if {
-                  isTrue = {$plugin.tx_radialserach_pi1.filter.admin_code1}
+                  isTrue = {$plugin.tx_radialsearch_pi1.filter.admin_code1}
                 }
-                value = "{$plugin.tx_radialserach_pi1.filter.admin_code1}"
+                value = "{$plugin.tx_radialsearch_pi1.filter.admin_code1}"
               }
             }
           }
@@ -136,7 +136,7 @@ plugin.tx_radialsearch_pi1 {
             10 = TEXT
             10 {
               if {
-                isFalse = {$plugin.tx_radialserach_pi1.filter.country_code}
+                isFalse = {$plugin.tx_radialsearch_pi1.filter.country_code}
               }
               value = "*"
             }
@@ -144,9 +144,9 @@ plugin.tx_radialsearch_pi1 {
             20 = TEXT
             20 {
               if {
-                isTrue = {$plugin.tx_radialserach_pi1.filter.country_code}
+                isTrue = {$plugin.tx_radialsearch_pi1.filter.country_code}
               }
-              value = "{$plugin.tx_radialserach_pi1.filter.country_code}"
+              value = "{$plugin.tx_radialsearch_pi1.filter.country_code}"
             }
           }
         }
@@ -154,16 +154,16 @@ plugin.tx_radialsearch_pi1 {
         marker =
         marker {
             // [String] ID of the input field
-          html_input_id = "#{$plugin.tx_radialserach_pi1.html.input.id}"
+          html_input_id = "#{$plugin.tx_radialsearch_pi1.html.input.id}"
             // [String] Limit for rows of the database query
-          limit = {$plugin.tx_radialserach_pi1.sql.limit}
+          limit = {$plugin.tx_radialsearch_pi1.sql.limit}
             // [String] Minimum length of the search word for autocomplete
-          minlength = {$plugin.tx_radialserach_pi1.autocomplete.minLength}
+          minlength = {$plugin.tx_radialsearch_pi1.autocomplete.minLength}
         }
           // [String] Path of the script
-        path          = {$plugin.tx_radialserach_pi1.javascript.path}
+        path          = {$plugin.tx_radialsearch_pi1.javascript.path}
           // [Boolean] 1 (default): place JSS scripts in the footer section. 0: place it on top.
-        placeToFooter = {$plugin.tx_radialserach_pi1.javascript.placeToFooter}
+        placeToFooter = {$plugin.tx_radialsearch_pi1.javascript.placeToFooter}
       }
     }
   }
@@ -171,31 +171,31 @@ plugin.tx_radialsearch_pi1 {
   radiusbox =  
   radiusbox {
       // [String/CSV] Comma separated values (CSV) for the options of the selectbox. Example: 5,10,25,50,100
-    options = {$plugin.tx_radialserach_pi1.radiusbox.options}
+    options = {$plugin.tx_radialsearch_pi1.radiusbox.options}
       // [String] miles || km. Important for calculating.
-    unit    = {$plugin.tx_radialserach_pi1.radiusbox.unit} 
+    unit    = {$plugin.tx_radialsearch_pi1.radiusbox.unit} 
   }
     // htmlinputid, htmlinputlabel, htmlinputvalue
   _HTMLMARKER =
   _HTMLMARKER {
       // [String] replace _HTMLMARKER_HTMLINPUTID
-    htmlinputid = {$plugin.tx_radialserach_pi1.html.input.id}
+    htmlinputid = {$plugin.tx_radialsearch_pi1.html.input.id}
       // [String] replace _HTMLMARKER_HTMLINPUTLABEL
     htmlinputlabel = TEXT
     htmlinputlabel {
       data = LLL:EXT:radialsearch/pi1/locallang.xml:htmlinputlabel
     }
       // [String] replace _HTMLMARKER_HTMLINPUTNAME
-    htmlinputname = {$plugin.tx_radialserach_pi1.gp.parameter}[{$plugin.tx_radialserach_pi1.gp.input}]
+    htmlinputname = {$plugin.tx_radialsearch_pi1.gp.parameter}[{$plugin.tx_radialsearch_pi1.gp.input}]
       // [String] replace _HTMLMARKER_HTMLINPUTVALUE
     htmlinputvalue = TEXT
     htmlinputvalue {
-      data = GP:{$plugin.tx_radialserach_pi1.gp.parameter}|{$plugin.tx_radialserach_pi1.gp.input}
+      data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
     }
       // [String] replace _HTMLMARKER_HTMLSELECTID
-    htmlselectid    = {$plugin.tx_radialserach_pi1.gp.parameter}_{$plugin.tx_radialserach_pi1.gp.select}
+    htmlselectid    = {$plugin.tx_radialsearch_pi1.gp.parameter}_{$plugin.tx_radialsearch_pi1.gp.select}
       // [String] replace _HTMLMARKER_HTMLSELECTNAME
-    htmlselectname  = {$plugin.tx_radialserach_pi1.gp.parameter}[{$plugin.tx_radialserach_pi1.gp.select}]
+    htmlselectname  = {$plugin.tx_radialsearch_pi1.gp.parameter}[{$plugin.tx_radialsearch_pi1.gp.select}]
   }
 }
   // plugin.tx_radialsearch_pi1
@@ -223,7 +223,7 @@ plugin.tx_radialsearch_pi3 {
 
 page {
   includeCSS {
-    tx_radialsearch_jqueryUi = {$plugin.tx_radialserach_pi1.css.jquery.path}
+    tx_radialsearch_jqueryUi = {$plugin.tx_radialsearch_pi1.css.jquery.path}
   }
 }
   // page

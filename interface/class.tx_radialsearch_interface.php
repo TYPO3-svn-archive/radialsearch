@@ -151,13 +151,14 @@ class tx_radialsearch_interface
     }
       // RETURN : there isn't any sword
 
-    $gp  = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
+    $distance   = $this->confFields[ 'distance' ];
 
-    $radius = ( int ) $gp[ $this->confGP[ 'select' ] ];
+    $gp         = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
+    $maxRadius  = ( int ) $gp[ $this->confGP[ 'select' ] ];
 
       // Set the andHaving statement
     $andHaving = '' .
-' HAVING distance < ' . $radius . ' ';
+' HAVING ' . $distance . ' < ' . $maxRadius . ' ';
 
       // RETURN : no DRS
     if( ! $this->drs )
@@ -195,9 +196,11 @@ class tx_radialsearch_interface
       // RETURN : there isn't any sword
 
 
-      // Set the andOrderBy statement
+    $distance   = $this->confFields[ 'distance' ];
+
+    // Set the andOrderBy statement
     $andOrderBy = '' .
-' distance ';
+' ' . $distance . ' ';
 
       // RETURN : no DRS
     if( ! $this->drs )
@@ -241,8 +244,9 @@ class tx_radialsearch_interface
       $km = 6378.2;
     }
 
-    $destLat        = $this->confFields[ 'lat' ];
-    $destLon        = $this->confFields[ 'lon' ];
+    $distance = $this->confFields[ 'distance' ];
+    $destLat  = $this->confFields[ 'lat' ];
+    $destLon  = $this->confFields[ 'lon' ];
     
       // Set the andSelect statement
     $andSelect = '' .
@@ -252,7 +256,7 @@ class tx_radialsearch_interface
   + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( ' . $destLat . ' ) )
   * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( ' . $destLon . ' ) )
 ) 
-* ' . $km . ' AS distance
+* ' . $km . ' AS ' . $distance . '
 ';
 
       // RETURN : no DRS
@@ -663,6 +667,16 @@ class tx_radialsearch_interface
       die( $prompt );
     }
     
+    if( empty( $fields[ 'distance' ] ) )
+    {
+      $prompt = 'ERROR: field[ distance ] is empty!<br />' . PHP_EOL .
+                'Take care of a prpoper configuration and PHP code..<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+    }
+
     if( empty( $fields[ 'lat' ] ) )
     {
       $prompt = 'ERROR: field[ lat ] is empty!<br />' . PHP_EOL .

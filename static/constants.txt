@@ -1,4 +1,4 @@
-plugin.tx_radialserach_pi1 {
+plugin.tx_radialsearch_pi1 {
 
   # cat=Radial Search - autocomplete/enable/100;   type=+int;     label= Min length: Minimum length of the search word for autocomplete
   autocomplete.minLength         = 2
