@@ -106,7 +106,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $return         = $json;
     if( $jsonp_callback )
     {
-      $return = "$jsonp_callback( $json )";
+      $return = "$jsonp_callback($json)";
     }
 
     if( $this->drs->drsEid )
