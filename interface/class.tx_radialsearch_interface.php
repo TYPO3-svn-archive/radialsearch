@@ -68,8 +68,8 @@ class tx_radialsearch_interface
 
     // [Object] Parent object
   private $pObj       = null;
-    // [Object] Filter object
-  private $currentObj = null;
+    // [Boolean] Prompt to DRS?
+  private $drs        = false;
   
     // [Boolean] True, if sword is set. False if not.
   private $isSword    = null;
@@ -420,8 +420,46 @@ class tx_radialsearch_interface
   {
     $this->initRequirements( );
     $this->initExtConf( );
+    $this->initDRS( );
     $this->initSword( );
     return true;
+  }
+
+/**
+ * initDRS( ): 
+ *
+ * @return	boolean        true
+ * @access  private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  private function iniDRS( )
+  {
+    switch( $this->extConf['drs.']['enabled'] )
+    {
+      case( 'Disabled' ):
+      case( null ):
+        return;
+        break;
+      case( 'Enabled (for debugging only!)' ):
+          // Follow the workflow
+        break;
+      default:
+        $prompt = 'Error: drs.enabled is undefined.<br />
+          value is ' . $this->pObj->arr_extConf['drs.']['enabled'] . '<br />
+          <br />
+          ' . __METHOD__ . ' line(' . __LINE__. ')';
+        die( $prompt );
+    }
+
+      // Set prompt flags
+    $this->drs = true;
+
+      // DRS
+    $prompt = 'The DRS - Development Reporting System is enabled: ' . $this->extConf['drs.']['enabled'];
+    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 0 );
+    $prompt = 'The DRS is enabled by the extension manager.';
+    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 0 );
   }
 
 /**
