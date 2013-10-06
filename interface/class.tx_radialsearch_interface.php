@@ -365,6 +365,7 @@ $this->pObj->dev_var_dump( $table, $constanteditor );
     {
       return null;
     }
+$this->pObj->dev_var_dump( $andWhere );
     
     $andWhere = ' AND ' . implode( ' AND ', $arrAndWhere );
     return $andWhere;
