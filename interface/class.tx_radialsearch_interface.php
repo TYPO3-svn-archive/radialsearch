@@ -288,8 +288,7 @@ class tx_radialsearch_interface
     $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
     $destLat        = $constanteditor[ 'lat' ];
     $destLon        = $constanteditor[ 'lon' ];
-var_dump( $this->currentObj );
-$this->pObj->dev_var_dump( $table );
+$this->pObj->dev_var_dump( $table, $constanteditor );
     
     $andWhere = '' .
 'AND 
