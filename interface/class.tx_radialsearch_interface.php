@@ -493,7 +493,7 @@ class tx_radialsearch_interface
  * @version 0.0.1
  * @since   0.0.1
  */
-  private function iniDRS( )
+  private function initDRS( )
   {
     switch( $this->extConf['drs.']['enabled'] )
     {
