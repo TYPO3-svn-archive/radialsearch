@@ -202,13 +202,8 @@ class tx_radialsearch_interface
       $km = 6378.2;
     }
 
-//    $table          = $this->currentObj->radialsearchTable;
-//    $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
-//    $destLat        = $constanteditor[ 'lat' ];
-//    $destLon        = $constanteditor[ 'lon' ];
     $destLat        = $this->fields[ 'lat' ];
     $destLon        = $this->fields[ 'lon' ];
-//$this->pObj->dev_var_dump( $table, $constanteditor );
     
       // Set the andSelect statement
     $andSelect = '' .
@@ -294,8 +289,6 @@ class tx_radialsearch_interface
       $km = 6378.2;
     }
 
-//    $table          = $this->currentObj->radialsearchTable;
-//    $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
     $destLat        = $this->fields[ 'lat' ];
     $destLon        = $this->fields[ 'lon' ];
     
@@ -341,9 +334,6 @@ class tx_radialsearch_interface
   {
     $arrAndWhere = array( );
     
-    //$table = $this->currentObj->radialsearchTable;
-
-    //$confFilter = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'filter.' ];
     foreach( array_keys( ( array ) $this->tsFilter ) as $filter )
     {
         // CONTINUE : filter has an dot
@@ -464,15 +454,6 @@ class tx_radialsearch_interface
       die( $prompt );
     }
 
-//    if( ! is_object( $this->currentObj ) )
-//    {
-//      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
-//                'Sorry for the trouble.<br />' . PHP_EOL .
-//                'TYPO3 Radial Search (Umkreissuche)<br />' . PHP_EOL .
-//              __METHOD__ . ' (' . __LINE__ . ')';
-//      die( $prompt );
-//    }
-//
     if( ! is_array( $this->fields ) )
     {
       $prompt = 'ERROR: no array!<br />' . PHP_EOL .
@@ -593,29 +574,6 @@ class tx_radialsearch_interface
     $this->filter = $tsFilter;
 
     return true;
-  }
-
- /**
-  * setCurrentObject( )  : 
-  *
-  * @param	object
-  * @return	void
-  * @access public
-  * @version    0.0.1
-  * @since      0.0.1
-  */
-  public function setCurrentObject( $currentObj )
-  {
-//    if( ! is_object( $currentObj ) )
-//    {
-//      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
-//                'Sorry for the trouble.<br />' . PHP_EOL .
-//                'TYPO3 Radial Search<br />' . PHP_EOL .
-//              __METHOD__ . ' (' . __LINE__ . ')';
-//      die( $prompt );
-//
-//    }
-//    $this->currentObj = $currentObj;
   }
 
  /**

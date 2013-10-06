@@ -196,39 +196,13 @@
       <label index="promptVersionPrompt47equal"><![CDATA[
         Best case: your TYPO3 version is 4.7.
       ]]></label>
-      <label index="promptVersionPrompt47equalCSC"><![CDATA[
-        If you are using a version of CSS styled content smaller than 4.7,
-        please add the static template '+Org: Basis for TYPO3 < 4.7' to your TypoScript template.
-      ]]></label>
       <label index="promptVersionPrompt47greater"><![CDATA[
         Your TYPO3 version is greater than 4.7.<br />
-        The Organiser isn't tested for the current TYPO3 version.
-        <br />
-        <br />
-        If you have any unwanted results, please try to solve it this way:
-        <br />
-        <br />
-        <ol style="list-style:outside;">
-          <li>
-            Remove the CSS Styled Content from the TypoScript template of your root page.
-          </li>
-          <li>
-            Include the CSS Styled Content 4.7.
-          </li>
-        </ol>
+        The Radial Search (Umkreissuche) isn't tested for the current TYPO3 version.
       ]]></label>
       <label index="promptVersionPrompt47smaller"><![CDATA[
-        Your TYPO3 version is smaller than 4.7
-        <br />
-        <br />
-        <ol style="list-style:outside;">
-          <li>
-            Please add the static template '+Org: Basis for TYPO3 < 4.7' to your TypoScript template.
-          </li>
-          <li>
-            Place this template below (after) all other Organiser templates! 
-          </li>
-        </ol>
+        Your TYPO3 version is smaller than 4.7.<br />
+        The Radial Search (Umkreissuche) isn't tested for the current TYPO3 version.
       ]]></label>
       <label index="wordCommand">Command</label>
       <label index="wordResult">Result</label>
@@ -379,39 +353,13 @@
       <label index="promptVersionPrompt47equal"><![CDATA[
         Optimal: Deine TYPO3 Version ist 4.7.
       ]]></label>
-      <label index="promptVersionPrompt47equalCSC"><![CDATA[
-        Wenn Du eine Version von CSS Styled Content benutzt, die niedriger als 4.7 ist,
-        binde bitte das Static Template '+Org: Basis fuer TYPO3 < 4.7' in Deine TypoScript Template ein.
-      ]]></label>
       <label index="promptVersionPrompt47greater"><![CDATA[
         Deine TYPO3 Version ist is h&ouml;her als 4.7.<br />
-        Der Organiser ist f&uuml;r die aktuelle TYPO3 Version nicht getestet.
-        <br />
-        <br />
-        Wenn Du ein Problem haben solltest, versuche es mit folgender L&ouml;sung:
-        <br />
-        <br />
-        <ol style="list-style:outside;">
-          <li>
-            Entferne CSS Styled Content aus dem TypoScript-Template Deiner Root-Seite.
-          </li>
-          <li>
-            Binde CSS Styled Content 4.7 ein.
-          </li>
-        </ol>
+        Radial Search (Umkreissuche) ist f&uuml;r die aktuelle TYPO3 Version nicht getestet.
       ]]></label>
       <label index="promptVersionPrompt47smaller"><![CDATA[
-        Deine TYPO3 Version ist niedriger als 4.7
-        <br />
-        <br />
-        <ol style="list-style:outside;">
-          <li>
-            Binde bitte das Static Template '+Org: Basis fuer TYPO3 < 4.7' in Dein TypoScript-Template ein.
-          </li>
-          <li>
-            Positioniere das Template unter (nach) allen anderen Organiser-Templates! 
-          </li>
-        </ol>
+        Deine TYPO3 Version ist niedriger als 4.7.<br />
+        Radial Search (Umkreissuche) ist f&uuml;r die aktuelle TYPO3 Version nicht getestet.
       ]]></label>
       <label index="wordCommand">Befehl</label>
       <label index="wordResult">Ergebnis</label>

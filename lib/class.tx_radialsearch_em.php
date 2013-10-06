@@ -541,11 +541,6 @@ class tx_radialsearch_em
               ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47equal'). '
             </div>
           </div>
-          <div class="typo3-message message-warning">
-            <div class="message-body">
-              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:promptVersionPrompt47equalCSC'). '
-            </div>
-          </div>
           ';
         break;
     }
