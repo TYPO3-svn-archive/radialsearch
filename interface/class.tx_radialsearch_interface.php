@@ -58,21 +58,28 @@ class tx_radialsearch_interface
 
   public $prefixId = 'tx_radialsearch_interface';
 
-  // same as class name
+    // same as class name
   public $scriptRelPath = 'interface/class.tx_radialsearch_interface.php';
 
-  // path to this script relative to the extension dir.
+    // path to this script relative to the extension dir.
   public $extKey = 'radialsearch';
-
-    // [Object] Parent object
-  private $pObj     = null;
-    // [Object] Filter object
-  private $currentObj   = null;
-    // [Boolean] True, if sword is set. False if not.
-  private $isSword  = null;
-  
     // [Array] Current configuration of the extension manager
   private $extConf  = null;
+
+    // [Object] Parent object
+  private $pObj       = null;
+    // [Object] Filter object
+  private $currentObj = null;
+  
+    // [Boolean] True, if sword is set. False if not.
+  private $isSword    = null;
+    // [Array] Array with elemenst lat and lon
+  private $fields     = null;
+    // [Array] TypoScript configuration of the filter 
+  private $tsFilter   = null;
+
+
+  
 
   
   
@@ -195,10 +202,12 @@ class tx_radialsearch_interface
       $km = 6378.2;
     }
 
-    $table          = $this->currentObj->radialsearchTable;
-    $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
-    $destLat        = $constanteditor[ 'lat' ];
-    $destLon        = $constanteditor[ 'lon' ];
+//    $table          = $this->currentObj->radialsearchTable;
+//    $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
+//    $destLat        = $constanteditor[ 'lat' ];
+//    $destLon        = $constanteditor[ 'lon' ];
+    $destLat        = $this->fields[ 'lat' ];
+    $destLon        = $this->fields[ 'lon' ];
 //$this->pObj->dev_var_dump( $table, $constanteditor );
     
       // Set the andSelect statement
@@ -285,10 +294,10 @@ class tx_radialsearch_interface
       $km = 6378.2;
     }
 
-    $table          = $this->currentObj->radialsearchTable;
-    $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
-    $destLat        = $constanteditor[ 'lat' ];
-    $destLon        = $constanteditor[ 'lon' ];
+//    $table          = $this->currentObj->radialsearchTable;
+//    $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
+    $destLat        = $this->fields[ 'lat' ];
+    $destLon        = $this->fields[ 'lon' ];
     
     $andWhere = '' .
 'AND 
@@ -332,10 +341,10 @@ class tx_radialsearch_interface
   {
     $arrAndWhere = array( );
     
-    $table = $this->currentObj->radialsearchTable;
+    //$table = $this->currentObj->radialsearchTable;
 
-    $confFilter = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'filter.' ];
-    foreach( array_keys( ( array ) $confFilter ) as $filter )
+    //$confFilter = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'filter.' ];
+    foreach( array_keys( ( array ) $this->tsFilter ) as $filter )
     {
         // CONTINUE : filter has an dot
       if( rtrim( $filter, '.') != $filter )
@@ -344,8 +353,8 @@ class tx_radialsearch_interface
       }
         // CONTINUE : field has an dot
       
-      $name   = $confFilter[ $filter ];
-      $conf   = $confFilter[ $filter . '.' ];
+      $name   = $this->tsFilter[ $filter ];
+      $conf   = $this->tsFilter[ $filter . '.' ];
       $value  = $this->pObj->cObj->cObjGetSingle( $name, $conf );
 
       switch( true )
@@ -453,18 +462,17 @@ class tx_radialsearch_interface
                 'TYPO3 Radial Search (Umkreissuche)<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
       die( $prompt );
-
     }
 
-    if( ! is_object( $this->currentObj ) )
-    {
-      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
-                'Sorry for the trouble.<br />' . PHP_EOL .
-                'TYPO3 Radial Search (Umkreissuche)<br />' . PHP_EOL .
-              __METHOD__ . ' (' . __LINE__ . ')';
-      die( $prompt );
-    }
-
+//    if( ! is_object( $this->currentObj ) )
+//    {
+//      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
+//                'Sorry for the trouble.<br />' . PHP_EOL .
+//                'TYPO3 Radial Search (Umkreissuche)<br />' . PHP_EOL .
+//              __METHOD__ . ' (' . __LINE__ . ')';
+//      die( $prompt );
+//    }
+//
     if( ! is_array( $this->fields ) )
     {
       $prompt = 'ERROR: no array!<br />' . PHP_EOL .
@@ -534,13 +542,14 @@ class tx_radialsearch_interface
  /**
   * setConfiguration( )  : Set fields and filter
   *
-  * @param	array		$fields: array with elements lat and lon
+  * @param	array		$fields   : array with elements lat and lon
+  * @param	array		$tsFilter : TypoScript configuration of the filter 
   * @return	void
   * @access public
   * @version    4.7.0
   * @since      4.7.0
   */
-  public function setConfiguration( $fields, $filter )
+  public function setConfiguration( $fields, $tsFilter )
   {
     if( ! is_array( $fields ) )
     {
@@ -551,7 +560,7 @@ class tx_radialsearch_interface
       die( $prompt );
     }
 
-    if( ! is_array( $filter ) )
+    if( ! is_array( $tsFilter ) )
     {
       $prompt = 'ERROR: no array!<br />' . PHP_EOL .
                 'Sorry for the trouble.<br />' . PHP_EOL .
@@ -581,7 +590,7 @@ class tx_radialsearch_interface
     }
 
     $this->fields = $fields;
-    $this->filter = $filter;
+    $this->filter = $tsFilter;
 
     return true;
   }
@@ -597,16 +606,16 @@ class tx_radialsearch_interface
   */
   public function setCurrentObject( $currentObj )
   {
-    if( ! is_object( $currentObj ) )
-    {
-      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
-                'Sorry for the trouble.<br />' . PHP_EOL .
-                'TYPO3 Radial Search<br />' . PHP_EOL .
-              __METHOD__ . ' (' . __LINE__ . ')';
-      die( $prompt );
-
-    }
-    $this->currentObj = $currentObj;
+//    if( ! is_object( $currentObj ) )
+//    {
+//      $prompt = 'ERROR: no object!<br />' . PHP_EOL .
+//                'Sorry for the trouble.<br />' . PHP_EOL .
+//                'TYPO3 Radial Search<br />' . PHP_EOL .
+//              __METHOD__ . ' (' . __LINE__ . ')';
+//      die( $prompt );
+//
+//    }
+//    $this->currentObj = $currentObj;
   }
 
  /**
