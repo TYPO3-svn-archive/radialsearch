@@ -42,9 +42,9 @@ plugin.tx_radialsearch_pi1 {
   gp =
   gp {
       // [String] Radius: HTML name of the select box with options for the radius. Example: radius. Would become in URL: tx_browser_pi1[radius]
-    fieldradius = {$plugin.tx_radialserach_pi1.gp.fieldradius}
+    select    = {$plugin.tx_radialserach_pi1.gp.selectname}
       // [String] Sword: HTML name of the input field for the search word. Example: radialsearch. Would become in URL: tx_browser_pi1[radialsearch]
-    fieldsword = {$plugin.tx_radialserach_pi1.gp.fieldsword}
+    input     = {$plugin.tx_radialserach_pi1.gp.inputname}
       // [String] Parameter for the URL. Sent by GET or Post. Usually the piVar parameter of your extension. Examples: tx_browser_pi1, tx_myext_pi1
     parameter = {$plugin.tx_radialserach_pi1.gp.parameter}
   }
@@ -185,11 +185,13 @@ plugin.tx_radialsearch_pi1 {
     htmlinputlabel {
       data = LLL:EXT:radialsearch/pi1/locallang.xml:htmlinputlabel
     }
+    htmlinputname = {$plugin.tx_radialserach_pi1.gp.parameter}[{$plugin.tx_radialserach_pi1.gp.input}]
       // [String] replace _HTMLMARKER_HTMLINPUTVALUE
     htmlinputvalue = TEXT
     htmlinputvalue {
       data = GP:tx_radialsearch_pi1|sword
     }
+    htmlselectname = {$plugin.tx_radialserach_pi1.gp.parameter}[{$plugin.tx_radialserach_pi1.gp.select}]
   }
 }
   // plugin.tx_radialsearch_pi1
