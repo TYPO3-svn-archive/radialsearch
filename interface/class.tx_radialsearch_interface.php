@@ -69,7 +69,7 @@ class tx_radialsearch_interface
     // [Object] Parent object
   private $pObj       = null;
     // [Boolean] Prompt to DRS?
-  private $drs        = false;
+  private $drs        = null;
   
     // [Boolean] True, if sword is set. False if not.
   private $isSword    = null;
@@ -495,10 +495,19 @@ class tx_radialsearch_interface
  */
   private function initDRS( )
   {
+    $prompt = 'The DRS is enabled by the extension manager.';
+    t3lib_div::devlog( '[INFO/DRS] ' . $prompt, $this->extKey, 3 );
+
+    if( $this->drs !== null )
+    {
+      return;
+    }
+    
     switch( $this->extConf['drs.']['enabled'] )
     {
       case( 'Disabled' ):
       case( null ):
+        $this->drs = false;
         return;
         break;
       case( 'Enabled (for debugging only!)' ):
