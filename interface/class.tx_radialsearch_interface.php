@@ -194,14 +194,19 @@ class tx_radialsearch_interface
         //  http://de.wikipedia.org/wiki/Erdradius
       $km = 6378.2;
     }
-
+    $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
+    $destLat        = $constanteditor[ 'lat' ];
+    $destLon        = $constanteditor[ 'lon' ];
+    
       // Set the andSelect statement
     $andSelect = '' .
-', ACOS(
-      SIN( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * SIN( RADIANS( tx_org_headquarters.mail_lat ) ) 
-    + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( tx_org_headquarters.mail_lat   ) )
-    * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( tx_org_headquarters.mail_lon ) )
-) * ' . $km . ' AS distance
+', ACOS
+(
+    SIN( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * SIN( RADIANS( ' . $destLat . ' ) ) 
+  + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( ' . $destLat . ' ) )
+  * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( ' . $destLon . ' ) )
+) 
+* ' . $km . ' AS distance
 ';
 
     return $andSelect;
@@ -219,12 +224,13 @@ class tx_radialsearch_interface
  * andWhere( )  : Returns the andWhere clause.
  *                Returns null, if there isn't set any sword.
  * 
- * @return	string    $andWhere : andWhere clause
+ * @param       boolean   $withDistance :
+ * @return	string    $andWhere     : andWhere clause
  * @access public
  * @version 0.0.1
  * @since   0.0.1
  */
-  public function andWhere( )
+  public function andWhere( $withDistance=false )
   {
     $this->init( );
 
@@ -244,6 +250,53 @@ class tx_radialsearch_interface
 ' . $this->andWhereFilter( ) . '  
 ' . $this->andWhereSword( ) . '  
 ' . $this->andWhereEnabledFields( ) . ' 
+' . $this->andWhereDistance( $withDistance ) . ' 
+';
+
+    return $andWhere;
+  }
+
+/**
+ * andWhereDistance( ): 
+ *
+ * @param       boolean   $withDistance :
+ * @return	string    $andWhere : andWhere clause
+ * @access private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  private function andWhereDistance( $withDistance )
+  {
+    if( ! $withDistance )
+    {
+      return null;
+    }
+    
+    $tx_radialsearch_pi1  = ( array ) t3lib_div::_GP( 'tx_radialsearch_pi1' );
+    $maxRadius            = ( int ) $tx_radialsearch_pi1[ 'radius' ];
+    
+    $km = ( double ) $this->extConf[ 'earth.']['radius.' ]['km' ];
+    if( empty ( $km ) )
+    {
+        //  http://de.wikipedia.org/wiki/Erdradius
+      $km = 6378.2;
+    }
+
+    $constanteditor = $this->currentObj->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
+    $destLat        = $constanteditor[ 'lat' ];
+    $destLon        = $constanteditor[ 'lon' ];
+    
+    $andWhere = '' .
+'AND 
+( 
+  ACOS
+  (
+      SIN( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * SIN( RADIANS( ' . $destLat . ' ) ) 
+    + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( ' . $destLat . ' ) )
+    * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( ' . $destLon . ' ) )
+  ) 
+  * ' . $km . ' 
+) < ' . $maxRadius . ' 
 ';
 
     return $andWhere;
