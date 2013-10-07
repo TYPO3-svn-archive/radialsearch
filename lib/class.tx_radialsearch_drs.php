@@ -171,6 +171,11 @@ class tx_radialsearch_drs
   private function initByFlexform( )
   {
 
+    if( ! is_object( $this->pObj->flexform ) )
+    {
+      return;
+    }
+
       // sdefDrs
     $sheet = 'sDEF';
     $field = 'sdefDrs';
