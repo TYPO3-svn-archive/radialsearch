@@ -493,10 +493,7 @@ class tx_radialsearch_interface
       return $this->andWithMaxRadius;
     }
     
-    $table          = $this->radialsearchTable;
-    $constanteditor = $this->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
-    $searchmode     = $constanteditor[ 'searchmode' ];
-
+    $searchmode = $this->confFields[ 'searchmode' ];
     switch( $searchmode )
     {
       case( 'Within the radius only' ):
