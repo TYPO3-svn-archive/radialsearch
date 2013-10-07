@@ -30,14 +30,6 @@ plugin.tx_radialsearch_pi1 {
   userFunc = tx_radialsearch_pi1->sword
     // Never remove this property!
   pluginCheck = dummy
-    // lat, lon
-  database =
-  database {
-      // [String] Latitude: Label of table and field, which contains the latitude - it is used in SQL queries. Example: tx_org_headquarters.mail_lat, tx_myext_address.lat
-    lat = {$plugin.tx_radialsearch_pi1.database.lat}
-      // [String] Longitude: Label of table and field, which contains the longitude - it is used in SQL queries. Example: tx_org_headquarters.mail_lon, tx_myext_address.lon
-    lon = {$plugin.tx_radialsearch_pi1.database.lon}
-  }
     // GETPOST: fieldradius, fieldsword, parameter
   gp =
   gp {
