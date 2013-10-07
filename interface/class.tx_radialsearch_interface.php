@@ -71,6 +71,8 @@ class tx_radialsearch_interface
     // [Boolean] Prompt to DRS?
   private $drs        = null;
   
+    // [Boolean] True, if maxRadius should used
+  private $andWithMaxRadius    = null;
     // [Boolean] True, if sword is set. False if not.
   private $isSword    = null;
     // [Array] Array with elemenst lat and lon
@@ -150,6 +152,13 @@ class tx_radialsearch_interface
       return null;
     }
       // RETURN : there isn't any sword
+
+      // RETURN : without max radius
+    if( ! $this->andWithMaxRadius( ) )
+    {
+      return null;
+    }
+      // RETURN : without max radius
 
     $distance   = $this->confFields[ 'distance' ];
 
@@ -346,8 +355,14 @@ class tx_radialsearch_interface
       return null;
     }
     
-    $gp         = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
-    $maxRadius  = ( int ) $gp[ $this->confGP[ 'select' ] ];
+    $smallerThanMaxRadius = null;
+    if( $this->andWithMaxRadius( ) )
+    {
+      $gp                   = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
+      $maxRadius            = ( int ) $gp[ $this->confGP[ 'select' ] ];
+      $smallerThanMaxRadius = ' < ' . $maxRadius;
+    }
+
     
     $km = ( double ) $this->extConf[ 'earth.']['radius.' ]['km' ];
     if( empty ( $km ) )
@@ -369,7 +384,7 @@ class tx_radialsearch_interface
     * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( ' . $destLon . ' ) )
   ) 
   * ' . $km . ' 
-) < ' . $maxRadius . ' 
+) ' . $smallerThanMaxRadius . ' 
 ';
 
     return $andWhere;
@@ -460,6 +475,46 @@ class tx_radialsearch_interface
 )';
 
     return $andWhere;
+  }
+
+/**
+ * andWithMaxRadius( )  :
+ *
+ * @return	booelan
+ * @internal    #52486
+ * @access  private
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+  private function andWithMaxRadius( )
+  {
+    if( $this->andWithMaxRadius !== null )
+    {
+      return $this->andWithMaxRadius;
+    }
+    
+    $table          = $this->radialsearchTable;
+    $constanteditor = $this->conf_view[ 'filter.' ][ $table . '.' ][ 'conf.' ][ 'constanteditor.' ];
+    $searchmode     = $constanteditor[ 'searchmode' ];
+
+    switch( $searchmode )
+    {
+      case( 'Within the radius only' ):
+        $this->andWithMaxRadius = true;
+        break;
+      case( 'Within and without the radius' ):
+        $this->andWithMaxRadius = false;
+        break;
+      default:
+        $prompt = 'ERROR: searchmode isn\'t defined!<br />' . PHP_EOL .
+                  'Sorry for the trouble.<br />' . PHP_EOL .
+                  'TYPO3 Radial Search<br />' . PHP_EOL .
+                __METHOD__ . ' (' . __LINE__ . ')';
+        die( $prompt );
+        break;
+    }
+    
+    return $this->andWithMaxRadius;
   }
 
  
@@ -684,6 +739,16 @@ class tx_radialsearch_interface
     if( empty( $fields[ 'lon' ] ) )
     {
       $prompt = 'ERROR: field[ lon ] is empty!<br />' . PHP_EOL .
+                'Take care of a prpoper configuration and PHP code..<br />' . PHP_EOL .
+                'Sorry for the trouble.<br />' . PHP_EOL .
+                'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+    }
+
+    if( empty( $fields[ 'searchmode' ] ) )
+    {
+      $prompt = 'ERROR: field[ searchmode ] is empty!<br />' . PHP_EOL .
                 'Take care of a prpoper configuration and PHP code..<br />' . PHP_EOL .
                 'Sorry for the trouble.<br />' . PHP_EOL .
                 'TYPO3 Radial Search<br />' . PHP_EOL .
