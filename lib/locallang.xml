@@ -21,7 +21,7 @@
             <a href="http://download.geonames.org/export/zip/"
               style="text-decoration:underline;"
               alt="Postal Codes from geonames.org"
-              title="Donating and Sponsoring"
+              title="Postal Codes from geonames.org"
               target="_blank">
               geonames.org &raquo;</a>
           </li>
@@ -199,6 +199,52 @@
       <label index="wordResult">Result</label>
     </languageKey>
     <languageKey index="de" type="array">
+      <label index="databaseWithContentOk"><![CDATA[
+        <p>
+          <strong>Datenbank scheint in Ordnung zu sein</strong>
+        </p>
+      ]]></label>
+      <label index="databaseWithContentPrompt"><![CDATA[
+        <p>
+          <strong>Datenbank aktualisieren?</strong>
+        </p>
+        <ol>
+          <li style="margin-bottom:0;">
+            Lade bitte eine ZIP-Datei mit Postleitzahlen von 
+            <a href="http://download.geonames.org/export/zip/"
+              style="text-decoration:underline;"
+              alt="Postal Codes from geonames.org"
+              title="Postal Codes from geonames.org"
+              target="_blank">
+              geonames.org &raquo;</a> 
+              herunter.
+          </li>
+          <li style="margin-bottom:0;">
+            Entpacke die ZIP-Datei. Du bekommt eine TXT-Datei.
+          </li>
+          <li style="margin-bottom:0;">
+            Lade die TXT-Datei in das oben angegebene Verzeichnis hoch.
+          </li>
+          <li style="margin-bottom:0;">
+            W&auml;hle die TXT-Datei mit der Auswahlbox unten aus.
+          </li>
+          <li style="margin-bottom:0;">
+            Importiwere die Datei mit Klick auf den [Update]-Button am Ende dieses Formulars.
+          </li>
+        </ol>
+        <p>
+          Die Postleitzahlen werden in das Verzeichnis mit der <strong>Page-ID</strong> importiert, die Du oben angegeben hast.
+        </p>
+        <p>
+          <strong>Warnung:</strong> Es gibt keine &Uuml;berpr&uuml;fung der Daten.<br />
+          Es ist Dein Job, f&uuml;r korrekte Daten zu sorgen.
+        </p>
+      ]]></label>
+      <label index="databaseWithoutContentWarn"><![CDATA[
+        <p>
+          <strong>Die Datenbank ist leer.</strong>
+        </p>
+      ]]></label>
       <label index="promptExternalLinksBody"><![CDATA[
         <h1 style="text-align:left;">
           Beauftragen, Spenden und Sponsern
