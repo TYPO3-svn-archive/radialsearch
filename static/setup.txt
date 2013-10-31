@@ -205,36 +205,21 @@ plugin.tx_radialsearch_pi1 {
             // [String] admin_code1 (1. subdivision/state) for the filter
           admin_code1 = COA
           admin_code1 {
-              // if country code isn't set
+              // if admin_code1 isn't set
             10 = TEXT
             10 {
               if {
-                isFalse = {$plugin.tx_radialsearch_pi1.filter.country_code}
+                isFalse = {$plugin.tx_radialsearch_pi1.filter.admin_code1}
               }
               value = "*"
             }
-              // if country code is set
-            20 = COA
+              // if admin_code1 is set
+            20 = TEXT
             20 {
               if {
-                isTrue = {$plugin.tx_radialsearch_pi1.filter.country_code}
+                isTrue = {$plugin.tx_radialsearch_pi1.filter.admin_code1}
               }
-                // if admin_code1 isn't set
-              10 = TEXT
-              10 {
-                if {
-                  isFalse = {$plugin.tx_radialsearch_pi1.filter.admin_code1}
-                }
-                value = "*"
-              }
-                // if admin_code1 is set
-              20 = TEXT
-              20 {
-                if {
-                  isTrue = {$plugin.tx_radialsearch_pi1.filter.admin_code1}
-                }
-                value = "{$plugin.tx_radialsearch_pi1.filter.admin_code1}"
-              }
+              value = "{$plugin.tx_radialsearch_pi1.filter.admin_code1}"
             }
           }
             // [String] country_code for the filter
