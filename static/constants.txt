@@ -12,7 +12,7 @@ plugin.tx_radialsearch_pi1 {
   # cat=Radial Search - css/others/999;             type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   css.externalLinks = 0
 
-  # cat=Radial Search - Distance//100;              type=string;    label= Distance: field label for the distance. Field isn't part of your database. Field will generated while runtime and will added to SELECT statemennts. Example: distance, Don't use tableField syntax like tx_myext_main.distance: You will get an SQL error!
+  # cat=Radial Search - Distance//100;              type=string;    label= Distance: field label for the distance. Field isn't part of your database. Field will generated while runtime and will added to SELECT statements. Example: distance, Don't use tableField syntax like tx_myext_main.distance: You will get an SQL error!
   distance.fieldLabel     = distance
   # cat=Radial Search - Distance//200;              type=string;    label= Decimal: Number of decimals
   distance.decimals       = 0
