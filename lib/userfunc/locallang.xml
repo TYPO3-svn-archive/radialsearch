@@ -46,8 +46,8 @@
           alt="LEG-Thüringen, Germany, contractor of Radial Search"
           title="LEG-Thüringen, Germany, contractor of Radial Search"
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/leg-thueringen.de_120x90.gif"
-            width="120"
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/leg_thuringia_179x90.gif"
+            width="179"
             height="90"
             alt="LEG-Thüringen, Germany, contractor of Radial Search" /></a>
         <p style="padding:0 0 1em 0;">
@@ -87,12 +87,11 @@
             title="Your logo with your URL. 120 x 90 pixel." /></a>
       ]]></label>
       <label index="promptCurrIPBody">Your current IP</label>
-      <label index="promptEvaluatorIncludeCss4-6"><![CDATA[Please iclude the static template [+Flip it!: Basis for TYPO3 < 4.7 (obligate!)]]]></label>
-      <label index="promptEvaluatorTYPO3version45smaller">Your are using a TYPO3 version smaller than 4.5. Flip it! isn't tested in this version. Try it!</label>
+      <label index="promptEvaluatorTYPO3version45smaller">Your are using a TYPO3 version smaller than 4.5. Radial Search (Umkreissuche) isn't tested in this version. Try it!</label>
       <label index="promptEvaluatorTYPO3version46smaller">You are using TYPO3 4.5. This is perfect!</label>
       <label index="promptEvaluatorTYPO3version47smaller">You are using TYPO3 4.6. This is perfect!</label>
       <label index="promptEvaluatorTYPO3version48smaller">You are using TYPO3 4.7. This is perfect!</label>
-      <label index="promptEvaluatorTYPO3version48orGreater">You are using TYPO3 greater than 4.7. Flip it! isn't tested in this version. Try it!</label>
+      <label index="promptEvaluatorTYPO3version48orGreater">You are using TYPO3 greater than 4.7. Radial Search (Umkreissuche) isn't tested in this version. Try it!</label>
       <label index="promptExternalLinksBody"><![CDATA[
         <div style="float:right;padding-left:1em;">
           <a href="http://typo3-radialsearch.de/en/" th
@@ -203,14 +202,14 @@
         <p style="font-weight:bold;padding:1em 0;">
           Die Startversion von Radial-Search hat beauftragt:
         </p>
-        <a href="http://www.made-in-nature.de/"
-          alt="LEG-Thüringen, Deutschland, Auftraggeber"
-          title="LEG-Thüringen, Deutschland, Auftraggeber"
+        <a href="http://leg-thueringen.de/"
+          alt="LEG-Thüringen, Deutschland, Auftrggeber von Radial Search"
+          title="LEG-Thüringen, Deutschland, Auftrggeber von Radial Search"
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/leg-thueringen.de_120x90.gif"
-            width="120"
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/leg_thuringia_179x90.gif"
+            width="179"
             height="90"
-            title="LEG-Thüringen, Deutschland, Auftraggeber" /></a>
+            alt="LEG-Thüringen, Deutschland, Auftrggeber von Radial Search" /></a>
         <p style="padding:0 0 1em 0;">
           M&ouml;chtest Du das TYPO3 Radial-Search-Projekt unterst&uuml;tzen?
           <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
@@ -248,12 +247,12 @@
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
       ]]></label>
       <label index="promptCurrIPBody">Deine aktuelle IP-Adresse</label>
-      <label index="promptEvaluatorIncludeCss4-6"><![CDATA[Du musst das Static Template [+Flip it!: Basis fuer TYPO3 < 4.7 einbinden.]]]></label>
-      <label index="promptEvaluatorTYPO3version45smaller">Du verwendest eine TYPO3-Version, die kleiner ist als 4.5. Flip it! ist f<![CDATA[&uuml;]]>r diese Version nicht getestet. Aber probier es einfach aus!</label>
+      <label index="promptEvaluatorIncludeCss4-6"><![CDATA[Du musst das Static Template [+Radial Search (Umkreissuche): Basis fuer TYPO3 < 4.7 einbinden.]]]></label>
+      <label index="promptEvaluatorTYPO3version45smaller">Du verwendest eine TYPO3-Version, die kleiner ist als 4.5. Radial Search (Umkreissuche) ist f<![CDATA[&uuml;]]>r diese Version nicht getestet. Aber probier es einfach aus!</label>
       <label index="promptEvaluatorTYPO3version46smaller">Du verwendest TYPO3 4.5.x. Das ist perfekt.</label>
       <label index="promptEvaluatorTYPO3version47smaller">Du verwendest TYPO3 4.6.x. Das ist perfekt.</label>
       <label index="promptEvaluatorTYPO3version48smaller">Du verwendest TYPO3 4.7.x. Das ist perfekt.</label>
-      <label index="promptEvaluatorTYPO3version48orGreater">Du verwendest eine TYPO3 Version, die gr<![CDATA[&ouml;]]><![CDATA[&szlig;]]>er ist als 4.7. Flip it! ist f<![CDATA[&uuml;]]>r diese Version nicht getestet. Aber probier es einfach aus!</label>
+      <label index="promptEvaluatorTYPO3version48orGreater">Du verwendest eine TYPO3 Version, die gr<![CDATA[&ouml;]]><![CDATA[&szlig;]]>er ist als 4.7. Radial Search (Umkreissuche) ist f<![CDATA[&uuml;]]>r diese Version nicht getestet. Aber probier es einfach aus!</label>
       <label index="promptExternalLinksBody"><![CDATA[
         <div style="float:right;padding-left:1em;">
           <a href="http://typo3-radialsearch.de/en/" th

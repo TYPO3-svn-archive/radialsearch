@@ -28,7 +28,7 @@
 * @author    Dirk Wildt <http://wildt.at.die-netzmacher.de>
 * @package    TYPO3
 * @subpackage    radialsearch
-* @version  0.0.1
+* @version  1.0.0
 * @since    0.0.1
 */
 
@@ -134,7 +134,7 @@ class tx_radialsearch_userfunc
  * @param	string		$prompt
  * @return	string		$prompt : message wrapped in HTML
  * @access private
- * @version 0.0.1
+ * @version 1.0.0
  * @since   0.0.1
  */
   private function emptyCheck( )
@@ -181,7 +181,7 @@ class tx_radialsearch_userfunc
   * @param	string		$_EXTKEY    : extension key
   * @return	array		$arrReturn  : version as int (integer) and str (string)
   * @access public
-  * @version 0.0.1
+  * @version 1.0.0
   * @since 0.0.1
   */
   public function extMgmVersion( $_EXTKEY )
@@ -218,7 +218,7 @@ class tx_radialsearch_userfunc
  *
  * @return	string		$prompt : message wrapped in HTML
  * @access private
- * @version 0.0.1
+ * @version 1.0.0
  * @since   0.0.1
  */
   private function flexformCheckNoteNote( )
@@ -264,7 +264,7 @@ class tx_radialsearch_userfunc
  * @param	array		$plugin : Configuration of the plugin / flexform
  * @return	string		$prompt         : Prompt
  * @access public
- * @version 0.0.1
+ * @version 1.0.0
  * @since   0.0.1
  */
   public function pi1FfSdefReport( $plugin )
@@ -361,7 +361,7 @@ class tx_radialsearch_userfunc
  *
  * @return	[type]		...
  * @access private
- * @version 0.0.1
+ * @version 1.0.0
  * @since   0.0.1
  */
   private function pi1FfSdefReportInit( )
@@ -389,7 +389,7 @@ class tx_radialsearch_userfunc
  *
  * @return	[type]		...
  * @access private
- * @version 0.0.1
+ * @version 1.0.0
  * @since   0.0.1
  */
   private function pi1FfSdefReportInitDrs( )
@@ -435,7 +435,7 @@ class tx_radialsearch_userfunc
  *
  * @return	string		message wrapped in HTML
  * @access public
- * @version 0.0.1
+ * @version 1.0.0
  * @since   0.0.1
  */
   public function promptCurrIP( )
@@ -457,7 +457,7 @@ class tx_radialsearch_userfunc
  *
  * @return	string		message wrapped in HTML
  * @access public
- * @version 0.0.1
+ * @version 1.0.0
  * @since   0.0.1
  */
   public function promptEvaluatorTYPO3version()
@@ -492,7 +492,7 @@ class tx_radialsearch_userfunc
 //          ';
         break;
       case( $this->typo3Version < 4006000 ):
-          // Greater than 4.7
+          // Smaller than 4.6
         $prompt = $prompt . '
           <div class="typo3-message message-ok" style="max-width:' . $this->maxWidth . ';">
             <div class="message-body">
@@ -509,7 +509,7 @@ class tx_radialsearch_userfunc
 //          ';
         break;
       case( $this->typo3Version < 4007000 ):
-          // Greater than 4.7
+          // Smaller than 4.7
         $prompt = $prompt . '
           <div class="typo3-message message-ok" style="max-width:' . $this->maxWidth . ';">
             <div class="message-body">
@@ -526,7 +526,7 @@ class tx_radialsearch_userfunc
 //          ';
         break;
       case( $this->typo3Version < 4008000 ):
-          // Greater than 4.7
+          // Smaller than 4.8
         $prompt = $prompt . '
           <div class="typo3-message message-ok" style="max-width:' . $this->maxWidth . ';">
             <div class="message-body">
@@ -535,11 +535,10 @@ class tx_radialsearch_userfunc
           </div>
           ';
         break;
-//      case( ( $this->typo3Version >= 4006000 ) && ( $this->typo3Version < 4007000 ) ):
       default:
-          // Equal to 4.6
+          // Equal to or greater than 4.8
         $prompt = $prompt . '
-          <div class="typo3-message message-ok" style="max-width:' . $this->maxWidth . ';">
+          <div class="typo3-message message-warning" style="max-width:' . $this->maxWidth . ';">
             <div class="message-body">
               ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptEvaluatorTYPO3version48orGreater'). '
             </div>
@@ -557,7 +556,7 @@ class tx_radialsearch_userfunc
  *
  * @return	string		message wrapped in HTML
  * @access public
- * @version 0.0.1
+ * @version 1.0.0
  * @since   0.0.1
  */
   public function promptExternalLinks()
@@ -583,7 +582,7 @@ class tx_radialsearch_userfunc
  *
  * @return	string		message wrapped in HTML
  * @access public
- * @version 0.0.1
+ * @version 1.0.0
  * @since   0.0.1
  */
   public function promptCredits()
@@ -617,7 +616,7 @@ class tx_radialsearch_userfunc
   *
   * @return	void
   * @access private
-  * @version 0.0.1
+  * @version 1.0.0
   * @since 0.0.1
   */
   private function set_TYPO3Version( )
@@ -670,7 +669,7 @@ class tx_radialsearch_userfunc
  *
  * @return	void
  * @access private
- * @version 0.0.1
+ * @version 1.0.0
  * @since 0.0.1
  */
   private function typoscriptCheck( )
@@ -698,7 +697,7 @@ class tx_radialsearch_userfunc
  *
  * @return	void
  * @access private
- * @version 0.0.1
+ * @version 1.0.0
  * @since 0.0.1
  */
   private function typoscriptInit( )
@@ -727,7 +726,7 @@ class tx_radialsearch_userfunc
  *
  * @return	void
  * @access private
- * @version 0.0.1
+ * @version 1.0.0
  * @since 0.0.1
  */
   private function typoscriptInitPageObj( )
@@ -749,7 +748,7 @@ class tx_radialsearch_userfunc
  *
  * @return	void
  * @access private
- * @version 0.0.1
+ * @version 1.0.0
  * @since 0.0.1
  */
   private function typoscriptInitPageUid( )
@@ -789,7 +788,7 @@ class tx_radialsearch_userfunc
  * @param	array		$arr_rows_of_all_pages_inRootLine: Agregate the TypoScript of all pages in the rootline
  * @return	void
  * @access private
- * @version 0.0.1
+ * @version 1.0.0
  * @since 0.0.1
  */
   private function typoscriptInitTsObj( $arr_rows_of_all_pages_inRootLine )

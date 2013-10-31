@@ -17,7 +17,7 @@ $EM_CONF[$_EXTKEY] = array(
                           'The Browser - TYPO3 without PHP - has radial seacrh integrated.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '0.0.2',
+	'version' => '1.0.0',
 	'dependencies' => '',
 	'conflicts' => '',
 	'priority' => '',
