@@ -237,7 +237,7 @@ class tx_radialsearch_em
     $str_prompt = '
       <dd>
         <select name="data[database.selectbox]" size="1">
-          <option value="">Don\'t import anything</option>
+          <option value="">' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:importNothing'). '</option>
           ' . $options . '
         </select>
       </dd>
