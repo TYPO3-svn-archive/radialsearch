@@ -51,6 +51,10 @@
           <strong>Database is empty.</strong>
         </p>
       ]]></label>
+      <label index="directoryWithoutContentWarn"><![CDATA[
+        The directoty from above isn\'t existing or it doesn\'t contain any txt-file.<br />
+        Sorry, you can\'t import anything.
+      ]]></label>
       <label index="promptExternalLinksBody"><![CDATA[
         <h1 style="text-align:left;">
           Contracting, Donating and Sponsoring
@@ -244,6 +248,10 @@
         <p>
           <strong>Die Datenbank ist leer.</strong>
         </p>
+      ]]></label>
+      <label index="directoryWithoutContentWarn"><![CDATA[
+        Das oben angegebene Verzeichnis gibt es nicht oder es enth&auml;lt keine TXT-Datei.<br />
+        Sorry, Du kannst nichts importieren.
       ]]></label>
       <label index="promptExternalLinksBody"><![CDATA[
         <h1 style="text-align:left;">

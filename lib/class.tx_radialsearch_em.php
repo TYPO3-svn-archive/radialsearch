@@ -215,8 +215,7 @@ class tx_radialsearch_em
       $str_prompt = '
         <div class="typo3-message message-warning">
           <div class="message-body">
-            The directoty from above doesn\'t contain any txt-file.<br />
-            Sorry, you can\'t import anything.
+            ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:directoryWithoutContentWarn'). '
           </div>
         </div>
         ';
