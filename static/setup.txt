@@ -100,7 +100,6 @@ plugin.tx_radialsearch {
         thousands_sep = {$plugin.tx_radialsearch_pi1.distance.thousands_sep}
       }
     }
-  }
       // [STRING] Linear distance
     linearDistanceString = COA
     linearDistanceString {
