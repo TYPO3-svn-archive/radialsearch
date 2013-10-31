@@ -401,10 +401,11 @@ class tx_radialsearch_pi1 extends tslib_pibase
     $gp     = ( array ) t3lib_div::_GP( $this->conf['gp.']['parameter'] );
     $radius = $gp[ $this->conf['gp.']['select'] ];
 
-    $csvOptions = $this->conf['radiusbox.']['options'];
-    $csvOptions = str_replace( ' ', null, $csvOptions );
-    $arrOptions = explode( ',', $csvOptions );
-    $unit       = $this->conf['radiusbox.']['unit'];
+    $csvOptions   = $this->conf['radiusbox.']['options'];
+    $csvOptions   = str_replace( ' ', null, $csvOptions );
+    $arrOptions   = explode( ',', $csvOptions );
+    $numberFormat = $this->conf['radiusbox.']['numberFormat.'];
+    $unit         = $this->conf['radiusbox.']['unit'];
     
     $template = $this->cObj->getSubpart( $content, '###OPTION###' ) ;
    
@@ -421,10 +422,11 @@ class tx_radialsearch_pi1 extends tslib_pibase
       {
         $selected = ' selected="selected"';
       }
+      $strValue = number_format( $value , $numberFormat[ 'decimals' ], $numberFormat[ 'dec_point' ] , $numberFormat[ 'thousands_sep' ] );
       $replace = array( 
         '0' => $value,  
         '1' => $selected,  
-        '2' => $value . ' ' . $unit
+        '2' => $strValue . ' ' . $unit
       );
       $options[] = str_replace( $search, $replace, $template );
     }

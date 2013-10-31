@@ -280,6 +280,13 @@ plugin.tx_radialsearch_pi1 {
   radiusbox {
       // [String/CSV] Comma separated values (CSV) for the options of the selectbox. Example: 5,10,25,50,100
     options = {$plugin.tx_radialsearch_pi1.radiusbox.options}
+      // [Array] TypoScript numberFormat
+    numberFormat =
+    numberFormat {
+      decimals      = {$plugin.tx_radialsearch_pi1.distance.decimals}
+      dec_point     = {$plugin.tx_radialsearch_pi1.distance.dec_point}
+      thousands_sep = {$plugin.tx_radialsearch_pi1.distance.thousands_sep}
+    }
       // [String] miles || km. Important for calculating.
     unit    = {$plugin.tx_radialsearch_pi1.radiusbox.unit} 
   }
