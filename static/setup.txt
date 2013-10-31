@@ -5,6 +5,7 @@
   // INDEX
   //
   // includeLibs
+  // plugin.tx_radialsearch
   // plugin.tx_radialsearch_pi1
   // plugin.tx_radialsearch_pi2
   // page
@@ -19,6 +20,89 @@ includeLibs {
   tx_radialsearch_userfunc = EXT:radialsearch/lib/userfunc/class.tx_radialsearch_userfunc.php
 }
   // includeLibs
+
+
+
+  ///////////////////////////////////////////////////////////////
+  //
+  // plugin.tx_radialsearch
+
+plugin.tx_radialsearch {
+    // htmlClass, linearDistance
+  masterTemplates =
+  masterTemplates {
+      // [STRING] HTML class depending on radius. Returns: radialsearch radialsearch-without-search, radialsearch radialsearch-within-radius, radialsearch radialsearch-outside-radius
+    htmlClass = COA
+    htmlClass {
+        // HTML class without any radial search. Returns: radialsearch radialsearch-without-search
+      10 = TEXT
+      10 {
+        if {
+          isFalse {
+            data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
+          }
+        }
+        value       = radialsearch radialsearch-without-search
+        noTrimWrap  = | ||
+      }
+        // HTML class with a radial search
+      20 = COA
+      20 {
+        if {
+          isTrue {
+            data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.select}
+          }
+        }
+          // HTML class, if record is within the given radius
+        10 = TEXT
+        10 {
+          if {
+            isLessThan {
+              field = {$plugin.tx_radialsearch_pi1.distance.fieldLabel}
+            }
+            value {
+              data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.select}
+            }
+          }
+          value = radialsearch radialsearch-within-radius
+          noTrimWrap  = | ||
+        }
+          // HTML class, if record is outside of the given radius
+        20 = TEXT
+        20 {
+          if {
+            isLessThan {
+              field = {$plugin.tx_radialsearch_pi1.distance.fieldLabel}
+            }
+            value {
+              data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.select}
+            }
+            negate = 1
+          }
+          value = radialsearch radialsearch-outside-radius
+          noTrimWrap  = | ||
+        }
+      }
+    }
+      // [DOUBLE] Linear distance
+    linearDistance = TEXT
+    linearDistance {
+      if {
+        isTrue {
+          data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
+        }
+      }
+      required    = 1
+      field       = {$plugin.tx_radialsearch_pi1.distance.fieldLabel}
+      numberFormat {
+        decimals      = {$plugin.tx_radialsearch_pi1.distance.decimals}
+        dec_point     = {$plugin.tx_radialsearch_pi1.distance.dec_point}
+        thousands_sep = {$plugin.tx_radialsearch_pi1.distance.thousands_sep}
+      }
+    }
+  }
+}
+  // plugin.tx_radialsearch
 
 
 
