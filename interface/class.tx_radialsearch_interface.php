@@ -167,7 +167,7 @@ class tx_radialsearch_interface
 
       // Set the andHaving statement
     $andHaving = '' .
-' HAVING ' . $distance . ' < ' . $maxRadius . ' ';
+' HAVING ' . $distance . ' < ' . ( $maxRadius + 1 ) . ' ';
 
       // RETURN : no DRS
     if( ! $this->drs )
@@ -360,7 +360,7 @@ class tx_radialsearch_interface
     {
       $gp                   = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
       $maxRadius            = ( int ) $gp[ $this->confGP[ 'select' ] ];
-      $smallerThanMaxRadius = ' < ' . $maxRadius;
+      $smallerThanMaxRadius = ' < ' . ( $maxRadius + 1 );
     }
 
     

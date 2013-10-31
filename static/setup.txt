@@ -85,8 +85,8 @@ plugin.tx_radialsearch {
       }
     }
       // [DOUBLE] Linear distance
-    linearDistance = TEXT
-    linearDistance {
+    linearDistanceDouble = TEXT
+    linearDistanceDouble {
       if {
         isTrue {
           data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
@@ -98,6 +98,39 @@ plugin.tx_radialsearch {
         decimals      = {$plugin.tx_radialsearch_pi1.distance.decimals}
         dec_point     = {$plugin.tx_radialsearch_pi1.distance.dec_point}
         thousands_sep = {$plugin.tx_radialsearch_pi1.distance.thousands_sep}
+      }
+    }
+  }
+      // [STRING] Linear distance
+    linearDistanceString = COA
+    linearDistanceString {
+      if {
+        isTrue {
+          data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
+        }
+      }
+        // [DOUBLE] Linear distance
+      10 = TEXT
+      10 {
+        field = {$plugin.tx_radialsearch_pi1.distance.fieldLabel}
+        numberFormat {
+          decimals      = {$plugin.tx_radialsearch_pi1.distance.decimals}
+          dec_point     = {$plugin.tx_radialsearch_pi1.distance.dec_point}
+          thousands_sep = {$plugin.tx_radialsearch_pi1.distance.thousands_sep}
+        }
+      }
+      20 = TEXT
+      20 {
+        value = Km linear distance from
+        lang {
+          de = Km Luftlinie entfernt von
+          en = Km linear distance from
+        }
+        noTrimWrap = | | |
+      }
+      30 = TEXT
+      30 {
+        data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
       }
     }
   }
