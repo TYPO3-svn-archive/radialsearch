@@ -6,8 +6,8 @@
   </meta>
   <data type="array">
     <languageKey index="default" type="array">
-      <label index="pi1">Radial Search</label>
-      <label index="pi2">Radius</label>
+      <label index="pi1">Radial Search - input field</label>
+      <label index="pi2">Radial Search - select box</label>
       <label index="pi3">Radial Search DEV - ready-to-use</label>
       <label index="pi3prompt">Radial Search DEV - ready-to-use</label>
       <label index="tx_radialsearch_postalcodes">Postal codes (ZIP)</label>
@@ -25,8 +25,8 @@
       <label index="tx_radialsearch_postalcodes.accuracy">accuracy of lat/lng</label>
     </languageKey>
     <languageKey index="de" type="array">
-      <label index="pi1">Umkreissuche</label>
-      <label index="pi2">Radius</label>
+      <label index="pi1">Umkreissuche - Eingabefeld</label>
+      <label index="pi2">Umkreissuche - Selectbox</label>
       <label index="pi3">Umkreissuche DEV - schlüsselfertig</label>
       <label index="tx_radialsearch_postalcodes">Postleitzzahlen (PLZ)</label>
       <label index="tx_radialsearch_postalcodes.country_code">Ländercode (ISO)</label>
