@@ -422,7 +422,10 @@ class tx_radialsearch_pi1 extends tslib_pibase
       {
         $selected = ' selected="selected"';
       }
-      $strValue = number_format( $value , $numberFormat[ 'decimals' ], $numberFormat[ 'dec_point' ] , $numberFormat[ 'thousands_sep' ] );
+      $decimals = $numberFormat[ 'decimals' ];
+        // Take 0 decimals in every case!
+      $decimals = 0;
+      $strValue = number_format( $value , $decimals, $numberFormat[ 'dec_point' ], $numberFormat[ 'thousands_sep' ] );
       $replace = array( 
         '0' => $value,  
         '1' => $selected,  
