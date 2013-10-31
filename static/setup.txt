@@ -167,7 +167,7 @@ plugin.tx_radialsearch_pi1 {
       // [String] miles || km. Important for calculating.
     unit    = {$plugin.tx_radialsearch_pi1.radiusbox.unit} 
   }
-    // htmlinputid, htmlinputlabel, htmlinputvalue
+    // htmlinputid, htmlinputlabel, htmlinputvalue, htmlselectid, htmlselectlabel, htmlselectvalue
   _HTMLMARKER =
   _HTMLMARKER {
       // [String] replace _HTMLMARKER_HTMLINPUTID
@@ -186,6 +186,11 @@ plugin.tx_radialsearch_pi1 {
     }
       // [String] replace _HTMLMARKER_HTMLSELECTID
     htmlselectid    = {$plugin.tx_radialsearch_pi1.gp.parameter}_{$plugin.tx_radialsearch_pi1.gp.select}
+      // [String] replace _HTMLMARKER_HTMLSELECTLABEL
+    htmlselectlabel = TEXT
+    htmlselectlabel {
+      data = LLL:EXT:radialsearch/pi1/locallang.xml:htmlselectlabel
+    }
       // [String] replace _HTMLMARKER_HTMLSELECTNAME
     htmlselectname  = {$plugin.tx_radialsearch_pi1.gp.parameter}[{$plugin.tx_radialsearch_pi1.gp.select}]
   }

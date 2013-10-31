@@ -7,9 +7,11 @@
   <data type="array">
     <languageKey index="default" type="array">
       <label index="htmlinputlabel">ZIP or city</label>
+      <label index="htmlslectlabel">Radius</label>
     </languageKey>
     <languageKey index="de" type="array">
       <label index="htmlinputlabel">PLZ oder Stadt</label>
+      <label index="htmlselectlabel">Umkreis</label>
     </languageKey>
   </data>
 </T3locallang>
