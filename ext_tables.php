@@ -85,7 +85,8 @@ switch( true )
 {
   case($llStatic == 'de'):
       // German
-    t3lib_extMgm::addStaticFile( $_EXTKEY,'static/', 'Umkreissuche' );
+    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/',               'Umkreissuche (1)' );
+    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/properties/de/', 'Umkreissuche (2+) - Deutsch' );
     switch( true )
     {
       case( $typo3Version < 4007000 ):
@@ -100,7 +101,8 @@ switch( true )
     break;
   default:
       // English
-    t3lib_extMgm::addStaticFile( $_EXTKEY,'static/', 'Radial Search' );
+    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/',               'Radial Search (1)' );
+    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/properties/de/', 'Radial Search (2+) - German');
     switch( true )
     {
       case( $typo3Version < 4007000 ):
