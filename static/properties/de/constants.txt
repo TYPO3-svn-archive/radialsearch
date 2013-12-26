@@ -1,0 +1,6 @@
+plugin.tx_radialsearch_pi1 {
+  distance {
+    dec_point     = ,
+    thousands_sep = .
+  }
+}

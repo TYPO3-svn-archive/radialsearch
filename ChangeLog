@@ -1,7 +1,9 @@
 1.0.1
-  13-12-25
+  13-12-26
   Feature
   * #54596: TypoScript template german properties
+  Improvement
+  * #i0004: jQuery smoothness got an image folder
 
 1.0.0
   13-10-31
