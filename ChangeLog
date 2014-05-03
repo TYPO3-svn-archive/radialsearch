@@ -1,3 +1,9 @@
+2.0.0
+  14-05-03
+  Feature
+  * #58438: Fit it into TYPO3 6.1
+  * #58469:	Integration of postalcodes AT, CH and DE
+
 1.0.2
   Bugfix
   * #i0005: Manual

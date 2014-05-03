@@ -17,7 +17,7 @@ $EM_CONF[$_EXTKEY] = array(
                           'The Browser - TYPO3 without PHP - has radial search integrated.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '1.0.1',
+	'version' => '2.0.0',
 	'dependencies' => '',
 	'conflicts' => '',
 	'priority' => '',

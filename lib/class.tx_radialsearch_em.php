@@ -59,7 +59,7 @@ class tx_radialsearch_em
  *
  * @return	string		message wrapped in HTML
  * @access public
- * @version 0.0.1
+ * @version 2.0.0
  * @since 0.0.1
  */
   public function databaseInfo( )
@@ -69,15 +69,26 @@ class tx_radialsearch_em
 //.message-ok
 //.message-warning
 //.message-error
-    
-    $extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
-    $data     = $_POST['data'];
 
-    $pid      = ( int ) $extConf[ 'database.']['pid' ];
-    if( isset( $data[ 'database.pid' ] ) )
+    // #58438, 140503, dwildt, 1+
+    $this->initTypo3version( );
+
+    $confArr  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
+    $pid      = ( int ) $confArr[ 'database.']['pid' ];
+
+    // #58438, 140503, dwildt+
+    switch( true )
     {
-      $pid = ( int ) $data[ 'database.pid' ];
-    }    
+      case( $this->typo3Version < 6000000 ):
+        $data = $_POST['data'];
+        if( isset( $data[ 'database.pid' ] ) )
+        {
+          $pid = ( int ) $data[ 'database.pid' ];
+        }
+        break;
+      default:
+        break;
+    }
 
     $str_prompt = $this->importPostalcodes( );
 
@@ -87,11 +98,11 @@ class tx_radialsearch_em
     $orderBy        = 'country_code';
     $limit          = null;
     $where_clause   = 'pid = ' . $pid;
-    
+
     $query  = $GLOBALS['TYPO3_DB']->SELECTquery(      $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     $res    = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     $error  = $GLOBALS['TYPO3_DB']->sql_error( );
-    
+
       // RETURN : error in SQL query
     if( $error )
     {
@@ -110,11 +121,11 @@ class tx_radialsearch_em
       return $str_prompt;
     }
       // RETURN : error in SQL query
-    
+
     $rows = array( );
     while( $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc( $res ) )
     {
-      $rows[ ] = '<li style="margin-bottom:0;">' . $row[ 'country' ] . ': #' . $row[ 'records' ] . ' records</li>'; 
+      $rows[ ] = '<li style="margin-bottom:0;">' . $row[ 'country' ] . ': #' . $row[ 'records' ] . ' records</li>';
     }
 
       // Database is empty
@@ -135,7 +146,7 @@ class tx_radialsearch_em
       return $str_prompt;
     }
       // Database is empty
-    
+
       // Database has content
     $str_prompt = $str_prompt . '
       <div class="typo3-message message-ok">
@@ -172,29 +183,39 @@ class tx_radialsearch_em
 //.message-ok
 //.message-warning
 //.message-error
-    $extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
-    $data     = $_POST['data'];
-//    $prompt   = 'extConf: ' . var_export( $extConf, true ) . '<br />'
-//              . 'data: ' . var_export( $data, true )
-//              ;
-    $path = $extConf[ 'database.']['path' ];
-    if( isset( $data[ 'database.path' ] ) )
+    // #58438, 140503, dwildt, 1+
+    $this->initTypo3version( );
+
+    $confArr  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
+    $path     = $confArr[ 'database.']['path' ];
+
+    // #58438, 140503, dwildt+
+    switch( true )
     {
-      $path = $data[ 'database.path' ];
+      case( $this->typo3Version < 6000000 ):
+        $data = $_POST['data'];
+        if( isset( $data[ 'database.path' ] ) )
+        {
+          $path = $data[ 'database.path' ];
+        }
+        break;
+      default:
+        break;
     }
+
     if( empty( $path ) )
     {
       $str_prompt = '
         <div class="typo3-message message-warning">
           <div class="message-body">
-            Path is missing in the field above!<br />
-            ' . $prompt . '
+            Either path is missing in the field above or directory doesn\'t contain any *.txt file.<br />
+            Please save this form once.
           </div>
         </div>
         ';
       return $str_prompt;
     }
-    
+
     $files = scandir( t3lib_div::getIndpEnv( 'TYPO3_DOCUMENT_ROOT' ) . '/' . $path );
     $prompt   = 'path: ' . t3lib_div::getIndpEnv( 'TYPO3_DOCUMENT_ROOT' ) . '/' . $path . '<br />'
               . 'files: ' . var_export( $files, true )
@@ -209,7 +230,7 @@ class tx_radialsearch_em
       }
       unset( $files[ $key] );
     }
-    
+
     if( empty( $files ) )
     {
       $str_prompt = '
@@ -221,9 +242,9 @@ class tx_radialsearch_em
         ';
       return $str_prompt;
     }
-    
+
     $options = implode( PHP_EOL, ( array ) $files );
-    
+
 //    $str_prompt = '
 //      <div class="typo3-message message-ok">
 //        <div class="message-body">
@@ -234,14 +255,33 @@ class tx_radialsearch_em
 //        </div>
 //      </div>
 //      ';
-    $str_prompt = '
-      <dd>
-        <select name="data[database.selectbox]" size="1">
-          <option value="">' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:importNothing'). '</option>
-          ' . $options . '
-        </select>
-      </dd>
-      ';
+
+
+    // #58438, 140503, dwildt+
+    switch( true )
+    {
+      case( $this->typo3Version < 6000000 ):
+        $str_prompt = '
+          <dd>
+            <select name="data[database.selectbox]" size="1">
+              <option value="">' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:importNothing'). '</option>
+              ' . $options . '
+            </select>
+          </dd>
+          ';
+        break;
+      default:
+        $str_prompt = '
+          <dd>
+            <select name="tx_extensionmanager_tools_extensionmanagerextensionmanager[config][database.selectbox][value]" size="1">
+              <option value="">' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/locallang.xml:importNothing'). '</option>
+              ' . $options . '
+            </select>
+          </dd>
+          ';
+        break;
+    }
+
     return $str_prompt;
   }
 
@@ -261,27 +301,44 @@ class tx_radialsearch_em
 //.message-warning
 //.message-error
     $str_prompt = null;
-    $data       = $_POST['data'];
-    $file       = $data[ 'database.selectbox' ];
-    $pid        = $data[ 'database.pid' ];
-    $truncate   = ( boolean ) $data[ 'database.truncate' ];
-    
+
+    $confArr    = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
+    $file       = $confArr[ 'database.']['selectbox' ];
+    $pid        = $confArr[ 'database.']['pid' ];
+    $truncate   = ( boolean ) $confArr[ 'database.']['truncate' ];
+    $path       = $confArr[ 'database.']['path' ];
+
+    // #58438, 140503, dwildt, 1+
+    $this->initTypo3version( );
+
+    // #58438, 140503, dwildt+
+    switch( true )
+    {
+      case( $this->typo3Version < 6000000 ):
+        $data       = $_POST['data'];
+        $file       = $data[ 'database.selectbox' ];
+        $pid        = $data[ 'database.pid' ];
+        $truncate   = ( boolean ) $data[ 'database.truncate' ];
+        if( isset( $data[ 'database.path' ] ) )
+        {
+          $path = $data[ 'database.path' ];
+        }
+        break;
+      default:
+        break;
+    }
+
+
       // RETURN : no file selected
     if( empty( $file ) )
     {
       return;
     }
       // RETURN : no file selected
-    
+
     //var_dump( $file );
-    
+
       // Get the path
-    $extConf  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsearch']);
-    $path     = $extConf[ 'database.']['path' ];
-    if( isset( $data[ 'database.path' ] ) )
-    {
-      $path = $data[ 'database.path' ];
-    }
     if( empty( $path ) )
     {
       $str_prompt = '
@@ -294,11 +351,11 @@ class tx_radialsearch_em
         ';
       return $str_prompt;
     }
-    
+
     $path = t3lib_div::getIndpEnv( 'TYPO3_DOCUMENT_ROOT' ) . '/' . $path . '/' . $file;
 
     $handle = @fopen( $path, 'r' );
-    
+
     if ( ! $handle) {
       $str_prompt = '
         <div class="typo3-message message-error">
@@ -309,13 +366,13 @@ class tx_radialsearch_em
         ';
       return $str_prompt;
     }
-    
+
     $rows = array( );
-    
+
     if( $truncate )
     {
       $query = 'TRUNCATE tx_radialsearch_postalcodes';
-      $res    = $GLOBALS['TYPO3_DB']->sql_query( $query ); 
+      $res    = $GLOBALS['TYPO3_DB']->sql_query( $query );
       $str_prompt = $str_prompt . '
         <div class="typo3-message message-notice">
           <div class="message-body">
@@ -329,7 +386,7 @@ class tx_radialsearch_em
     $i        = 0;
     $j        = 0;
     $sumRows  = 0;
-    while( ( $line = fgets( $handle, 4096 ) ) !== false ) 
+    while( ( $line = fgets( $handle, 4096 ) ) !== false )
     {
       $defaultValues = 'NULL, ' . $pid . ', UNIX_TIMESTAMP( ), UNIX_TIMESTAMP( ), 0, 0';
       $line = $GLOBALS['TYPO3_DB']->quoteStr( $line, 'tx_radialsearch_postalcodes' );
@@ -346,12 +403,12 @@ class tx_radialsearch_em
         $i = 0;
         $values = '  ( ' . implode( ' ),' . PHP_EOL . '  ( ', $rows ) . ' );';
         $query  = $keys . $values . PHP_EOL . PHP_EOL;
-        
-        $res    = $GLOBALS['TYPO3_DB']->sql_query( $query ); 
+
+        $res    = $GLOBALS['TYPO3_DB']->sql_query( $query );
         $error  = $GLOBALS['TYPO3_DB']->sql_error( );
 
         $rows = array( );
-        
+
           // RETURN : error in SQL query
         if( $error )
         {
@@ -380,7 +437,7 @@ class tx_radialsearch_em
     $values = '  ( ' . implode( ' ),' . PHP_EOL . '  ( ', $rows ) . ' );';
     $query  = $keys . $values . PHP_EOL . PHP_EOL;
 
-    $res    = $GLOBALS['TYPO3_DB']->sql_query( $query ); 
+    $res    = $GLOBALS['TYPO3_DB']->sql_query( $query );
     $error  = $GLOBALS['TYPO3_DB']->sql_error( );
 
       // RETURN : error in SQL query
@@ -402,7 +459,7 @@ class tx_radialsearch_em
     }
       // RETURN : error in SQL query
 
-    if( ! feof( $handle ) ) 
+    if( ! feof( $handle ) )
     {
       fclose( $handle );
       $str_prompt = $str_prompt . '
@@ -425,6 +482,56 @@ class tx_radialsearch_em
       </div>
       ';
     return $str_prompt;
+  }
+
+
+  /**
+   * init_typo3version( ):  Get the current TYPO3 version, move it to an integer
+   *                        and set the global $bool_typo3_43
+   *                        This method is independent from
+   *                        * t3lib_div::int_from_ver (upto 4.7)
+   *                        * t3lib_utility_VersionNumber::convertVersionNumberToInteger (from 4.7)
+   *
+   * @return    void
+   * @version 2.0.0
+   * @since   2.0.0
+   * @internal #58438
+   */
+  private function initTypo3version()
+  {
+    // RETURN : typo3Version is set
+    if ($this->typo3Version !== null)
+    {
+      return;
+    }
+    // RETURN : typo3Version is set
+    // Set TYPO3 version as integer (sample: 4.7.7 -> 4007007)
+    list( $main, $sub, $bugfix ) = explode('.', TYPO3_version);
+    $version = ( (int) $main ) * 1000000;
+    $version = $version + ( (int) $sub ) * 1000;
+    $version = $version + ( (int) $bugfix ) * 1;
+    $this->typo3Version = $version;
+    // Set TYPO3 version as integer (sample: 4.7.7 -> 4007007)
+//echo __METHOD__ . ' (' . __LINE__ . '): ' . typo3Version . '<br />' . PHP_EOL;
+
+    if ($this->typo3Version < 3000000)
+    {
+      $prompt = '<h1>ERROR</h1>
+        <h2>Unproper TYPO3 version</h2>
+        <ul>
+          <li>
+            TYPO3 version is smaller than 3.0.0
+          </li>
+          <li>
+            constant TYPO3_version: ' . TYPO3_version . '
+          </li>
+          <li>
+            integer $this->typo3Version: ' . (int) $this->typo3Version . '
+          </li>
+        </ul>
+          ';
+      die($prompt);
+    }
   }
 
 
@@ -454,7 +561,7 @@ class tx_radialsearch_em
     return $str_prompt;
   }
 
-  
+
 
   /**
  * promptQuickstart(): Displays the quick start message.
@@ -580,6 +687,7 @@ class tx_radialsearch_em
             <div class="message-body">
               ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptEvaluatorTYPO3version48orGreater'). '
             </div>
+          </div>
           ';
         break;
     }

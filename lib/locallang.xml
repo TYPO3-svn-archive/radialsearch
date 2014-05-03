@@ -17,33 +17,39 @@
         </p>
         <ol>
           <li style="margin-bottom:0;">
-            Please download a zip-file with the postal codes from 
-            <a href="http://download.geonames.org/export/zip/"
-              style="text-decoration:underline;"
-              alt="Postal Codes from geonames.org"
-              title="Postal Codes from geonames.org"
-              target="_blank">
-              geonames.org &raquo;</a>
+            Choose the needed postal codes in the select box below.<br />
+            If the needed postal codes are missing please
+            <ol>
+              <li style="margin-bottom:0;">
+                download a zip-file with the postal codes from
+                <a href="http://download.geonames.org/export/zip/"
+                  style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
+                  alt="Postal Codes from geonames.org"
+                  title="Postal Codes from geonames.org"
+                  target="_blank">
+                  geonames.org &raquo;</a>
+              </li>
+              <li style="margin-bottom:0;">
+                Unzip the file on your local PC. It will becomes a txt-file.
+              </li>
+              <li style="margin-bottom:0;">
+                Upload the txt-file to the directory from below.<br />
+                Change the path of the directory before the upload, take a path for your needs.
+              </li>
+              <li style="margin-bottom:0;">
+                Choose your uploaded postal codes in the select box below.
+              </li>
+            </ol>
           </li>
           <li style="margin-bottom:0;">
-            Unzip the file. It will becomes a txt-file.
-          </li>
-          <li style="margin-bottom:0;">
-            Upload the txt-file to the directory from below.
-          </li>
-          <li style="margin-bottom:0;">
-            Select the txt-file with the select box from below.
-          </li>
-          <li style="margin-bottom:0;">
-            Import the file with the [Update] button at the bottom of this page.
+            Import the postal codes with the [Update] button at the bottom of this page.
           </li>
         </ol>
         <p>
-          Data will imported into the folder with the given <strong>page ID</strong> from above.
+          Postal codes will imported into the folder with the given <strong>page ID</strong> from above.
         </p>
         <p>
-          <strong>Warning:</strong> There isn't any check, if your txt-file is a proper file with postal codes.<br />
-          It's your job, to take care of proper files.
+          <strong>Warning:</strong> The txt-file won't checked. It's your job, to take care of proper files.
         </p>
       ]]></label>
       <label index="databaseWithoutContentWarn"><![CDATA[
@@ -66,13 +72,13 @@
           <img src="../../../../typo3conf/ext/radialsearch/lib/icons/dirk_wildt_30x30.gif"
             width="30"
             height="30"
-            title="Please support my job!" />        
+            title="Please support my job!" />
         </div>
         <p>
           Please donate to Radial Search, sponsor it or contract new features!<br />
           Dirk Wildt<br />
           <a href="http://typo3-radialsearch.de/en/sponsoring/"
-            style="text-decoration:underline;"
+            style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
             alt="Donating and Sponsoring"
             title="Donating and Sponsoring"
             target="_blank">
@@ -92,7 +98,7 @@
         <p style="padding:0 0 1em 0;">
           You like to subsidise the TYPO3 Radial-Search project?
           <a href="http://typo3-radialsearch.de/en/sponsoring/"
-            style="text-decoration:underline;"
+            style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
             alt="Your logo with your URL. 120 x 90 pixel."
             title="Your logo with your URL. 120 x 90 pixel."
             target="_blank">
@@ -102,27 +108,27 @@
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-blue.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-blue.gif"
+            width="120"
+            height="90"
             title="Your logo with your URL. 120 x 90 pixel." /></a>
         &nbsp;&nbsp;
         <a href="http://typo3-radialsearch.de/en/sponsoring/"
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif"
+            width="120"
+            height="90"
             title="Your logo with your URL. 120 x 90 pixel." /></a>
         &nbsp;&nbsp;
         <a href="http://typo3-radialsearch.de/en/sponsoring/"
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif"
+            width="120"
+            height="90"
             title="Your logo with your URL. 120 x 90 pixel." /></a>
         <div style="float:right;padding-left:1em;">
           <a href="http://typo3-radialsearch.de/en/" th
@@ -130,16 +136,16 @@
             title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             target="_blank">
             <img src="../../../../typo3conf/ext/radialsearch/lib/icons/radialsearch_80x80.gif"
-              width="80" 
-              height="80" 
+              width="80"
+              height="80"
               title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)" /></a>
-          <a href="http://wildt.at.die-netzmacher.de/" 
+          <a href="http://wildt.at.die-netzmacher.de/"
             alt="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             target="_blank">
             <img src="../../../../typo3conf/ext/radialsearch/lib/icons/die-netzmacher-logo-quadrat.png"
-              width="80" 
-              height="80" 
+              width="80"
+              height="80"
               title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)" /></a>
         </div>
         <h1 style="text-align:left;">
@@ -151,28 +157,28 @@
         <ul style="list-style:outside;margin-left:2em;">
           <li style="margin-bottom:.6em;">
             <a href="http://typo3.org/extension-manuals/radialsearch/"
-              style="text-decoration:underline;"
+              style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
               alt="Radial Search - online manual"
               title="Radial Search - online manual"
               target="_blank">Manual (HTML) &raquo;</a>
           </li>
           <li style="margin-bottom:.6em;">
             <a href="../../../../typo3conf/ext/radialsearch/doc/manual.pdf"
-              style="text-decoration:underline;"
+              style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
               alt="Radial Search - PDF manual"
               title="Radial Search - PDF manual"
               target="_blank">Manual (PDF) &raquo;</a>
           </li>
           <li style="margin-bottom:.6em;">
             <a href="http://typo3-radialsearch.de/en/support"
-              style="text-decoration:underline;"
+              style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
               alt="Radial Search - the Shopping Cart"
               title="Radial Search - the Shopping Cart"
               target="_blank">Support &raquo;</a>
           </li>
           <li style="margin-bottom:.6em;">
             <a href="http://typo3-radialsearch.de/en/sponsoring"
-              style="text-decoration:underline;"
+              style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
               alt="Radial Search - the Shopping Cart"
               title="Radial Search - the Shopping Cart"
                 target="_blank">Sponsoring &raquo;</a>
@@ -183,8 +189,8 @@
         </h2>
         <ul style="list-style:outside;margin-left:2em;">
           <li style="margin-bottom:.6em;">
-            <a href="http://wildt.at.die-netzmacher.de/" 
-              style="text-decoration:underline;"
+            <a href="http://wildt.at.die-netzmacher.de/"
+              style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
               alt="Dirk Wildt (Die Netzmacher) - the developer of TYPO3 Radial-Search."
               title="Dirk Wildt (Die Netzmacher) - the developer of TYPO3 Radial-Search."
               target="_blank">Dirk Wildt (Die Netzmacher) &raquo;</a>
@@ -217,34 +223,40 @@
         </p>
         <ol>
           <li style="margin-bottom:0;">
-            Lade bitte eine ZIP-Datei mit Postleitzahlen von 
-            <a href="http://download.geonames.org/export/zip/"
-              style="text-decoration:underline;"
-              alt="Postal Codes from geonames.org"
-              title="Postal Codes from geonames.org"
-              target="_blank">
-              geonames.org &raquo;</a> 
-              herunter.
-          </li>
-          <li style="margin-bottom:0;">
-            Entpacke die ZIP-Datei. Du bekommt eine TXT-Datei.
-          </li>
-          <li style="margin-bottom:0;">
-            Lade die TXT-Datei in das unten angegebene Verzeichnis hoch.
-          </li>
-          <li style="margin-bottom:0;">
-            W&auml;hle die TXT-Datei mit der Auswahlbox unten aus.
+            W&auml;hle die von Dir gewünschten Postleitzahlen unten in der Selectbox aus.<br />
+            Bietet die Selectbox Dir die benötigten Postleitzahlen nicht an, dann
+            <ol>
+              <li style="margin-bottom:0;">
+                lade bitte eine ZIP-Datei mit Postleitzahlen von
+                <a href="http://download.geonames.org/export/zip/"
+                  style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
+                  alt="Postal Codes from geonames.org"
+                  title="Postal Codes from geonames.org"
+                  target="_blank">
+                  geonames.org &raquo;</a>
+                  auf Deinen lokalen PC herunter.
+              </li>
+              <li style="margin-bottom:0;">
+                Entpacke die ZIP-Datei. Du erhältst eine TXT-Datei.
+              </li>
+              <li style="margin-bottom:0;">
+                Lade die TXT-Datei in das unten angegebene Verzeichnis hoch.<br />
+                Ändere das Verzeichnis unten vorher in ein Verzeichnis Deiner Wahl.
+              </li>
+              <li style="margin-bottom:0;">
+                W&auml;hle die von Dir hochgeladene TXT-Datei unten in der Selectbox aus.<br />
+              </li>
+            </ol>
           </li>
           <li style="margin-bottom:0;">
             Importiere die Datei mit Klick auf den [Update]-Button am Ende dieses Formulars.
           </li>
         </ol>
         <p>
-          Die Postleitzahlen werden in das Verzeichnis mit der <strong>Page-ID</strong> importiert, die Du oben angegeben hast.
+          Die Postleitzahlen werden in das Verzeichnis mit der <strong>Page-ID</strong> importiert, die Du unten angegeben hast.
         </p>
         <p>
-          <strong>Warnung:</strong> Es gibt keine &Uuml;berpr&uuml;fung der Daten.<br />
-          Es ist Dein Job, f&uuml;r korrekte Daten zu sorgen.
+          <strong>Warnung:</strong> Die Daten werden nicht &uuml;berpr&uuml;ft. Es ist Dein Job, f&uuml;r korrekte Daten zu sorgen.
         </p>
       ]]></label>
       <label index="databaseWithoutContentWarn"><![CDATA[
@@ -267,13 +279,13 @@
           <img src="../../../../typo3conf/ext/radialsearch/lib/icons/dirk_wildt_30x30.gif"
             width="30"
             height="30"
-            title="Bitte unterst&uuml;tze meine Arbeit!" />        
+            title="Bitte unterst&uuml;tze meine Arbeit!" />
         </div>
         <p>
           Bitte spende f&uuml;r Radial Search, sponser die Extension oder beauftrage neue Features!<br />
           Dirk Wildt<br />
           <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
-            style="text-decoration:underline;"
+            style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
             alt="Beauftragen, Spenden und Sponsern"
             title="Beauftragen, Spenden und Sponsern"
             target="_blank">
@@ -293,7 +305,7 @@
         <p style="padding:0 0 1em 0;">
           M&ouml;chtest Du das TYPO3 Radial-Search-Projekt unterst&uuml;tzen?
           <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
-            style="text-decoration:underline;"
+            style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
             alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
             target="_blank">
@@ -303,27 +315,27 @@
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-blue.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-blue.gif"
+            width="120"
+            height="90"
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
         &nbsp;&nbsp;
         <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif"
+            width="120"
+            height="90"
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
         &nbsp;&nbsp;
         <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif"
+            width="120"
+            height="90"
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
         <div style="float:right;padding-left:1em;">
           <a href="http://typo3-radialsearch.de/en/" th
@@ -331,16 +343,16 @@
             title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             target="_blank">
             <img src="../../../../typo3conf/ext/radialsearch/lib/icons/radialsearch_80x80.gif"
-              width="80" 
-              height="80" 
+              width="80"
+              height="80"
               title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)" /></a>
-          <a href="http://wildt.at.die-netzmacher.de/" 
+          <a href="http://wildt.at.die-netzmacher.de/"
             alt="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             target="_blank">
             <img src="../../../../typo3conf/ext/radialsearch/lib/icons/die-netzmacher-logo-quadrat.png"
-              width="80" 
-              height="80" 
+              width="80"
+              height="80"
               title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)" /></a>
         </div>
         <h1 style="text-align:left;">
@@ -352,28 +364,28 @@
         <ul style="list-style:outside;margin-left:2em;">
           <li style="margin-bottom:.6em;">
             <a href="http://typo3.org/extension-manuals/radialsearch/"
-              style="text-decoration:underline;"
+              style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
               alt="Radial Search - Online-Handbuch"
               title="Radial Search - Online-Handbuch"
               target="_blank">Handbuch (HTML) &raquo;</a>
           </li>
           <li style="margin-bottom:.6em;">
             <a href="../../../../typo3conf/ext/radialsearch/doc/manual.pdf"
-              style="text-decoration:underline;"
+              style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
               alt="Radial Search - PDF-Handbuch"
               title="Radial Search - PDF-Handbuch"
               target="_blank">Handbuch (PDF) &raquo;</a>
           </li>
           <li style="margin-bottom:.6em;">
-            <a href="http://wildt.at.die-netzmaxcher.de/" 
-              style="text-decoration:underline;"
+            <a href="http://wildt.at.die-netzmaxcher.de/"
+              style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
               alt="TYPO3 Radial-Search - Support"
               title="TYPO3 Radial-Search - Support"
               target="_blank">Support &raquo;</a>
           </li>
           <li style="margin-bottom:.6em;">
-            <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1" 
-              style="text-decoration:underline;"
+            <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
+              style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
               alt="TYPO3 Radial-Search - Sponsoring"
               title="TYPO3 Radial-Search - Sponsoring"
               target="_blank">Sponsoring &raquo;</a>
@@ -384,8 +396,8 @@
         </h2>
         <ul style="list-style:outside;margin-left:2em;">
           <li style="margin-bottom:.6em;">
-            <a href="http://wildt.at.die-netzmacher.de/" 
-              style="text-decoration:underline;"
+            <a href="http://wildt.at.die-netzmacher.de/"
+              style="background:none;border:none;float:none;padding:0;text-decoration:underline;"
               alt="Dirk Wildt (Die Netzmacher) - der Entwickler von TYPO3 Radial-Search."
               title="Dirk Wildt (Die Netzmacher) - der Entwickler von TYPO3 Radial-Search."
               target="_blank">Dirk Wildt (Die Netzmacher) - der Entwickler von TYPO3 Radial-Search &raquo;</a>
