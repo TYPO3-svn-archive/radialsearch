@@ -680,14 +680,43 @@ class tx_radialsearch_em
           </div>
           ';
         break;
+      case( $this->typo3Version < 6000000 ):
+          // Smaller than 6.0
+        $prompt = $prompt . '
+          <div class="typo3-message message-ok" style="max-width:' . $this->maxWidth . ';">
+            <div class="message-body">
+              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptEvaluatorTYPO3version60smaller'). '
+            </div>
+          </div>
+          ';
+        break;
+      case( $this->typo3Version < 6001000 ):
+          // Smaller than 6.1
+        $prompt = $prompt . '
+          <div class="typo3-message message-ok" style="max-width:' . $this->maxWidth . ';">
+            <div class="message-body">
+              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptEvaluatorTYPO3version61smaller'). '
+            </div>
+          </div>
+          ';
+        break;
+      case( $this->typo3Version < 6002000 ):
+          // Smaller than 6.2
+        $prompt = $prompt . '
+          <div class="typo3-message message-ok" style="max-width:' . $this->maxWidth . ';">
+            <div class="message-body">
+              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptEvaluatorTYPO3version62smaller'). '
+            </div>
+          </div>
+          ';
+        break;
       default:
-          // Equal to or greater than 4.8
+          // Equal to or greater than 6.1
         $prompt = $prompt . '
           <div class="typo3-message message-warning" style="max-width:' . $this->maxWidth . ';">
             <div class="message-body">
-              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptEvaluatorTYPO3version48orGreater'). '
+              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptEvaluatorTYPO3version62orGreater'). '
             </div>
-          </div>
           ';
         break;
     }

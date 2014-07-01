@@ -197,17 +197,6 @@
           </li>
         </ul>
       ]]></label>
-      <label index="promptVersionPrompt47equal"><![CDATA[
-        Best case: your TYPO3 version is 4.7.
-      ]]></label>
-      <label index="promptVersionPrompt47greater"><![CDATA[
-        Your TYPO3 version is greater than 4.7.<br />
-        The Radial Search (Umkreissuche) isn't tested for the current TYPO3 version.
-      ]]></label>
-      <label index="promptVersionPrompt47smaller"><![CDATA[
-        Your TYPO3 version is smaller than 4.7.<br />
-        The Radial Search (Umkreissuche) isn't tested for the current TYPO3 version.
-      ]]></label>
       <label index="wordCommand">Command</label>
       <label index="wordResult">Result</label>
     </languageKey>
@@ -403,17 +392,6 @@
               target="_blank">Dirk Wildt (Die Netzmacher) - der Entwickler von TYPO3 Radial-Search &raquo;</a>
           </li>
         </ul>
-      ]]></label>
-      <label index="promptVersionPrompt47equal"><![CDATA[
-        Optimal: Deine TYPO3 Version ist 4.7.
-      ]]></label>
-      <label index="promptVersionPrompt47greater"><![CDATA[
-        Deine TYPO3 Version ist is h&ouml;her als 4.7.<br />
-        Radial Search (Umkreissuche) ist f&uuml;r die aktuelle TYPO3 Version nicht getestet.
-      ]]></label>
-      <label index="promptVersionPrompt47smaller"><![CDATA[
-        Deine TYPO3 Version ist niedriger als 4.7.<br />
-        Radial Search (Umkreissuche) ist f&uuml;r die aktuelle TYPO3 Version nicht getestet.
       ]]></label>
       <label index="wordCommand">Befehl</label>
       <label index="wordResult">Ergebnis</label>

@@ -27,7 +27,7 @@
           <img src="../../../../typo3conf/ext/radialsearch/lib/icons/dirk_wildt_30x30.gif"
             width="30"
             height="30"
-            title="Please support my job!" />        
+            title="Please support my job!" />
         </div>
         <p>
           Please donate to Radial Search, sponsor it or contract new features!<br />
@@ -63,27 +63,27 @@
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-blue.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-blue.gif"
+            width="120"
+            height="90"
             title="Your logo with your URL. 120 x 90 pixel." /></a>
         &nbsp;&nbsp;
         <a href="http://typo3-radialsearch.de/en/sponsoring/"
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif"
+            width="120"
+            height="90"
             title="Your logo with your URL. 120 x 90 pixel." /></a>
         &nbsp;&nbsp;
         <a href="http://typo3-radialsearch.de/en/sponsoring/"
           alt="Your logo with your URL. 120 x 90 pixel."
           title="Your logo with your URL. 120 x 90 pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_default-grey.gif"
+            width="120"
+            height="90"
             title="Your logo with your URL. 120 x 90 pixel." /></a>
       ]]></label>
       <label index="promptCurrIPBody">Your current IP</label>
@@ -91,7 +91,10 @@
       <label index="promptEvaluatorTYPO3version46smaller">You are using TYPO3 4.5. This is perfect!</label>
       <label index="promptEvaluatorTYPO3version47smaller">You are using TYPO3 4.6. This is perfect!</label>
       <label index="promptEvaluatorTYPO3version48smaller">You are using TYPO3 4.7. This is perfect!</label>
-      <label index="promptEvaluatorTYPO3version48orGreater">You are using TYPO3 greater than 4.7. Radial Search (Umkreissuche) isn't tested in this version. Try it!</label>
+      <label index="promptEvaluatorTYPO3version60smaller">You are using TYPO3 4.8. This is perfect!</label>
+      <label index="promptEvaluatorTYPO3version61smaller">You are using TYPO3 6.0. This is perfect!</label>
+      <label index="promptEvaluatorTYPO3version62smaller">You are using TYPO3 6.1. This is perfect!</label>
+      <label index="promptEvaluatorTYPO3version62orGreater">You are using TYPO3 greater than 6.1. Radial Search (Umkreissuche) isn't tested in this version. Try it!</label>
       <label index="promptExternalLinksBody"><![CDATA[
         <div style="float:right;padding-left:1em;">
           <a href="http://typo3-radialsearch.de/en/" th
@@ -99,16 +102,16 @@
             title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             target="_blank">
             <img src="../../../../typo3conf/ext/radialsearch/lib/icons/radialsearch_80x80.gif"
-              width="80" 
-              height="80" 
+              width="80"
+              height="80"
               title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)" /></a>
-          <a href="http://wildt.at.die-netzmacher.de/" 
+          <a href="http://wildt.at.die-netzmacher.de/"
             alt="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             target="_blank">
             <img src="../../../../typo3conf/ext/radialsearch/lib/icons/die-netzmacher-logo-quadrat.png"
-              width="80" 
-              height="80" 
+              width="80"
+              height="80"
               title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)" /></a>
         </div>
         <h1 style="text-align:left;">
@@ -152,7 +155,7 @@
         </h2>
         <ul style="list-style:outside;margin-left:2em;">
           <li style="margin-bottom:.6em;">
-            <a href="http://wildt.at.die-netzmacher.de/" 
+            <a href="http://wildt.at.die-netzmacher.de/"
               style="text-decoration:underline;"
               alt="Dirk Wildt (Die Netzmacher) - the developer of TYPO3 Radial-Search."
               title="Dirk Wildt (Die Netzmacher) - the developer of TYPO3 Radial-Search."
@@ -170,7 +173,7 @@
         Der Reiter [Notizen] enthält Deine interne Bemerkung. Beachte den Hinweis!
       ]]></label>
       <label index="pi1FfSdefReportDisabled"><![CDATA[
-        Der Check-it!-Bericht ist ausgeschaltet und das ist gut f&uuml;r die Performance.<br /> 
+        Der Check-it!-Bericht ist ausgeschaltet und das ist gut f&uuml;r die Performance.<br />
         Aber wenn Du ein unerwartetes Ergebnis hast, schalte den Bericht oben in der Check-Box ein.
       ]]></label>
       <label index="pi1FfSdefReportOk"><![CDATA[
@@ -187,7 +190,7 @@
           <img src="../../../../typo3conf/ext/radialsearch/lib/icons/dirk_wildt_30x30.gif"
             width="30"
             height="30"
-            title="Bitte unterst&uuml;tze meine Arbeit!" />        
+            title="Bitte unterst&uuml;tze meine Arbeit!" />
         </div>
         <p>
           Bitte spende f&uuml;r Radial Search, sponser die Extension oder beauftrage neue Features!<br />
@@ -223,27 +226,27 @@
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-blue.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-blue.gif"
+            width="120"
+            height="90"
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
         &nbsp;&nbsp;
         <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif"
+            width="120"
+            height="90"
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
         &nbsp;&nbsp;
         <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
           alt="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           title="Dein Logo mit Deiner URL. 120 x 90 Pixel."
           target="_blank">
-          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif" 
-            width="120" 
-            height="90" 
+          <img src="../../../../typo3conf/ext/radialsearch/lib/icons/your-logo_de-grey.gif"
+            width="120"
+            height="90"
             title="Dein Logo mit Deiner URL. 120 x 90 Pixel." /></a>
       ]]></label>
       <label index="promptCurrIPBody">Deine aktuelle IP-Adresse</label>
@@ -252,7 +255,10 @@
       <label index="promptEvaluatorTYPO3version46smaller">Du verwendest TYPO3 4.5.x. Das ist perfekt.</label>
       <label index="promptEvaluatorTYPO3version47smaller">Du verwendest TYPO3 4.6.x. Das ist perfekt.</label>
       <label index="promptEvaluatorTYPO3version48smaller">Du verwendest TYPO3 4.7.x. Das ist perfekt.</label>
-      <label index="promptEvaluatorTYPO3version48orGreater">Du verwendest eine TYPO3 Version, die gr<![CDATA[&ouml;]]><![CDATA[&szlig;]]>er ist als 4.7. Radial Search (Umkreissuche) ist f<![CDATA[&uuml;]]>r diese Version nicht getestet. Aber probier es einfach aus!</label>
+      <label index="promptEvaluatorTYPO3version60smaller">Du verwendest TYPO3 4.8.x. Das ist perfekt.</label>
+      <label index="promptEvaluatorTYPO3version61smaller">Du verwendest TYPO3 6.0.x. Das ist perfekt.</label>
+      <label index="promptEvaluatorTYPO3version62smaller">Du verwendest TYPO3 6.1.x. Das ist perfekt.</label>
+      <label index="promptEvaluatorTYPO3version62orGreater">Du verwendest eine TYPO3 Version, die gr<![CDATA[&ouml;]]><![CDATA[&szlig;]]>er ist als 6.1. Radial Search (Umkreissuche) ist f<![CDATA[&uuml;]]>r diese Version nicht getestet. Aber probier es einfach aus!</label>
       <label index="promptExternalLinksBody"><![CDATA[
         <div style="float:right;padding-left:1em;">
           <a href="http://typo3-radialsearch.de/en/" th
@@ -260,16 +266,16 @@
             title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             target="_blank">
             <img src="../../../../typo3conf/ext/radialsearch/lib/icons/radialsearch_80x80.gif"
-              width="80" 
-              height="80" 
+              width="80"
+              height="80"
               title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)" /></a>
-          <a href="http://wildt.at.die-netzmacher.de/" 
+          <a href="http://wildt.at.die-netzmacher.de/"
             alt="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)"
             target="_blank">
             <img src="../../../../typo3conf/ext/radialsearch/lib/icons/die-netzmacher-logo-quadrat.png"
-              width="80" 
-              height="80" 
+              width="80"
+              height="80"
               title="Radial Search is powered by Dirk Wildt (die-netzmacher.de)" /></a>
         </div>
         <h1 style="text-align:left;">
@@ -294,14 +300,14 @@
               target="_blank">Handbuch (PDF) &raquo;</a>
           </li>
           <li style="margin-bottom:.6em;">
-            <a href="http://wildt.at.die-netzmaxcher.de/" 
+            <a href="http://wildt.at.die-netzmaxcher.de/"
               style="text-decoration:underline;"
               alt="TYPO3 Radial-Search - Support"
               title="TYPO3 Radial-Search - Support"
               target="_blank">Support &raquo;</a>
           </li>
           <li style="margin-bottom:.6em;">
-            <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1" 
+            <a href="http://typo3-browser-forum.de/sponsoring/?tx_browser_pi1[tx_quickshop_categories.title]=352&no_cache=1"
               style="text-decoration:underline;"
               alt="TYPO3 Radial-Search - Sponsoring"
               title="TYPO3 Radial-Search - Sponsoring"
@@ -313,7 +319,7 @@
         </h2>
         <ul style="list-style:outside;margin-left:2em;">
           <li style="margin-bottom:.6em;">
-            <a href="http://wildt.at.die-netzmacher.de/" 
+            <a href="http://wildt.at.die-netzmacher.de/"
               style="text-decoration:underline;"
               alt="Dirk Wildt (Die Netzmacher) - der Entwickler von TYPO3 Radial-Search."
               title="Dirk Wildt (Die Netzmacher) - der Entwickler von TYPO3 Radial-Search."
