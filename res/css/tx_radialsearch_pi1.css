@@ -1,18 +1,6 @@
 
-  /* included by radialsearch */
+/* included by radialsearch */
 
-.ui-menu .ui-menu-item a {
-  display: block;
-  font-weight: normal;
-  line-height: 1.5;
-  min-height: 0;
-  padding: 2px 0.4em;
-  text-decoration: none;
-}
- 
-.ui-autocomplete-loading {
-  background: white url('typo3conf/ext/radialsearch/lib/icons/ajax-loader.gif') right center no-repeat;
-}
-####_HTMLMARKER_HTMLINPUTID### { 
-  width: 25em; 
+####_HTMLMARKER_HTMLINPUTID### {
+  width: 25em;
 }

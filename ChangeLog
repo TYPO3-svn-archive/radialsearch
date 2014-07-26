@@ -1,3 +1,9 @@
+2.0.6
+  14-07-01
+  Feature
+  * #60592: Move from jquery theme css to jquery autocomplete css. See
+            * res/css/jQuery/jquery.ui.autocomplete.css
+
 2.0.5
   14-07-01
   Feature

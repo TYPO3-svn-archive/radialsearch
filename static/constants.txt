@@ -8,7 +8,7 @@ plugin.tx_radialsearch_pi1 {
   # cat=Radial Search - css/enable/100;             type=string;     label= CSS default file: Path of the CSS default file
   css.default.path        = EXT:radialsearch/res/css/tx_radialsearch_pi1.css
   # cat=Radial Search - css/enable/101;             type=string;     label= CSS jQuery UI file: Path of the CSS jQuery UI file. Leave it empty, if you don't need the jQuery UI CSS.
-  css.jquery.path         = EXT:radialsearch/res/css/jQuery/smoothness/jquery-ui.css
+  css.jquery.path         = EXT:radialsearch/res/css/jQuery/jquery.ui.autocomplete.css
   # cat=Radial Search - css/others/999;             type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   css.externalLinks       = 0
 
@@ -16,17 +16,17 @@ plugin.tx_radialsearch_pi1 {
   distance.fieldLabel     = distance
   # cat=Radial Search - Distance//200;              type=+int;      label= Decimal: Number of decimals
   distance.decimals       = 0
-  # cat=Radial Search - Distance//200;              type=string;    label= Decimal point: I.e: dot (en), comma (de) 
+  # cat=Radial Search - Distance//200;              type=string;    label= Decimal point: I.e: dot (en), comma (de)
   distance.dec_point      = .
-  # cat=Radial Search - Distance//200;              type=string;    label= Thousands seperator: I.e: comma (en), dot (de) 
+  # cat=Radial Search - Distance//200;              type=string;    label= Thousands seperator: I.e: comma (en), dot (de)
   distance.thousands_sep  = ,
   # cat=Radial Search - Distance/others/999;        type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   distance.externalLinks  = 0
 
   # cat=Radial Search - Filter/enable/100;          type=string;     label= Country Code: ISO country code. For example: DE, GB, US. Leave it empty, if ZIP code of all countries should be available for search and autocomplete.
-  filter.country_code     = 
+  filter.country_code     =
   # cat=Radial Search - Filter/enable/101;          type=string;     label= State Code: Code of the 1. order subdivision (state). For example: TH. Leave it empty, if ZIP code of all subdivisions should be available for search and autocomplete.
-  filter.admin_code1      = 
+  filter.admin_code1      =
   # cat=Radial Search - Filter/others/999;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   filter.externalLinks    = 0
 
@@ -35,7 +35,7 @@ plugin.tx_radialsearch_pi1 {
   # cat=Radial Search - GET POST/enable/101;        type=string;     label= Sword: HTML name of the input field for the search word. Example: radialsearch. Would become in URL: tx_browser_pi1[radialsearch]
   gp.input              = radialsearch
   # cat=Radial Search - GET POST/enable/102;        type=string;     label= Radius: HTML name of the select box with options for the radius. Example: radius. Would become in URL: tx_browser_pi1[radius]
-  gp.select             = radius 
+  gp.select             = radius
   # cat=Radial Search - GET POST/others/999;        type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   gp.externalLinks = 0
 
@@ -62,7 +62,7 @@ plugin.tx_radialsearch_pi1 {
   # cat=Radial Search - radiusbox/others/999;       type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   radiusbox.externalLinks = 0
 
-  # cat=Radial Search - searchmode/enable/100;      type=options[place,zip,place and zip];     label= Mode: Search in the fields place or zip or place and zip. 
+  # cat=Radial Search - searchmode/enable/100;      type=options[place,zip,place and zip];     label= Mode: Search in the fields place or zip or place and zip.
   search.mode          = place and zip
   # cat=Radial Search - searchmode/others/999;      type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
   search.externalLinks = 0
