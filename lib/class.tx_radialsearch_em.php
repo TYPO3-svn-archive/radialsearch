@@ -57,7 +57,7 @@ class tx_radialsearch_em
 /**
  * databaseInfo():
  *
- * @return	string		message wrapped in HTML
+ * @return    string        message wrapped in HTML
  * @access public
  * @version 2.0.0
  * @since 0.0.1
@@ -69,7 +69,7 @@ class tx_radialsearch_em
 //.message-ok
 //.message-warning
 //.message-error
-
+//var_dump($extConf, $data);
     // #58438, 140503, dwildt, 1+
     $this->initTypo3version( );
 
@@ -171,7 +171,7 @@ class tx_radialsearch_em
 /**
  * databaseSelectbox( ):
  *
- * @return	string		message wrapped in HTML
+ * @return    string        message wrapped in HTML
  * @access public
  * @version 0.0.1
  * @since 0.0.1
@@ -288,7 +288,7 @@ class tx_radialsearch_em
 /**
  * importPostalcodes( ):
  *
- * @return	string		message wrapped in HTML
+ * @return    string        message wrapped in HTML
  * @access private
  * @version 0.0.1
  * @since 0.0.1
@@ -539,7 +539,7 @@ class tx_radialsearch_em
   /**
  * promptExternalLinks(): Displays the quick start message.
  *
- * @return	string		message wrapped in HTML
+ * @return    string        message wrapped in HTML
  * @since 0.3.1
  * @version 0.3.1
  */
@@ -566,7 +566,7 @@ class tx_radialsearch_em
   /**
  * promptQuickstart(): Displays the quick start message.
  *
- * @return	string		message wrapped in HTML
+ * @return    string        message wrapped in HTML
  * @since 0.3.1
  * @version 0.3.1
  */
@@ -601,7 +601,7 @@ class tx_radialsearch_em
 /**
  * promptVersionPrompt():
  *
- * @return	string		message wrapped in HTML
+ * @return    string        message wrapped in HTML
  * @version 0.0.1
  * @since 0.0.1
  */
@@ -729,7 +729,7 @@ class tx_radialsearch_em
 /**
  * set_typo3Version():
  *
- * @return	void
+ * @return    void
  * @version 0.0.1
  * @since 0.0.1
  */
