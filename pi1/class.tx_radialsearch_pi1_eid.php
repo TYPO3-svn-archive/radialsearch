@@ -3,7 +3,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013 - Dirk Wildt <http://wildt.at.die-netzmacher.de>
+ *  (c) 2013-2014 - Dirk Wildt <http://wildt.at.die-netzmacher.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,8 +25,21 @@
 
 if( ! defined( 'PATH_typo3conf' ) ) die ( 'Could not access this script directly!' );
 
-require_once( PATH_tslib . 'class.tslib_pibase.php' );
- 
+// #61766, 140921, dwildt, 1-
+//require_once(PATH_tslib . 'class.tslib_pibase.php');
+// #61766, 140921, dwildt, +
+list( $main, $sub, $bugfix ) = explode( '.', TYPO3_version );
+$version = ( ( int ) $main ) * 1000000;
+$version = $version + ( ( int ) $sub ) * 1000;
+$version = $version + ( ( int ) $bugfix ) * 1;
+// Set TYPO3 version as integer (sample: 4.7.7 -> 4007007)
+if ( $version < 6002002 )
+{
+  require_once(PATH_tslib . 'class.tslib_pibase.php');
+}
+// #61766, 140916, dwildt, +
+
+
 /**
  * [CLASS/FUNCTION INDEX of SCRIPT]
  *
@@ -62,19 +75,19 @@ require_once( PATH_tslib . 'class.tslib_pibase.php' );
  * @author	Dirk Wildt <http://wildt.at.die-netzmacher.de>
  * @package	TYPO3
  * @subpackage	radialsearch
- * @version	0.0.1
+ * @version	6.0.0
  * @since       0.0.1
  */
 class tx_radialsearch_pi1_eid extends tslib_pibase {
-  
+
   public $extKey        = 'radialsearch';
   public $prefixId      = 'tx_radialsearch_pi1_eid';
   public $scriptRelPath = 'pi1/class.tx_radialsearch_pi1_eid.php';
 
   public $arr_extConf = null;
-  
-  
-  
+
+
+
  /***********************************************
   *
   * Main
@@ -93,11 +106,11 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   {
     $this->init( );
     $rows = $this->sql( );
-    
-    $arrReturn = array( 
+
+    $arrReturn = array(
      'places' => $rows
     );
-    $json           = json_encode( $arrReturn );  
+    $json           = json_encode( $arrReturn );
     $jsonp_callback = null;
     if ( isset( $_GET['callback'] ) )
     {
@@ -114,10 +127,10 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
       $prompt = $return;
       t3lib_div::devlog( '[INFO/EID] ' . $prompt, $this->extKey, 0 );
     }
-    
+
     return $return;
   }
-  
+
  /***********************************************
   *
   * Init
@@ -167,11 +180,11 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   */
   private function initEidTools( )
   {
-      // Initialize FE user object    
-//    $feUserObj = tslib_eidtools::initFeUser(); 
-    tslib_eidtools::initFeUser( ); 
+      // Initialize FE user object
+//    $feUserObj = tslib_eidtools::initFeUser();
+    tslib_eidtools::initFeUser( );
       // Connect to database
-    tslib_eidtools::connectDB( ); 
+    tslib_eidtools::connectDB( );
   }
 
  /**
@@ -187,7 +200,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $this->arr_extConf = unserialize( $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey] );
   }
 
-  
+
  /***********************************************
   *
   * SQL
@@ -195,9 +208,9 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   **********************************************/
 
  /**
-  * sql( )  : 
+  * sql( )  :
   *
-  * @return	
+  * @return
   * @access     private
   * @version    0.0.1
   * @since      0.0.1
@@ -213,21 +226,21 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $orderBy        = $sql[ 'orderBy' ];
     $limit          = $sql[ 'limit' ];
     $where_clause   = $this->sqlWhere( );
-    
+
     $query  = $GLOBALS['TYPO3_DB']->SELECTquery(      $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     $res    = $GLOBALS['TYPO3_DB']->exec_SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
-    
+
       // RETURN : error in SQL query
     if( $this->sqlError( $query ) )
     {
       return false;
     }
       // RETURN : error in SQL query
-    
+
     $rows = array( );
     while( $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc( $res ) )
     {
-      $rows[ ] = $row; 
+      $rows[ ] = $row;
     }
 
       // RETURN : No DRS
@@ -241,14 +254,14 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $query  = $GLOBALS['TYPO3_DB']->SELECTquery( $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
     t3lib_div::devlog( '[OK/SQL] ' . $query, $this->extKey, -1 );
       // DRS
-    
+
     return $rows;
   }
 
  /**
-  * sqlError( )  : 
+  * sqlError( )  :
   *
-  * @return	
+  * @return
   * @access     private
   * @version    0.0.1
   * @since      0.0.1
@@ -256,14 +269,14 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   private function sqlError( $query )
   {
     $error  = $GLOBALS['TYPO3_DB']->sql_error( );
-    
+
       // RETURN : no error
     if( ! $error )
     {
       return false;
     }
       // RETURN : no error
-    
+
       // RETURN : No DRS
     if( ! $this->drs->drsError )
     {
@@ -280,9 +293,9 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   }
 
  /**
-  * sqlWhere( )  : 
+  * sqlWhere( )  :
   *
-  * @return	
+  * @return
   * @access     private
   * @version    0.0.1
   * @since      0.0.1
@@ -291,7 +304,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   {
       // Get the SQL array from the GET-/POST-parameter
     $sql = ( array ) t3lib_div::_GP( 'sql' );
-    
+
       // Get sword and limit
     $sword = $sql[ 'sword' ];
 
@@ -306,7 +319,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
       '2' => 'CONCAT(postal_code, " ", place_name) LIKE "' . $sword . '%"',
     );
     $where = $where . ' AND (' . implode( ' OR ', $or ) . ')';
-    
+
       // andWhere
     $and = array( );
     foreach( ( array ) $sql[ 'andWhere' ] as $key => $value )
@@ -327,7 +340,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
 
     return $where . $andWhere;
   }
-  
+
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/pi1/class.tx_radialsearch_pi1_eid.php'])
@@ -335,7 +348,7 @@ if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radials
   include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/pi1/class.tx_radialsearch_pi1_eid.php']);
 }
 
- 
+
 $output = t3lib_div::makeInstance( 'tx_radialsearch_pi1_eid' );
 echo $output->main( );
 

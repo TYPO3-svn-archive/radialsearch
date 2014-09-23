@@ -109,6 +109,7 @@ plugin.tx_radialsearch {
           data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
         }
       }
+      wrap = <div class="radialsearch-distance">|</div>
         // [DOUBLE] Linear distance
       10 = TEXT
       10 {
@@ -262,7 +263,7 @@ plugin.tx_radialsearch_pi1 {
     }
   }
     // Selectbox for the radius: options, unit
-  radiusbox =  
+  radiusbox =
   radiusbox {
       // [String/CSV] Comma separated values (CSV) for the options of the selectbox. Example: 5,10,25,50,100
     options = {$plugin.tx_radialsearch_pi1.radiusbox.options}
@@ -274,7 +275,7 @@ plugin.tx_radialsearch_pi1 {
       thousands_sep = {$plugin.tx_radialsearch_pi1.distance.thousands_sep}
     }
       // [String] miles || km. Important for calculating.
-    unit    = {$plugin.tx_radialsearch_pi1.radiusbox.unit} 
+    unit    = {$plugin.tx_radialsearch_pi1.radiusbox.unit}
   }
     // htmlinputid, htmlinputlabel, htmlinputvalue, htmlselectid, htmlselectlabel, htmlselectvalue
   _HTMLMARKER =

@@ -1,0 +1,31 @@
+  # cat=basic/100;             type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptVersionPrompt]; label=Version Prompt
+versionPrompt             = 0
+  # cat=basic/200;             type=options[English,German]; label= Localise special backend labels: Language for special backend labels like TypoScript static templates and the link handler.
+LLstatic                  = English
+  # cat=basic/999;             type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+external_linksBase        = 0
+
+  # cat=database/100;            type=+int; label=Page ID: Page ID of the folder with your postal code records. 0: root page.
+database.pid  = 0
+  # cat=database/200;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->databaseInfo]; label=Database Info
+database.info             = ERROR: tx_radialsearch_em->databaseInfo doesn't work
+  # cat=database/201;          type=string; label=Path: Path to the folder with the postal code *.txt files with an ending slash. Provided AT, CH and DE in typo3conf/ext/radialsearch/res/postalcodes. Recommended for own files: fileadmin/extensions/radialsearch/
+database.path             = typo3conf/ext/radialsearch/res/postalcodes
+  # cat=database/300;          type=boolean; label=Truncate: Database will truncated before update. All records will removed! It is recommended, if you like to overwrite data.
+database.truncate         = 0
+  # cat=database/301;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->databaseSelectbox]; label=Selectbox
+database.selectbox        = ERROR: tx_radialsearch_em->databaseSelectbox doesn't work
+  # cat=database/999;          type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+database.externalLinks    = 0
+
+  # cat=debugging/100;         type=options[Disabled,Enabled (for debugging only!)]; label= DRS - Development Reporting System: Messages will be written to DevLog (you need the extension devlog).
+drs.enabled               = Disabled
+  # cat=debugging/999;         type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+drs.externalLinks         = 0
+
+  # cat=earth/100;         type=double; label= Radius in km: Radius of the earth in kilometer (http://de.wikipedia.org/wiki/Erdradius)
+earth.radius.km             = 6378.2
+  # cat=earth/101;         type=double; label= Radius in miles: Radius of the earth in miles
+earth.radius.miles          = 3963.2
+  # cat=earth/999;         type=user[EXT:radialsearch/lib/class.tx_radialsearch_em.php:tx_radialsearch_em->promptExternalLinks]; label=External Links
+earth.externalLinks         = 0

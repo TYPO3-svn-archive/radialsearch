@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2011-2012 - Dirk Wildt <http://wildt.at.die-netzmacher.de>
+*  (c) 2013-2014 - Dirk Wildt <http://wildt.at.die-netzmacher.de>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -27,8 +27,8 @@
 *
 * @author    Dirk Wildt <http://wildt.at.die-netzmacher.de>
 * @package    TYPO3
-* @subpackage    org
-* @version 0.0.1
+* @subpackage    radialsearch
+* @version 6.0.0
 * @since 0.3.1
 */
 
@@ -602,7 +602,7 @@ class tx_radialsearch_em
  * promptVersionPrompt():
  *
  * @return    string        message wrapped in HTML
- * @version 0.0.1
+ * @version 6.0.0
  * @since 0.0.1
  */
   function promptVersionPrompt( )
@@ -710,6 +710,16 @@ class tx_radialsearch_em
           </div>
           ';
         break;
+      case( $this->typo3Version < 6003000 ):
+          // Smaller than 6.3
+        $prompt = $prompt . '
+          <div class="typo3-message message-ok" style="max-width:' . $this->maxWidth . ';">
+            <div class="message-body">
+              ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptEvaluatorTYPO3version63smaller'). '
+            </div>
+          </div>
+          ';
+        break;
       default:
           // Equal to or greater than 6.1
         $prompt = $prompt . '
@@ -717,6 +727,7 @@ class tx_radialsearch_em
             <div class="message-body">
               ' . $GLOBALS['LANG']->sL('LLL:EXT:radialsearch/lib/userfunc/locallang.xml:promptEvaluatorTYPO3version62orGreater'). '
             </div>
+          </div>
           ';
         break;
     }

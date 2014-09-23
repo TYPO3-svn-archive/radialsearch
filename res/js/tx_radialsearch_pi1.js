@@ -34,7 +34,7 @@
               }
               , orderBy   : "country_code, postal_code, place_name"
               , limit     : "###LIMIT###"
-            }            
+            }
           }
           , dataType  : "jsonp"
           , success   : function( data ) {
