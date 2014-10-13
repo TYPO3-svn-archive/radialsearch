@@ -13,9 +13,11 @@
 $EM_CONF[$_EXTKEY] = array(
   'title' => 'Radial Search (Umkreissuche)',
   'description' => 'Radial search (German: Umkreissuche) for your TYPO3 database.'
+  . 'Enable the browsing through your data by geo location. '
   . 'Your data must have a latitude and a longitude. '
-  . 'The Browser - TYPO3 without PHP - has radial search integrated. '
-  . 'See: http://typo3-route.de/'
+  . 'Address data can geocoded automatically by the Browser - TYPO3 without PHP '
+  . 'The Browser has radial search integrated. '
+  . 'See example at http://typo3-organiser.de/'
   ,
   'category' => 'plugin',
   'shy' => 0,

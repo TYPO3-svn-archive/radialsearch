@@ -36,7 +36,7 @@ $version = $version + ( ( int ) $bugfix ) * 1;
 $typo3Version = $version;
   // Set TYPO3 version as integer (sample: 4.7.7 -> 4007007)
 
-if( $typo3Version < 3000000 ) 
+if( $typo3Version < 3000000 )
 {
   $prompt = '<h1>ERROR</h1>
     <h2>Unproper TYPO3 version</h2>
@@ -56,7 +56,7 @@ if( $typo3Version < 3000000 )
 }
   // Set TYPO3 version
 
-    
+
 
   ////////////////////////////////////////////////////////////////////////////
   //
@@ -66,7 +66,7 @@ $confArr  = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['radialsea
 
   // Language for labels of static templates and page tsConfig
 $llStatic = $confArr['LLstatic'];
-switch( $llStatic ) 
+switch( $llStatic )
 {
   case( 'German' ):
     $llStatic = 'de';
@@ -81,12 +81,12 @@ switch( $llStatic )
   // Enables the Include Static Templates
 
   // Case $llStatic
-switch( true ) 
+switch( true )
 {
   case($llStatic == 'de'):
       // German
-    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/',               'Umkreissuche (1)' );
-    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/properties/de/', 'Umkreissuche (2+) - Deutsch' );
+    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/',               'Radial Search [1] Basis' );
+    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/properties/de/', 'Radial Search [2] + Sparche: Deutsch' );
     switch( true )
     {
       case( $typo3Version < 4007000 ):
@@ -101,8 +101,8 @@ switch( true )
     break;
   default:
       // English
-    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/',               'Radial Search (1)' );
-    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/properties/de/', 'Radial Search (2+) - German');
+    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/',               'Radial Search [1] Basis' );
+    t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/properties/de/', 'Radial Search [2] + Language: German');
     switch( true )
     {
       case( $typo3Version < 4007000 ):
@@ -135,7 +135,7 @@ switch( true )
   // Add pagetree icons
 
   // Case $llStatic
-switch( true ) 
+switch( true )
 {
   case( $llStatic == 'de' ):
       // German
@@ -181,7 +181,7 @@ t3lib_extMgm::addPlugin(array(
   $_EXTKEY . '_pi1',
   t3lib_extMgm::extRelPath( $_EXTKEY ) . 'ext_icon.gif'
 ),'list_type');
-t3lib_extMgm::addPiFlexFormValue( $_EXTKEY . '_pi1', 'FILE:EXT:' . $_EXTKEY . '/pi1/flexform.xml' ); 
+t3lib_extMgm::addPiFlexFormValue( $_EXTKEY . '_pi1', 'FILE:EXT:' . $_EXTKEY . '/pi1/flexform.xml' );
 
 $TCA['tt_content']['types']['list']['subtypes_excludelist'][ $_EXTKEY . '_pi2' ]  = 'layout,select_key,recursive,pages';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][ $_EXTKEY . '_pi2' ]      = 'pi_flexform';
@@ -190,7 +190,7 @@ t3lib_extMgm::addPlugin(array(
   $_EXTKEY . '_pi2',
   t3lib_extMgm::extRelPath( $_EXTKEY ) . 'ext_icon.gif'
 ),'list_type');
-t3lib_extMgm::addPiFlexFormValue( $_EXTKEY . '_pi2', 'FILE:EXT:' . $_EXTKEY . '/pi1/flexform.xml' ); 
+t3lib_extMgm::addPiFlexFormValue( $_EXTKEY . '_pi2', 'FILE:EXT:' . $_EXTKEY . '/pi1/flexform.xml' );
 
 $TCA['tt_content']['types']['list']['subtypes_excludelist'][ $_EXTKEY . '_pi3' ]  = 'layout,select_key,recursive,pages';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][ $_EXTKEY . '_pi3' ]      = 'pi_flexform';
@@ -199,7 +199,7 @@ t3lib_extMgm::addPlugin(array(
   $_EXTKEY . '_pi3',
   t3lib_extMgm::extRelPath( $_EXTKEY ) . 'ext_icon.gif'
 ),'list_type');
-t3lib_extMgm::addPiFlexFormValue( $_EXTKEY . '_pi3', 'FILE:EXT:' . $_EXTKEY . '/pi1/flexform.xml' ); 
+t3lib_extMgm::addPiFlexFormValue( $_EXTKEY . '_pi3', 'FILE:EXT:' . $_EXTKEY . '/pi1/flexform.xml' );
   // Plugin Configuration
 
 
@@ -212,14 +212,14 @@ t3lib_extMgm::addPiFlexFormValue( $_EXTKEY . '_pi3', 'FILE:EXT:' . $_EXTKEY . '/
 $TCA['tx_radialsearch_postalcodes'] = array (
   'ctrl' => array (
     'title'             => 'LLL:EXT:radialsearch/locallang_db.xml:tx_radialsearch_postalcodes',
-    'label'             => 'place_name',  
-    'label_alt'         => 'country_code, admin_code1, postal_code',  
-    'label_alt_force'   => true,  
+    'label'             => 'place_name',
+    'label_alt'         => 'country_code, admin_code1, postal_code',
+    'label_alt_force'   => true,
     'tstamp'            => 'tstamp',
     'crdate'            => 'crdate',
     'cruser_id'         => 'cruser_id',
     'delete'            => 'deleted',
-    'default_sortby'    => 'ORDER BY place_name, country_code, admin_code1, postal_code DESC',  
+    'default_sortby'    => 'ORDER BY place_name, country_code, admin_code1, postal_code DESC',
     'dividers2tabs'     => true,
     'dynamicConfigFile' => t3lib_extMgm::extPath( $_EXTKEY ) . 'tca.php',
     'iconfile'          => t3lib_extMgm::extRelPath( $_EXTKEY ) . 'ext_icon.gif',
