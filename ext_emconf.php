@@ -1,15 +1,5 @@
 <?php
 
-########################################################################
-# Extension Manager/Repository config file for ext "org".
-#
-# Auto generated 15-12-2011 23:01
-#
-# Manual updates:
-# Only the data in the array - everything else is removed by next
-# writing. "version" and "dependencies" must not be touched!
-########################################################################
-
 $EM_CONF[$_EXTKEY] = array(
   'title' => 'Radial Search (Umkreissuche)',
   'description' => 'Radial search (German: Umkreissuche) for your TYPO3 database.'
@@ -21,7 +11,7 @@ $EM_CONF[$_EXTKEY] = array(
   ,
   'category' => 'plugin',
   'shy' => 0,
-  'version' => '6.0.1',
+  'version' => '6.0.2',
   'dependencies' => '',
   'conflicts' => '',
   'priority' => '',

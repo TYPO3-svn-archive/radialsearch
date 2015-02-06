@@ -1,3 +1,11 @@
+6.0.2
+  15-02-06
+  Improvement
+  * #i0012: New method getFieldForLatLon()
+            Is needed by third party extension.
+            See extension browser for an example:
+            * class.tx_browser_pi1_filterRadialsearch::andWhereEmptyCoordinates
+
 6.0.1
   14-11-20
   Improvement
