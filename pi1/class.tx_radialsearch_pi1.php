@@ -113,16 +113,16 @@ class tx_radialsearch_pi1 extends tslib_pibase
    * @version    0.0.1
    * @since      0.0.1
    */
-  public function main($content, $conf)
+  public function main( $content, $conf )
   {
     // page object
-    $this->local_cObj = $GLOBALS['TSFE']->cObj;
+    $this->local_cObj = $GLOBALS[ 'TSFE' ]->cObj;
 
     $this->conf = $conf;
     $this->pi_setPiVarDefaults();
     $this->pi_loadLL();
     // Init extension configuration array
-    $this->arr_extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
+    $this->arr_extConf = unserialize( $GLOBALS[ 'TYPO3_CONF_VARS' ][ 'EXT' ][ 'extConf' ][ $this->extKey ] );
 
     // Init DRS, flexform, gpvars, HTML template, service attributes
     $this->init();
@@ -142,10 +142,10 @@ class tx_radialsearch_pi1 extends tslib_pibase
    * @version    0.0.1
    * @since      0.0.1
    */
-  public function sword($content, $conf)
+  public function sword( $content, $conf )
   {
     $this->userfunc = 'sword';
-    return $this->main($content, $conf);
+    return $this->main( $content, $conf );
   }
 
   /**
@@ -157,10 +157,10 @@ class tx_radialsearch_pi1 extends tslib_pibase
    * @version    0.0.1
    * @since      0.0.1
    */
-  public function radiusbox($content, $conf)
+  public function radiusbox( $content, $conf )
   {
     $this->userfunc = 'radiusbox';
-    return $this->main($content, $conf);
+    return $this->main( $content, $conf );
   }
 
   /*   * *********************************************
@@ -179,9 +179,9 @@ class tx_radialsearch_pi1 extends tslib_pibase
    */
   private function css()
   {
-    $conf = $this->conf['res.']['css.']['tx_radialsearch_pi1.'];
+    $conf = $this->conf[ 'res.' ][ 'css.' ][ 'tx_radialsearch_pi1.' ];
     $path_tsConf = 'res.css.tx_radialsearch_pi1';
-    $content = $this->cssInline($conf, $path_tsConf);
+    $content = $this->cssInline( $conf, $path_tsConf );
 
     return $content;
   }
@@ -194,19 +194,19 @@ class tx_radialsearch_pi1 extends tslib_pibase
    * @version    0.0.1
    * @since      0.0.1
    */
-  private function cssInline($conf, $path_tsConf)
+  private function cssInline( $conf, $path_tsConf )
   {
-    $properties = explode('.', $path_tsConf);
-    $name = 'css_' . $properties[count($properties) - 1];
-    $path = $conf['path'];
+    $properties = explode( '.', $path_tsConf );
+    $name = 'css_' . $properties[ count( $properties ) - 1 ];
+    $path = $conf[ 'path' ];
 
     // RETURN file is loaded
-    if (isset($GLOBALS['TSFE']->additionalHeaderData[$this->extKey . '_' . $name]))
+    if ( isset( $GLOBALS[ 'TSFE' ]->additionalHeaderData[ $this->extKey . '_' . $name ] ) )
     {
-      if ($this->drs->drsCss)
+      if ( $this->drs->drsCss )
       {
         $prompt = 'file isn\'t added again: ' . $path;
-        t3lib_div::devlog('[INFO/CSS] ' . $prompt, $this->extKey, 0);
+        t3lib_div::devlog( '[INFO/CSS] ' . $prompt, $this->extKey, 0 );
       }
       return true;
     }
@@ -226,12 +226,12 @@ class tx_radialsearch_pi1 extends tslib_pibase
 //' . implode( '', file( $absPath ) ) . '
 //  </style>';
 
-    $css = $this->cObj->fileResource($path);
-    if ($css == false)
+    $css = $this->cObj->fileResource( $path );
+    if ( $css == false )
     {
-      if ($this->drs->drsError)
+      if ( $this->drs->drsError )
       {
-        t3lib_div::devlog('[ERROR/CSS] unproper path: ' . $path, $this->extKey, 3);
+        t3lib_div::devlog( '[ERROR/CSS] unproper path: ' . $path, $this->extKey, 3 );
       }
       return false;
     }
@@ -241,21 +241,21 @@ class tx_radialsearch_pi1 extends tslib_pibase
   </style>';
 
     // Fill dynamic locallang or typoscript markers
-    $content = $this->dynamicMarkers->main($content);
+    $content = $this->dynamicMarkers->main( $content );
 
-    $GLOBALS['TSFE']->additionalHeaderData[$this->extKey . '_' . $name] = $content;
+    $GLOBALS[ 'TSFE' ]->additionalHeaderData[ $this->extKey . '_' . $name ] = $content;
 
     // No DRS
-    if (!$this->drs->drsCss)
+    if ( !$this->drs->drsCss )
     {
       return true;
     }
     // No DRS
     // DRS
     $prompt = 'file is included: ' . $path;
-    t3lib_div::devlog('[INFO/CSS] ' . $prompt, $this->extKey, 0);
+    t3lib_div::devlog( '[INFO/CSS] ' . $prompt, $this->extKey, 0 );
     $prompt = 'Change it? Configure: \'' . $path_tsConf . '\'';
-    t3lib_div::devlog('[HELP/CSS] ' . $prompt, $this->extKey, 1);
+    t3lib_div::devlog( '[HELP/CSS] ' . $prompt, $this->extKey, 1 );
     // DRS
 
     return true;
@@ -270,59 +270,59 @@ class tx_radialsearch_pi1 extends tslib_pibase
    * @since       0.0.1
    * @version     0.0.1
    */
-  private function getPathAbsolute($conf, $path_tsConf)
+  private function getPathAbsolute( $conf, $path_tsConf )
   {
-    $path = $conf['path'];
+    $path = $conf[ 'path' ];
     // RETURN path is empty
-    if (empty($path))
+    if ( empty( $path ) )
     {
       // DRS
-      if ($this->drs->drsWarn)
+      if ( $this->drs->drsWarn )
       {
         $prompt = 'file can not be included. Path is empty. Maybe it is ok.';
-        t3lib_div::devlog('[WARN/JSS] ' . $prompt, $this->extKey, 2);
+        t3lib_div::devlog( '[WARN/JSS] ' . $prompt, $this->extKey, 2 );
         $prompt = 'Change it? Configure: \'' . $path_tsConf . '\'';
-        t3lib_div::devlog('[HELP/JSS] ' . $prompt, $this->extKey, 1);
+        t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->extKey, 1 );
       }
       // DRS
       return false;
     }
     // RETURN path is empty
     // URL or EXT:...
-    $arr_parsed_url = parse_url($path);
-    if (isset($arr_parsed_url['scheme']))
+    $arr_parsed_url = parse_url( $path );
+    if ( isset( $arr_parsed_url[ 'scheme' ] ) )
     {
-      if ($arr_parsed_url['scheme'] == 'EXT')
+      if ( $arr_parsed_url[ 'scheme' ] == 'EXT' )
       {
-        unset($arr_parsed_url['scheme']);
+        unset( $arr_parsed_url[ 'scheme' ] );
       }
     }
     // URL or EXT:...
     // link to a file
     $bool_file_exists = true;
-    if (!isset($arr_parsed_url['scheme']))
+    if ( !isset( $arr_parsed_url[ 'scheme' ] ) )
     {
       $onlyRelative = 1;
       $relToTYPO3_mainDir = 0;
-      $absPath = t3lib_div::getFileAbsFileName($path, $onlyRelative, $relToTYPO3_mainDir);
-      if (!file_exists($absPath))
+      $absPath = t3lib_div::getFileAbsFileName( $path, $onlyRelative, $relToTYPO3_mainDir );
+      if ( !file_exists( $absPath ) )
       {
         $bool_file_exists = false;
       }
       // relative path
-      $path = preg_replace('%' . PATH_site . '%', null, $absPath);
+      $path = preg_replace( '%' . PATH_site . '%', null, $absPath );
     }
     // link to a file
     // RETURN : false, file does not exist
-    if (!$bool_file_exists)
+    if ( !$bool_file_exists )
     {
       // DRS
-      if ($this->drs->drsError)
+      if ( $this->drs->drsError )
       {
         $prompt = 'Script can not be included. File doesn\'t exist: ' . $path;
-        t3lib_div::devlog('[ERROR/JSS] ' . $prompt, $this->extKey, 3);
+        t3lib_div::devlog( '[ERROR/JSS] ' . $prompt, $this->extKey, 3 );
         $prompt = 'Solve it? Configure: \'' . $path_tsConf . '\'';
-        t3lib_div::devlog('[HELP/JSS] ' . $prompt, $this->extKey, 1);
+        t3lib_div::devlog( '[HELP/JSS] ' . $prompt, $this->extKey, 1 );
       }
       // DRS
       return false;
@@ -349,17 +349,17 @@ class tx_radialsearch_pi1 extends tslib_pibase
   private function html()
   {
     $content = $this->htmlRadiusbox();
-    if ($content)
+    if ( $content )
     {
-      $content = $this->dynamicMarkers->main($content);
+      $content = $this->dynamicMarkers->main( $content );
       //$content = $this->pi_wrapInBaseClass( $content );
       return $content;
     }
 
     $content = $this->htmlSword();
-    if ($content)
+    if ( $content )
     {
-      $content = $this->dynamicMarkers->main($content);
+      $content = $this->dynamicMarkers->main( $content );
       //$content = $this->pi_wrapInBaseClass( $content );
       return $content;
     }
@@ -375,12 +375,12 @@ class tx_radialsearch_pi1 extends tslib_pibase
    */
   private function htmlRadiusbox()
   {
-    if ($this->userfunc != 'radiusbox')
+    if ( $this->userfunc != 'radiusbox' )
     {
       return null;
     }
-    $content = $this->subpart['radiusbox'];
-    $content = $this->htmlRadiusboxOptions($content);
+    $content = $this->subpart[ 'radiusbox' ];
+    $content = $this->htmlRadiusboxOptions( $content );
     return $content;
   }
 
@@ -389,21 +389,21 @@ class tx_radialsearch_pi1 extends tslib_pibase
    *
    * @return	The		content that is displayed on the website
    * @access     private
-   * @version    0.0.1
+   * @version    6.0.3
    * @since      0.0.1
    */
-  private function htmlRadiusboxOptions($content)
+  private function htmlRadiusboxOptions( $content )
   {
-    $gp = (array) t3lib_div::_GP($this->conf['gp.']['parameter']);
-    $radius = $gp[$this->conf['gp.']['select']];
+    $gp = ( array ) t3lib_div::_GP( $this->conf[ 'gp.' ][ 'parameter' ] );
+    $radius = $this->htmlRadiusboxOptionsDefault( $gp );
 
-    $csvOptions = $this->conf['radiusbox.']['options'];
-    $csvOptions = str_replace(' ', null, $csvOptions);
-    $arrOptions = explode(',', $csvOptions);
-    $numberFormat = $this->conf['radiusbox.']['numberFormat.'];
-    $unit = $this->conf['radiusbox.']['unit'];
+    $csvOptions = $this->conf[ 'radiusbox.' ][ 'options' ];
+    $csvOptions = str_replace( ' ', null, $csvOptions );
+    $arrOptions = explode( ',', $csvOptions );
+    $numberFormat = $this->conf[ 'radiusbox.' ][ 'numberFormat.' ];
+    $unit = $this->conf[ 'radiusbox.' ][ 'unit' ];
 
-    $template = $this->cObj->getSubpart($content, '###OPTION###');
+    $template = $this->cObj->getSubpart( $content, '###OPTION###' );
 
     $options = array();
     $search = array(
@@ -411,29 +411,48 @@ class tx_radialsearch_pi1 extends tslib_pibase
       '1' => '###SELECTED###',
       '2' => '###LABEL###'
     );
-    foreach ($arrOptions as $value)
+    foreach ( $arrOptions as $value )
     {
       $selected = null;
-      if ($radius == $value)
+      if ( $radius == $value )
       {
         $selected = ' selected="selected"';
       }
-      $decimals = $numberFormat['decimals'];
+      $decimals = $numberFormat[ 'decimals' ];
       // Take 0 decimals in every case!
       $decimals = 0;
-      $strValue = number_format($value, $decimals, $numberFormat['dec_point'], $numberFormat['thousands_sep']);
+      $strValue = number_format( $value, $decimals, $numberFormat[ 'dec_point' ], $numberFormat[ 'thousands_sep' ] );
       $replace = array(
         '0' => $value,
         '1' => $selected,
         '2' => $strValue . ' ' . $unit
       );
-      $options[] = str_replace($search, $replace, $template);
+      $options[] = str_replace( $search, $replace, $template );
     }
 
-    $strOption = implode(null, $options);
+    $strOption = implode( null, $options );
 
-    $content = $this->cObj->substituteSubpart($content, '###OPTION###', $strOption);
+    $content = $this->cObj->substituteSubpart( $content, '###OPTION###', $strOption );
     return $content;
+  }
+
+  /**
+   * htmlRadiusboxOptionsDefault( )  : Get the default value
+   *
+   * @param array $gp: Get/Post params
+   * @return	integer Returns the value from the Get / Post parameters or the a default value
+   * @access     private
+   * @internal #i0013
+   * @version    6.0.3
+   * @since      6.0.3
+   */
+  private function htmlRadiusboxOptionsDefault( $gp )
+  {
+    if( isset( $gp[ $this->conf[ 'gp.' ][ 'select' ] ] ) ) {
+      return $gp[ $this->conf[ 'gp.' ][ 'select' ] ];
+    }
+
+    return $this->conf[ 'radiusbox.' ][ 'default' ];
   }
 
   /**
@@ -446,11 +465,11 @@ class tx_radialsearch_pi1 extends tslib_pibase
    */
   private function htmlSword()
   {
-    if ($this->userfunc != 'sword')
+    if ( $this->userfunc != 'sword' )
     {
       return null;
     }
-    $content = $this->subpart['sword'];
+    $content = $this->subpart[ 'sword' ];
     return $content;
   }
 
@@ -502,24 +521,24 @@ class tx_radialsearch_pi1 extends tslib_pibase
    */
   private function initInstances()
   {
-    $path2lib = t3lib_extMgm::extPath('radialsearch') . 'lib/';
+    $path2lib = t3lib_extMgm::extPath( 'radialsearch' ) . 'lib/';
 
     require_once( $path2lib . 'class.tx_radialsearch_drs.php' );
-    $this->drs = t3lib_div::makeInstance('tx_radialsearch_drs');
+    $this->drs = t3lib_div::makeInstance( 'tx_radialsearch_drs' );
 
     require_once( $path2lib . 'class.tx_radialsearch_dynamicmarkers.php' );
-    $this->dynamicMarkers = t3lib_div::makeInstance('tx_radialsearch_dynamicmarkers');
+    $this->dynamicMarkers = t3lib_div::makeInstance( 'tx_radialsearch_dynamicmarkers' );
 
     require_once( 'class.tx_radialsearch_pi1_flexform.php' );
-    $this->flexform = t3lib_div::makeInstance('tx_radialsearch_pi1_flexform');
+    $this->flexform = t3lib_div::makeInstance( 'tx_radialsearch_pi1_flexform' );
 
     require_once( $path2lib . 'class.tx_radialsearch_jss.php' );
-    $this->jss = t3lib_div::makeInstance('tx_radialsearch_jss');
+    $this->jss = t3lib_div::makeInstance( 'tx_radialsearch_jss' );
 
-    $this->dynamicMarkers->setParentObject($this);
-    $this->flexform->setParentObject($this);
-    $this->jss->setParentObject($this);
-    $this->drs->setParentObject($this);
+    $this->dynamicMarkers->setParentObject( $this );
+    $this->flexform->setParentObject( $this );
+    $this->jss->setParentObject( $this );
+    $this->drs->setParentObject( $this );
   }
 
   /**
@@ -532,11 +551,11 @@ class tx_radialsearch_pi1 extends tslib_pibase
    */
   private function initTemplate()
   {
-    $path = $this->conf['res.']['html.']['tx_radialsearch_pi1.']['path'];
-    $template = $this->cObj->fileResource($path);
+    $path = $this->conf[ 'res.' ][ 'html.' ][ 'tx_radialsearch_pi1.' ][ 'path' ];
+    $template = $this->cObj->fileResource( $path );
 
     // Die if there isn't any HTML template
-    if (empty($template))
+    if ( empty( $template ) )
     {
       $prompt = '<h1>'
               . '  ERROR: Template is empty'
@@ -568,12 +587,12 @@ class tx_radialsearch_pi1 extends tslib_pibase
               . '  This is a prompt of the extension Radial Search (radialsearch).<br />'
               . '  ' . __METHOD__ . ' at line #' . __LINE__ . '.'
               . '</p>'
-              ;
-      die($prompt);
+      ;
+      die( $prompt );
     }
 
-    $this->subpart['sword'] = $this->cObj->getSubpart($template, '###SWORD###');
-    $this->subpart['radiusbox'] = $this->cObj->getSubpart($template, '###RADIUSBOX###');
+    $this->subpart[ 'sword' ] = $this->cObj->getSubpart( $template, '###SWORD###' );
+    $this->subpart[ 'radiusbox' ] = $this->cObj->getSubpart( $template, '###RADIUSBOX###' );
   }
 
   /*   * *********************************************
@@ -592,10 +611,10 @@ class tx_radialsearch_pi1 extends tslib_pibase
    */
   private function jss()
   {
-    $conf = $this->conf['res.']['js.']['tx_radialsearch_pi1.'];
+    $conf = $this->conf[ 'res.' ][ 'js.' ][ 'tx_radialsearch_pi1.' ];
     $path_tsConf = 'res.js.tx_radialsearch_pi1';
-    $success = $this->jss->addFile($conf, $path_tsConf);
-    unset($success);
+    $success = $this->jss->addFile( $conf, $path_tsConf );
+    unset( $success );
   }
 
   /*   * *********************************************
@@ -615,14 +634,14 @@ class tx_radialsearch_pi1 extends tslib_pibase
    * @version    0.0.1
    * @since      0.0.1
    */
-  private function zz_cObjGetSingle($cObj_name, $cObj_conf)
+  private function zz_cObjGetSingle( $cObj_name, $cObj_conf )
   {
-    switch (true)
+    switch ( true )
     {
-      case( is_array($cObj_conf) ):
-        $value = $this->cObj->cObjGetSingle($cObj_name, $cObj_conf);
+      case( is_array( $cObj_conf ) ):
+        $value = $this->cObj->cObjGetSingle( $cObj_name, $cObj_conf );
         break;
-      case(!( is_array($cObj_conf) ) ):
+      case(!( is_array( $cObj_conf ) ) ):
       default:
         $value = $cObj_name;
         break;
@@ -633,8 +652,8 @@ class tx_radialsearch_pi1 extends tslib_pibase
 
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/pi1/class.tx_radialsearch_pi1.php'])
+if ( defined( 'TYPO3_MODE' ) && $TYPO3_CONF_VARS[ TYPO3_MODE ][ 'XCLASS' ][ 'ext/radialsearch/pi1/class.tx_radialsearch_pi1.php' ] )
 {
-  include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/radialsearch/pi1/class.tx_radialsearch_pi1.php']);
+  include_once($TYPO3_CONF_VARS[ TYPO3_MODE ][ 'XCLASS' ][ 'ext/radialsearch/pi1/class.tx_radialsearch_pi1.php' ]);
 }
 ?>

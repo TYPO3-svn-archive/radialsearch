@@ -265,6 +265,8 @@ plugin.tx_radialsearch_pi1 {
     // Selectbox for the radius: options, unit
   radiusbox =
   radiusbox {
+      // [Integer] Default value. Should be one of the items in the list below.
+    default = {$plugin.tx_radialsearch_pi1.radiusbox.default}
       // [String/CSV] Comma separated values (CSV) for the options of the selectbox. Example: 5,10,25,50,100
     options = {$plugin.tx_radialsearch_pi1.radiusbox.options}
       // [Array] TypoScript numberFormat

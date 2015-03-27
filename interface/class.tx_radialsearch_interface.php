@@ -50,7 +50,7 @@
  * @author	Dirk Wildt <http://wildt.at.die-netzmacher.de>
  * @package	TYPO3
  * @subpackage	radialsearch
- * @version	0.0.1
+ * @version     6.1.0
  * @since       0.0.1
  */
 class tx_radialsearch_interface
@@ -127,7 +127,7 @@ class tx_radialsearch_interface
    *
    * @return	string    $andHaving : andHaving statement
    * @access public
-   * @version 0.0.1
+   * @version 6.1.0
    * @since   0.0.1
    */
   public function andHaving()
@@ -144,17 +144,27 @@ class tx_radialsearch_interface
     if ( !$this->andWithMaxRadius() )
     {
       return null;
+      // #61797: Code below hasn't the wanted effect.
+//      $distance = $this->confFields[ 'distance' ];
+//      $km = 6378.2;
+//      $andHaving = '' .
+//              ' HAVING ' . $distance . ' <= ' . ( $km + 0 ) . ' ';
+//      return $andHaving;
     }
     // RETURN : without max radius
 
     $distance = $this->confFields[ 'distance' ];
+    // #61797, 150327, dwildt, 1+
+    $uid = $this->confFields[ 'uid' ];
 
     $gp = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
     $maxRadius = ( int ) $gp[ $this->confGP[ 'select' ] ];
 
     // Set the andHaving statement
-    $andHaving = '' .
-            ' HAVING ' . $distance . ' < ' . ( $maxRadius + 0 ) . ' ';
+    $andHaving = ''
+            . ' GROUP BY ' . $uid . ' ' // #61797, 150327, dwildt, +
+            . ' HAVING ' . $distance . ' < ' . ( $maxRadius + 0 ) . ' '
+            ;
 
     // RETURN : no DRS
     if ( !$this->drs )
@@ -350,6 +360,13 @@ class tx_radialsearch_interface
       //  http://de.wikipedia.org/wiki/Erdradius
       $km = 6378.2;
     }
+
+    // #61797: Code below hasn't the wanted effect.
+//    if ( $smallerThanMaxRadius === null )
+//    {
+//      $smallerThanMaxRadius = ' <= ' . ( $km + 0 );
+//      $smallerThanMaxRadius = ' <= ' . 1;
+//    }
 
     $destLat = $this->confFields[ 'lat' ];
     $destLon = $this->confFields[ 'lon' ];
@@ -675,7 +692,7 @@ class tx_radialsearch_interface
       );
     }
 
-      // Die in case of an error
+    // Die in case of an error
     $arrPrompt = array(
       0 => '',
       1 => '$this->confFields is empty',
@@ -702,7 +719,7 @@ class tx_radialsearch_interface
    * @param	array		$filter : TypoScript configuration of the filter
    * @return	void
    * @access public
-   * @version    4.7.0
+   * @version    6.1.0
    * @since      4.7.0
    */
   public function setConfiguration( $fields, $filter, $gp )
@@ -728,7 +745,18 @@ class tx_radialsearch_interface
     if ( empty( $fields[ 'distance' ] ) )
     {
       $prompt = 'ERROR: field[ distance ] is empty!<br />' . PHP_EOL .
-              'Take care of a prpoper configuration and PHP code..<br />' . PHP_EOL .
+              'Take care of a prpoper configuration and PHP code.<br />' . PHP_EOL .
+              'Sorry for the trouble.<br />' . PHP_EOL .
+              'TYPO3 Radial Search<br />' . PHP_EOL .
+              __METHOD__ . ' (' . __LINE__ . ')';
+      die( $prompt );
+    }
+
+    // #61797, 150327, dwildt, +
+    if ( empty( $fields[ 'uid' ] ) )
+    {
+      $prompt = 'ERROR: field[ uid ] is empty!<br />' . PHP_EOL .
+              'Take care of a prpoper configuration and PHP code.<br />' . PHP_EOL .
               'Sorry for the trouble.<br />' . PHP_EOL .
               'TYPO3 Radial Search<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
@@ -738,7 +766,7 @@ class tx_radialsearch_interface
     if ( empty( $fields[ 'lat' ] ) )
     {
       $prompt = 'ERROR: field[ lat ] is empty!<br />' . PHP_EOL .
-              'Take care of a prpoper configuration and PHP code..<br />' . PHP_EOL .
+              'Take care of a prpoper configuration and PHP code.<br />' . PHP_EOL .
               'Sorry for the trouble.<br />' . PHP_EOL .
               'TYPO3 Radial Search<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
@@ -748,7 +776,7 @@ class tx_radialsearch_interface
     if ( empty( $fields[ 'lon' ] ) )
     {
       $prompt = 'ERROR: field[ lon ] is empty!<br />' . PHP_EOL .
-              'Take care of a prpoper configuration and PHP code..<br />' . PHP_EOL .
+              'Take care of a prpoper configuration and PHP code.<br />' . PHP_EOL .
               'Sorry for the trouble.<br />' . PHP_EOL .
               'TYPO3 Radial Search<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
@@ -758,7 +786,7 @@ class tx_radialsearch_interface
     if ( empty( $fields[ 'searchmode' ] ) )
     {
       $prompt = 'ERROR: field[ searchmode ] is empty!<br />' . PHP_EOL .
-              'Take care of a prpoper configuration and PHP code..<br />' . PHP_EOL .
+              'Take care of a prpoper configuration and PHP code.<br />' . PHP_EOL .
               'Sorry for the trouble.<br />' . PHP_EOL .
               'TYPO3 Radial Search<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
