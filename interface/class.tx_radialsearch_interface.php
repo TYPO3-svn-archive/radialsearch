@@ -745,7 +745,7 @@ class tx_radialsearch_interface
     if ( empty( $fields[ 'distance' ] ) )
     {
       $prompt = 'ERROR: field[ distance ] is empty!<br />' . PHP_EOL .
-              'Take care of a prpoper configuration and PHP code.<br />' . PHP_EOL .
+              'Take care of a proper configuration and PHP code.<br />' . PHP_EOL .
               'Sorry for the trouble.<br />' . PHP_EOL .
               'TYPO3 Radial Search<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
@@ -756,7 +756,7 @@ class tx_radialsearch_interface
     if ( empty( $fields[ 'uid' ] ) )
     {
       $prompt = 'ERROR: field[ uid ] is empty!<br />' . PHP_EOL .
-              'Take care of a prpoper configuration and PHP code.<br />' . PHP_EOL .
+              'Take care of a proper configuration and PHP code.<br />' . PHP_EOL .
               'Sorry for the trouble.<br />' . PHP_EOL .
               'TYPO3 Radial Search<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
@@ -766,7 +766,7 @@ class tx_radialsearch_interface
     if ( empty( $fields[ 'lat' ] ) )
     {
       $prompt = 'ERROR: field[ lat ] is empty!<br />' . PHP_EOL .
-              'Take care of a prpoper configuration and PHP code.<br />' . PHP_EOL .
+              'Take care of a proper configuration and PHP code.<br />' . PHP_EOL .
               'Sorry for the trouble.<br />' . PHP_EOL .
               'TYPO3 Radial Search<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
@@ -776,7 +776,7 @@ class tx_radialsearch_interface
     if ( empty( $fields[ 'lon' ] ) )
     {
       $prompt = 'ERROR: field[ lon ] is empty!<br />' . PHP_EOL .
-              'Take care of a prpoper configuration and PHP code.<br />' . PHP_EOL .
+              'Take care of a proper configuration and PHP code.<br />' . PHP_EOL .
               'Sorry for the trouble.<br />' . PHP_EOL .
               'TYPO3 Radial Search<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
@@ -786,7 +786,7 @@ class tx_radialsearch_interface
     if ( empty( $fields[ 'searchmode' ] ) )
     {
       $prompt = 'ERROR: field[ searchmode ] is empty!<br />' . PHP_EOL .
-              'Take care of a prpoper configuration and PHP code.<br />' . PHP_EOL .
+              'Take care of a proper configuration and PHP code.<br />' . PHP_EOL .
               'Sorry for the trouble.<br />' . PHP_EOL .
               'TYPO3 Radial Search<br />' . PHP_EOL .
               __METHOD__ . ' (' . __LINE__ . ')';
