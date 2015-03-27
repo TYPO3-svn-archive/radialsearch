@@ -143,13 +143,13 @@ class tx_radialsearch_interface
     // RETURN : without max radius
     if ( !$this->andWithMaxRadius() )
     {
-      return null;
+      //return null;
       // #61797: Code below hasn't the wanted effect.
-//      $distance = $this->confFields[ 'distance' ];
-//      $km = 6378.2;
-//      $andHaving = '' .
-//              ' HAVING ' . $distance . ' <= ' . ( $km + 0 ) . ' ';
-//      return $andHaving;
+      $uid = $this->confFields[ 'uid' ];
+      $andHaving = ''
+              . ' GROUP BY ' . $uid . ' '
+      ;
+      return $andHaving;
     }
     // RETURN : without max radius
 
@@ -164,7 +164,7 @@ class tx_radialsearch_interface
     $andHaving = ''
             . ' GROUP BY ' . $uid . ' ' // #61797, 150327, dwildt, +
             . ' HAVING ' . $distance . ' < ' . ( $maxRadius + 0 ) . ' '
-            ;
+    ;
 
     // RETURN : no DRS
     if ( !$this->drs )
