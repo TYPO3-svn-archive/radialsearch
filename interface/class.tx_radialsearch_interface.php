@@ -50,7 +50,7 @@
  * @author	Dirk Wildt <http://wildt.at.die-netzmacher.de>
  * @package	TYPO3
  * @subpackage	radialsearch
- * @version     6.1.0
+ * @version 6.1.1
  * @since       0.0.1
  */
 class tx_radialsearch_interface
@@ -453,7 +453,7 @@ class tx_radialsearch_interface
    *
    * @return	string    $andWhere : andWhere clause
    * @access private
-   * @version 0.0.1
+   * @version 6.1.1
    * @since   0.0.1
    */
   private function andWhereSword()
@@ -461,6 +461,9 @@ class tx_radialsearch_interface
     $gp = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
 
     $sword = $gp[ $this->confGP[ 'input' ] ];
+    // #i0014, dwildt, 2+
+    $sword = strip_tags( $sword );
+    $sword = htmlspecialchars( $sword );
     $sword = $GLOBALS[ 'TYPO3_DB' ]->quoteStr( $sword, 'tx_radialsearch_postalcodes' );
 
     $andWhere = '' .
@@ -555,7 +558,6 @@ class tx_radialsearch_interface
       case( null ):
         $this->drs = false;
         return;
-        break;
       case( 'Enabled (for debugging only!)' ):
         // Follow the workflow
         break;
@@ -648,6 +650,9 @@ class tx_radialsearch_interface
     // Get the current sword
     $gp = ( array ) t3lib_div::_GP( $this->confGP[ 'parameter' ] );
     $sword = $gp[ $this->confGP[ 'input' ] ];
+    // #i0014, dwildt, 2+
+    $sword = strip_tags( $sword );
+    $sword = htmlspecialchars( $sword );
 
     // Set class var $isSword
     switch ( true )

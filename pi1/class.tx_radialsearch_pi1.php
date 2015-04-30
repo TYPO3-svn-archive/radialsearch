@@ -389,14 +389,14 @@ class tx_radialsearch_pi1 extends tslib_pibase
    *
    * @return	The		content that is displayed on the website
    * @access     private
-   * @version    6.0.3
+   * @version    6.1.1
    * @since      0.0.1
    */
   private function htmlRadiusboxOptions( $content )
   {
     $gp = ( array ) t3lib_div::_GP( $this->conf[ 'gp.' ][ 'parameter' ] );
-    $radius = $this->htmlRadiusboxOptionsDefault( $gp );
-
+    // #i0014, 150430, dwildt, + (int)
+    $radius = (int) $this->htmlRadiusboxOptionsDefault( $gp );
     $csvOptions = $this->conf[ 'radiusbox.' ][ 'options' ];
     $csvOptions = str_replace( ' ', null, $csvOptions );
     $arrOptions = explode( ',', $csvOptions );

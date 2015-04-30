@@ -75,7 +75,7 @@ if ( $version < 6002002 )
  * @author	Dirk Wildt <http://wildt.at.die-netzmacher.de>
  * @package	TYPO3
  * @subpackage	radialsearch
- * @version	6.0.0
+ * @version	6.1.1
  * @since       0.0.1
  */
 class tx_radialsearch_pi1_eid extends tslib_pibase {
@@ -224,7 +224,13 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
     $from_table     = 'tx_radialsearch_postalcodes';
     $groupBy        = null;
     $orderBy        = $sql[ 'orderBy' ];
+    // #i0014, dwildt, 2+
+    $orderBy = strip_tags( $orderBy );
+    $orderBy = htmlspecialchars( $orderBy );
     $limit          = $sql[ 'limit' ];
+    // #i0014, dwildt, 2+
+    $limit = strip_tags( $limit );
+    $limit = htmlspecialchars( $limit );
     $where_clause   = $this->sqlWhere( );
 
     $query  = $GLOBALS['TYPO3_DB']->SELECTquery(      $select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit );
@@ -297,7 +303,7 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
   *
   * @return
   * @access     private
-  * @version    0.0.1
+  * @version    6.1.1
   * @since      0.0.1
   */
   private function sqlWhere( )
@@ -307,7 +313,10 @@ class tx_radialsearch_pi1_eid extends tslib_pibase {
 
       // Get sword and limit
     $sword = $sql[ 'sword' ];
-
+    // #i0014, dwildt, 3+
+    $sword = strip_tags( $sword );
+    $sword = htmlspecialchars( $sword );
+    $sword = $GLOBALS[ 'TYPO3_DB' ]->quoteStr( $sword, 'tx_radialsearch_postalcodes' );
       // pid
     $pid    = (int) $this->arr_extConf[ 'database.']['pid' ];
     $where  = 'pid = ' . $pid;

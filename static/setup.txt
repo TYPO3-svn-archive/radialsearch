@@ -62,7 +62,14 @@ plugin.tx_radialsearch {
               field = {$plugin.tx_radialsearch_pi1.distance.fieldLabel}
             }
             value {
-              data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.select}
+              // #i0014, 150430, dwildt, 1-/+
+              //data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.select}
+              stdWrap {
+                data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.select}
+                htmlSpecialChars = 1
+                stripHtml = 1
+                //rawUrlEncode = 1
+              }
             }
           }
           value = radialsearch radialsearch-within-radius
@@ -76,7 +83,14 @@ plugin.tx_radialsearch {
               field = {$plugin.tx_radialsearch_pi1.distance.fieldLabel}
             }
             value {
-              data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.select}
+              // #i0014, 150430, dwildt, 1-/+
+              //data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.select}
+              stdWrap {
+                data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.select}
+                htmlSpecialChars = 1
+                stripHtml = 1
+                //rawUrlEncode = 1
+              }
             }
             negate = 1
           }
@@ -131,7 +145,14 @@ plugin.tx_radialsearch {
       }
       30 = TEXT
       30 {
-        data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
+        // #i0014, 150430, dwildt, 1-/+
+        //data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
+        stdWrap {
+          data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
+          htmlSpecialChars = 1
+          stripHtml = 1
+          //rawUrlEncode = 1
+        }
       }
     }
   }
@@ -294,7 +315,14 @@ plugin.tx_radialsearch_pi1 {
       // [String] replace _HTMLMARKER_HTMLINPUTVALUE
     htmlinputvalue = TEXT
     htmlinputvalue {
-      data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
+      // #i0014, 150430, dwildt, 1-/+
+      //data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
+      stdWrap {
+        data = GP:{$plugin.tx_radialsearch_pi1.gp.parameter}|{$plugin.tx_radialsearch_pi1.gp.input}
+        htmlSpecialChars = 1
+        stripHtml = 1
+        //rawUrlEncode = 1
+      }
     }
       // [String] replace _HTMLMARKER_HTMLSELECTID
     htmlselectid    = {$plugin.tx_radialsearch_pi1.gp.parameter}_{$plugin.tx_radialsearch_pi1.gp.select}
