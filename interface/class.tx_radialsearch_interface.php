@@ -50,7 +50,7 @@
  * @author	Dirk Wildt <http://wildt.at.die-netzmacher.de>
  * @package	TYPO3
  * @subpackage	radialsearch
- * @version 6.1.1
+ * @version 6.1.4
  * @since       0.0.1
  */
 class tx_radialsearch_interface
@@ -227,7 +227,7 @@ class tx_radialsearch_interface
    *
    * @return	string    $andSelect : andSelect statement
    * @access public
-   * @version 0.0.1
+   * @version 6.1.4
    * @since   0.0.1
    */
   public function andSelect()
@@ -252,16 +252,18 @@ class tx_radialsearch_interface
     $destLat = $this->confFields[ 'lat' ];
     $destLon = $this->confFields[ 'lon' ];
 
+    // 6.1.3
+    // #i0018, 160223, dwildt
     // Set the andSelect statement
-    $andSelect = '' .
-            ', ACOS
-(
-    SIN( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * SIN( RADIANS( ' . $destLat . ' ) )
-  + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( ' . $destLat . ' ) )
-  * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( ' . $destLon . ' ) )
-)
-* ' . $km . ' AS \'' . $distance . '\'
-';
+    $andSelect = ''
+            . ', '
+            . 'ACOS('
+            . 'SIN(RADIANS(tx_radialsearch_postalcodes.latitude)) * SIN(RADIANS(' . $destLat . '))'
+            . ' + COS( RADIANS(tx_radialsearch_postalcodes.latitude)) * COS(RADIANS(' . $destLat . '))'
+            . ' * COS( RADIANS(tx_radialsearch_postalcodes.longitude) - RADIANS(' . $destLon . '))'
+            . ')'
+            . ' * ' . $km . ' AS \'' . $distance . '\''
+    ;
 
     // RETURN : no DRS
     if ( !$this->drs )
@@ -335,7 +337,7 @@ class tx_radialsearch_interface
    * @param       boolean   $withDistance :
    * @return	string    $andWhere : andWhere clause
    * @access private
-   * @version 0.0.1
+   * @version 6.1.4
    * @since   0.0.1
    */
   private function andWhereDistance( $withDistance )
@@ -371,18 +373,18 @@ class tx_radialsearch_interface
     $destLat = $this->confFields[ 'lat' ];
     $destLon = $this->confFields[ 'lon' ];
 
-    $andWhere = '' .
-            'AND
-(
-  ACOS
-  (
-      SIN( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * SIN( RADIANS( ' . $destLat . ' ) )
-    + COS( RADIANS( tx_radialsearch_postalcodes.latitude  ) ) * COS( RADIANS( ' . $destLat . ' ) )
-    * COS( RADIANS( tx_radialsearch_postalcodes.longitude )   - RADIANS( ' . $destLon . ' ) )
-  )
-  * ' . $km . '
-) ' . $smallerThanMaxRadius . '
-';
+    // #i0018, 160223, dwildt
+    $andWhere = ''
+            . 'AND ('
+            . 'ACOS('
+            . 'SIN(RADIANS(tx_radialsearch_postalcodes.latitude)) * SIN(RADIANS(' . $destLat . '))'
+            . ' + COS(RADIANS(tx_radialsearch_postalcodes.latitude)) * COS(RADIANS(' . $destLat . '))'
+            . ' * COS(RADIANS(tx_radialsearch_postalcodes.longitude) - RADIANS(' . $destLon . '))'
+            . ')'
+            . ' * ' . $km . ''
+            . ') '
+            . $smallerThanMaxRadius
+    ;
 
     return $andWhere;
   }
@@ -453,7 +455,7 @@ class tx_radialsearch_interface
    *
    * @return	string    $andWhere : andWhere clause
    * @access private
-   * @version 6.1.1
+   * @version 6.1.4
    * @since   0.0.1
    */
   private function andWhereSword()
@@ -466,13 +468,15 @@ class tx_radialsearch_interface
     $sword = htmlspecialchars( $sword );
     $sword = $GLOBALS[ 'TYPO3_DB' ]->quoteStr( $sword, 'tx_radialsearch_postalcodes' );
 
-    $andWhere = '' .
-            'AND
-(
-      tx_radialsearch_postalcodes.postal_code LIKE "' . $sword . '%"
-  OR  tx_radialsearch_postalcodes.place_name LIKE "' . $sword . '%"
-  OR  CONCAT(tx_radialsearch_postalcodes.postal_code, " ", tx_radialsearch_postalcodes.place_name) LIKE "' . $sword . '%"
-)';
+    // #i0018, 160223, dwildt
+    $andWhere = ''
+            . 'AND'
+            . '('
+            . 'tx_radialsearch_postalcodes.postal_code LIKE "' . $sword . '%"'
+            . ' OR  tx_radialsearch_postalcodes.place_name LIKE "' . $sword . '%"'
+            . ' OR  CONCAT(tx_radialsearch_postalcodes.postal_code, " ", tx_radialsearch_postalcodes.place_name) LIKE "' . $sword . '%"'
+            . ')'
+    ;
 
     return $andWhere;
   }
